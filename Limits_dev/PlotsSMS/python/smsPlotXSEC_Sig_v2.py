@@ -98,7 +98,7 @@ class smsPlotXSEC_SIG_v2(smsPlotABS):
 		self.histo.SetMaximum(0.1)
 		self.histo.SetMinimum(-0.1)
 	if Method == 2:
-		self.histo.SetMaximum(1.15)
+		self.histo.SetMaximum(1.10)
 		self.histo.SetMinimum(0.9)
 	if Method == 3:
 		self.histo.SetMaximum(0.1)
