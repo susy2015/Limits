@@ -1,0 +1,19 @@
+Steps for producing datacards and computing limits:
+1) Set up your conf file (dc_0l_setup.conf) in the Limits directory
+2) To produce the datacards, run:
+   > python Datacards/python/makeDatacards.py
+   or
+   > python Datacards/python/makeDatacards.py <name_of_your.conf>
+   in case you want to run with a different conf file. WARNING: this will take quite a while, so be patient!
+3) To run the limits, you need CMSSW_7_1_5 and the HiggsAnalysis/CombinedLimit package (see instructions at the top of Datacards/scripts/runLimits.py) and a separate shell using the corresponding CMSSW area as your CMSSW_BASE. In this shell, from the Limits directory, run:
+   > python Datacards/python/runLimits.py
+   or
+   > python Datacards/python/runLimits.py -c <name_of_your.conf>
+   if you're running with a different conf file than the default
+4) If you've already run step 3) for a given set of datacards, you can print the results (from any shell) with:
+   > python Datacards/python/runLimits.py -p [-c <name_of_your.conf>]
+5) In order to fill a root file with the limit results for all mass points considered (needed for the final plots), run:
+   > python Datacards/python/runLimits.py -f [-c <name_of_your.conf>]
+6) To make the usual SMS exclusion plots, you can then run:
+   > python PlotsSMS/python/makeSMSplots.py PlotsSMS/config/T2tt_SUS16005.cfg T2tt
+   which will produce the limit plots in pdf format

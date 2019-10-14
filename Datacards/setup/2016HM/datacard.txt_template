@@ -1,0 +1,34 @@
+## datacard with IMAX MET bins
+
+
+---
+imax IMAX  number of channels
+jmax JMAX  number of backgrounds (BKGLIST)
+kmax KMAX  number of nuisance parameters (sources of systematical uncertainties)
+---
+
+
+---
+SBIN
+SOBS
+---
+
+
+
+## we list the expected events for signal and all backgrounds in the bins
+## the second process line must have a positive number for backgrounds, and 0 for signal
+---
+SBBIN
+PROCESS1
+PROCESS2
+RATE
+---
+
+
+
+## then we list the independent sources of uncertainties, and give their effect (syst. error)
+## on each process and bin
+---
+SYS
+---
+
