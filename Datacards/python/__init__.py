@@ -1,3 +1,3 @@
 #Automatically created by SCRAM
 import os
-__path__.append(os.path.dirname(os.path.abspath(__file__).rsplit('/Limits/Datacards/',1)[0])+'/cfipython/slc6_amd64_gcc630/Limits/Datacards')
+__path__.append(os.path.dirname(os.path.abspath(__file__).rsplit('/Limits/Datacards/',1)[0])+'/cfipython/slc6_amd64_gcc700/Limits/Datacards')

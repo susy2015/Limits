@@ -4,7 +4,8 @@ import math
 import CombineHarvester.CombineTools.ch as ch
 
 # json file with bkg predictions and signal yields
-json_bkgPred = 'Datacards/setup/SUSYNano19/dc_BkgPred.json'
+#json_bkgPred = 'Datacards/setup/SUSYNano19/dc_BkgPred.json'
+json_bkgPred = 'Datacards/setup/SUSYNano19/combine_bkgPred.json'
 json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields.json'
 # datacard output directory
 outputdir = 'Datacards/results/SUSYNano19-20191010'
@@ -16,7 +17,7 @@ uncertainty_definitions = 'Datacards/setup/SUSYNano19/define_uncs.conf'
 uncertainty_fileprefix = 'values_unc'
 # backgroud processes
 #bkgprocesses = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson']
-bkgprocesses = ['ttbarplusw']
+bkgprocesses = ['ttbarplusw', 'qcd', 'ttZ', 'diboson']
 # background process name -> control region name
 processMap = {'ttbarplusw':'lepcr', 'znunu':'phocr', 'qcd':'qcdcr'}
 #blind data
@@ -267,16 +268,16 @@ def writeSR(signal):
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, bin)])
         cb.AddProcesses(procs = ['signal'],     bin = [(0, bin)], signal=True)
         #cb.AddProcesses(procs = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
-        cb.AddProcesses(procs = ['ttbarplusw', 'qcd'], bin = [(0, bin)], signal=False)
+        cb.AddProcesses(procs = ['ttbarplusw', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
         if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
         else: 		   cb.ForEachObs(lambda obs : obs.set_rate(1))
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
-        #cb.cp().process(['ttZ','diboson']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
-        #cb.cp().process(['signal','ttZ','diboson']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-        #           (['signal'],         toUnc(sigYields[signal][bin]))
-        #           (['ttZ'],            toUnc(yields['ttZ'][bin]))
-        #           (['diboson'],        toUnc(yields['diboson'][bin]))
-        #           )
+        cb.cp().process(['ttZ','diboson']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
+        cb.cp().process(['signal','ttZ','diboson']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
+                   (['signal'],         toUnc(sigYields[signal][bin]))
+                   (['ttZ'],            toUnc(yields['ttZ'][bin]))
+                   (['diboson'],        toUnc(yields['diboson'][bin]))
+                   )
         if bin not in mergedbins:
             ## one to one CR
             #cb.cp().process(['ttbarplusw','znunu','qcd']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
