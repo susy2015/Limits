@@ -108,7 +108,8 @@ class Uncertainty:
         self.name = name
         self.type = type
         self.value = float(value)
-        if self.value > 2 or self.value < 0.5:
+        #if self.value > 2 or self.value < 0.5:
+        if self.value > 2:
             raise ValueError('Invalid unc value %f for %s!'%(self.value, self.name))
 
 unc_def = {}
@@ -171,8 +172,7 @@ def writeLepcr(signal):
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
         cb.AddProcesses(procs = ['signal'],     bin = [(0, crbin)], signal=True)
         cb.AddProcesses(procs = ['ttbarplusw'], bin = [(0, crbin)], signal=False)
-        if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['lepcr_data'][crbin][0]))
-        else: 		   cb.ForEachObs(lambda obs : obs.set_rate(1))
+        cb.ForEachObs(lambda obs : obs.set_rate(yields['lepcr_data'][crbin][0]))
         cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(yields['lepcr_ttbarplusw'][crbin][0]))
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields['lepcr_'+signal][crbin][0]))
         # stat uncs
@@ -205,8 +205,7 @@ def writePhocr(signal):
 #         print crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
         cb.AddProcesses(procs = ['gjets'], bin = [(0, crbin)], signal=False)
-        if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
-        else: 		   cb.ForEachObs(lambda obs : obs.set_rate(1))
+        cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
         cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields['phocr_gjets'][crbin][0]))
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
@@ -230,11 +229,11 @@ def writePhocr(signal):
 def writeQCDcr(signal):
     for crbin in crbinlist['qcdcr']:
         cb = ch.CombineHarvester()
-#         print crbin
+	#cb.SetVerbosity(3) ## Boolean to enable debug printout
+        print crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
         cb.AddProcesses(procs = ['qcd', 'otherbkgs'], bin = [(0, crbin)], signal=False)
-        if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['qcdcr_data'][crbin][0]))
-        else: 		   cb.ForEachObs(lambda obs : obs.set_rate(1))
+        cb.ForEachObs(lambda obs : obs.set_rate(yields['qcdcr_data'][crbin][0]))
         cb.cp().process(['qcd']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_qcd'][crbin][0]))
         cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_otherbkgs'][crbin][0]))
         # stat uncs
@@ -264,13 +263,14 @@ def writeSR(signal):
     for bin in binlist:
         rateParamFixes = {}
         cb = ch.CombineHarvester()
+	cb.SetVerbosity(3)
 #         print bin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, bin)])
         cb.AddProcesses(procs = ['signal'],     bin = [(0, bin)], signal=True)
         #cb.AddProcesses(procs = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
         cb.AddProcesses(procs = ['ttbarplusw', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
         if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
-        else: 		   cb.ForEachObs(lambda obs : obs.set_rate(1))
+        else:         cb.ForEachObs(lambda obs : obs.set_rate(1))
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
         cb.cp().process(['ttZ','diboson']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
         cb.cp().process(['signal','ttZ','diboson']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
@@ -303,7 +303,7 @@ def writeSR(signal):
             cb.cp().process(['ttbarplusw','qcd']).ForEachProc(lambda p : p.set_rate(1))
             for proc in ['ttbarplusw','qcd']:
                 rlt = parseBinMap(proc, binMaps[processMap[proc]][bin], yields)
-		print("rateParam: ", rlt['rateParam'])
+		# print("rateParam: ", rlt['rateParam'])
                 rName = "R_%s_%s"%(proc, bin)
                 cb.cp().process([proc]).AddSyst(cb, rName, "rateParam", ch.SystMap()(999999.0)) # error if put formula here: need a workaround
                 rateParamFixes[rName] = rlt['rateParam']
@@ -332,7 +332,7 @@ def writeSR(signal):
                     dc.write(line)
         os.remove(tmpdc)
         
-#readUncs()
+readUncs()
 for sig in signals:
     dest = os.path.join(outputdir, sig)
     if not os.path.exists(dest):
