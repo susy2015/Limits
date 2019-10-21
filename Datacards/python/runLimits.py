@@ -427,7 +427,7 @@ def calcLimit(config, signal):
     combineDatacardsCommand += ' > ' + combinedDatacard
     output = commands.getoutput(combineDatacardsCommand)
 
-    lprint(combineDatacardsCommand, output)
+    #lprint(combineDatacardsCommand, output)
 
     # ===== run the limits =====
     #
