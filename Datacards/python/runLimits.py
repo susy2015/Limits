@@ -440,16 +440,16 @@ def calcLimit(config, signal):
     result = {}
     # === Asymptotic
     if config.limitmethod == 'AsymptoticLimits':
-        # runLimitsCommand =  'combine -M Asymptotic '+combinedDatacard+' --run
+        # runLimitsCommand =  'combine -M AsymptoticLimits '+combinedDatacard+' --run
         # expected -t -1 --rMin 0 --rMax 10 -n '+signal
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])
         sigtype = signal.split('_')[0]
-        runLimitsCommand = 'combine -M Asymptotic ' + combinedDatacard + ' -n ' + signal
+        runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' -n ' + signal
         if (mstop<450 and 'fbd' not in sigtype) or (mstop >= 350 and mlsp < 350 and 'T2tt' in sigtype) :
-            runLimitsCommand = 'combine -M Asymptotic ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
         if ('fbd' in sigtype or '4bd' in sigtype) and (mstop<=250):
-            runLimitsCommand = 'combine -M Asymptotic ' + combinedDatacard + ' --rMin 0 --rMax 1 -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 1 -n ' + signal
         if config.expectedonly :
             runLimitsCommand += ' --run expected'
         output = commands.getoutput(runLimitsCommand)
