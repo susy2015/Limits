@@ -4,7 +4,6 @@ import sys
 import re
 import time
 import ast
-import json
 from shutil import copy
 from ConfigParser import SafeConfigParser
 from collections import OrderedDict
@@ -578,9 +577,9 @@ class FitRegion:
         ':type config: DatacardConfig'
         self.config = config
         self.signals = config.signals
-        #self.weight = config.weight
-        #self.signalweight = config.signalweight
-        #self.basesel = config.basesel
+        self.weight = config.weight
+        self.signalweight = config.signalweight
+        self.basesel = config.basesel
         self.bins = config.bins
         self.treesubdir = ''
 
@@ -629,14 +628,13 @@ class FitRegion:
                 'var': 'met',
                 'bin': [250, 350, 450, 550, 1000] }'''
         region = '_' + region if region else ''
-	return ['bin%s_%d_%s' % (region, lowedge, catetory_name) for lowedge in category['bin'][:-1]]
+        return ['bin%s_%d_%s' % (region, lowedge, catetory_name) for lowedge in category['bin'][:-1]]
 #        return ['bin%s_%s_%d' % (region, catetory_name, lowedge) for lowedge in category['bin'][:-1]]
 
     def compileBinList(self):
         self.binlist = []
-	self.binlist = self.bins
-        #for name, cat in self.bins.iteritems():
-        #    self.binlist += self.getBinLabels(self.label, name, cat)
+        for name, cat in self.bins.iteritems():
+            self.binlist += self.getBinLabels(self.label, name, cat)
 
     def removeNegatives(self, hist):
         for ibin in range(hist.GetNbinsX() + 2):

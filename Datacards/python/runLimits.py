@@ -440,7 +440,7 @@ def calcLimit(config, signal):
     result = {}
     # === Asymptotic
     if config.limitmethod == 'AsymptoticLimits':
-        # runLimitsCommand =  'combine -M AsymptoticLimits '+combinedDatacard+' --run
+        # runLimitsCommand =  'combine -M Asymptotic '+combinedDatacard+' --run
         # expected -t -1 --rMin 0 --rMax 10 -n '+signal
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])

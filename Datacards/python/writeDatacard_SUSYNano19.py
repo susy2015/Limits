@@ -203,19 +203,19 @@ def writePhocr(signal):
         cb = ch.CombineHarvester()
 #         print crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
-        cb.AddProcesses(procs = ['gjets', 'background'], bin = [(0, crbin)], signal=False)
+        cb.AddProcesses(procs = ['gjets', 'otherbkgs'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
         cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields['phocr_gjets'][crbin][0]))
-	cb.cp().process(['background']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
+	cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
                    (['gjets'],        toUnc(yields['phocr_gjets'][crbin]))
-                   (['background'],  2.0)
+                   (['otherbkgs'],  2.0)
                    )
         # syst uncs
         if crbin in unc_dict:
-            for proc in ['gjets', 'background']:
+            for proc in ['gjets', 'otherbkgs']:
                 if proc in unc_dict[crbin]:
                     for unc in unc_dict[crbin][proc].values():
                         cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
@@ -263,6 +263,7 @@ def writeQCDcr(signal):
 
 def writeSR(signal):
     mergedbins = [bin for bin in binlist if '*' in binMaps['lepcr'][bin]]
+    #mergedbins = [bin for bin in binlist if '+' in binMaps['lepcr'][bin]]
     for bin in binlist:
         rateParamFixes = {}
         cb = ch.CombineHarvester()
@@ -323,7 +324,7 @@ def writeSR(signal):
                     dc.write(line)
         os.remove(tmpdc)
         
-readUncs()
+#readUncs()
 for sig in signals:
     dest = os.path.join(outputdir, sig)
     if not os.path.exists(dest):
