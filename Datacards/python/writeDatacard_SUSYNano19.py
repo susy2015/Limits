@@ -324,7 +324,7 @@ def writeSR(signal):
                     dc.write(line)
         os.remove(tmpdc)
         
-#readUncs()
+readUncs()
 for sig in signals:
     dest = os.path.join(outputdir, sig)
     if not os.path.exists(dest):

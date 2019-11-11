@@ -13,19 +13,19 @@ def write_json(data, filename='combine_bkgPred.json'):
     with open(filename,'w') as f:
     	json.dump(data, f, indent=2, ensure_ascii=False)
 
-with open(json_bkgPred, "a+") as new:
+with open(json_binMaps, "a+") as new:
     newData = json.load(new)
 
-with open(json_TTZPred, "r") as ttz, open(json_RarePred, "r") as diboson, open(json_zinvPred, "r") as znunu, open(json_qcdPred, "r") as qcd, open(json_binMaps, "r") as binMaps:
+with open(json_TTZPred, "r") as ttz, open(json_RarePred, "r") as diboson, open(json_zinvPred, "r") as znunu, open(json_qcdPred, "r") as qcd, open(json_bkgPred, "r") as lepcr:
     ttz_insert = json.load(ttz)
     diboson_insert = json.load(diboson)
     znunu_insert = json.load(znunu)
     qcd_insert = json.load(qcd)
-    binMaps_insert = json.load(binMaps)
-    newData['binMaps']['phocr'].update(binMaps_insert['binMaps']['phocr'])
+    lep_insert = json.load(lepcr)
     newData['yieldsMap'].update(ttz_insert)
     newData['yieldsMap'].update(diboson_insert)
     newData['yieldsMap'].update(znunu_insert['yieldsMap'])
     newData['yieldsMap'].update(qcd_insert['yieldsMap'])
+    newData['yieldsMap'].update(lep_insert['yieldsMap'])
 write_json(newData)
 
