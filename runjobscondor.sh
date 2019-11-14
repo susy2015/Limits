@@ -49,8 +49,10 @@ cd ${CMSSW}/src/Limits/
 echo $outdir
 
 python $pathtomacro$runmacro -c $config
-xrdcp -np results*.root root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
-xrdcp -r -np Datacards/limits/SUSYNano19-*_AsymptoticLimits/* root://cmseos.fnal.gov//store/user/$(whoami)/14TeV/${outdir}/.
+python $pathtomacro$runmacro -c $config -p
+python $pathtomacro$runmacro -c $config -f
+#xrdcp -np results*.root root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
+xrdcp -r -np Datacards/limits/SUSYNano19-20191010_AsymptoticLimits root://cmseos.fnal.gov//store/user/$(whoami)/14TeV/${outdir}/.
 ls -a
 
 status=`echo $?`
