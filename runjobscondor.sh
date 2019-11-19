@@ -7,6 +7,7 @@ outputdir=$4
 scramdir=$5
 outdir=${6}
 scram=${7}
+signal=${8}
 
 workdir=`pwd`
 cmssw=${scramdir##*/}
@@ -43,16 +44,28 @@ scramv1 b clean
 scramv1 b
 eval `scramv1 runtime -sh`
 
+cd ${CMSSW}/src/
+ls -a
+scramv1 b ProjectRename
+scramv1 b
+eval `scramv1 runtime -sh`
+
 cd ${_CONDOR_SCRATCH_DIR}
 pwd
 cd ${CMSSW}/src/Limits/
 echo $outdir
 
+ulimit -s unlimited
+
+#Make new config with sample replaced
+sed -i -e "s/T2tt_1000_0/$signal/g" ${config}
+
+python $pathtomacro/writeDatacard_SUSYNano19.py 
 python $pathtomacro$runmacro -c $config
 python $pathtomacro$runmacro -c $config -p
-python $pathtomacro$runmacro -c $config -f
+#python $pathtomacro$runmacro -c $config -f
 #xrdcp -np results*.root root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
-xrdcp -r -np Datacards/limits/SUSYNano19-20191010_AsymptoticLimits root://cmseos.fnal.gov//store/user/$(whoami)/14TeV/${outdir}/.
+xrdcp -r -np Datacards/limits/SUSYNano19-20191010_AsymptoticLimits root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
 ls -a
 
 status=`echo $?`

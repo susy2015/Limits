@@ -14,12 +14,22 @@ parser.add_argument("-r", "--runscript", dest="script", default="runjobs", help=
 parser.add_argument("-t", "--submittype", dest="submittype", default="condor", choices=["interactive","lsf","condor"], help="Method of job submission. [Options: interactive, lsf, condor. Default: condor]")
 parser.add_argument("-q", "--queue", dest="queue", default="1nh", help="LSF submission queue. [Default: 1nh]")
 parser.add_argument("--jobdir", dest="jobdir", default="jobs", help="Job dir. [Default: %(default)s]")
+parser.add_argument("-l", "--signals", dest="signals", default="T2tt_signals.conf", help="List of signal files. [Default: T2tt_signals.conf]")
 #parser.print_help()
 args = parser.parse_args()
 
 types = []
 state = 0
 snum = 0
+
+types = []
+state = 0
+snum = 0
+samples = []
+with open((args.signals),"r") as f :
+	samples = f.readlines()
+
+samples = [x.strip() for x in samples]
 
 os.system("mkdir -p %s" % args.jobdir)
 
@@ -50,27 +60,26 @@ cp {pathtomacro}$runmacro $workdir
     
 source tarCMSSW.sh
 
+eosmkdir /eos/uscms/store/user/mkilpatr/13TeV/$outputdir
+
 echo "$runscript $runmacro $workdir $outputdir $config"    
 """)
 
-if args.submittype == "interactive" :
-    script.write("""python {pathtomacro}$runmacro $config\n""".format(
-    pathtomacro=args.path, 
-    ))
-elif args.submittype == "condor" :
-    os.system("mkdir -p %s/logs" % args.outdir)
-    jobscript = open(os.path.join(args.jobdir,"submit_{}.sh".format(args.sysname)),"w")
-    outputname = ''
-    jobscript.write("""
+for s in xrange(len(samples)):
+	if samples[s] == "": continue
+        os.system("mkdir -p %s/logs" % args.outdir)
+        jobscript = open(os.path.join(args.jobdir,"submit_{}_{}.sh".format(args.sysname, samples[s])),"w")
+        outputname = ''
+        jobscript.write("""
 cat > submit.cmd << EOF
 universe                = vanilla
 Executable              = {runscript}{stype}.sh
-Arguments               = {macro} {config} {pathtomacro} . {workdir} {outdir} {scram}
-Output                  = logs/{sysname}.out
-Error                   = logs/{sysname}.err
-Log                     = logs/{sysname}.log
+Arguments               = {macro} {config} {pathtomacro} . {workdir} {outdir} {scram} {samp}
+Output                  = logs/{sysname}_{samp}.out
+Error                   = logs/{sysname}_{samp}.err
+Log                     = logs/{sysname}_{samp}.log
 x509userproxy           = 
-request_memory 		= 6000
+request_memory 		= 8000
 initialdir              = {outdir}
 Should_Transfer_Files   = YES
 transfer_input_files    = 
@@ -81,11 +90,11 @@ EOF
 
   condor_submit submit.cmd;
   rm submit.cmd""".format(
-    runscript=args.script, stype=args.submittype, macro=args.macro, config=args.conf, pathtomacro=args.path, sysname=args.sysname, workdir="${CMSSW_BASE}", outdir=args.outdir, outname=outputname, scram="${SCRAM_ARCH}"
-    ))
-    jobscript.close()
-    script.write("./{jobdir}/submit_{name}.sh\n".format(jobdir=args.jobdir, name=args.sysname))
-    os.system("chmod +x %s/submit_%s.sh" %(args.jobdir, args.sysname))
+        runscript=args.script, stype=args.submittype, macro=args.macro, config=args.conf, pathtomacro=args.path, sysname=args.sysname, workdir="${CMSSW_BASE}", outdir=args.outdir, outname=outputname, scram="${SCRAM_ARCH}", samp=samples[s]
+        ))
+        jobscript.close()
+        script.write("./{jobdir}/submit_{name}_{samps}.sh\n".format(jobdir=args.jobdir, name=args.sysname, samps=samples[s]))
+        os.system("chmod +x %s/submit_%s_%s.sh" %(args.jobdir, args.sysname, samples[s]))
 
 script.close()
 os.system("chmod +x %s.sh" % args.submit)
