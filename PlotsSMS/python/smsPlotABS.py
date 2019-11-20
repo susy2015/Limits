@@ -91,7 +91,7 @@ class smsPlotABS(object):
        	CMS_lumi.writeExtraText = 1
 	CMS_lumi.extraText = "Preliminary"
 	#CMS_lumi.lumi_13TeV="2.3 fb^{-1}"
-	CMS_lumi.lumi_13TeV="35.9 fb^{-1}"
+	CMS_lumi.lumi_13TeV="136.7 fb^{-1}"
 
 	CMS_lumi.lumi_sqrtS = "13 TeV"  
 	iPos=0
@@ -101,7 +101,7 @@ class smsPlotABS(object):
         textCMS.SetNDC()
         textCMS.SetTextAlign(13)
         textCMS.SetTextFont(52)
-        textCMS.SetTextSize(0.038)
+        textCMS.SetTextSize(0.030)
         #textCMS.Draw()
         self.c.textCMS = textCMS
         # MODEL LABEL
@@ -112,7 +112,7 @@ class smsPlotABS(object):
         textModelLabel.SetNDC()
         textModelLabel.SetTextAlign(13)
         textModelLabel.SetTextFont(42)
-        textModelLabel.SetTextSize(0.035)
+        textModelLabel.SetTextSize(0.038)
         #textModelLabel.SetTextSize(0.03)
         textModelLabel.Draw()
         self.c.textModelLabel = textModelLabel
@@ -380,11 +380,11 @@ class smsPlotABS(object):
             exp.Draw("LSAME")
         for exp in self.EXP['minus'] :
             exp.Draw("LSAME")
-        for obs in self.OBS['nominal'] :
-            obs.Draw("LSAME")
-        for obs in self.OBS['plus'] :
-            obs.Draw("LSAME")
-        for obs in self.OBS['minus'] :
-            obs.Draw("LSAME")
+        #for obs in self.OBS['nominal'] :
+        #    obs.Draw("LSAME")
+        #for obs in self.OBS['plus'] :
+        #    obs.Draw("LSAME")
+        #for obs in self.OBS['minus'] :
+        #    obs.Draw("LSAME")
 
         

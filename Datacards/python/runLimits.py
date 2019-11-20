@@ -111,7 +111,8 @@ class LimitConfig:
     self.limitmethod = config_parser.get('config', 'limitmethod')
     self.subdir = config_parser.get('config', 'subdir')
     self.datacarddir = os.path.join(config_parser.get('config', 'datacarddir'), self.subdir)
-    self.limitdir = os.path.join(config_parser.get('config', 'limitdir'), self.subdir + '_' + self.limitmethod)
+    #self.limitdir = os.path.join(config_parser.get('config', 'limitdir'), self.subdir + '_' + self.limitmethod)
+    self.limitdir = os.path.join(config_parser.get('config', 'limitdir'))
     self.signals = config_parser.get('signals', 'samples').replace(' ', '').split(',')
     self.scalesigtoacc = config_parser.getboolean('config', 'scalesigtoacc')
     self.expectedonly = config_parser.getboolean('config', 'expectedonly')
@@ -150,7 +151,8 @@ def getLimit(rootFile, getMean=False, limit={}):
 
 def printLimits(config):
     limits = []
-    currentDir = os.getcwd()
+    #currentDir = os.getcwd()
+    currentDir = "/eos/uscms/store/user/mkilpatr/13TeV/"
     for signal in config.signals:
         outputLocation = os.path.join(currentDir, config.limitdir, signal)
         rootFile = ''
@@ -242,7 +244,8 @@ def fillSignificances(config, sigfile, name):
 
 def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     limits = []
-    currentDir = os.getcwd()
+    #currentDir = os.getcwd()
+    currentDir = "/eos/uscms/store/user/mkilpatr/13TeV/"
     xsecfilename = ('Datacards/setup/xsecs/stop.root')
     xsecfile = TFile(xsecfilename)
     xsechist = TH1D()

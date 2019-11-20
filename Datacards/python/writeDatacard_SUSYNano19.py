@@ -6,7 +6,7 @@ import CombineHarvester.CombineTools.ch as ch
 # json file with bkg predictions and signal yields
 #json_bkgPred = 'Datacards/setup/SUSYNano19/dc_BkgPred.json'
 json_bkgPred = 'Datacards/setup/SUSYNano19/combine_bkgPred.json'
-json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields.json'
+json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
 # datacard output directory
 outputdir = 'Datacards/results/SUSYNano19-20191010'
 # directory with uncertainties files
