@@ -2,11 +2,22 @@ import os
 import time
 import math
 import CombineHarvester.CombineTools.ch as ch
+import argparse
+
+parser = argparse.ArgumentParser(
+        description='Produce or print limits based on existing datacards')
+parser.add_argument("-s", "--signal", dest="signalPoint", default='',
+                         help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
+parser.add_argument("-l", "--location", dest="signalLocation", default='',
+                         help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
+args = parser.parse_args()
 
 # json file with bkg predictions and signal yields
 #json_bkgPred = 'Datacards/setup/SUSYNano19/dc_BkgPred.json'
 json_bkgPred = 'Datacards/setup/SUSYNano19/combine_bkgPred.json'
 json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
+#if args.signalPoint == "": json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
+#else:		           json_sigYields = 'Datacards/setup/SUSYNano19/SMS_T2tt_fastsim/' + args.signalPoint + '.json'
 # datacard output directory
 outputdir = 'Datacards/results/SUSYNano19-20191010'
 # directory with uncertainties files
@@ -15,6 +26,7 @@ setuplocation = 'Datacards/setup/SUSYNano19'
 uncertainty_definitions = 'Datacards/setup/SUSYNano19/define_uncs.conf'
 # files specifying uncertainty values by bin start with this string
 uncertainty_fileprefix = 'values_unc'
+uncertainty_filepostfix = '_syst.conf'
 # backgroud processes
 bkgprocesses = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson']
 # background process name -> control region name
@@ -103,13 +115,19 @@ class Vividict(dict):
         return value                     # faster to return than dict lookup
 
 class Uncertainty:
-    def __init__(self, name, type, value):
+    def __init__(self, name, type, value, value2 = -999.):
         self.name = name
         self.type = type
         self.value = float(value)
+        self.value2 = float(value2)
         #if self.value > 2 or self.value < 0.5:
         #if self.value > 2:
         #    raise ValueError('Invalid unc value %f for %s!'%(self.value, self.name))
+
+def averageUnc(up, down):
+    sign = 1 if up >= 1 else -1
+    val = 0.5 * (abs(up - 1) + abs(1 - down))
+    return (1 + sign * val)
 
 unc_def = {}
 unc_dict = Vividict() # bin -> { proc -> { uncname -> Uncertainty } } , proc can be 'signal'
@@ -128,6 +146,7 @@ def readUncs():
     
 #     filelist = [os.path.join(setuplocation, f) for f in os.listdir(setuplocation) if f.startswith(uncertainty_fileprefix)]
     filelist = [os.path.join(dp, f) for dp, dn, filenames in os.walk(setuplocation) for f in filenames if f.startswith(uncertainty_fileprefix)]
+    if args.signalPoint != "": filelist.append(str(setuplocation + '/' + args.signalLocation + '/' + args.signalPoint + uncertainty_filepostfix))
     for uncfile in filelist:
         with open(uncfile) as f:
             print 'Reading unc from', uncfile
@@ -146,7 +165,18 @@ def readUncs():
                     print line 
                     raise ValueError('Uncertainty "%s" is not defined!'%uncname)
                 try:
-                    unc = Uncertainty(uncname, unctype, uncval)
+                    if "up" in uncname: 
+			if uncval == "-nan":
+				uncval = 2
+			unc_up = Uncertainty(uncname.strip("up"), unctype, uncval)
+                    elif "down" in uncname: 
+			if uncval == "2" or uncval == "-nan":
+				uncval = 0.001
+			uncavg = averageUnc(unc_up.value, float(uncval))			
+		    	#unc = Uncertainty(uncname.strip("_down"), unctype, uncval, unc_up.value)	
+		    	unc = Uncertainty(uncname.strip("_down"), unctype, uncavg)
+                    else: 
+			unc = Uncertainty(uncname, unctype, uncval)
                 except ValueError as e:
                     print line
                     raise e
@@ -154,9 +184,10 @@ def readUncs():
                 bins = [bin_str]
                 if bin_str=='all': bins = binlist
                 elif bin_str in crbinlist: bins = crbinlist[bin_str]
-                for bin in bins:
-                    for proc in processes:
-                        unc_dict[bin][proc][uncname] = unc
+		if "up" not in uncname:
+                    for bin in bins:
+                        for proc in processes:
+                            unc_dict[bin][proc][uncname] = unc
     
     unc_defined = set(unc_def.keys())
     if unc_defined!=unc_processed:
@@ -308,7 +339,10 @@ def writeSR(signal):
                 if proc in unc_dict[bin]:
                     for unc in unc_dict[bin][proc].values():
                         procname_in_dc = proc if proc in bkgprocesses else 'signal'
-                        cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
+                        if unc.value2 > -100.:
+			    cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
+			else:
+                            cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         # fix rateParams
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%bin)
         cb.WriteDatacard(tmpdc)
