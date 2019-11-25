@@ -60,7 +60,7 @@ cp {pathtomacro}$runmacro $workdir
     
 source tarCMSSW.sh
 
-eosmkdir /eos/uscms/store/user/mkilpatr/13TeV/$outputdir
+eosmkdir -p /eos/uscms/store/user/$(whoami)/13TeV/$outputdir
 
 echo "$runscript $runmacro $workdir $outputdir $config"    
 """)

@@ -1,19 +1,59 @@
-Steps for producing datacards and computing limits:
-1) Set up your conf file (dc_0l_setup.conf) in the Limits directory
-2) To produce the datacards, run:
-   > python Datacards/python/makeDatacards.py
-   or
-   > python Datacards/python/makeDatacards.py <name_of_your.conf>
-   in case you want to run with a different conf file. WARNING: this will take quite a while, so be patient!
-3) To run the limits, you need CMSSW_7_1_5 and the HiggsAnalysis/CombinedLimit package (see instructions at the top of Datacards/scripts/runLimits.py) and a separate shell using the corresponding CMSSW area as your CMSSW_BASE. In this shell, from the Limits directory, run:
-   > python Datacards/python/runLimits.py
-   or
-   > python Datacards/python/runLimits.py -c <name_of_your.conf>
-   if you're running with a different conf file than the default
-4) If you've already run step 3) for a given set of datacards, you can print the results (from any shell) with:
-   > python Datacards/python/runLimits.py -p [-c <name_of_your.conf>]
-5) In order to fill a root file with the limit results for all mass points considered (needed for the final plots), run:
-   > python Datacards/python/runLimits.py -f [-c <name_of_your.conf>]
-6) To make the usual SMS exclusion plots, you can then run:
-   > python PlotsSMS/python/makeSMSplots.py PlotsSMS/config/T2tt_SUS16005.cfg T2tt
-   which will produce the limit plots in pdf format
+#Steps for producing datacards and computing limits locally:
+#1) Set up your conf file (dc_0l_setup.conf) in the Limits directory
+#2) To produce the datacards, run:
+#   > python Datacards/python/makeDatacards.py
+#   or
+#   > python Datacards/python/makeDatacards.py <name_of_your.conf>
+#   in case you want to run with a different conf file. WARNING: this will take quite a while, so be patient!
+#3) To run the limits, you need CMSSW_7_1_5 and the HiggsAnalysis/CombinedLimit package (see instructions at the top of Datacards/scripts/runLimits.py) and a separate shell using the corresponding CMSSW area as your CMSSW_BASE. In this shell, from the Limits directory, run:
+#   > python Datacards/python/runLimits.py
+#   or
+#   > python Datacards/python/runLimits.py -c <name_of_your.conf>
+#   if you're running with a different conf file than the default
+#4) If you've already run step 3) for a given set of datacards, you can print the results (from any shell) with:
+#   > python Datacards/python/runLimits.py -p [-c <name_of_your.conf>]
+#5) In order to fill a root file with the limit results for all mass points considered (needed for the final plots), run:
+#   > python Datacards/python/runLimits.py -f [-c <name_of_your.conf>]
+#6) To make the usual SMS exclusion plots, you can then run:
+#   > python PlotsSMS/python/makeSMSplots.py PlotsSMS/config/T2tt_SUS16005.cfg T2tt
+#   which will produce the limit plots in pdf format
+
+Steps for submitting jobs on Condor
+Should run everything in CMSSW_10_2_9
+
+### Set up necessary repositories
+### Get Higgs Combined
+```cd CMSSW_10_2_9/src
+cmsenv
+git clone https://github.com/mkilpatr/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
+cd HiggsAnalysis/CombinedLimit
+git fetch origin
+git checkout SUSYNano19
+scramv1 b clean
+scramv1 b
+```
+
+### Get Combine Harvest
+```cd CMSSW_10_2_9/src
+cmsenv
+git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
+scram b
+```
+
+### Get Limits Repository
+```cd CMSSW_10_2_9/src
+cmsenv
+git clone https://github.com/susy2015/Limits.git Limits
+git fetch origin
+git checkout SUSYNano19
+```
+
+### Create Datacards
+Here the -l is a link the the directory where the signal JSON files and systematics are located: Base: Datacards/setup/SUSYNano19/, -s is the name of the specific sample you want to work with
+```python Datacards/python/writeDatacard_SUSYNano19.py -l SMS_T2tt_fastsim -s T2tt_1000_0
+```
+
+### Create condor submit file
+
+```./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o {outputdir in eos area} -l T2tt_signals.conf
+```
