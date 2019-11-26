@@ -32,9 +32,9 @@ echo "CMSSW: "$CMSSW_BASE
 cd ../../
 CMSSW=${CMSSW_BASE##*/}
 
-xrdcp root://cmseos.fnal.gov//store/user/$(whoami)/${CMSSW}.tgz .
-tar -xf ${CMSSW}.tgz
-rm ${CMSSW}.tgz
+xrdcp root://cmseos.fnal.gov//store/user/$(whoami)/${CMSSW}_${outdir}.tgz .
+tar -xf ${CMSSW}_${outdir}.tgz
+rm ${CMSSW}_${outdir}.tgz
 scramv1 b ProjectRename
 echo $pwd
 ls
@@ -65,7 +65,7 @@ python $pathtomacro$runmacro -c $config
 python $pathtomacro$runmacro -c $config -p
 #python $pathtomacro$runmacro -c $config -f
 #xrdcp -np results*.root root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
-xrdcp -r -np Datacards/limits/SUSYNano19-20191010_AsymptoticLimits root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
+xrdcp -r -np Datacards/limits/SUSYNano19-20191010_AsymptoticLimits/${signal}/*.root root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/${signal}/.
 ls -a
 
 status=`echo $?`

@@ -58,7 +58,7 @@ cp {pathtomacro}$runmacro $workdir
 """.format(pathtomacro=args.path,runscript=args.script,stype=args.submittype))
     script.write("""
     
-source tarCMSSW.sh
+source tarCMSSW.sh $outputdir
 
 eosmkdir -p /eos/uscms/store/user/$(whoami)/13TeV/$outputdir
 

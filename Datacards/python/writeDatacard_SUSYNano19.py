@@ -13,7 +13,6 @@ parser.add_argument("-l", "--location", dest="signalLocation", default='',
 args = parser.parse_args()
 
 # json file with bkg predictions and signal yields
-#json_bkgPred = 'Datacards/setup/SUSYNano19/dc_BkgPred.json'
 json_bkgPred = 'Datacards/setup/SUSYNano19/combine_bkgPred.json'
 json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
 #if args.signalPoint == "": json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
@@ -127,7 +126,7 @@ class Uncertainty:
 def averageUnc(up, down):
     sign = 1 if up >= 1 else -1
     val = 0.5 * (abs(up - 1) + abs(1 - down))
-    return (1 + sign * val)
+    return (sign * val)
 
 unc_def = {}
 unc_dict = Vividict() # bin -> { proc -> { uncname -> Uncertainty } } , proc can be 'signal'
@@ -172,9 +171,11 @@ def readUncs():
                     elif "down" in uncname: 
 			if uncval == "2" or uncval == "-nan":
 				uncval = 0.001
-			uncavg = averageUnc(unc_up.value, float(uncval))			
-		    	#unc = Uncertainty(uncname.strip("_down"), unctype, uncval, unc_up.value)	
-		    	unc = Uncertainty(uncname.strip("_down"), unctype, uncavg)
+			if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
+				uncavg = averageUnc(unc_up.value, float(uncval))			
+		    		unc = Uncertainty(uncname.strip("_down"), unctype, (1 - uncavg), (1 + uncavg))
+			else:	
+		    		unc = Uncertainty(uncname.strip("_down"), unctype, uncval, unc_up.value)	
                     else: 
 			unc = Uncertainty(uncname, unctype, uncval)
                 except ValueError as e:
