@@ -16,7 +16,7 @@ args = parser.parse_args()
 json_bkgPred = 'Datacards/setup/SUSYNano19/combine_bkgPred.json'
 #json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
 if args.signalPoint == "": json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
-else:		           json_sigYields = 'Datacards/setup/SUSYNano19/SMS_T2tt_fastsim/' + args.signalPoint + '.json'
+else:		           json_sigYields = 'Datacards/setup/SUSYNano19/' +  args.signalLocation + '/' + args.signalPoint + '.json'
 # datacard output directory
 outputdir = 'Datacards/results/SUSYNano19-20191010'
 # directory with uncertainties files
@@ -342,7 +342,6 @@ def writeSR(signal):
                         procname_in_dc = proc if proc in bkgprocesses else 'signal'
                         if unc.value2 > -100.:
 			    cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
-			    #cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
 			else:
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         # fix rateParams
