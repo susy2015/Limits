@@ -51,9 +51,15 @@ git checkout SUSYNano19
 ### Create Datacards
 Here the -l is a link the the directory where the signal JSON files and systematics are located: Base: Datacards/setup/SUSYNano19/, -s is the name of the specific sample you want to work with
 ```python Datacards/python/writeDatacard_SUSYNano19.py -l SMS_T2tt_fastsim -s T2tt_1000_0
+python Datacards/python/runLimits.py -c dc_SUSY19Nano_setup.conf
+python Datacards/python/runLimits.py -c dc_SUSY19Nano_setup.conf -f
+python PlotsSMS/python/makeSMSplots.py PlotsSMS/config/T2tt_SUS16005.cfg T2tt_test
 ```
 
 ### Create condor submit file
-
-```./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o {outputdir in eos area} -l T2tt_signals.conf
+Stored signal files as T2tt_signals.conf and T1tttt_signals.conf
+An Example command: 
+./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o limits_multi_dry_112719 -d SMS_T2tt_fastsim -l T2tt_signals.conf
+```
+./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o {outputdir in eos area} -d {Location of signal files}} -l {Signal conf file}
 ```
