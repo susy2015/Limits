@@ -8,6 +8,7 @@ scramdir=$5
 outdir=${6}
 scram=${7}
 signal=${8}
+signalDir=${9}
 
 workdir=`pwd`
 cmssw=${scramdir##*/}
@@ -60,11 +61,9 @@ ulimit -s unlimited
 #Make new config with sample replaced
 sed -i -e "s/T2tt_1000_0/$signal/g" ${config}
 
-python $pathtomacro/writeDatacard_SUSYNano19.py 
+python $pathtomacro/writeDatacard_SUSYNano19.py -l $signalDir -s $signal
 python $pathtomacro$runmacro -c $config
 python $pathtomacro$runmacro -c $config -p
-#python $pathtomacro$runmacro -c $config -f
-#xrdcp -np results*.root root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
 xrdcp -r -np Datacards/limits/SUSYNano19-20191010_AsymptoticLimits/${signal}/*.root root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/${signal}/.
 ls -a
 

@@ -14,9 +14,9 @@ args = parser.parse_args()
 
 # json file with bkg predictions and signal yields
 json_bkgPred = 'Datacards/setup/SUSYNano19/combine_bkgPred.json'
-json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
-#if args.signalPoint == "": json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
-#else:		           json_sigYields = 'Datacards/setup/SUSYNano19/SMS_T2tt_fastsim/' + args.signalPoint + '.json'
+#json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
+if args.signalPoint == "": json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
+else:		           json_sigYields = 'Datacards/setup/SUSYNano19/SMS_T2tt_fastsim/' + args.signalPoint + '.json'
 # datacard output directory
 outputdir = 'Datacards/results/SUSYNano19-20191010'
 # directory with uncertainties files
@@ -169,7 +169,7 @@ def readUncs():
 				uncval = 2
 			unc_up = Uncertainty(uncname.strip("up"), unctype, uncval)
                     elif "down" in uncname: 
-			if uncval == "2" or uncval == "-nan":
+			if uncval == "2" or uncval == "-nan" or float(uncval) == 0:
 				uncval = 0.001
 			if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
 				uncavg = averageUnc(unc_up.value, float(uncval))			
@@ -342,6 +342,7 @@ def writeSR(signal):
                         procname_in_dc = proc if proc in bkgprocesses else 'signal'
                         if unc.value2 > -100.:
 			    cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
+			    #cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
 			else:
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         # fix rateParams

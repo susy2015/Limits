@@ -15,6 +15,7 @@ parser.add_argument("-t", "--submittype", dest="submittype", default="condor", c
 parser.add_argument("-q", "--queue", dest="queue", default="1nh", help="LSF submission queue. [Default: 1nh]")
 parser.add_argument("--jobdir", dest="jobdir", default="jobs", help="Job dir. [Default: %(default)s]")
 parser.add_argument("-l", "--signals", dest="signals", default="T2tt_signals.conf", help="List of signal files. [Default: T2tt_signals.conf]")
+parser.add_argument("-d", "--signalDir", dest="signalDir", default="SMS_T2tt_fastsim", help="Director of signal files. [Default: SMS_T2tt_fastsim]")
 #parser.print_help()
 args = parser.parse_args()
 
@@ -74,7 +75,7 @@ for s in xrange(len(samples)):
 cat > submit.cmd << EOF
 universe                = vanilla
 Executable              = {runscript}{stype}.sh
-Arguments               = {macro} {config} {pathtomacro} . {workdir} {outdir} {scram} {samp}
+Arguments               = {macro} {config} {pathtomacro} . {workdir} {outdir} {scram} {samp} {sampDir}
 Output                  = logs/{sysname}_{samp}.out
 Error                   = logs/{sysname}_{samp}.err
 Log                     = logs/{sysname}_{samp}.log
@@ -90,7 +91,7 @@ EOF
 
   condor_submit submit.cmd;
   rm submit.cmd""".format(
-        runscript=args.script, stype=args.submittype, macro=args.macro, config=args.conf, pathtomacro=args.path, sysname=args.sysname, workdir="${CMSSW_BASE}", outdir=args.outdir, outname=outputname, scram="${SCRAM_ARCH}", samp=samples[s]
+        runscript=args.script, stype=args.submittype, macro=args.macro, config=args.conf, pathtomacro=args.path, sysname=args.sysname, workdir="${CMSSW_BASE}", outdir=args.outdir, outname=outputname, scram="${SCRAM_ARCH}", samp=samples[s], sampDir=args.signalDir,
         ))
         jobscript.close()
         script.write("./{jobdir}/submit_{name}_{samps}.sh\n".format(jobdir=args.jobdir, name=args.sysname, samps=samples[s]))
