@@ -64,7 +64,7 @@ sed -i -e "s/T2tt_1000_0/$signal/g" ${config}
 python $pathtomacro/writeDatacard_SUSYNano19.py -l $signalDir -s $signal
 python $pathtomacro$runmacro -c $config
 python $pathtomacro$runmacro -c $config -p
-xrdcp -r -np Datacards/limits/SUSYNano19-20191010_AsymptoticLimits/${signal}/*.root root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/${signal}/.
+xrdcp -r -np Datacards/limits/SUSYNano19-20191010_AsymptoticLimits root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
 ls -a
 
 status=`echo $?`

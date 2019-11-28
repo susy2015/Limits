@@ -167,9 +167,11 @@ def readUncs():
                     if "up" in uncname: 
 			if uncval == "-nan":
 				uncval = 2
+			elif float(uncval) <= 0:
+				uncval = 0.001
 			unc_up = Uncertainty(uncname.strip("up"), unctype, uncval)
                     elif "down" in uncname: 
-			if uncval == "2" or uncval == "-nan" or float(uncval) == 0:
+			if uncval == "2" or uncval == "-nan" or float(uncval) <= 0:
 				uncval = 0.001
 			if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
 				uncavg = averageUnc(unc_up.value, float(uncval))			
