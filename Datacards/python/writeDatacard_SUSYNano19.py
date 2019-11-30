@@ -84,7 +84,7 @@ with open(json_sigYields) as jf:
 
 # ------ helper functions ------
 def toUnc(q):
-    return 2.0 if q[0]==0 else min([1+q[1]/q[0], 2.0])
+    return 2.0 if q[0]<=0 else min([1+q[1]/q[0], 2.0])
 
 def parseBinMap(process, cr_description, yields_dict):
     values = []
@@ -165,13 +165,13 @@ def readUncs():
                     raise ValueError('Uncertainty "%s" is not defined!'%uncname)
                 try:
                     if "up" in uncname: 
-			if uncval == "-nan":
+			if "nan" in uncval:
 				uncval = 2
 			elif float(uncval) <= 0:
 				uncval = 0.001
 			unc_up = Uncertainty(uncname.strip("up"), unctype, uncval)
                     elif "down" in uncname: 
-			if uncval == "2" or uncval == "-nan" or float(uncval) <= 0:
+			if uncval == "2" or "nan" in uncval or float(uncval) <= 0:
 				uncval = 0.001
 			if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
 				uncavg = averageUnc(unc_up.value, float(uncval))			
@@ -240,12 +240,13 @@ def writePhocr(signal):
         cb.AddProcesses(procs = ['gjets', 'otherbkgs'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
         cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields['phocr_gjets'][crbin][0]))
-	cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
+	if yields['phocr_back'][crbin][0] > 0: cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
+	else:				       cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(1e-06))
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
                    (['gjets'],        toUnc(yields['phocr_gjets'][crbin]))
-                   (['otherbkgs'],  2.0)
+                   (['otherbkgs'],    toUnc(yields['phocr_back'][crbin]))
                    )
         # syst uncs
         if crbin in unc_dict:
