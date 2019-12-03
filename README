@@ -33,7 +33,7 @@ scramv1 b clean
 scramv1 b
 ```
 
-### Get Combine Harvest
+### Get Combine Harvester
 ```cd CMSSW_10_2_9/src
 cmsenv
 git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
@@ -48,6 +48,12 @@ git fetch origin
 git checkout SUSYNano19
 ```
 
+### Copy Signal JSON from Anna
+```cd Datacards/setup/SUSYNano19/
+cp -r /uscms/home/ahenckel/nobackup/TTZ/CMSSW_10_2_9/src/SusyAnaTools/Tools/fastsim_results/SMS_T2tt_fastsim .
+cp -r /uscms/home/ahenckel/nobackup/TTZ/CMSSW_10_2_9/src/SusyAnaTools/Tools/fastsim_results/SMS_T1tttt_fastsim .
+```
+
 ### Create Datacards
 Here the -l is a link the the directory where the signal JSON files and systematics are located: Base: Datacards/setup/SUSYNano19/, -s is the name of the specific sample you want to work with
 ```python Datacards/python/writeDatacard_SUSYNano19.py -l SMS_T2tt_fastsim -s T2tt_1000_0
@@ -58,8 +64,15 @@ python PlotsSMS/python/makeSMSplots.py PlotsSMS/config/T2tt_SUS16005.cfg T2tt_te
 
 ### Create condor submit file
 Stored signal files as T2tt_signals.conf and T1tttt_signals.conf
+This will create a submit bash script to submitt all of the jobs in the conf file to Condor. It will store the log files in $CMSSW_BASE/src/Limits/{outputdir in eos area}. All of the output files will be stored in your eos area at /store/user/{USER}/13TeV/{outputdir in eos area}/.
 An Example command: 
 ./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o limits_multi_dry_112719 -d SMS_T2tt_fastsim -l T2tt_signals.conf
 ```
 ./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o {outputdir in eos area} -d {Location of signal files}} -l {Signal conf file}
+. ./submitall.sh
+```
+### Plotting
+To make a root file with all of the limits you need to change the limit dir in dc_SUSY19Nano_setup_Local.conf to the limit dir from the previous command. You also need to add a list of all signals that you ran over to the samples category of the conf, an example is there for T2tt. 
+```python Datacards/python/runLimitsLocal.py -c dc_SUSY19Nano_setup_Local.conf -f
+python PlotsSMS/python/makeSMSplots.py PlotsSMS/config/T2tt_SUS16005.cfg T2tt_{extension for plot name}
 ```
