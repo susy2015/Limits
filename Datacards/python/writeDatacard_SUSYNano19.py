@@ -240,8 +240,9 @@ def writePhocr(signal):
         cb.AddProcesses(procs = ['gjets', 'otherbkgs'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
         cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields['phocr_gjets'][crbin][0]))
-	if yields['phocr_back'][crbin][0] > 0: cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
-	else:				       cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(1e-06))
+	cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
+	#if yields['phocr_back'][crbin][0] > 0: cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
+	#else:				       cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(1e-06))
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')

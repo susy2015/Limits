@@ -374,12 +374,12 @@ class smsPlotABS(object):
             exp.SetLineStyle(7)
             exp.SetLineWidth(2)                        
         # DRAW LINES
-        for exp in self.EXP['nominal'] :
-            exp.Draw("LSAME")
-        for exp in self.EXP['plus'] :
-            exp.Draw("LSAME")
-        for exp in self.EXP['minus'] :
-            exp.Draw("LSAME")
+        #for exp in self.EXP['nominal'] :
+        #    exp.Draw("LSAME")
+        #for exp in self.EXP['plus'] :
+        #    exp.Draw("LSAME")
+        #for exp in self.EXP['minus'] :
+        #    exp.Draw("LSAME")
         #for obs in self.OBS['nominal'] :
         #    obs.Draw("LSAME")
         #for obs in self.OBS['plus'] :
