@@ -39,24 +39,11 @@ rm ${CMSSW}_${outdir}.tgz
 scramv1 b ProjectRename
 echo $pwd
 ls
-
-cd ${CMSSW}/src/
-git clone https://github.com/mkilpatr/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
-cd HiggsAnalysis/CombinedLimit
-git fetch origin
-git checkout SUSYNano19
+cd ${CMSSW}/src/HiggsAnalysis/CombinedLimit
+scramv1 b ProjectRename
 scramv1 b clean
 scramv1 b
-
-#cd ${CMSSW}/src/HiggsAnalysis/CombinedLimit
-#scramv1 b ProjectRename
-#scramv1 b clean
-#scramv1 b
 eval `scramv1 runtime -sh`
-
-cd ${CMSSW}/src/
-git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
-scram b
 
 cd ${CMSSW}/src/
 ls -a
