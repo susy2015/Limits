@@ -24,7 +24,7 @@ class sms():
         self.Xmax = 2000.
         self.Ymin = 0.
         self.Ymax = 1100.
-        self.Zmin = 0.001
+        self.Zmin = 0.000001
         self.Zmax = 100.
         # produce sparticle
         self.sParticle = "m_{#tilde{t}_{1}} [GeV]"
