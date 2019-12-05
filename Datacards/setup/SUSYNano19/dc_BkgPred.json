@@ -41,18 +41,18 @@
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_MET_pt550toinf": "<bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt550to650>*(bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt650toinf>*(bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt550to650>*(bin_lepcr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt650toinf>*(bin_lepcr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt550to650>*(bin_lepcr_hm_nb1_highmtb_ht1300to1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt650toinf>*(bin_lepcr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt550to650>*(bin_lepcr_hm_nb1_highmtb_htgt1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt650toinf>*(bin_lepcr_hm_nb1_highmtb_htgt1500_MET_pt650toinf)",
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_MET_pt250to550": "<bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt250to350>*(bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt350to450>*(bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt450to550>*(bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt450to550) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt250to350>*(bin_lepcr_hm_nb1_highmtb_ht1000to1300_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt350to450>*(bin_lepcr_hm_nb1_highmtb_ht1000to1300_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt450to550>*(bin_lepcr_hm_nb1_highmtb_ht1000to1300_MET_pt450to550) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt250to350>*(bin_lepcr_hm_nb1_highmtb_ht1300to1500_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt350to450>*(bin_lepcr_hm_nb1_highmtb_ht1300to1500_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt450to550>*(bin_lepcr_hm_nb1_highmtb_ht1300to1500_MET_pt450to550) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt250to350>*(bin_lepcr_hm_nb1_highmtb_htgt1500_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt350to450>*(bin_lepcr_hm_nb1_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt450to550>*(bin_lepcr_hm_nb1_highmtb_htgt1500_MET_pt450to550)",
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_MET_pt550toinf": "<bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt550to650>*(bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt650toinf>*(bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt550to650>*(bin_lepcr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt650toinf>*(bin_lepcr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt550to650>*(bin_lepcr_hm_nb1_highmtb_ht1300to1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt650toinf>*(bin_lepcr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt550to650>*(bin_lepcr_hm_nb1_highmtb_htgt1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt650toinf>*(bin_lepcr_hm_nb1_highmtb_htgt1500_MET_pt650toinf)",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt250to300",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt300to400",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt400to500",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt500toinf",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt250to350": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt250to350>*(bin_lepcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt250to350) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt250to350>*(bin_lepcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt250to350) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt250to350>*(bin_lepcr_hm_nbeq2_highmtb_htgt1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt250to350>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt250to350>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt250to350)",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt350to450": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt350to450>*(bin_lepcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt350to450) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt350to450>*(bin_lepcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt350to450) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt350to450>*(bin_lepcr_hm_nbeq2_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt350to450>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt350to450>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt350to450)",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt450to550": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt450to550>*(bin_lepcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt450to550) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt450to550>*(bin_lepcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt450to550) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt450to550>*(bin_lepcr_hm_nbeq2_highmtb_htgt1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt450to550>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt450to550>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt450to550)",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt550toinf": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt550to650>*(bin_lepcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt550to650) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt650toinf>*(bin_lepcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt650toinf) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt550to650>*(bin_lepcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt550to650) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt650toinf>*(bin_lepcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt650toinf) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt550to650>*(bin_lepcr_hm_nbeq2_highmtb_htgt1500_MET_pt550to650) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt650toinf>*(bin_lepcr_hm_nbeq2_highmtb_htgt1500_MET_pt650toinf) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt550toinf>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt550toinf>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt550toinf)",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt250to300",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt300to400",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt400to500",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt500toinf",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf",
       "bin_hm_nb3_highmtb_nrtntnwgeq3_MET_pt250toinf": "<bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt250to350>*(bin_lepcr_hm_nb3_highmtb_htlt1000_MET_pt250to350) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt350to550>*(bin_lepcr_hm_nb3_highmtb_htlt1000_MET_pt350to550) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt550toinf>*(bin_lepcr_hm_nb3_highmtb_htlt1000_MET_pt550toinf) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt250to350>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt350to450>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt450to550>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt550toinf>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt250to350>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt350to450>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt450to550>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt550toinf>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt550toinf)",
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_MET_pt250to350": "<bin_hm_nb3_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt250to350>*(bin_lepcr_hm_nb3_highmtb_htlt1000_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt250to350>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt250to350>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt250to350)",
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_MET_pt350to550": "<bin_hm_nb3_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt350to550>*(bin_lepcr_hm_nb3_highmtb_htlt1000_MET_pt350to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt350to450>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt450to550>*(bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt350to450>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt450to550>*(bin_lepcr_hm_nb3_highmtb_htgt1500_MET_pt450to550)",
@@ -163,9 +163,9 @@
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500": "bin_lepcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500",
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600": "bin_lepcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600",
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf": "bin_lepcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf",
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400",
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500",
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf",
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400",
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500",
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf",
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": "bin_lepcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550",
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650": "bin_lepcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650",
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf": "bin_lepcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf",
@@ -226,18 +226,18 @@
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_MET_pt550toinf": "<bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt550to650>*(bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt650toinf>*(bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt550to650>*(bin_phocr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt650toinf>*(bin_phocr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt550to650>*(bin_phocr_hm_nb1_highmtb_ht1300to1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt650toinf>*(bin_phocr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt550to650>*(bin_phocr_hm_nb1_highmtb_htgt1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt650toinf>*(bin_phocr_hm_nb1_highmtb_htgt1500_MET_pt650toinf)",
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_MET_pt250to550": "<bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt250to350>*(bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt350to450>*(bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt450to550>*(bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt450to550) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt250to350>*(bin_phocr_hm_nb1_highmtb_ht1000to1300_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt350to450>*(bin_phocr_hm_nb1_highmtb_ht1000to1300_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt450to550>*(bin_phocr_hm_nb1_highmtb_ht1000to1300_MET_pt450to550) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt250to350>*(bin_phocr_hm_nb1_highmtb_ht1300to1500_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt350to450>*(bin_phocr_hm_nb1_highmtb_ht1300to1500_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt450to550>*(bin_phocr_hm_nb1_highmtb_ht1300to1500_MET_pt450to550) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt250to350>*(bin_phocr_hm_nb1_highmtb_htgt1500_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt350to450>*(bin_phocr_hm_nb1_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt450to550>*(bin_phocr_hm_nb1_highmtb_htgt1500_MET_pt450to550)",
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_MET_pt550toinf": "<bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt550to650>*(bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt650toinf>*(bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt550to650>*(bin_phocr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt650toinf>*(bin_phocr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt550to650>*(bin_phocr_hm_nb1_highmtb_ht1300to1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt650toinf>*(bin_phocr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt550to650>*(bin_phocr_hm_nb1_highmtb_htgt1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt650toinf>*(bin_phocr_hm_nb1_highmtb_htgt1500_MET_pt650toinf)",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_phocr_hm_nb1_lowmtb_nj7_MET_pt250to300",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_phocr_hm_nb1_lowmtb_nj7_MET_pt300to400",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_phocr_hm_nb1_lowmtb_nj7_MET_pt400to500",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_phocr_hm_nb1_lowmtb_nj7_MET_pt500toinf",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_phocr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_phocr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_phocr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_phocr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt250to350": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt250to350>*(bin_phocr_hm_nbeq2_highmtb_ht1000to1300_MET_pt250to350) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt250to350>*(bin_phocr_hm_nbeq2_highmtb_ht1300to1500_MET_pt250to350) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt250to350>*(bin_phocr_hm_nbeq2_highmtb_htgt1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt250to350>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt250to350>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt250to350)",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt350to450": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt350to450>*(bin_phocr_hm_nbeq2_highmtb_ht1000to1300_MET_pt350to450) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt350to450>*(bin_phocr_hm_nbeq2_highmtb_ht1300to1500_MET_pt350to450) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt350to450>*(bin_phocr_hm_nbeq2_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt350to450>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt350to450>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt350to450)",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt450to550": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt450to550>*(bin_phocr_hm_nbeq2_highmtb_ht1000to1300_MET_pt450to550) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt450to550>*(bin_phocr_hm_nbeq2_highmtb_ht1300to1500_MET_pt450to550) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt450to550>*(bin_phocr_hm_nbeq2_highmtb_htgt1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt450to550>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt450to550>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt450to550)",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt550toinf": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt550to650>*(bin_phocr_hm_nbeq2_highmtb_ht1000to1300_MET_pt550to650) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt650toinf>*(bin_phocr_hm_nbeq2_highmtb_ht1000to1300_MET_pt650toinf) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt550to650>*(bin_phocr_hm_nbeq2_highmtb_ht1300to1500_MET_pt550to650) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt650toinf>*(bin_phocr_hm_nbeq2_highmtb_ht1300to1500_MET_pt650toinf) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt550to650>*(bin_phocr_hm_nbeq2_highmtb_htgt1500_MET_pt550to650) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt650toinf>*(bin_phocr_hm_nbeq2_highmtb_htgt1500_MET_pt650toinf) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt550toinf>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt550toinf>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt550toinf)",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_phocr_hm_nb2_lowmtb_nj7_MET_pt250to300",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_phocr_hm_nb2_lowmtb_nj7_MET_pt300to400",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_phocr_hm_nb2_lowmtb_nj7_MET_pt400to500",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_phocr_hm_nb2_lowmtb_nj7_MET_pt500toinf",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_phocr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_phocr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_phocr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_phocr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf",
       "bin_hm_nb3_highmtb_nrtntnwgeq3_MET_pt250toinf": "<bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt250to350>*(bin_phocr_hm_nb3_highmtb_htlt1000_MET_pt250to350) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt350to550>*(bin_phocr_hm_nb3_highmtb_htlt1000_MET_pt350to550) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt550toinf>*(bin_phocr_hm_nb3_highmtb_htlt1000_MET_pt550toinf) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt250to350>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt350to450>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt450to550>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt550toinf>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt250to350>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt350to450>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt450to550>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt550toinf>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt550toinf)",
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_MET_pt250to350": "<bin_hm_nb3_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt250to350>*(bin_phocr_hm_nb3_highmtb_htlt1000_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt250to350>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt250to350>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt250to350)",
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_MET_pt350to550": "<bin_hm_nb3_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt350to550>*(bin_phocr_hm_nb3_highmtb_htlt1000_MET_pt350to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt350to450>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt450to550>*(bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt350to450>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt450to550>*(bin_phocr_hm_nb3_highmtb_htgt1500_MET_pt450to550)",
@@ -348,9 +348,9 @@
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500": "bin_phocr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500",
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600": "bin_phocr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600",
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf": "bin_phocr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf",
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": "bin_phocr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400",
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": "bin_phocr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500",
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": "bin_phocr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf",
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": "bin_phocr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400",
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": "bin_phocr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500",
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": "bin_phocr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf",
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": "bin_phocr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550",
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650": "bin_phocr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650",
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf": "bin_phocr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf",
@@ -411,18 +411,18 @@
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_MET_pt550toinf": "<bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt550to650>*(bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt650toinf>*(bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt550to650>*(bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt650toinf>*(bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt550to650>*(bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt650toinf>*(bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt550to650>*(bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt650toinf>*(bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt650toinf)",
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_MET_pt250to550": "<bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt250to350>*(bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt350to450>*(bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt450to550>*(bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt450to550) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt250to350>*(bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt350to450>*(bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt450to550>*(bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt450to550) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt250to350>*(bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt350to450>*(bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt450to550>*(bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt450to550) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt250to350>*(bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt250to350) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt350to450>*(bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt450to550>*(bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt450to550)",
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_MET_pt550toinf": "<bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt550to650>*(bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt650toinf>*(bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt550to650>*(bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt650toinf>*(bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt550to650>*(bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt650toinf>*(bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt550to650>*(bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt550to650) + <bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt650toinf>*(bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt650toinf)",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_qcdcr_hm_nb1_lowmtb_nj7_MET_pt250to300",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_qcdcr_hm_nb1_lowmtb_nj7_MET_pt300to400",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_qcdcr_hm_nb1_lowmtb_nj7_MET_pt400to500",
-      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_qcdcr_hm_nb1_lowmtb_nj7_MET_pt500toinf",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500",
+      "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt250to350": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt250to350>*(bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt250to350) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt250to350>*(bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt250to350) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt250to350>*(bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt250to350>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt250to350>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt250to350)",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt350to450": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt350to450>*(bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt350to450) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt350to450>*(bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt350to450) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt350to450>*(bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt350to450>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt350to450>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt350to450)",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt450to550": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt450to550>*(bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt450to550) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt450to550>*(bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt450to550) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt450to550>*(bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt450to550>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt450to550>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt450to550)",
       "bin_hm_nb2_highmtb_nt0_nrt0_nw0_htgt1000_MET_pt550toinf": "<bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt550to650>*(bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt550to650) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt650toinf>*(bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt650toinf) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt550to650>*(bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt550to650) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt650toinf>*(bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt650toinf) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt550to650>*(bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt550to650) + <bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt650toinf>*(bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt650toinf) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt550toinf>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf) + <bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt550toinf>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt550toinf)",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_qcdcr_hm_nb2_lowmtb_nj7_MET_pt250to300",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_qcdcr_hm_nb2_lowmtb_nj7_MET_pt300to400",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_qcdcr_hm_nb2_lowmtb_nj7_MET_pt400to500",
-      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_qcdcr_hm_nb2_lowmtb_nj7_MET_pt500toinf",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500",
+      "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf",
       "bin_hm_nb3_highmtb_nrtntnwgeq3_MET_pt250toinf": "<bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt250to350>*(bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt250to350) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt350to550>*(bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt350to550) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt550toinf>*(bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt550toinf) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt250to350>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt350to450>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt450to550>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt550toinf>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt250to350>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt350to450>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt450to550>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt550toinf>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt550toinf)",
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_MET_pt250to350": "<bin_hm_nb3_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt250to350>*(bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt250to350>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt250to350>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt250to350)",
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_MET_pt350to550": "<bin_hm_nb3_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt350to550>*(bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt350to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt350to450>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt450to550>*(bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt350to450>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt350to450) + <bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt450to550>*(bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt450to550)",
@@ -533,9 +533,9 @@
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500": "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400toinf",
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600": "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400toinf",
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf": "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400toinf",
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": "bin_qcdcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400",
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": "bin_qcdcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400toinf",
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": "bin_qcdcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400toinf",
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400",
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400toinf",
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400toinf",
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550",
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650": "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550toinf",
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf": "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550toinf",
@@ -719,9 +719,9 @@
     "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500": "21",
     "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600": "22",
     "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf": "23",
-    "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": "32",
-    "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": "33",
-    "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": "34",
+    "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": "32",
+    "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": "33",
+    "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": "34",
     "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": "50",
     "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650": "51",
     "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf": "52",
@@ -774,9 +774,9 @@
     "bin_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt550to650",
     "bin_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt650to750",
     "bin_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt750toinf",
-    "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400",
-    "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500",
-    "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf",
+    "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400",
+    "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500",
+    "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf",
     "bin_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt300to400",
     "bin_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt400to500",
     "bin_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt500toinf",
@@ -948,14 +948,14 @@
       "bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt450to550": "78",
       "bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt550to650": "79",
       "bin_lepcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf": "80",
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt250to300": "53",
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt300to400": "54",
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt400to500": "55",
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt500toinf": "56",
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt250to300": "57",
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt300to400": "58",
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt400to500": "59",
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt500toinf": "60",
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": "53",
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": "54",
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": "55",
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "56",
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": "57",
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": "58",
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": "59",
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "60",
       "bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350": "101",
       "bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450": "102",
       "bin_lepcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550": "103",
@@ -1019,9 +1019,9 @@
       "bin_lepcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500": "21",
       "bin_lepcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600": "22",
       "bin_lepcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf": "23",
-      "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": "32",
-      "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": "33",
-      "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": "34",
+      "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": "32",
+      "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": "33",
+      "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": "34",
       "bin_lepcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": "50",
       "bin_lepcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650": "51",
       "bin_lepcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf": "52",
@@ -1062,14 +1062,14 @@
       "bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt450to550": "78",
       "bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt550to650": "79",
       "bin_phocr_hm_nb1_highmtb_htlt1000_MET_pt650toinf": "80",
-      "bin_phocr_hm_nb1_lowmtb_nj7_MET_pt250to300": "53",
-      "bin_phocr_hm_nb1_lowmtb_nj7_MET_pt300to400": "54",
-      "bin_phocr_hm_nb1_lowmtb_nj7_MET_pt400to500": "55",
-      "bin_phocr_hm_nb1_lowmtb_nj7_MET_pt500toinf": "56",
-      "bin_phocr_hm_nb2_lowmtb_nj7_MET_pt250to300": "57",
-      "bin_phocr_hm_nb2_lowmtb_nj7_MET_pt300to400": "58",
-      "bin_phocr_hm_nb2_lowmtb_nj7_MET_pt400to500": "59",
-      "bin_phocr_hm_nb2_lowmtb_nj7_MET_pt500toinf": "60",
+      "bin_phocr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": "53",
+      "bin_phocr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": "54",
+      "bin_phocr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": "55",
+      "bin_phocr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "56",
+      "bin_phocr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": "57",
+      "bin_phocr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": "58",
+      "bin_phocr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": "59",
+      "bin_phocr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "60",
       "bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350": "101",
       "bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450": "102",
       "bin_phocr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550": "103",
@@ -1133,9 +1133,9 @@
       "bin_phocr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500": "21",
       "bin_phocr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600": "22",
       "bin_phocr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf": "23",
-      "bin_phocr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": "32",
-      "bin_phocr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": "33",
-      "bin_phocr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": "34",
+      "bin_phocr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": "32",
+      "bin_phocr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": "33",
+      "bin_phocr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": "34",
       "bin_phocr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": "50",
       "bin_phocr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650": "51",
       "bin_phocr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf": "52",
@@ -1176,14 +1176,14 @@
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt450to550": "78",
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt550to650": "79",
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf": "80",
-      "bin_qcdcr_hm_nb1_lowmtb_nj7_MET_pt250to300": "53",
-      "bin_qcdcr_hm_nb1_lowmtb_nj7_MET_pt300to400": "54",
-      "bin_qcdcr_hm_nb1_lowmtb_nj7_MET_pt400to500": "55",
-      "bin_qcdcr_hm_nb1_lowmtb_nj7_MET_pt500toinf": "56",
-      "bin_qcdcr_hm_nb2_lowmtb_nj7_MET_pt250to300": "57",
-      "bin_qcdcr_hm_nb2_lowmtb_nj7_MET_pt300to400": "58",
-      "bin_qcdcr_hm_nb2_lowmtb_nj7_MET_pt400to500": "59",
-      "bin_qcdcr_hm_nb2_lowmtb_nj7_MET_pt500toinf": "60",
+      "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": "53",
+      "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": "54",
+      "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": "55",
+      "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "56",
+      "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": "57",
+      "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": "58",
+      "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": "59",
+      "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": "60",
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350": "101",
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450": "102",
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550": "103",
@@ -1247,9 +1247,9 @@
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500": "21",
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600": "22",
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf": "23",
-      "bin_qcdcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": "32",
-      "bin_qcdcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": "33",
-      "bin_qcdcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": "34",
+      "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": "32",
+      "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": "33",
+      "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": "34",
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": "50",
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650": "51",
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf": "52",
@@ -1779,9 +1779,9 @@
     "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500": "21",
     "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600": "22",
     "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf": "23",
-    "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": "32",
-    "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": "33",
-    "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": "34",
+    "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": "32",
+    "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": "33",
+    "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": "34",
     "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": "50",
     "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650": "51",
     "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf": "52",
@@ -1883,35 +1883,35 @@
         29,
         5.3851648071345
       ],
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt250to300": [
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         1151,
         33.9263909073747
       ],
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt300to400": [
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         697,
         26.4007575648882
       ],
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt400to500": [
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         129,
         11.3578166916005
       ],
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt500toinf": [
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         43,
         6.557438524302
       ],
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt250to300": [
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         2250,
         47.4341649025257
       ],
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt300to400": [
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         1256,
         35.4400902933387
       ],
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt400to500": [
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         236,
         15.3622914957372
       ],
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt500toinf": [
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         99,
         9.9498743710662
       ],
@@ -2167,15 +2167,15 @@
         6,
         2.44948974278318
       ],
-      "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": [
+      "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": [
         111,
         10.5356537528527
       ],
-      "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": [
+      "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": [
         24,
         4.89897948556636
       ],
-      "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": [
+      "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": [
         14,
         3.74165738677394
       ],
@@ -2333,35 +2333,35 @@
         30.6149310357765,
         1.31308365295068
       ],
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt250to300": [
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         1382.42725173942,
         11.9160506155705
       ],
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt300to400": [
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         801.687023660537,
         9.17358630845728
       ],
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt400to500": [
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         167.645924279805,
         4.23277935975431
       ],
-      "bin_lepcr_hm_nb1_lowmtb_nj7_MET_pt500toinf": [
+      "bin_lepcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         62.8739793030695,
         2.38865998926061
       ],
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt250to300": [
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         2689.23588479069,
         15.9721177056765
       ],
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt300to400": [
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         1631.62219853163,
         12.4413021181887
       ],
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt400to500": [
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         339.302914465619,
         5.81064152752563
       ],
-      "bin_lepcr_hm_nb2_lowmtb_nj7_MET_pt500toinf": [
+      "bin_lepcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         116.617332556533,
         3.31612774739626
       ],
@@ -2617,15 +2617,15 @@
         4.80797875308243,
         0.55700865572991
       ],
-      "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": [
+      "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": [
         139.342607919952,
         5.5036871114409
       ],
-      "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": [
+      "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": [
         44.5081769356015,
         3.36398284938847
       ],
-      "bin_lepcr_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": [
+      "bin_lepcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": [
         14.6328410978542,
         1.0921420867322
       ],
@@ -4735,15 +4735,15 @@
         2.56123679357029,
         0.468070461303023
       ],
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": [
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": [
         89.8141392706594,
         5.26015267101784
       ],
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": [
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": [
         25.6793350021007,
         2.24204805540161
       ],
-      "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": [
+      "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": [
         9.13584526808875,
         0.780754027165554
       ],

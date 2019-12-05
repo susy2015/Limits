@@ -160,11 +160,11 @@ class sms():
         # decay chain
         self.label= "pp #rightarrow #tilde{g} #tilde{g}, #tilde{g} #rightarrow t #bar{t} #tilde{#chi}^{0}_{1}";
         # scan range to plot
-        self.Xmin = 700.
-        self.Xmax = 1950.
+        self.Xmin = 600.
+        self.Xmax = 2500.
         self.Ymin = 0.
-        self.Ymax = 1800.
-        self.Zmin = 0.001
+        self.Ymax = 2100.
+        self.Zmin = 0.00001
         self.Zmax = 2.
         # produce sparticle
         self.sParticle = "m_{#tilde{g}} [GeV]"
@@ -172,6 +172,7 @@ class sms():
         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = False
+	self.extraText = False
         
     def T1bbbb(self):
         # model name

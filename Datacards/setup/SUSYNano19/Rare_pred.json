@@ -648,15 +648,15 @@
             0.00603928929194808,
             0.013679943572341776
         ],
-        "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt300to400": [
+        "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": [
             1.0128676891326904,
             0.3290402918582859
         ],
-        "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt400to500": [
+        "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": [
             0.1309640109539032,
             0.04661689785173373
         ],
-        "bin_lm_nb1_nivf1_lowmtb_lowptb_MET_pt500toinf": [
+        "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": [
             0.08032932877540588,
             0.0360994671582333
         ],

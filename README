@@ -43,9 +43,7 @@ scram b
 ### Get Limits Repository
 ```cd CMSSW_10_2_9/src
 cmsenv
-git clone https://github.com/susy2015/Limits.git Limits
-git fetch origin
-git checkout SUSYNano19
+git clone -b SUSYNano19  https://github.com/susy2015/Limits.git Limits
 ```
 
 ### Copy Signal JSON from Anna

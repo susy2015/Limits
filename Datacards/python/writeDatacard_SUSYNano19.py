@@ -104,6 +104,38 @@ def parseBinMap(process, cr_description, yields_dict):
     parts = ['@%d*%f'%(i, values[i]) for i in range(len(values))]
     results['rateParam'] = ('(%s)'%('+'.join(parts)), ','.join(params))
     return results
+
+def sumBkgYields(process, signal, cr_description, yields_dict):
+    values = []
+    params = []
+    sumE2 = 0
+    total = 0.
+    crproc = 'lepcr' if 'ttbar' in process else ('qcdcr' if 'qcd' in process else 'phocr')
+    for entry in cr_description.replace(' ','').split('+'):
+        crdata = 0
+        crunit = 0.
+        srunit = 0.
+        sr, cr = entry.split('*')
+        if '<' in cr: sr, cr = cr, sr
+        sr = sr.strip('<>')
+        cr = cr.strip('()')
+	crdata = yields[crproc + '_data'][cr][0]
+        srunit = yields_dict[process][sr][0]
+	if 'ttbar' in process: 
+		crunit = yields_dict[crproc+'_'+process][cr][0]
+		crunit+=sigYields['lepcr_'+signal][cr][0]
+	if 'qcd' in process: 
+		crunit = yields_dict[crproc+'_'+process][cr][0]
+		crunit+=yields['qcdcr_otherbkgs'][cr][0]
+	if 'znunu' in process: 
+		crunit = yields_dict[crproc+'_gjets'][cr][0]
+		if yields['phocr_back'][cr][0]>=0: 
+			crunit+=yields['phocr_back'][cr][0]
+		else: 
+			crunit+=1e-06
+	total += crdata*srunit/crunit
+    return total
+    
 # ------ helper functions ------
 
 # ------ process uncertainties ------ 
@@ -240,9 +272,9 @@ def writePhocr(signal):
         cb.AddProcesses(procs = ['gjets', 'otherbkgs'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
         cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields['phocr_gjets'][crbin][0]))
-	cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
-	#if yields['phocr_back'][crbin][0] > 0: cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
-	#else:				       cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(1e-06))
+	#cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
+	if yields['phocr_back'][crbin][0] > 0: cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
+	else:				       cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(1e-06))
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
@@ -308,8 +340,17 @@ def writeSR(signal):
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, bin)])
         cb.AddProcesses(procs = ['signal'],     bin = [(0, bin)], signal=True)
         cb.AddProcesses(procs = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
+	expected = 0.
+	for proc in ['ttZ', 'diboson']:
+		expected += yields[proc][bin][0]
+	for proc in ['ttbarplusw', 'znunu', 'qcd']:
+		if bin not in mergedbins:
+			expected += yields[proc][bin][0]
+		else:
+                	expected += sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
+			
         if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
-        else:         cb.ForEachObs(lambda obs : obs.set_rate(1))
+        else:         cb.ForEachObs(lambda obs : obs.set_rate(expected))
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
         cb.cp().process(['ttZ','diboson']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
         cb.cp().process(['signal','ttZ','diboson']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
