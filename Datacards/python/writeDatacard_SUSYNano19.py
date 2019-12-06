@@ -119,6 +119,7 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
         if '<' in cr: sr, cr = cr, sr
         sr = sr.strip('<>')
         cr = cr.strip('()')
+	#print(cr)
 	crdata = yields[crproc + '_data'][cr][0]
         srunit = yields_dict[process][sr][0]
 	if 'ttbar' in process: 
@@ -133,7 +134,12 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
 			crunit+=yields['phocr_back'][cr][0]
 		else: 
 			crunit+=1e-06
-	total += crdata*srunit/crunit
+	#print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
+	if 'znunu' in process:
+		total += srunit*crunit
+	else:
+		total += crdata*srunit/crunit
+	#print("total: %f" %(total))
     return total
     
 # ------ helper functions ------
@@ -158,6 +164,7 @@ class Uncertainty:
 def averageUnc(up, down):
     sign = 1 if up >= 1 else -1
     val = 0.5 * (abs(up - 1) + abs(1 - down))
+    if abs(val) >= 1: val = 0.999
     return (sign * val)
 
 unc_def = {}
@@ -348,7 +355,7 @@ def writeSR(signal):
 			expected += yields[proc][bin][0]
 		else:
                 	expected += sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
-			
+	print(expected)	
         if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
         else:         cb.ForEachObs(lambda obs : obs.set_rate(expected))
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
@@ -386,6 +393,7 @@ def writeSR(signal):
                     for unc in unc_dict[bin][proc].values():
                         procname_in_dc = proc if proc in bkgprocesses else 'signal'
                         if unc.value2 > -100.:
+                            #cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
 			    cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
 			else:
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
