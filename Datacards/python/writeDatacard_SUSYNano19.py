@@ -132,7 +132,10 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
 		crunit = yields_dict[crproc+'_gjets'][cr][0]
 		crunit+=yields[crproc+'_back'][cr][0]
 	#print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
-	total += crdata*srunit/crunit
+	if 'znunu' in process:
+		total += srunit*crunit
+	else:
+		total += crdata*srunit/crunit
 	#print("total: %f" %(total))
     return total
     
@@ -200,15 +203,11 @@ def readUncs():
                     if "up" in uncname: 
 			if "nan" in uncval:
 				uncval = 2
-			elif 'znunu' in proc_str and float(uncval) == 0:
-				uncval = 1
 			elif float(uncval) <= 0:
 				uncval = 0.001
 			unc_up = Uncertainty(uncname.strip("up"), unctype, uncval)
                     elif "down" in uncname: 
-			if 'znunu' in proc_str and float(uncval) == 0:
-				uncval = 1
-			elif uncval == "2" or "nan" in uncval or float(uncval) <= 0:
+			if uncval == "2" or "nan" in uncval or float(uncval) <= 0:
 				uncval = 0.001
 			if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
 				uncavg = averageUnc(unc_up.value, float(uncval))			
