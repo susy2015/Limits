@@ -124,21 +124,15 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
         srunit = yields_dict[process][sr][0]
 	if 'ttbar' in process: 
 		crunit = yields_dict[crproc+'_'+process][cr][0]
-		crunit+=sigYields['lepcr_'+signal][cr][0]
+		crunit+=sigYields[crproc+'_'+signal][cr][0]
 	if 'qcd' in process: 
 		crunit = yields_dict[crproc+'_'+process][cr][0]
-		crunit+=yields['qcdcr_otherbkgs'][cr][0]
+		crunit+=yields[crproc+'_otherbkgs'][cr][0]
 	if 'znunu' in process: 
 		crunit = yields_dict[crproc+'_gjets'][cr][0]
-		if yields['phocr_back'][cr][0]>=0: 
-			crunit+=yields['phocr_back'][cr][0]
-		else: 
-			crunit+=1e-06
+		crunit+=yields[crproc+'_back'][cr][0]
 	#print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
-	if 'znunu' in process:
-		total += srunit*crunit
-	else:
-		total += crdata*srunit/crunit
+	total += crdata*srunit/crunit
 	#print("total: %f" %(total))
     return total
     
@@ -206,11 +200,15 @@ def readUncs():
                     if "up" in uncname: 
 			if "nan" in uncval:
 				uncval = 2
+			elif 'znunu' in proc_str and float(uncval) == 0:
+				uncval = 1
 			elif float(uncval) <= 0:
 				uncval = 0.001
 			unc_up = Uncertainty(uncname.strip("up"), unctype, uncval)
                     elif "down" in uncname: 
-			if uncval == "2" or "nan" in uncval or float(uncval) <= 0:
+			if 'znunu' in proc_str and float(uncval) == 0:
+				uncval = 1
+			elif uncval == "2" or "nan" in uncval or float(uncval) <= 0:
 				uncval = 0.001
 			if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
 				uncavg = averageUnc(unc_up.value, float(uncval))			
@@ -279,9 +277,7 @@ def writePhocr(signal):
         cb.AddProcesses(procs = ['gjets', 'otherbkgs'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
         cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields['phocr_gjets'][crbin][0]))
-	#cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
-	if yields['phocr_back'][crbin][0] > 0: cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
-	else:				       cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(1e-06))
+	cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
@@ -355,7 +351,7 @@ def writeSR(signal):
 			expected += yields[proc][bin][0]
 		else:
                 	expected += sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
-	print(expected)	
+	#print(expected)
         if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
         else:         cb.ForEachObs(lambda obs : obs.set_rate(expected))
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
@@ -393,7 +389,6 @@ def writeSR(signal):
                     for unc in unc_dict[bin][proc].values():
                         procname_in_dc = proc if proc in bkgprocesses else 'signal'
                         if unc.value2 > -100.:
-                            #cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
 			    cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
 			else:
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
