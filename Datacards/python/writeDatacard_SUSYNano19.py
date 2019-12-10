@@ -127,7 +127,9 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
 		crunit+=sigYields[crproc+'_'+signal][cr][0]
 	if 'qcd' in process: 
 		crunit = yields_dict[crproc+'_'+process][cr][0]
-		crunit+=yields[crproc+'_otherbkgs'][cr][0]
+		crunit+=yields[crproc+'_ttbarplusw'][cr][0]
+		crunit+=yields[crproc+'_znunu'][cr][0]
+		crunit+=yields[crproc+'_Rare'][cr][0]
 	if 'znunu' in process: 
 		crunit = yields_dict[crproc+'_gjets'][cr][0]
 		crunit+=yields[crproc+'_back'][cr][0]
@@ -200,20 +202,20 @@ def readUncs():
                     print line 
                     raise ValueError('Uncertainty "%s" is not defined!'%uncname)
                 try:
-                    if "up" in uncname: 
-			if "nan" in uncval:
+                    if "Up" in uncname: 
+			if "nan" in uncval or float(uncval) > 10000000:
 				uncval = 2
 			elif float(uncval) <= 0:
 				uncval = 0.001
-			unc_up = Uncertainty(uncname.strip("up"), unctype, uncval)
-                    elif "down" in uncname: 
-			if uncval == "2" or "nan" in uncval or float(uncval) <= 0:
+			unc_up = Uncertainty(uncname.strip("_Up"), unctype, uncval)
+                    elif "Down" in uncname: 
+			if "nan" in uncval or float(uncval) <= 0 or float(uncval) > 10000000:
 				uncval = 0.001
 			if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
 				uncavg = averageUnc(unc_up.value, float(uncval))			
-		    		unc = Uncertainty(uncname.strip("_down"), unctype, (1 - uncavg), (1 + uncavg))
+		    		unc = Uncertainty(uncname.strip("_Down"), unctype, (1 - uncavg), (1 + uncavg))
 			else:	
-		    		unc = Uncertainty(uncname.strip("_down"), unctype, uncval, unc_up.value)	
+		    		unc = Uncertainty(uncname.strip("_Down"), unctype, uncval, unc_up.value)	
                     else: 
 			unc = Uncertainty(uncname, unctype, uncval)
                 except ValueError as e:
@@ -223,7 +225,7 @@ def readUncs():
                 bins = [bin_str]
                 if bin_str=='all': bins = binlist
                 elif bin_str in crbinlist: bins = crbinlist[bin_str]
-		if "up" not in uncname:
+		if "Up" not in uncname:
                     for bin in bins:
                         for proc in processes:
                             unc_dict[bin][proc][uncname] = unc
@@ -256,7 +258,10 @@ def writeLepcr(signal):
                 if proc in unc_dict[crbin]:
                     for unc in unc_dict[crbin][proc].values():
                         procname_in_dc = 'ttbarplusw' if proc=='ttbarplusw' else 'signal'
-                        cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
+                        if unc.value2 > -100.:
+			    cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
+			else:
+                            cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%crbin)
         cb.WriteDatacard(tmpdc)
         with open(tmpdc) as tmpfile:
@@ -288,7 +293,10 @@ def writePhocr(signal):
             for proc in ['gjets', 'otherbkgs']:
                 if proc in unc_dict[crbin]:
                     for unc in unc_dict[crbin][proc].values():
-                        cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
+                        if unc.value2 > -100.:
+			    cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
+			else:
+                            cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%crbin)
         cb.WriteDatacard(tmpdc)
         with open(tmpdc) as tmpfile:
@@ -305,22 +313,30 @@ def writeQCDcr(signal):
 	#cb.SetVerbosity(3) ## Boolean to enable debug printout
         #print crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
-        cb.AddProcesses(procs = ['qcd', 'otherbkgs'], bin = [(0, crbin)], signal=False)
+        cb.AddProcesses(procs = ['qcd', 'ttbarplusw', 'znunu', 'Rare'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['qcdcr_data'][crbin][0]))
         cb.cp().process(['qcd']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_qcd'][crbin][0]))
-        cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_otherbkgs'][crbin][0]))
+        cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_ttbarplusw'][crbin][0]))
+        cb.cp().process(['znunu']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_znunu'][crbin][0]))
+        cb.cp().process(['Rare']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_Rare'][crbin][0]))
         # stat uncs
         cb.cp().process(['qcd']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
                    (['qcd'],        toUnc(yields['qcdcr_qcd'][crbin]))
-                   (['otherbkgs'],  2.0)
+                   (['ttbarplusw'], toUnc(yields['qcdcr_ttbarplusw'][crbin]))
+                   (['znunu'],      toUnc(yields['qcdcr_znunu'][crbin]))
+                   (['Rare'],    toUnc(yields['qcdcr_Rare'][crbin]))
                    )
         # syst uncs
         if crbin in unc_dict:
-            for proc in ['qcd', 'otherbkgs']:
+            #for proc in ['qcd', 'otherbkgs']:
+            for proc in ['qcd', 'ttbarplusw', 'znunu', 'Rare']:
                 if proc in unc_dict[crbin]:
                     for unc in unc_dict[crbin][proc].values():
-                        cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
+                        if unc.value2 > -100.:
+			    cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
+			else:
+                            cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%crbin)
         cb.WriteDatacard(tmpdc)
         with open(tmpdc) as tmpfile:
