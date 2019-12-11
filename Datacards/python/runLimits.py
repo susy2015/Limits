@@ -33,6 +33,7 @@ import sys
 import time
 import array
 import argparse
+import getpass
 from ConfigParser import SafeConfigParser
 from ROOT import gROOT, TFile, TTree, TH1D, TH2D, TChain, TGraph2D
 gROOT.SetBatch(True)
@@ -73,6 +74,8 @@ def main():
                         0, 1], help="Whether or not to run Chris West's interpolation. [Options: 0 (no), 1 (yes). Default: 0]")
     parser.add_argument("-c", "--config", dest="configFile", default='dc_0l_setup.conf',
                         help="Config file to be run with. [Default: dc_0l_setup.conf]")
+    parser.add_argument("-e", "--isEOS", dest="isEOS", default='',
+                        help="Location of limit root files is in EOS. [Default: ]")
     args = parser.parse_args()
 
     # to get the config file
@@ -85,7 +88,7 @@ def main():
     configparser = SafeConfigParser()
     configparser.optionxform = str
 
-    limconfig = LimitConfig(args.configFile, configparser)
+    limconfig = LimitConfig(args.configFile, configparser, args.isEOS)
 
     if args.printLimits:
         printLimits(limconfig)
@@ -105,13 +108,14 @@ def main():
 
 class LimitConfig:
   # setup
-  def __init__(self, conf_file, config_parser):
+  def __init__(self, conf_file, config_parser, isEOS):
     self.conf_file = conf_file
     config_parser.read(self.conf_file)
     self.limitmethod = config_parser.get('config', 'limitmethod')
     self.subdir = config_parser.get('config', 'subdir')
     self.datacarddir = os.path.join(config_parser.get('config', 'datacarddir'), self.subdir)
-    self.limitdir = os.path.join(config_parser.get('config', 'limitdir'), self.subdir + '_' + self.limitmethod)
+    self.isEOS = isEOS
+    self.limitdir =  isEOS if not isEOS == '' else os.path.join(config_parser.get('config', 'limitdir'), self.subdir + '_' + self.limitmethod)
     self.signals = config_parser.get('signals', 'samples').replace(' ', '').split(',')
     self.scalesigtoacc = config_parser.getboolean('config', 'scalesigtoacc')
     self.expectedonly = config_parser.getboolean('config', 'expectedonly')
@@ -150,7 +154,8 @@ def getLimit(rootFile, getMean=False, limit={}):
 
 def printLimits(config):
     limits = []
-    currentDir = os.getcwd()
+    if not config.isEOS == '': currentDir = "/eos/uscms/store/user/"+getpass.getuser()+"/13TeV/"
+    else: currentDir = os.getcwd()
     for signal in config.signals:
         outputLocation = os.path.join(currentDir, config.limitdir, signal)
         rootFile = ''
@@ -242,16 +247,11 @@ def fillSignificances(config, sigfile, name):
 
 def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     limits = []
-    currentDir = os.getcwd()
-    xsecfilename = ('Datacards/setup/xsecs/stop.root')
-    xsecfile = TFile(xsecfilename)
-    xsechist = TH1D()
-    xsechist = xsecfile.Get('xsecs')
-    xsecuphist = TH1D()
-    xsecuphist = xsecfile.Get('xsecsup')
-    xsecdownhist = TH1D()
-    xsecdownhist = xsecfile.Get('xsecsdown')
+    if not config.isEOS == '': currentDir = "/eos/uscms/store/user/"+getpass.getuser()+"/13TeV/"
+    else: currentDir = os.getcwd()
+    xsecfilename = ('Datacards/setup/xsecs/xSec.root')
     outfile = TFile(limfilename, 'RECREATE')
+
     maxmstop = 0.0
     minmstop = 0.0
     maxmlsp = 0.0
@@ -280,6 +280,13 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     hobsup = TH2D('hobsup', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hobsdown = TH2D('hobsdown', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
 
+    xsecfile = TFile(xsecfilename)
+    xsechist = TH1D()
+    if "T2tt" in limfilename or "T2bb" in limfilename or "T2tb" in limfilename or "T6tt" in limfilename:
+        xsechist = xsecfile.Get("stop_xsection")
+    elif "T1tt" in limfilename or "T5tt" in limfilename:
+        xsechist = xsecfile.Get("gluino_xsection")
+
     for signal in config.signals:
         outputLocation = os.path.join(currentDir, config.limitdir, signal)
         rootFile = ''
@@ -302,10 +309,11 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
             mstop = int(signal.split('_')[1])
             mlsp = int(signal.split('_')[2])
             limit = output[1]
-            xsec = xsechist.Interpolate(mstop)
-            xsecup = xsecuphist.Interpolate(mstop)
-            xsecdown = xsecdownhist.Interpolate(mstop)
-            if config.scalesigtoacc:
+	    binIdx = xsechist.FindBin(float(mstop))
+            xsec = xsechist.GetBinContent(binIdx)
+            xsecup = xsec + xsechist.GetBinError(binIdx)
+            xsecdown = xsec - xsechist.GetBinError(binIdx)
+	    if config.scalesigtoacc:
                 xseclimit = limit['0']
                 xsecobslimit = 0.0
                 hexp.Fill(mstop, mlsp, limit['0'] / xsec)
@@ -447,11 +455,7 @@ def calcLimit(config, signal):
         sigtype = signal.split('_')[0]
         runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' -n ' + signal
         if (mstop<450 and 'fbd' not in sigtype) or (mstop >= 350 and mlsp < 350 and 'T2tt' in sigtype) :
-            #runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
-            runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' -n ' + signal
-	if ('T2tt' in sigtype and mstop>=350 and mlsp >= 350) :
-            #runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 5 -n ' + signal
-            runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
         if ('fbd' in sigtype or '4bd' in sigtype) and (mstop<=250):
             runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 1 -n ' + signal
         if config.expectedonly :

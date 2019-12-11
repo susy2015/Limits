@@ -111,7 +111,7 @@ class LimitConfig:
     self.limitmethod = config_parser.get('config', 'limitmethod')
     self.subdir = config_parser.get('config', 'subdir')
     self.datacarddir = os.path.join(config_parser.get('config', 'datacarddir'), self.subdir)
-    self.limitdir = os.path.join(config_parser.get('config', 'limitdir'))
+    self.limitdir = os.path.join(config_parser.get('config', 'limitdir'), self.subdir + '_' + self.limitmethod)
     self.signals = config_parser.get('signals', 'samples').replace(' ', '').split(',')
     self.scalesigtoacc = config_parser.getboolean('config', 'scalesigtoacc')
     self.expectedonly = config_parser.getboolean('config', 'expectedonly')
@@ -150,7 +150,7 @@ def getLimit(rootFile, getMean=False, limit={}):
 
 def printLimits(config):
     limits = []
-    currentDir = "/eos/uscms/store/user/mkilpatr/13TeV/"
+    currentDir = os.getcwd()
     for signal in config.signals:
         outputLocation = os.path.join(currentDir, config.limitdir, signal)
         rootFile = ''
@@ -242,7 +242,7 @@ def fillSignificances(config, sigfile, name):
 
 def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     limits = []
-    currentDir = "/eos/uscms/store/user/mkilpatr/13TeV/"
+    currentDir = os.getcwd()
     xsecfilename = ('Datacards/setup/xsecs/stop.root')
     xsecfile = TFile(xsecfilename)
     xsechist = TH1D()
@@ -447,7 +447,11 @@ def calcLimit(config, signal):
         sigtype = signal.split('_')[0]
         runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' -n ' + signal
         if (mstop<450 and 'fbd' not in sigtype) or (mstop >= 350 and mlsp < 350 and 'T2tt' in sigtype) :
-            runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
+            #runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' -n ' + signal
+	if ('T2tt' in sigtype and mstop>=350 and mlsp >= 350) :
+            #runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 5 -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' -n ' + signal
         if ('fbd' in sigtype or '4bd' in sigtype) and (mstop<=250):
             runLimitsCommand = 'combine -M AsymptoticLimits ' + combinedDatacard + ' --rMin 0 --rMax 1 -n ' + signal
         if config.expectedonly :

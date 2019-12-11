@@ -66,11 +66,11 @@ This will create a submit bash script to submitt all of the jobs in the conf fil
 An Example command: 
 ./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o limits_multi_dry_112719 -d SMS_T2tt_fastsim -l T2tt_signals.conf
 ```
-./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o {outputdir in eos area} -d {Location of signal files}} -l {Signal conf file}
+./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o {outputdir in eos area} -d {Location of signal files} -l {Signal conf file}
 . ./submitall.sh
 ```
 ### Plotting
 To make a root file with all of the limits you need to change the limit dir in dc_SUSY19Nano_setup_Local.conf to the limit dir from the previous command. You also need to add a list of all signals that you ran over to the samples category of the conf, an example is there for T2tt. 
-```python Datacards/python/runLimitsLocal.py -c dc_SUSY19Nano_setup_Local.conf -f
+```python Datacards/python/runLimits.py -c dc_SUSY19Nano_setup_Local.conf -f -e {outputdir in eos area}
 python PlotsSMS/python/makeSMSplots.py PlotsSMS/config/T2tt_SUS16005.cfg T2tt_{extension for plot name}
 ```

@@ -282,7 +282,7 @@ class smsPlotABS(object):
             diagLineMW.SetPoint(1,80+self.model.Ymax,self.model.Ymax)
             diagLineMW.Draw("LSAME")
             self.c.diagLineMW = diagLineMW
-            tdiagonalMW = rt.TLatex(540, 540-75,"m_{#tilde{t}} = m_{W} + m_{#tilde{#chi}_{1}^{0}}")
+            tdiagonalMW = rt.TLatex(300, 300-75,"m_{#tilde{t}} = m_{W} + m_{#tilde{#chi}_{1}^{0}}")
             tdiagonalMW.SetTextAngle(math.degrees(math.atan(float(self.model.Xmax)/float(self.model.Ymax))))
             tdiagonalMW.SetTextColor(rt.kGray+2)
             tdiagonalMW.SetTextAlign(11)
@@ -301,7 +301,7 @@ class smsPlotABS(object):
             diagLine.SetPoint(1,172.5+self.model.Ymax,self.model.Ymax)
             diagLine.Draw("LSAME")
             self.c.diagLine = diagLine
-            tdiagonal = rt.TLatex(640, 640-172.5,"m_{#tilde{t}} = m_{t} + m_{#tilde{#chi}_{1}^{0}}")
+            tdiagonal = rt.TLatex(400, 400-172.5,"m_{#tilde{t}} = m_{t} + m_{#tilde{#chi}_{1}^{0}}")
             tdiagonal.SetTextAngle(math.degrees(math.atan(float(self.model.Xmax)/float(self.model.Ymax))))
             tdiagonal.SetTextColor(rt.kGray+2)
             tdiagonal.SetTextAlign(11)

@@ -134,10 +134,10 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
 		crunit = yields_dict[crproc+'_gjets'][cr][0]
 		crunit+=yields[crproc+'_back'][cr][0]
 	#print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
-	if 'znunu' in process:
-		total += srunit*crunit
-	else:
-		total += crdata*srunit/crunit
+	#if 'znunu' in process:
+	#	total += srunit*crunit
+	#else:
+	total += crdata*srunit/crunit
 	#print("total: %f" %(total))
     return total
     
