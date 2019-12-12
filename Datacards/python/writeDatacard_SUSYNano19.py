@@ -134,9 +134,6 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
 		crunit = yields_dict[crproc+'_gjets'][cr][0]
 		crunit+=yields[crproc+'_back'][cr][0]
 	#print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
-	#if 'znunu' in process:
-	#	total += srunit*crunit
-	#else:
 	total += crdata*srunit/crunit
 	#print("total: %f" %(total))
     return total
@@ -316,7 +313,8 @@ def writeQCDcr(signal):
         cb.AddProcesses(procs = ['qcd', 'ttbarplusw', 'znunu', 'Rare'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['qcdcr_data'][crbin][0]))
         cb.cp().process(['qcd']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_qcd'][crbin][0]))
-        cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_ttbarplusw'][crbin][0]))
+        if yields['qcdcr_ttbarplusw'][crbin][0] >= 0: cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_ttbarplusw'][crbin][0]))
+	else:					      cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(0))
         cb.cp().process(['znunu']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_znunu'][crbin][0]))
         cb.cp().process(['Rare']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_Rare'][crbin][0]))
         # stat uncs
