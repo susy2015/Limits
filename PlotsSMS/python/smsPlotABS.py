@@ -108,7 +108,7 @@ class smsPlotABS(object):
         if self.model.extraText :
             textModelLabel= rt.TLatex(0.15,0.915,"%s" %self.model.label)
         else :
-            textModelLabel = rt.TLatex(0.15, 0.90, "%s   NLO+NLL exclusion" % self.model.label)
+            textModelLabel = rt.TLatex(0.15, 0.90, "%s  NNLO+NNLL exclusion" % self.model.label)
         textModelLabel.SetNDC()
         textModelLabel.SetTextAlign(13)
         textModelLabel.SetTextFont(42)
@@ -117,7 +117,7 @@ class smsPlotABS(object):
         textModelLabel.Draw()
         self.c.textModelLabel = textModelLabel
         # NLO NLL XSEC
-        textNLONLL = rt.TLatex(0.15, 0.855, "NLO+NLL exclusion")
+        textNLONLL = rt.TLatex(0.15, 0.855, "NNLO+NNLL exclusion")
         textNLONLL.SetNDC()
         textNLONLL.SetTextAlign(13)
         textNLONLL.SetTextFont(42)
@@ -380,11 +380,11 @@ class smsPlotABS(object):
             exp.Draw("LSAME")
         for exp in self.EXP['minus'] :
             exp.Draw("LSAME")
-        #for obs in self.OBS['nominal'] :
-        #    obs.Draw("LSAME")
-        #for obs in self.OBS['plus'] :
-        #    obs.Draw("LSAME")
-        #for obs in self.OBS['minus'] :
-        #    obs.Draw("LSAME")
+        for obs in self.OBS['nominal'] :
+            obs.Draw("LSAME")
+        for obs in self.OBS['plus'] :
+            obs.Draw("LSAME")
+        for obs in self.OBS['minus'] :
+            obs.Draw("LSAME")
 
         

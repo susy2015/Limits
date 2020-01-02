@@ -3,10 +3,10 @@ import json
 
 # json file with bkg predictions and signal yields
 json_binMaps = 'Datacards/setup/SUSYNano19/dc_BkgPred_BinMaps_master.json'
-json_lepPred = 'Datacards/setup/SUSYNano19/dc_BkgPred.json'
+json_lepPred = 'Datacards/setup/SUSYNano19/ll_BkgPred_v2.json'
 json_TTZPred = 'Datacards/setup/SUSYNano19/TTZ_pred.json'
 json_RarePred = 'Datacards/setup/SUSYNano19/Rare_pred.json'
-json_zinvPred = 'Datacards/setup/SUSYNano19/zinv_yields.json'
+json_zinvPred = 'Datacards/setup/SUSYNano19/zinv_yields_Run2.json'
 json_qcdPred = 'Datacards/setup/SUSYNano19/qcd_BkgPred.json'
 
 def write_json(data, filename='combine_bkgPred.json'):
