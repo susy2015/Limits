@@ -3,6 +3,10 @@ import time
 import math
 import CombineHarvester.CombineTools.ch as ch
 import argparse
+import json
+
+from ROOT import TCanvas, TFile, TProfile, TNtuple, TH1F, TH2F, THStack, TLegend
+from ROOT import gROOT, gBenchmark, gRandom, gSystem, Double
 
 parser = argparse.ArgumentParser(
         description='Produce or print limits based on existing datacards')
@@ -70,6 +74,7 @@ with open(json_bkgPred) as jf:
     binMaps = j_bkg['binMaps']
     yields  = j_bkg['yieldsMap']
     binlist = j_bkg['binlist']
+    binnum  = j_bkg['binNum']
     crbinlist = {
         'lepcr': yields['lepcr_data'].keys(),
         'phocr': yields['phocr_data'].keys(),
@@ -345,9 +350,62 @@ def writeQCDcr(signal):
                     dc.write(line)
         os.remove(tmpdc)
 
+def BkgPlotter(json):
+    with open(json) as jf:
+        j = json_load_byteified(jf)
+    bkgstack = THStack("bkg", "Sum of Background in Search Region")
+    c = TCanvas('c1', 'Sum of Background in Search Region', 200, 10, 700, 500)
+    httbar = TH1F('httbar', 'ttbar yields', 183, 0, 182)
+    hznunu = TH1F('hznunu', 'znunu yields', 183, 0, 182)
+    hqcd = TH1F('hqcd', 'qcd yields', 183, 0, 182)
+    httz = TH1F('httz', 'ttz yields', 183, 0, 182)
+    hdiboson = TH1F('hdiboson', 'diboson yields', 183, 0, 182)
+
+    for bin in binlist:
+	sr = int(binnum[bin])
+	httbar.SetBinContent(sr, float(j[bin]['ttbarplusw']))
+	hznunu.SetBinContent(sr, float(j[bin]['znunu']))
+	hqcd.SetBinContent(sr, float(j[bin]['qcd']))
+	httz.SetBinContent(sr, float(j[bin]['ttZ']))
+	hdiboson.SetBinContent(sr, float(j[bin]['diboson']))
+
+
+    httbar.SetFillColor(866)
+    hznunu.SetFillColor(623)
+    hqcd.SetFillColor(811)
+    httz.SetFillColor(797)
+    hdiboson.SetFillColor(391)
+
+    bkgstack.Add(hdiboson)	
+    bkgstack.Add(httz)	
+    bkgstack.Add(hqcd)	
+    bkgstack.Add(hznunu)	
+    bkgstack.Add(httbar)	
+
+    c.cd()
+    c.SetLogy()
+    bkgstack.Draw()
+    bkgstack.GetYaxis().SetTitle("Events")
+    bkgstack.GetXaxis().SetTitle("Search Region")
+    leg = TLegend(.73,.65,.97,.90)
+    leg.SetBorderSize(0)
+    leg.SetFillColor(0)
+    leg.SetFillStyle(0)
+    leg.SetTextFont(42)
+    leg.SetTextSize(0.035)
+    leg.AddEntry(httbar,"ttbarplusw","F")
+    leg.AddEntry(hznunu,"Znunu","F")
+    leg.AddEntry(hqcd,"QCD","F")
+    leg.AddEntry(httz,"ttZ","F")
+    leg.AddEntry(hdiboson,"Rare","F")
+    leg.Draw()
+    c.SaveAs("SumOfBkg.pdf")
+
+
 def writeSR(signal):
     mergedbins = [bin for bin in binlist if '*' in binMaps['lepcr'][bin]]
     #mergedbins = [bin for bin in binlist if '+' in binMaps['lepcr'][bin]]
+    sepYields = {}
     for bin in binlist:
         rateParamFixes = {}
         cb = ch.CombineHarvester()
@@ -357,13 +415,21 @@ def writeSR(signal):
         cb.AddProcesses(procs = ['signal'],     bin = [(0, bin)], signal=True)
         cb.AddProcesses(procs = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
 	expected = 0.
+	sepExpected = 0.
+	sepBins = {}
 	for proc in ['ttZ', 'diboson']:
 		expected += yields[proc][bin][0]
+		sepBins[proc] = yields[proc][bin][0]
 	for proc in ['ttbarplusw', 'znunu', 'qcd']:
 		if bin not in mergedbins:
 			expected += yields[proc][bin][0]
+			sepBins[proc] = yields[proc][bin][0]
 		else:
-                	expected += sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
+			sepExpected = sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
+			expected += sepExpected
+			sepBins[proc] = sepExpected
+	sepYields[bin] = sepBins
+	#sepYields.append(sepBins)
 	#print(expected)
         if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
         else:         cb.ForEachObs(lambda obs : obs.set_rate(expected))
@@ -419,7 +485,9 @@ def writeSR(signal):
                         break # fixed this rName
                     dc.write(line)
         os.remove(tmpdc)
-        
+    with open('BkgExpected.json', 'w') as outfile:
+        json.dump(sepYields, outfile)
+
 readUncs()
 for sig in signals:
     dest = os.path.join(outputdir, sig)
@@ -429,3 +497,4 @@ for sig in signals:
     writePhocr(sig)
     writeQCDcr(sig)
     writeSR(sig)
+    BkgPlotter('BkgExpected.json')

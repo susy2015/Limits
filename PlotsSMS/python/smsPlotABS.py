@@ -380,11 +380,11 @@ class smsPlotABS(object):
             exp.Draw("LSAME")
         for exp in self.EXP['minus'] :
             exp.Draw("LSAME")
-        for obs in self.OBS['nominal'] :
-            obs.Draw("LSAME")
-        for obs in self.OBS['plus'] :
-            obs.Draw("LSAME")
-        for obs in self.OBS['minus'] :
-            obs.Draw("LSAME")
+        #for obs in self.OBS['nominal'] :
+        #    obs.Draw("LSAME")
+        #for obs in self.OBS['plus'] :
+        #    obs.Draw("LSAME")
+        #for obs in self.OBS['minus'] :
+        #    obs.Draw("LSAME")
 
         
