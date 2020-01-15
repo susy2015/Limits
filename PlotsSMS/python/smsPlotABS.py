@@ -108,7 +108,7 @@ class smsPlotABS(object):
         if self.model.extraText :
             textModelLabel= rt.TLatex(0.15,0.915,"%s" %self.model.label)
         else :
-            textModelLabel = rt.TLatex(0.15, 0.90, "%s  NNLO+NNLL exclusion" % self.model.label)
+            textModelLabel = rt.TLatex(0.15, 0.90, "%s NNLO+NNLL exclusion" % self.model.label)
         textModelLabel.SetNDC()
         textModelLabel.SetTextAlign(13)
         textModelLabel.SetTextFont(42)
