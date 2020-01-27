@@ -5,7 +5,7 @@ import CombineHarvester.CombineTools.ch as ch
 import argparse
 import json
 
-from ROOT import TCanvas, TFile, TProfile, TNtuple, TH1F, TH2F, THStack, TLegend
+from ROOT import TCanvas, TFile, TProfile, TNtuple, TH1F, TH2F, THStack, TLegend, TFile
 from ROOT import gROOT, gBenchmark, gRandom, gSystem, Double
 
 parser = argparse.ArgumentParser(
@@ -102,7 +102,7 @@ def parseBinMap(process, cr_description, yields_dict):
         values.append(yields_dict[process][sr][0])
         sumE2 += yields_dict[process][sr][1]*yields_dict[process][sr][1]
         cr = 'R_'+cr.strip('()')
-	#print cr
+        #print cr
         params.append(cr)
     results = {}
     results['yield'] = (sum(values), math.sqrt(sumE2))
@@ -124,23 +124,23 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
         if '<' in cr: sr, cr = cr, sr
         sr = sr.strip('<>')
         cr = cr.strip('()')
-	#print(cr)
-	crdata = yields[crproc + '_data'][cr][0]
+        #print(cr)
+        crdata = yields[crproc + '_data'][cr][0]
         srunit = yields_dict[process][sr][0]
-	if 'ttbar' in process: 
-		crunit = yields_dict[crproc+'_'+process][cr][0]
-		crunit+=sigYields[crproc+'_'+signal][cr][0]
-	if 'qcd' in process: 
-		crunit = yields_dict[crproc+'_'+process][cr][0]
-		crunit+=yields[crproc+'_ttbarplusw'][cr][0]
-		crunit+=yields[crproc+'_znunu'][cr][0]
-		crunit+=yields[crproc+'_Rare'][cr][0]
-	if 'znunu' in process: 
-		crunit = yields_dict[crproc+'_gjets'][cr][0]
-		crunit+=yields[crproc+'_back'][cr][0]
-	#print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
-	total += crdata*srunit/crunit
-	#print("total: %f" %(total))
+        if 'ttbar' in process: 
+            crunit = yields_dict[crproc+'_'+process][cr][0]
+            crunit+=sigYields[crproc+'_'+signal][cr][0]
+        if 'qcd' in process: 
+            crunit = yields_dict[crproc+'_'+process][cr][0]
+            crunit+=yields[crproc+'_ttbarplusw'][cr][0]
+            crunit+=yields[crproc+'_znunu'][cr][0]
+            crunit+=yields[crproc+'_Rare'][cr][0]
+        if 'znunu' in process: 
+            crunit = yields_dict[crproc+'_gjets'][cr][0]
+            crunit+=yields[crproc+'_back'][cr][0]
+        #print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
+        total += crdata*srunit/crunit
+        #print("total: %f" %(total))
     return total
     
 # ------ helper functions ------
@@ -205,21 +205,21 @@ def readUncs():
                     raise ValueError('Uncertainty "%s" is not defined!'%uncname)
                 try:
                     if "Up" in uncname: 
-			if "nan" in uncval or float(uncval) > 10000000:
-				uncval = 2
-			elif float(uncval) <= 0:
-				uncval = 0.001
-			unc_up = Uncertainty(uncname.strip("_Up"), unctype, uncval)
+                        if "nan" in uncval or float(uncval) > 10000000:
+                            uncval = 2
+                        elif float(uncval) <= 0:
+                            uncval = 0.001
+                        unc_up = Uncertainty(uncname.strip("_Up"), unctype, uncval)
                     elif "Down" in uncname: 
-			if "nan" in uncval or float(uncval) <= 0 or float(uncval) > 10000000:
-				uncval = 0.001
-			if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
-				uncavg = averageUnc(unc_up.value, float(uncval))			
-		    		unc = Uncertainty(uncname.strip("_Down"), unctype, (1 - uncavg), (1 + uncavg))
-			else:	
-		    		unc = Uncertainty(uncname.strip("_Down"), unctype, uncval, unc_up.value)	
+                        if "nan" in uncval or float(uncval) <= 0 or float(uncval) > 10000000:
+                            uncval = 0.001
+                        if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
+                            uncavg = averageUnc(unc_up.value, float(uncval))			
+                            unc = Uncertainty(uncname.strip("_Down"), unctype, (1 - uncavg), (1 + uncavg))
+                        else:	
+                            unc = Uncertainty(uncname.strip("_Down"), unctype, uncval, unc_up.value)	
                     else: 
-			unc = Uncertainty(uncname, unctype, uncval)
+                        unc = Uncertainty(uncname, unctype, uncval)
                 except ValueError as e:
                     print line
                     raise e
@@ -227,7 +227,7 @@ def readUncs():
                 bins = [bin_str]
                 if bin_str=='all': bins = binlist
                 elif bin_str in crbinlist: bins = crbinlist[bin_str]
-		if "Up" not in uncname:
+                if "Up" not in uncname:
                     for bin in bins:
                         for proc in processes:
                             unc_dict[bin][proc][uncname] = unc
@@ -261,8 +261,8 @@ def writeLepcr(signal):
                     for unc in unc_dict[crbin][proc].values():
                         procname_in_dc = 'ttbarplusw' if proc=='ttbarplusw' else 'signal'
                         if unc.value2 > -100.:
-			    cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
-			else:
+                            cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
+                        else:
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%crbin)
         cb.WriteDatacard(tmpdc)
@@ -283,7 +283,7 @@ def writePhocr(signal):
         cb.AddProcesses(procs = ['gjets', 'otherbkgs'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
         cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields['phocr_gjets'][crbin][0]))
-	cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
+        cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
@@ -296,8 +296,8 @@ def writePhocr(signal):
                 if proc in unc_dict[crbin]:
                     for unc in unc_dict[crbin][proc].values():
                         if unc.value2 > -100.:
-			    cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
-			else:
+                            cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
+                        else:
                             cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%crbin)
         cb.WriteDatacard(tmpdc)
@@ -312,14 +312,13 @@ def writePhocr(signal):
 def writeQCDcr(signal):
     for crbin in crbinlist['qcdcr']:
         cb = ch.CombineHarvester()
-	#cb.SetVerbosity(3) ## Boolean to enable debug printout
         #print crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
         cb.AddProcesses(procs = ['qcd', 'ttbarplusw', 'znunu', 'Rare'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['qcdcr_data'][crbin][0]))
         cb.cp().process(['qcd']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_qcd'][crbin][0]))
         if yields['qcdcr_ttbarplusw'][crbin][0] >= 0: cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_ttbarplusw'][crbin][0]))
-	else:					      cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(0))
+        else:					      cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(0))
         cb.cp().process(['znunu']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_znunu'][crbin][0]))
         cb.cp().process(['Rare']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_Rare'][crbin][0]))
         # stat uncs
@@ -337,8 +336,8 @@ def writeQCDcr(signal):
                 if proc in unc_dict[crbin]:
                     for unc in unc_dict[crbin][proc].values():
                         if unc.value2 > -100.:
-			    cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
-			else:
+                            cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
+                        else:
                             cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%crbin)
         cb.WriteDatacard(tmpdc)
@@ -350,7 +349,7 @@ def writeQCDcr(signal):
                     dc.write(line)
         os.remove(tmpdc)
 
-def BkgPlotter(json):
+def BkgPlotter(json, outputBase):
     with open(json) as jf:
         j = json_load_byteified(jf)
     bkgstack = THStack("bkg", "Sum of Background in Search Region")
@@ -362,12 +361,12 @@ def BkgPlotter(json):
     hdiboson = TH1F('hdiboson', 'diboson yields', 183, 0, 182)
 
     for bin in binlist:
-	sr = int(binnum[bin])
-	httbar.SetBinContent(sr, float(j[bin]['ttbarplusw']))
-	hznunu.SetBinContent(sr, float(j[bin]['znunu']))
-	hqcd.SetBinContent(sr, float(j[bin]['qcd']))
-	httz.SetBinContent(sr, float(j[bin]['ttZ']))
-	hdiboson.SetBinContent(sr, float(j[bin]['diboson']))
+        sr = int(binnum[bin])
+        httbar.SetBinContent(sr, float(j[bin]['ttbarplusw']))
+        hznunu.SetBinContent(sr, float(j[bin]['znunu']))
+        hqcd.SetBinContent(sr, float(j[bin]['qcd']))
+        httz.SetBinContent(sr, float(j[bin]['ttZ']))
+        hdiboson.SetBinContent(sr, float(j[bin]['diboson']))
 
 
     httbar.SetFillColor(866)
@@ -375,6 +374,24 @@ def BkgPlotter(json):
     hqcd.SetFillColor(811)
     httz.SetFillColor(797)
     hdiboson.SetFillColor(391)
+
+    for h in [httbar, hznunu, hqcd, httz, hdiboson]:
+        h.SetXTitle("Search Region")
+        h.SetYTitle("Events")
+        h.SetTitleSize  (0.055,"Y")
+        h.SetTitleOffset(1.600,"Y")
+        h.SetLabelOffset(0.014,"Y")
+        h.SetLabelSize  (0.040,"Y")
+        h.SetLabelFont  (62   ,"Y")
+        h.SetTitleSize  (0.055,"X")
+        h.SetTitleOffset(1.300,"X")
+        h.SetLabelOffset(0.014,"X")
+        h.SetLabelSize  (0.040,"X")
+        h.SetLabelFont  (62   ,"X")
+        h.GetYaxis().SetTitleFont(62)
+        h.GetXaxis().SetTitleFont(62)
+        h.SetTitle("")
+	
 
     bkgstack.Add(hdiboson)	
     bkgstack.Add(httz)	
@@ -399,8 +416,20 @@ def BkgPlotter(json):
     leg.AddEntry(httz,"ttZ","F")
     leg.AddEntry(hdiboson,"Rare","F")
     leg.Draw()
-    c.SaveAs("SumOfBkg.pdf")
-
+    c.SetTitle("Sum of Background in Search Regions");
+    c.SetCanvasSize(800, 600);
+    c.Print(outputBase + ".pdf");
+    c.Print(outputBase + ".C");
+    c.Print(outputBase + "_canvas.root");
+    c.SaveAs(outputBase + ".pdf")
+    
+    output = TFile(outputBase +".root", "RECREATE");
+    httbar.Write();
+    hznunu.Write();
+    hqcd.Write();
+    httz.Write();
+    hdiboson.Write();
+    output.Close();
 
 def writeSR(signal):
     mergedbins = [bin for bin in binlist if '*' in binMaps['lepcr'][bin]]
@@ -414,23 +443,23 @@ def writeSR(signal):
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, bin)])
         cb.AddProcesses(procs = ['signal'],     bin = [(0, bin)], signal=True)
         cb.AddProcesses(procs = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
-	expected = 0.
-	sepExpected = 0.
-	sepBins = {}
-	for proc in ['ttZ', 'diboson']:
-		expected += yields[proc][bin][0]
-		sepBins[proc] = yields[proc][bin][0]
-	for proc in ['ttbarplusw', 'znunu', 'qcd']:
-		if bin not in mergedbins:
-			expected += yields[proc][bin][0]
-			sepBins[proc] = yields[proc][bin][0]
-		else:
-			sepExpected = sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
-			expected += sepExpected
-			sepBins[proc] = sepExpected
-	sepYields[bin] = sepBins
-	#sepYields.append(sepBins)
-	#print(expected)
+        expected = 0.
+        sepExpected = 0.
+        sepBins = {}
+        for proc in ['ttZ', 'diboson']:
+            expected += yields[proc][bin][0]
+            sepBins[proc] = yields[proc][bin][0]
+        for proc in ['ttbarplusw', 'znunu', 'qcd']:
+            if bin not in mergedbins:
+                expected += yields[proc][bin][0]
+                sepBins[proc] = yields[proc][bin][0]
+            else:
+                sepExpected = sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
+                expected += sepExpected
+                sepBins[proc] = sepExpected
+        sepYields[bin] = sepBins
+        #sepYields.append(sepBins)
+        #print(expected)
         if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
         else:         cb.ForEachObs(lambda obs : obs.set_rate(expected))
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
@@ -468,8 +497,8 @@ def writeSR(signal):
                     for unc in unc_dict[bin][proc].values():
                         procname_in_dc = proc if proc in bkgprocesses else 'signal'
                         if unc.value2 > -100.:
-			    cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
-			else:
+                            cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
+                        else:
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         # fix rateParams
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%bin)
@@ -497,4 +526,4 @@ for sig in signals:
     writePhocr(sig)
     writeQCDcr(sig)
     writeSR(sig)
-    BkgPlotter('BkgExpected.json')
+    BkgPlotter('BkgExpected.json', 'SumOfBkg')
