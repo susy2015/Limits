@@ -38,12 +38,13 @@ processMap = {'ttbarplusw':'lepcr', 'znunu':'phocr', 'qcd':'qcdcr'}
 #blind data
 blind = True
 
-if os.path.exists(outputdir):
+if os.path.exists(outputdir + '/' + args.signalPoint):
     t = time.localtime()
     moveStr = '_moveTime' + str(t.tm_year) + '-' + str(t.tm_mon) + '-' + str(t.tm_mday) + '-' + str(t.tm_hour * 10000 + t.tm_min * 100 + t.tm_sec)
     print 'renaming existing directory to', outputdir + moveStr
     os.rename(outputdir, outputdir + moveStr)
-os.makedirs(outputdir)
+if not os.path.exists(outputdir): 
+    os.makedirs(outputdir)
 
 # ------ process json file ------
 def json_load_byteified(file_handle):
