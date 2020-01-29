@@ -4,8 +4,9 @@ import math
 import CombineHarvester.CombineTools.ch as ch
 import argparse
 import json
+import numpy as np
 
-from ROOT import TCanvas, TFile, TProfile, TNtuple, TH1F, TH2F, THStack, TLegend, TFile
+from ROOT import TCanvas, TFile, TProfile, TNtuple, TH1F, TH2F, THStack, TLegend, TFile, TColor
 from ROOT import gROOT, gBenchmark, gRandom, gSystem, Double
 
 parser = argparse.ArgumentParser(
@@ -116,6 +117,7 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
     sumE2 = 0
     total = 0.
     crproc = 'lepcr' if 'ttbar' in process else ('qcdcr' if 'qcd' in process else 'phocr')
+    srstat = 0.
     for entry in cr_description.replace(' ','').split('+'):
         crdata = 0
         crunit = 0.
@@ -127,6 +129,7 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
         #print(cr)
         crdata = yields[crproc + '_data'][cr][0]
         srunit = yields_dict[process][sr][0]
+	srstat += (yields_dict[process][sr][1])**2
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crunit+=sigYields[crproc+'_'+signal][cr][0]
@@ -141,7 +144,7 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
         #print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
         total += crdata*srunit/crunit
         #print("total: %f" %(total))
-    return total
+    return total, np.sqrt(srstat)
     
 # ------ helper functions ------
 
@@ -350,6 +353,7 @@ def writeQCDcr(signal):
         os.remove(tmpdc)
 
 def BkgPlotter(json, outputBase):
+    gROOT.SetBatch(1)
     with open(json) as jf:
         j = json_load_byteified(jf)
     bkgstack = THStack("bkg", "Sum of Background in Search Region")
@@ -359,23 +363,32 @@ def BkgPlotter(json, outputBase):
     hqcd = TH1F('hqcd', 'qcd yields', 183, 0, 182)
     httz = TH1F('httz', 'ttz yields', 183, 0, 182)
     hdiboson = TH1F('hdiboson', 'diboson yields', 183, 0, 182)
+    hpred = TH1F('hpred', 'pred yields', 183, 0, 182)
 
     for bin in binlist:
-        sr = int(binnum[bin])
-        httbar.SetBinContent(sr, float(j[bin]['ttbarplusw']))
-        hznunu.SetBinContent(sr, float(j[bin]['znunu']))
-        hqcd.SetBinContent(sr, float(j[bin]['qcd']))
-        httz.SetBinContent(sr, float(j[bin]['ttZ']))
-        hdiboson.SetBinContent(sr, float(j[bin]['diboson']))
+        sr = int(binnum[bin])+1
+        httbar.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]))
+        hznunu.SetBinContent(sr, float(j[bin]['znunu'][0]))
+        hqcd.SetBinContent(sr, float(j[bin]['qcd'][0]))
+        httz.SetBinContent(sr, float(j[bin]['ttZ'][0]))
+        hdiboson.SetBinContent(sr, float(j[bin]['diboson'][0]))
+        hpred.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]) + float(j[bin]['znunu'][0]) + float(j[bin]['qcd'][0]) + float(j[bin]['ttZ'][0]) + float(j[bin]['diboson'][0]))
 
+        httbar.SetBinError(sr, float(j[bin]['ttbarplusw'][1]))
+        hznunu.SetBinError(sr, float(j[bin]['znunu'][1]))
+        hqcd.SetBinError(sr, float(j[bin]['qcd'][1]))
+        httz.SetBinError(sr, float(j[bin]['ttZ'][1]))
+        hdiboson.SetBinError(sr, float(j[bin]['diboson'][1]))
+        hpred.SetBinError(sr, float(j[bin]['ttbarplusw'][1]) + float(j[bin]['znunu'][1]) + float(j[bin]['qcd'][1]) + float(j[bin]['ttZ'][1]) + float(j[bin]['diboson'][1]))
 
     httbar.SetFillColor(866)
     hznunu.SetFillColor(623)
     hqcd.SetFillColor(811)
     httz.SetFillColor(797)
     hdiboson.SetFillColor(391)
+    hpred.SetFillColor(2)
 
-    for h in [httbar, hznunu, hqcd, httz, hdiboson]:
+    for h in [httbar, hznunu, hqcd, httz, hdiboson, hpred]:
         h.SetXTitle("Search Region")
         h.SetYTitle("Events")
         h.SetTitleSize  (0.055,"Y")
@@ -416,20 +429,21 @@ def BkgPlotter(json, outputBase):
     leg.AddEntry(httz,"ttZ","F")
     leg.AddEntry(hdiboson,"Rare","F")
     leg.Draw()
-    c.SetTitle("Sum of Background in Search Regions");
-    c.SetCanvasSize(800, 600);
-    c.Print(outputBase + ".pdf");
-    c.Print(outputBase + ".C");
-    c.Print(outputBase + "_canvas.root");
+    c.SetTitle("Sum of Background in Search Regions")
+    c.SetCanvasSize(800, 600)
+    c.Print(outputBase + ".pdf")
+    c.Print(outputBase + ".C")
+    c.Print(outputBase + "_canvas.root")
     c.SaveAs(outputBase + ".pdf")
     
-    output = TFile(outputBase +".root", "RECREATE");
-    httbar.Write();
-    hznunu.Write();
-    hqcd.Write();
-    httz.Write();
-    hdiboson.Write();
-    output.Close();
+    output = TFile(outputBase +".root", "RECREATE")
+    httbar.Write()
+    hznunu.Write()
+    hqcd.Write()
+    httz.Write()
+    hdiboson.Write()
+    hpred.Write()
+    output.Close()
 
 def writeSR(signal):
     mergedbins = [bin for bin in binlist if '*' in binMaps['lepcr'][bin]]
@@ -444,19 +458,18 @@ def writeSR(signal):
         cb.AddProcesses(procs = ['signal'],     bin = [(0, bin)], signal=True)
         cb.AddProcesses(procs = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
         expected = 0.
-        sepExpected = 0.
         sepBins = {}
         for proc in ['ttZ', 'diboson']:
             expected += yields[proc][bin][0]
-            sepBins[proc] = yields[proc][bin][0]
+            sepBins[proc] = (yields[proc][bin][0], yields[proc][bin][1])
         for proc in ['ttbarplusw', 'znunu', 'qcd']:
             if bin not in mergedbins:
                 expected += yields[proc][bin][0]
-                sepBins[proc] = yields[proc][bin][0]
+                sepBins[proc] = (yields[proc][bin][0], yields[proc][bin][1])
             else:
-                sepExpected = sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
+                sepExpected, sepStat = sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
                 expected += sepExpected
-                sepBins[proc] = sepExpected
+                sepBins[proc] = (sepExpected, sepStat)
         sepYields[bin] = sepBins
         #sepYields.append(sepBins)
         #print(expected)
