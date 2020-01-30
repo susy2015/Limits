@@ -36,6 +36,29 @@ bkgprocesses = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson']
 # background process name -> control region name
 processMap = {'ttbarplusw':'lepcr', 'znunu':'phocr', 'qcd':'qcdcr'}
 #blind data
+CRprocMap  = {
+    "qcdcr" : {
+        'qcd'        : 'qcdcr_qcd',
+        'ttbarplusw' : 'qcdcr_ttbarplusw',
+        'znunu'      : 'qcdcr_znunu',
+        'diboson'    : 'qcdcr_Rare',
+    },
+    "qcdcr2" : {
+        'qcd'        : 'qcd',
+        'ttbarplusw' : 'ttbarplusw',
+        'znunu'      : 'znunu',
+        'diboson'    : 'Rare',
+    },
+    "lepcr": {
+        
+    },
+    "phocr" :{
+        'gjets'   : 'phocr_gjets',
+        'otherbkgs' : 'phocr_back',
+    }
+
+}
+
 blind = True
 
 if os.path.exists(outputdir + '/' + args.signalPoint):
@@ -130,7 +153,7 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
         #print(cr)
         crdata = yields[crproc + '_data'][cr][0]
         srunit = yields_dict[process][sr][0]
-	srstat += (yields_dict[process][sr][1])**2
+        srstat += (yields_dict[process][sr][1])**2
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crunit+=sigYields[crproc+'_'+signal][cr][0]
@@ -286,19 +309,19 @@ def writePhocr(signal):
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
         cb.AddProcesses(procs = ['gjets', 'otherbkgs'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
-        cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields['phocr_gjets'][crbin][0]))
-        cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields['phocr_back'][crbin][0]))
+        cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields[CRprocMap['phocr']['gjets']][crbin][0]))
+        cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields[CRprocMap['phocr']['otherbkgs']][crbin][0]))
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                   (['gjets'],        toUnc(yields['phocr_gjets'][crbin]))
-                   (['otherbkgs'],    toUnc(yields['phocr_back'][crbin]))
+                   (['gjets'],        toUnc(yields[CRprocMap['phocr']['gjets']][crbin]))
+                   (['otherbkgs'],    toUnc(yields[CRprocMap['phocr']['otherbkgs']][crbin]))
                    )
         # syst uncs
         if crbin in unc_dict:
             for proc in ['gjets', 'otherbkgs']:
-                if proc in unc_dict[crbin]:
-                    for unc in unc_dict[crbin][proc].values():
+                if CRprocMap['phocr'][proc] in unc_dict[crbin]:
+                    for unc in unc_dict[crbin][CRprocMap['phocr'][proc]].values():
                         if unc.value2 > -100.:
                             cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
                         else:
@@ -318,27 +341,29 @@ def writeQCDcr(signal):
         cb = ch.CombineHarvester()
         #print crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
-        cb.AddProcesses(procs = ['qcd', 'ttbarplusw', 'znunu', 'Rare'], bin = [(0, crbin)], signal=False)
+        cb.AddProcesses(procs = ['qcd', 'ttbarplusw', 'znunu', 'diboson'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['qcdcr_data'][crbin][0]))
-        cb.cp().process(['qcd']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_qcd'][crbin][0]))
-        if yields['qcdcr_ttbarplusw'][crbin][0] >= 0: cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_ttbarplusw'][crbin][0]))
-        else:					      cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(0))
-        cb.cp().process(['znunu']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_znunu'][crbin][0]))
-        cb.cp().process(['Rare']).ForEachProc(lambda p : p.set_rate(yields['qcdcr_Rare'][crbin][0]))
+        for proc in ['qcd', 'ttbarplusw', 'znunu', 'diboson']:
+            cb.cp().process([proc]).ForEachProc(lambda p : 
+                                                 p.set_rate(
+                                                     yields[CRprocMap['qcdcr'][proc]][crbin][0]
+                                                     if yields[CRprocMap['qcdcr'][proc]][crbin][0] >= 0 else 0
+                                                 )
+                                                )
         # stat uncs
         cb.cp().process(['qcd']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                   (['qcd'],        toUnc(yields['qcdcr_qcd'][crbin]))
-                   (['ttbarplusw'], toUnc(yields['qcdcr_ttbarplusw'][crbin]))
-                   (['znunu'],      toUnc(yields['qcdcr_znunu'][crbin]))
-                   (['Rare'],    toUnc(yields['qcdcr_Rare'][crbin]))
+                   (['qcd'],        toUnc(yields[CRprocMap['qcdcr']['qcd']][crbin]))
+                   (['ttbarplusw'], toUnc(yields[CRprocMap['qcdcr']['ttbarplusw']][crbin]))
+                   (['znunu'],      toUnc(yields[CRprocMap['qcdcr']['znunu']][crbin]))
+                   (['diboson'],    toUnc(yields[CRprocMap['qcdcr']['diboson']][crbin]))
                    )
         # syst uncs
         if crbin in unc_dict:
             #for proc in ['qcd', 'otherbkgs']:
-            for proc in ['qcd', 'ttbarplusw', 'znunu', 'Rare']:
-                if proc in unc_dict[crbin]:
-                    for unc in unc_dict[crbin][proc].values():
+            for proc in ['qcd', 'ttbarplusw', 'znunu', 'diboson']:
+                if CRprocMap['qcdcr2'][proc] in unc_dict[crbin]:
+                    for unc in unc_dict[crbin][CRprocMap['qcdcr2'][proc]].values():
                         if unc.value2 > -100.:
                             cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
                         else:
