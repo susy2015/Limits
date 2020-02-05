@@ -353,7 +353,7 @@ def writeQCDcr(signal):
         # stat uncs
         cb.cp().process(['qcd']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                   (['qcd'],        toUnc(yields[CRprocMap['qcdcr']['qcd']][crbin]))
+                   #(['qcd'],        toUnc(yields[CRprocMap['qcdcr']['qcd']][crbin]))
                    (['ttbarplusw'], toUnc(yields[CRprocMap['qcdcr']['ttbarplusw']][crbin]))
                    (['znunu'],      toUnc(yields[CRprocMap['qcdcr']['znunu']][crbin]))
                    (['diboson'],    toUnc(yields[CRprocMap['qcdcr']['diboson']][crbin]))
@@ -514,10 +514,9 @@ def writeSR(signal):
             cb.cp().process(['ttbarplusw']).AddSyst(cb, "R_%s"%binMaps['lepcr'][bin], "rateParam", ch.SystMap()(1.0))
             cb.cp().process(['znunu'     ]).AddSyst(cb, "R_%s"%binMaps['phocr'][bin], "rateParam", ch.SystMap()(1.0))
             cb.cp().process(['qcd'       ]).AddSyst(cb, "R_%s"%binMaps['qcdcr'][bin], "rateParam", ch.SystMap()(1.0))
-            cb.cp().process(['ttbarplusw','znunu','qcd']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
+            cb.cp().process(['ttbarplusw','znunu']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
                        (['ttbarplusw'],     toUnc(yields['ttbarplusw'][bin]))
                        (['znunu'],          toUnc(yields['znunu'][bin]))
-                       (['qcd'],            toUnc(yields['qcd'][bin]))
                        )
         else:
             cb.cp().process(['ttbarplusw','znunu','qcd']).ForEachProc(lambda p : p.set_rate(1))
@@ -526,6 +525,7 @@ def writeSR(signal):
                 rName = "R_%s_%s"%(proc, bin)
                 cb.cp().process([proc]).AddSyst(cb, rName, "rateParam", ch.SystMap()(999999.0)) # error if put formula here: need a workaround
                 rateParamFixes[rName] = rlt['rateParam']
+            for proc in ['ttbarplusw','znunu']:
                 cb.cp().process([proc]).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
                         ([proc],            toUnc(rlt['yield']))
                         )
