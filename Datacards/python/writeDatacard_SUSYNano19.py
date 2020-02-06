@@ -353,7 +353,7 @@ def writeQCDcr(signal):
         # stat uncs
         cb.cp().process(['qcd']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                   #(['qcd'],        toUnc(yields[CRprocMap['qcdcr']['qcd']][crbin]))
+                   (['qcd'],        toUnc(yields[CRprocMap['qcdcr']['qcd']][crbin]))
                    (['ttbarplusw'], toUnc(yields[CRprocMap['qcdcr']['ttbarplusw']][crbin]))
                    (['znunu'],      toUnc(yields[CRprocMap['qcdcr']['znunu']][crbin]))
                    (['diboson'],    toUnc(yields[CRprocMap['qcdcr']['diboson']][crbin]))
@@ -378,7 +378,7 @@ def writeQCDcr(signal):
                     dc.write(line)
         os.remove(tmpdc)
 
-def BkgPlotter(json, outputBase):
+def BkgPlotter(json, outputBase, signal):
     gROOT.SetBatch(1)
     with open(json) as jf:
         j = json_load_byteified(jf)
@@ -390,6 +390,7 @@ def BkgPlotter(json, outputBase):
     httz = TH1F('httz', 'ttz yields', 183, 0, 182)
     hdiboson = TH1F('hdiboson', 'diboson yields', 183, 0, 182)
     hpred = TH1F('hpred', 'pred yields', 183, 0, 182)
+    hsignal = TH1F(signal, 'signal yields', 183, 0, 182)
 
     for bin in binlist:
         sr = int(binnum[bin])+1
@@ -399,6 +400,7 @@ def BkgPlotter(json, outputBase):
         httz.SetBinContent(sr, float(j[bin]['ttZ'][0]))
         hdiboson.SetBinContent(sr, float(j[bin]['diboson'][0]))
         hpred.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]) + float(j[bin]['znunu'][0]) + float(j[bin]['qcd'][0]) + float(j[bin]['ttZ'][0]) + float(j[bin]['diboson'][0]))
+	hsignal.SetBinContent(sr, float(j[bin][signal][0]))
 
         httbar.SetBinError(sr, float(j[bin]['ttbarplusw'][1]))
         hznunu.SetBinError(sr, float(j[bin]['znunu'][1]))
@@ -406,6 +408,7 @@ def BkgPlotter(json, outputBase):
         httz.SetBinError(sr, float(j[bin]['ttZ'][1]))
         hdiboson.SetBinError(sr, float(j[bin]['diboson'][1]))
         hpred.SetBinError(sr, float(j[bin]['ttbarplusw'][1]) + float(j[bin]['znunu'][1]) + float(j[bin]['qcd'][1]) + float(j[bin]['ttZ'][1]) + float(j[bin]['diboson'][1]))
+	hsignal.SetBinError(sr, float(j[bin][signal][1]))
 
     httbar.SetFillColor(866)
     hznunu.SetFillColor(623)
@@ -413,8 +416,9 @@ def BkgPlotter(json, outputBase):
     httz.SetFillColor(797)
     hdiboson.SetFillColor(391)
     hpred.SetFillColor(2)
+    hsignal.SetFillColor(2)
 
-    for h in [httbar, hznunu, hqcd, httz, hdiboson, hpred]:
+    for h in [httbar, hznunu, hqcd, httz, hdiboson, hpred, hsignal]:
         h.SetXTitle("Search Region")
         h.SetYTitle("Events")
         h.SetTitleSize  (0.055,"Y")
@@ -469,6 +473,7 @@ def BkgPlotter(json, outputBase):
     httz.Write()
     hdiboson.Write()
     hpred.Write()
+    hsignal.Write()
     output.Close()
 
 def writeSR(signal):
@@ -496,9 +501,8 @@ def writeSR(signal):
                 sepExpected, sepStat = sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
                 expected += sepExpected
                 sepBins[proc] = (sepExpected, sepStat)
+        sepBins[signal] = (sigYields[signal][bin][0], sigYields[signal][bin][1])
         sepYields[bin] = sepBins
-        #sepYields.append(sepBins)
-        #print(expected)
         if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
         else:         cb.ForEachObs(lambda obs : obs.set_rate(expected))
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
@@ -514,9 +518,10 @@ def writeSR(signal):
             cb.cp().process(['ttbarplusw']).AddSyst(cb, "R_%s"%binMaps['lepcr'][bin], "rateParam", ch.SystMap()(1.0))
             cb.cp().process(['znunu'     ]).AddSyst(cb, "R_%s"%binMaps['phocr'][bin], "rateParam", ch.SystMap()(1.0))
             cb.cp().process(['qcd'       ]).AddSyst(cb, "R_%s"%binMaps['qcdcr'][bin], "rateParam", ch.SystMap()(1.0))
-            cb.cp().process(['ttbarplusw','znunu']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
+            cb.cp().process(['ttbarplusw','znunu','qcd']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
                        (['ttbarplusw'],     toUnc(yields['ttbarplusw'][bin]))
                        (['znunu'],          toUnc(yields['znunu'][bin]))
+                       (['qcd'],            toUnc(yields['qcd'][bin]))
                        )
         else:
             cb.cp().process(['ttbarplusw','znunu','qcd']).ForEachProc(lambda p : p.set_rate(1))
@@ -525,7 +530,6 @@ def writeSR(signal):
                 rName = "R_%s_%s"%(proc, bin)
                 cb.cp().process([proc]).AddSyst(cb, rName, "rateParam", ch.SystMap()(999999.0)) # error if put formula here: need a workaround
                 rateParamFixes[rName] = rlt['rateParam']
-            for proc in ['ttbarplusw','znunu']:
                 cb.cp().process([proc]).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
                         ([proc],            toUnc(rlt['yield']))
                         )
@@ -565,4 +569,4 @@ for sig in signals:
     writePhocr(sig)
     writeQCDcr(sig)
     writeSR(sig)
-    BkgPlotter('BkgExpected.json', 'SumOfBkg')
+    BkgPlotter('BkgExpected.json', 'SumOfBkg', sig)
