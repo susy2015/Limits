@@ -344,12 +344,8 @@ def writeQCDcr(signal):
         cb.AddProcesses(procs = ['qcd', 'ttbarplusw', 'znunu', 'diboson'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['qcdcr_data'][crbin][0]))
         for proc in ['qcd', 'ttbarplusw', 'znunu', 'diboson']:
-            cb.cp().process([proc]).ForEachProc(lambda p : 
-                                                 p.set_rate(
-                                                     yields[CRprocMap['qcdcr'][proc]][crbin][0]
-                                                     if yields[CRprocMap['qcdcr'][proc]][crbin][0] >= 0 else 0
-                                                 )
-                                                )
+            cb.cp().process([proc]).ForEachProc(lambda p : p.set_rate(yields[CRprocMap['qcdcr'][proc]][crbin][0]))
+
         # stat uncs
         cb.cp().process(['qcd']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
