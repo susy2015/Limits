@@ -15,6 +15,8 @@ parser.add_argument("-s", "--signal", dest="signalPoint", default='',
                          help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
 parser.add_argument("-l", "--location", dest="signalLocation", default='',
                          help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
+parser.add_argument("-m", "--manySignals", dest="manySignals", default=False,
+                         help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
 args = parser.parse_args()
 
 # json file with bkg predictions and signal yields
@@ -565,4 +567,4 @@ for sig in signals:
     writePhocr(sig)
     writeQCDcr(sig)
     writeSR(sig)
-    BkgPlotter('BkgExpected.json', 'SumOfBkg', sig)
+    if not args.manySignals: BkgPlotter('BkgExpected.json', 'SumOfBkg', sig)
