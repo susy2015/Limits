@@ -311,8 +311,13 @@ def writePhocr(signal):
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
         cb.AddProcesses(procs = ['gjets', 'otherbkgs'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['phocr_data'][crbin][0]))
-        cb.cp().process(['gjets']).ForEachProc(lambda p : p.set_rate(yields[CRprocMap['phocr']['gjets']][crbin][0]))
-        cb.cp().process(['otherbkgs']).ForEachProc(lambda p : p.set_rate(yields[CRprocMap['phocr']['otherbkgs']][crbin][0]))
+        for proc in ['gjets', 'otherbkgs']:
+            cb.cp().process([proc]).ForEachProc(lambda p : 
+                                                 p.set_rate(
+                                                     yields[CRprocMap['phocr'][proc]][crbin][0]
+                                                     if yields[CRprocMap['phocr'][proc]][crbin][0] >= 0 else 0.000001
+                                                 )
+                                                )
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
@@ -346,8 +351,12 @@ def writeQCDcr(signal):
         cb.AddProcesses(procs = ['qcd', 'ttbarplusw', 'znunu', 'diboson'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['qcdcr_data'][crbin][0]))
         for proc in ['qcd', 'ttbarplusw', 'znunu', 'diboson']:
-            cb.cp().process([proc]).ForEachProc(lambda p : p.set_rate(yields[CRprocMap['qcdcr'][proc]][crbin][0]))
-
+            cb.cp().process([proc]).ForEachProc(lambda p : 
+                                                 p.set_rate(
+                                                     yields[CRprocMap['qcdcr'][proc]][crbin][0]
+                                                     if yields[CRprocMap['qcdcr'][proc]][crbin][0] >= 0 else 0.000001
+                                                 )
+                                                )
         # stat uncs
         cb.cp().process(['qcd']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
         cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
@@ -481,8 +490,6 @@ def writeSR(signal):
     for bin in binlist:
         rateParamFixes = {}
         cb = ch.CombineHarvester()
-	#cb.SetVerbosity(3)
-#         print bin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, bin)])
         cb.AddProcesses(procs = ['signal'],     bin = [(0, bin)], signal=True)
         cb.AddProcesses(procs = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
