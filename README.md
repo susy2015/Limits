@@ -75,6 +75,11 @@ cp -r /uscms/home/ahenckel/nobackup/TTZ/CMSSW_10_2_9/src/SusyAnaTools/Tools/fast
 cp -r /uscms/home/ahenckel/nobackup/TTZ/CMSSW_10_2_9/src/SusyAnaTools/Tools/fastsim_results/SMS_T1tttt_fastsim .
 ```
 
+## To make the total JSON files from the individual ones
+```
+python Datacards/python/mergeJSONFiles.py
+```
+
 ## Create Datacards
 Here the -l is a link the the directory where the signal JSON files and systematics are located: Base: Datacards/setup/SUSYNano19/, -s is the name of the specific sample you want to work with
 ```

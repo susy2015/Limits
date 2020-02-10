@@ -9,7 +9,7 @@ json_RarePred = 'Datacards/setup/SUSYNano19/Rare_pred.json'
 json_zinvPred = 'Datacards/setup/SUSYNano19/zinv_yields_Run2.json'
 json_qcdPred = 'Datacards/setup/SUSYNano19/qcd_BkgPred.json'
 
-def write_json(data, filename='combine_bkgPred.json'):
+def write_json(data, filename='Datacards/setup/SUSYNano19/combine_bkgPred.json'):
     with open(filename,'w') as f:
     	json.dump(data, f, indent=2, ensure_ascii=False)
 
