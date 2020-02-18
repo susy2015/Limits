@@ -126,7 +126,7 @@ def parseBinMap(process, cr_description, yields_dict):
         sr, cr = entry.split('*')
         if '<' in cr: sr, cr = cr, sr
         sr = sr.strip('<>')
-        values.append(yields_dict[process][sr][0])
+        values.append(yields_dict[process][sr][0] if yields_dict[process][sr][0] > 0 else 0.000001)
         sumE2 += yields_dict[process][sr][1]*yields_dict[process][sr][1]
         cr = 'R_'+cr.strip('()')
         #print cr
@@ -148,6 +148,7 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
         crdata = 0
         crunit = 0.
         srunit = 0.
+        crother = 0
         sr, cr = entry.split('*')
         if '<' in cr: sr, cr = cr, sr
         sr = sr.strip('<>')
@@ -158,17 +159,17 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
         srstat += (yields_dict[process][sr][1])**2
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
-            crunit+=sigYields[crproc+'_'+signal][cr][0]
+            crother =sigYields[crproc+'_'+signal][cr][0]
         if 'qcd' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
-            crunit+=yields[crproc+'_ttbarplusw'][cr][0]
-            crunit+=yields[crproc+'_znunu'][cr][0]
-            crunit+=yields[crproc+'_Rare'][cr][0]
+            crother +=yields[crproc+'_ttbarplusw'][cr][0]
+            crother+=yields[crproc+'_znunu'][cr][0]
+            crother+=yields[crproc+'_Rare'][cr][0]
         if 'znunu' in process: 
             crunit = yields_dict[crproc+'_gjets'][cr][0]
-            crunit+=yields[crproc+'_back'][cr][0]
+            crother+=yields[crproc+'_back'][cr][0]
         #print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
-        total += crdata*srunit/crunit
+        total += (crdata-crother)*srunit/crunit
         #print("total: %f" %(total))
     return total, np.sqrt(srstat)
     
@@ -315,7 +316,7 @@ def writePhocr(signal):
             cb.cp().process([proc]).ForEachProc(lambda p : 
                                                  p.set_rate(
                                                      yields[CRprocMap['phocr'][proc]][crbin][0]
-                                                     if yields[CRprocMap['phocr'][proc]][crbin][0] >= 0 else 0.000001
+                                                     if yields[CRprocMap['phocr'][proc]][crbin][0] > 0 else 0.000001
                                                  )
                                                 )
         # stat uncs
