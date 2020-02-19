@@ -4120,151 +4120,151 @@
     "qcdcr_ttbarplusw": {
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         15.095467605143995, 
-        0.665997085840338
+        0.6659970858403373
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         29.906152357629935, 
-        1.2712882882503065
+        1.2712882882503098
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt450to550": [
         551.8547141430926, 
-        8.448350026767079
+        8.448350026767141
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt300to400": [
         6.2286071791031645, 
-        0.836947488236104
+        0.8369474882361041
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt450to550": [
         26.694955973625326, 
-        0.9458897917487387
+        0.9458897917487351
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt350to450": [
         22.842200199440015, 
-        1.2545008890704554
+        1.2545008890704552
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_lowptb_MET_pt400toinf": [
         14.120929107308996, 
-        2.2445729965371513
+        2.2445729965371517
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt450to550": [
         11.329692187367243, 
-        0.9798125797253712
+        0.9798125797253708
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt450to550": [
         1.4603404863180458, 
-        0.15535979754386897
+        0.15535979754386886
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt650toinf": [
         7.304358172151353, 
-        0.5427716406580865
+        0.5427716406580871
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt400toinf": [
         2.541174018072752, 
-        0.45853197353477987
+        0.4585319735347799
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt550to650": [
         0.3870948645781027, 
-        0.13086459306343845
+        0.13086459306343842
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt450to550": [
         2.894622760928712, 
-        0.4156233273240598
+        0.41562332732406
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt650toinf": [
         0.42170441313663787, 
-        0.14235747842342697
+        0.14235747842342694
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt650toinf": [
         0.03996706703571817, 
-        0.025592434206933794
+        0.025592434206933804
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt650toinf": [
         2.6813590026504244, 
-        0.25837531767973404
+        0.2583753176797338
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt450to550": [
         2.3381362116421087, 
-        0.5287492032604768
+        0.5287492032604769
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt550to650": [
         13.62290772475643, 
-        0.5928617734271998
+        0.5928617734271996
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt250to350": [
         9.224909979057117, 
-        2.493527460400729
+        2.4935274604007303
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt400toinf": [
         2.8149098381583144, 
-        0.5491632653099492
+        0.5491632653099494
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt300to400": [
         91.63923002852795, 
-        7.4228947454118535
+        7.422894745411861
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt450to550": [
         22.15851435196305, 
-        1.5274900835957559
+        1.5274900835957521
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt450to550": [
         1.5532450681556043, 
-        0.24222901772119204
+        0.24222901772119193
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt250to350": [
         64.91637157862051, 
-        7.076526345218434
+        7.07652634521844
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550toinf": [
         4.020349792335082, 
-        0.1762415642053882
+        0.1762415642053884
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt350to450": [
         64.76038484760633, 
-        5.882582535264488
+        5.882582535264493
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350": [
         18.820883820469646, 
-        4.904202767395112
+        4.904202767395113
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_lowptb12_MET_pt450toinf": [
         2.5691087501758147, 
-        0.4002387576289769
+        0.4002387576289765
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         49.80157296351712, 
-        4.51913659427218
+        4.519136594272186
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt550to650": [
         247.34947215000807, 
-        3.693005944007798
+        3.6930059440078122
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt550to650": [
         2.0194851938564398, 
-        0.22250710163141754
+        0.22250710163141788
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt550to650": [
         1.0719438805934374, 
-        0.23510288322145703
+        0.23510288322145692
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt550to650": [
         4.5168428824611055, 
-        0.5512771000756755
+        0.5512771000756758
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt650toinf": [
         4.910994688713345, 
-        0.4516871821681864
+        0.4516871821681858
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt450to550": [
         20.90882369857553, 
-        1.3784892186320012
+        1.3784892186320008
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": [
         5.759440521931879, 
-        0.4528368819026713
+        0.4528368819026717
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt650toinf": [
         0.4493699246768301, 
-        0.14017568831807845
+        0.14017568831807847
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550": [
         2.104355962603904, 
@@ -4272,7 +4272,7 @@
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt550to650": [
         8.840541065903096, 
-        0.7532211385246933
+        0.7532211385246945
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         178.92773025388973, 
@@ -4280,47 +4280,47 @@
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt350to450": [
         123.61841484727597, 
-        4.4736564323723425
+        4.473656432372324
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt550to650": [
         4.91738185161779, 
-        0.4932689501719822
+        0.4932689501719825
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         6.827968557837494, 
-        0.50627477329445
+        0.5062747732944501
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt650to750": [
         107.67670561963672, 
-        1.9799018377178945
+        1.979901837717887
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt250to350": [
         87.2818781266013, 
-        3.4464753943449375
+        3.446475394344941
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_medptb12_MET_pt450toinf": [
         9.122172174345621, 
-        0.9395794227600391
+        0.9395794227600396
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt250to350": [
         70.9167514544514, 
-        5.527311719004549
+        5.527311719004548
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt450to550": [
         16.119882455624406, 
-        2.097286544511945
+        2.097286544511944
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt250to350": [
         177.92581947500142, 
-        13.89391788689669
+        13.893917886896695
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt350to450": [
         20.616830393593858, 
-        5.2306884364979735
+        5.230688436497974
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt350to450": [
         3.2708349137833466, 
-        0.3697507461541824
+        0.36975074615418196
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt450to550": [
         4.366640744269944, 
@@ -4328,39 +4328,39 @@
       ], 
       "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400toinf": [
         3.426643944290049, 
-        0.7983238507667062
+        0.7983238507667055
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt650to750": [
         7.5212946420236335, 
-        0.49001170181665776
+        0.49001170181665743
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt550toinf": [
         1.6825805510185319, 
-        0.188221249788814
+        0.1882212497888139
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt650toinf": [
         4.403540344236831, 
-        0.39358081023527036
+        0.39358081023527025
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt350to450": [
         7.443348165406803, 
-        0.4736163674960852
+        0.4736163674960853
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf": [
         3.8270136386408353, 
-        0.4668801829742649
+        0.4668801829742651
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt750toinf": [
         106.62891543458744, 
-        1.666128317776331
+        1.6661283177763269
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt300toinf": [
         11.64707985773373, 
-        2.1844335368495456
+        2.184433536849547
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt550to650": [
         0.7016512616380624, 
-        0.20822840837917264
+        0.2082284083791727
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt350to450": [
         44.672751828670584, 
@@ -4368,7 +4368,7 @@
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt750toinf": [
         7.42925393649341, 
-        0.3363689619823522
+        0.336368961982351
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf": [
         3.4380487584566026, 
@@ -4376,51 +4376,51 @@
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt350to550": [
         6.932680741785703, 
-        1.1175752588485035
+        1.1175752588485044
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt250to350": [
         578.711897189947, 
-        14.100632718390049
+        14.100632718390068
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         111.76871599699155, 
-        2.99899155400946
+        2.9989915540094714
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt550to650": [
         7.26327990510714, 
-        0.8934399077568911
+        0.8934399077568902
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_lowptb_MET_pt300to400": [
         111.59284844956778, 
-        7.729344248086088
+        7.729344248086099
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt550to650": [
         5.266424762109011, 
-        0.6554048329583638
+        0.6554048329583637
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400toinf": [
         13.478533016921403, 
-        2.257657638255455
+        2.257657638255457
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt650toinf": [
         15.52707991067166, 
-        0.5816140911619038
+        0.5816140911619043
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt450to550": [
         23.85745675027448, 
-        0.9349938019598065
+        0.934993801959805
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt550toinf": [
         0.07337003143334186, 
-        0.03186105691295097
+        0.03186105691295096
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt250to350": [
         31.435177804174373, 
-        7.354938513962392
+        7.354938513962395
       ], 
       "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": [
         9.917563227334995, 
-        1.8019216639199538
+        1.8019216639199536
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt350to450": [
         3.7942577117622704, 
@@ -4436,55 +4436,55 @@
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450": [
         5.296634883316756, 
-        0.616672742474282
+        0.6166727424742828
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf": [
         0.7898726799787141, 
-        0.24052792614739235
+        0.24052792614739227
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf": [
         1.0621945532218433, 
-        0.2356684213657313
+        0.2356684213657312
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt300to400": [
         29.138947842264656, 
-        2.4118485630970135
+        2.4118485630970117
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt250to350": [
         29.813556087304164, 
-        4.4351182253626895
+        4.435118225362684
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj6_MET_pt450toinf": [
         3.078542210569992, 
-        0.36645839144814557
+        0.3664583914481456
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         64.05976583058447, 
-        3.9683623925308633
+        3.9683623925308606
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt450to550": [
         14.126547424539183, 
-        1.3429800038726951
+        1.3429800038726938
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt550to650": [
         12.43709649349205, 
-        0.6610420066269463
+        0.6610420066269475
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         11.230033765663222, 
-        0.6937393938007497
+        0.693739393800748
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650": [
         9.53492301649527, 
-        0.878769763995853
+        0.8787697639958527
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt250to350": [
         8.187755259231324, 
-        2.8115883170330522
+        2.8115883170330527
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt350to450": [
         8.56472232639203, 
-        0.7521919230196038
+        0.752191923019603
       ]
     }, 
     "phocr_data": {
@@ -4940,389 +4940,389 @@
     "qcdcr_qcd": {
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         1.486950492576985, 
-        0.4528668519901928
+        0.45311518852666477
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         6.777119265648701, 
-        1.107907963732943
+        1.0557068507269989
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt450to550": [
         4895.296652937883, 
-        53.869027367412485
+        54.377765839447335
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt300to400": [
         9.942242364899935, 
-        5.727389745529288
+        5.688710646896391
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt450to550": [
         270.86095140020495, 
-        7.508242099103784
+        7.526992641077469
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt350to450": [
         174.18132589752608, 
-        7.100006596707222
+        6.910462646899646
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_lowptb_MET_pt400toinf": [
         17.4618504470558, 
-        3.0439786976824927
+        3.0636651075842094
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt450to550": [
         60.79492818673473, 
-        3.7665096780416714
+        3.692816214513981
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt450to550": [
         4.59272257502472, 
-        0.6827583480133175
+        0.6611219079085088
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt650toinf": [
         22.172831383138877, 
-        2.0217463368390542
+        2.0525469016634292
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt400toinf": [
         1.8218668746753501, 
-        0.9643209340349217
+        0.9347590966224547
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt550to650": [
         0.5451449783189561, 
-        0.16052823197956853
+        0.15914469536117068
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt450to550": [
         11.06292338913424, 
-        1.2805680766547025
+        1.2701555810702232
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt650toinf": [
         1.31895433012058, 
-        0.3444422340981766
+        0.3671905961862324
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt650toinf": [
         0.06191517934509063, 
-        0.03272784357458795
+        0.03262927987018946
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt650toinf": [
         9.34031556064603, 
-        1.4143323918433697
+        1.4025597073573361
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt450to550": [
         4.562556469753895, 
-        1.1382290520874734
+        1.1424761948148148
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt550to650": [
         98.44799679840509, 
-        3.4238017125727755
+        3.375635305475897
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt250to350": [
         68.92197091057096, 
-        6.366915939007427
+        6.193661686688922
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt400toinf": [
         3.27165881471921, 
-        1.195338415340507
+        1.2216535113863627
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt300to400": [
         201.55394721751003, 
-        36.27556961791555
+        36.47783124695642
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt450to550": [
         55.838573195092124, 
-        6.542055921527429
+        6.270576145792719
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt450to550": [
         10.784685783024157, 
-        2.220574587384864
+        2.259662397843157
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt250to350": [
         530.2967563539471, 
-        17.433188927406402
+        17.70100580022377
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550toinf": [
         3.368573395897945, 
-        0.7676663768808787
+        0.7847519111097007
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt350to450": [
         374.0428940115323, 
-        22.172824146874888
+        21.83617573633605
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350": [
         58.83081012629393, 
-        8.12948807044291
+        8.466638805218045
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_lowptb12_MET_pt450toinf": [
         6.703376542293311, 
-        1.3215393974290375
+        1.416792333093893
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         43.55119069600509, 
-        7.793819729281452
+        7.825669709111152
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt550to650": [
         1513.743514836465, 
-        19.529796936184
+        19.556046417863246
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt550to650": [
         10.57970344958554, 
-        0.9754141539575195
+        1.0414455007264387
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt550to650": [
         2.5656186260496954, 
-        0.5199375918453158
+        0.527498883976085
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt550to650": [
         18.511441723825875, 
-        1.7864899166891852
+        1.7888941624367227
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt650toinf": [
         4.591374846653987, 
-        0.7108573814678101
+        0.7125075213898513
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt450to550": [
         93.11488843476491, 
-        8.144142756125586
+        8.297836951613279
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": [
         6.037569673233746, 
-        1.0173934892940306
+        0.9866713736849535
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt650toinf": [
         0.5955543030418526, 
-        0.1298653095540455
+        0.1334861721178718
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550": [
         3.518843546539968, 
-        0.8302737333115299
+        0.8141289596676542
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt550to650": [
         42.17922299455934, 
-        2.742136032009649
+        2.9243185128487843
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         108.3512088310847, 
-        35.10465144419484
+        37.03673529141587
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt350to450": [
         369.4461579784781, 
-        23.8486711207866
+        23.57161324059112
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt550to650": [
         19.208644832256304, 
-        1.7524180321212128
+        1.7570316399180337
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         3.3852879767880486, 
-        0.7995097164164284
+        0.7813613448323959
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt650to750": [
         489.7190350990405, 
-        7.93948520343413
+        8.058830260581782
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt250to350": [
         952.0972023734064, 
-        13.316200851539033
+        14.100145894565287
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_medptb12_MET_pt450toinf": [
         9.733512034280835, 
-        1.8294115271752422
+        1.8529140738259844
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt250to350": [
         470.20589447683926, 
-        38.97094167004388
+        38.809108744775365
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt450to550": [
         47.42437845938576, 
-        3.7377359906011005
+        3.6629755126388037
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt250to350": [
         1462.3540539755197, 
-        51.92519120140757
+        51.67816081087207
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt350to450": [
         59.87065819546342, 
-        10.588440429166043
+        10.854746438692414
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt350to450": [
         12.634625402296395, 
-        1.759245406667502
+        1.68261311218734
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt450to550": [
         23.798536742672127, 
-        1.7691274563472201
+        1.769385551233905
       ], 
       "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400toinf": [
         20.971530989493196, 
-        5.681634096462626
+        5.514367503343268
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt650to750": [
         35.1993991829415, 
-        1.952843330390661
+        1.9362472993961966
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt550toinf": [
         3.619944150122537, 
-        0.8477557481379586
+        0.8499215954189373
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt650toinf": [
         6.663886035359333, 
-        0.841387394613007
+        0.8673903527100816
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt350to450": [
         48.773442344311256, 
-        2.628078247163516
+        2.6088751116148052
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf": [
         5.906631545825546, 
-        0.7182890773245589
+        0.7169256397801606
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt750toinf": [
         273.3160882967331, 
-        6.3207051589319905
+        6.169777716774499
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt300toinf": [
         27.658931577447397, 
-        14.039890025592785
+        13.647514283487721
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt550to650": [
         3.5305443543905604, 
-        0.9741720187135311
+        1.0014800575860845
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt350to450": [
         373.43782943034034, 
-        7.784086311607606
+        7.594301040845421
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt750toinf": [
         19.259990801872227, 
-        1.6389372748724738
+        1.6435703644669766
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf": [
         5.87521315233043, 
-        0.809829155720026
+        0.8199668241688515
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt350to550": [
         7.996507210440944, 
-        2.244434645686327
+        2.352120386114778
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt250to350": [
         2971.1249256769297, 
-        97.23891573371041
+        93.41278115584178
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         47.90548882063283, 
-        7.155408059643289
+        7.1952931892525145
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt550to650": [
         13.449486604401168, 
-        1.3855185391683438
+        1.5110547753041719
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_lowptb_MET_pt300to400": [
         378.9700035171219, 
-        35.53659184007133
+        36.85404049493767
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt550to650": [
         5.318238054158913, 
-        0.8440068661005431
+        0.8007523743325105
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400toinf": [
         14.9099839200164, 
-        3.257624851840956
+        3.278877464515177
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt650toinf": [
         51.30311577051788, 
-        3.0662346700432144
+        2.9921063011468294
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt450to550": [
         163.27862008116205, 
-        4.80374535208931
+        4.60051641004388
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt550toinf": [
         0.3370646311150891, 
-        0.28509940013142376
+        0.2864195470516735
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt250to350": [
         163.9239226412445, 
-        14.553249694032417
+        14.564493466978554
       ], 
       "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": [
         57.48689377108205, 
-        14.531056370266784
+        14.375189930402405
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt350to450": [
         26.28707693011171, 
-        3.2259273323392224
+        3.1677935876130734
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt250to350": [
         113.72525629067484, 
-        5.13686134851938
+        4.96461482670191
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt450to550": [
         157.35186420105276, 
-        10.806182195190217
+        10.7485615008736
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450": [
         11.215182915465281, 
-        2.032884791133795
+        2.0364749268566635
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf": [
         0.7417479245845189, 
-        0.15799757718308996
+        0.16145622099901108
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf": [
         0.7177179418080966, 
-        0.2133611221224287
+        0.21048984204843207
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt300to400": [
         39.050627929786074, 
-        9.832767085608502
+        10.130498741814437
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt250to350": [
         91.80072479445752, 
-        19.334651869924233
+        20.108657472083937
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj6_MET_pt450toinf": [
         17.14331955406371, 
-        2.128027150258292
+        2.176348549286441
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         80.84810355185681, 
-        9.547526357650918
+        9.77929839678301
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt450to550": [
         81.16021095827561, 
-        8.993677622183217
+        9.078794728938739
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt550to650": [
         71.07729904486962, 
-        3.100190075789774
+        2.885892962044462
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         6.821436821633814, 
-        1.0774075255562403
+        1.0674524392746825
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650": [
         22.750645270348304, 
-        4.360895640317553
+        4.574812150786704
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt250to350": [
         27.323933552814495, 
-        3.4396548569929366
+        3.3403854020322585
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt350to450": [
         51.98194442780285, 
-        7.576553782845627
+        7.4446951494666855
       ]
     }, 
     "qcdcr_Rare": {
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         0.34675473789360467, 
-        0.29058972418891665
+        0.29058972418891654
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         0.4947545806578475, 
-        0.22987680440093405
+        0.22987680440093408
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt450to550": [
         0.7812993625889391, 
-        0.171043086781118
+        0.1710430867811181
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt300to400": [
         0.009987962902584968, 
-        0.23067442519047016
+        0.23067442519047013
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt450to550": [
         0.27780211038545843, 
@@ -5341,88 +5341,88 @@
         0.12898787236726947
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt450to550": [
-        -0.03253289132439363, 
-        0.022609219975090755
+        1e-06, 
+        0.05514211129948438
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt650toinf": [
         0.01674660098662173, 
-        0.013342935759950929
+        0.013342935759950927
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt400toinf": [
         0.10165229981222978, 
-        0.061489102638306335
+        0.06148910263830633
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt550to650": [
-        -0.0014768121850465832, 
-        0.011835934399073446
+        1e-06, 
+        0.013312746584120029
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt450to550": [
         0.07498792176551916, 
-        0.0594808539679473
+        0.059480853967947306
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt650toinf": [
         0.022176386967686312, 
         0.008565395421797867
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt650toinf": [
-        -2.3357407556545695e-05, 
-        2.335741688139594e-05
+        1e-06, 
+        4.671482443794163e-05
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt650toinf": [
         0.13581351309316858, 
-        0.06418026636399601
+        0.064180266363996
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt450to550": [
         0.06482262364113467, 
         0.09907320780021354
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt550to650": [
-        -0.0274132585591218, 
-        0.09479481096953843
+        1e-06, 
+        0.12220806952866023
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt250to350": [
         0.12744694517312638, 
-        0.07255342590682419
+        0.07255342590682418
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt400toinf": [
         0.02722394454269761, 
-        0.021161163336242444
+        0.02116116333624245
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt300to400": [
         0.13730365656262222, 
-        0.11475587178139178
+        0.1147558717813918
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt450to550": [
-        -0.2676138200337661, 
-        0.22278240515819542
+        1e-06, 
+        0.4903962251919615
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt450to550": [
         0.015269784525287378, 
-        0.008139576709186584
+        0.008139576709186585
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt250to350": [
         0.8945303480053113, 
-        0.3707208083601717
+        0.3707208083601716
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550toinf": [
-        -0.03901181576379997, 
-        0.1524308834366204
+        1e-06, 
+        0.19144269920042034
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt350to450": [
         1.3882840144067004, 
-        0.426281380636219
+        0.42628138063621884
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt250to350": [
         0.5488064272264097, 
-        0.21486090855116322
+        0.21486090855116327
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_lowptb12_MET_pt450toinf": [
-        -0.020251769031858657, 
-        0.051919680308064015
+        1e-06, 
+        0.07217144933992267
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         1.589681642068065, 
-        0.40523253079640004
+        0.40523253079640015
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt550to650": [
         0.40581956568185973, 
@@ -5441,36 +5441,36 @@
         0.08147044306910527
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt650toinf": [
-        -0.013984685670109798, 
-        0.016566080823717293
+        1e-06, 
+        0.030550766493827087
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt450to550": [
         0.3300664525013417, 
-        0.24922343755404402
+        0.24922343755404405
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": [
         0.1529583507610397, 
-        0.1019523297287804
+        0.10195232972878042
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt650toinf": [
-        -0.03161614061458806, 
-        0.053051014846763174
+        1e-06, 
+        0.08466715546135124
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550": [
         0.2685947728909426, 
-        0.15164145593274483
+        0.15164145593274478
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt550to650": [
         0.029328961926076147, 
-        0.021987537401531518
+        0.021987537401531514
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         3.3589093866621056, 
-        0.6707844943332072
+        0.6707844943332073
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt350to450": [
         1.1979306387431876, 
-        0.4392326621731018
+        0.4392326621731017
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt550to650": [
         0.045726345047420125, 
@@ -5478,23 +5478,23 @@
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         0.18268836270630828, 
-        0.11219701391354753
+        0.11219701391354751
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt650to750": [
         0.30684562989952013, 
-        0.08751720857394499
+        0.08751720857394495
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt250to350": [
         1.790655033592131, 
-        0.5216922899741302
+        0.5216922899741303
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_medptb12_MET_pt450toinf": [
         0.2428334490814379, 
-        0.09585104781481074
+        0.09585104781481076
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt250to350": [
         0.9597229577054591, 
-        0.5159823004296434
+        0.5159823004296437
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt450to550": [
         0.06600608364071547, 
@@ -5502,23 +5502,23 @@
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt250to350": [
         1.693686516000561, 
-        0.6449338594789356
+        0.6449338594789353
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt350to450": [
         0.19055018292997516, 
-        0.1102196991190409
+        0.11021969911904088
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt350to450": [
-        -0.027405124945637738, 
-        0.08754364113940606
+        1e-06, 
+        0.1149487660850438
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt450to550": [
         0.4935298486704909, 
         0.2571478440804935
       ], 
       "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400toinf": [
-        -0.07920078920822249, 
-        0.10051489096802833
+        1e-06, 
+        0.1797156801762508
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt650to750": [
         0.032420009751291445, 
@@ -5529,8 +5529,8 @@
         0.08916717923392399
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt650toinf": [
-        -0.02571471572152717, 
-        0.025714715721527125
+        1e-06, 
+        0.05142943144305429
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt350to450": [
         0.24880716561028748, 
@@ -5538,7 +5538,7 @@
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf": [
         0.23646168899453812, 
-        0.09636042107688748
+        0.09636042107688747
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt750toinf": [
         0.3333853330952792, 
@@ -5546,7 +5546,7 @@
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt300toinf": [
         0.4044764952412052, 
-        0.1785923892702157
+        0.17859238927021567
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt550to650": [
         0.005347547069007419, 
@@ -5558,7 +5558,7 @@
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt750toinf": [
         0.1259451826381266, 
-        0.07769244446163026
+        0.07769244446163025
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf": [
         0.10830098374597696, 
@@ -5566,15 +5566,15 @@
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt350to550": [
         0.08047821026759294, 
-        0.07455257323979407
+        0.07455257323979408
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt250to350": [
         6.658150459551798, 
-        1.070526431310483
+        1.070526431310484
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         1.9871289553592533, 
-        0.5459100557103601
+        0.54591005571036
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt550to650": [
         0.1343180289393615, 
@@ -5590,19 +5590,19 @@
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400toinf": [
         0.03033014556203284, 
-        0.017249138857582395
+        0.017249138857582388
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt650toinf": [
         0.04909020354103433, 
         0.14402727392080958
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt450to550": [
-        -0.20637419051084294, 
-        0.31008511764063135
+        1e-06, 
+        0.5164593081514742
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt550toinf": [
-        -0.0009576032930240785, 
-        0.003138789750885428
+        1e-06, 
+        0.004096393043909506
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt250to350": [
         0.2605159539277153, 
@@ -5610,7 +5610,7 @@
       ], 
       "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": [
         0.11580825373107473, 
-        0.07025954672535249
+        0.07025954672535252
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt350to450": [
         0.06447567226218354, 
@@ -5621,20 +5621,20 @@
         0.28687608822330957
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt450to550": [
-        -0.0019760203071541582, 
-        0.06407083010482403
+        1e-06, 
+        0.06604685041197819
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450": [
         0.26604606374599626, 
-        0.11064927671776202
+        0.11064927671776206
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf": [
         0.04164059793387764, 
-        0.02976519591699408
+        0.02976519591699409
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf": [
-        -0.1717621133015257, 
-        0.13860049098438976
+        1e-06, 
+        0.31036260428591544
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt300to400": [
         0.30495556393331924, 
@@ -5642,7 +5642,7 @@
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt250to350": [
         0.20129040003300247, 
-        0.17388778139939792
+        0.1738877813993979
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj6_MET_pt450toinf": [
         0.085461110270316, 
@@ -5654,27 +5654,27 @@
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt450to550": [
         0.05924621517524287, 
-        0.05333670668515454
+        0.05333670668515455
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt550to650": [
-        -4.242509223928437e-05, 
-        0.21290495593102365
+        1e-06, 
+        0.2129473810232629
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         0.4294006087006679, 
-        0.2621107228639229
+        0.26211072286392295
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650": [
         0.47378102708458414, 
-        0.22152533962469198
+        0.22152533962469204
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt250to350": [
         0.3320289188971941, 
-        0.17421555890503915
+        0.17421555890503918
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt350to450": [
         0.239894559670617, 
-        0.11931784036878142
+        0.11931784036878139
       ]
     }, 
     "lepcr_data": {
@@ -9148,23 +9148,23 @@
     "qcdcr_znunu": {
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         0.12775132573096926, 
-        0.05120277052752496
+        0.051202770527524984
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         0.11071295109832135, 
-        0.050118536416510484
+        0.05011853641651048
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt450to550": [
         579.8515388828828, 
-        5.921773663604386
+        5.921773663604437
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt300to400": [
         0.20320530802018766, 
-        0.08688585337522677
+        0.08688585337522674
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt450to550": [
         17.061632082190954, 
-        0.8371375529361075
+        0.8371375529361049
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt350to450": [
         3.257648053197954, 
@@ -9176,31 +9176,31 @@
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt450to550": [
         1.7014495150488074, 
-        0.2731600693787737
+        0.2731600693787738
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt450to550": [
         0.013462388737025321, 
-        0.0037450172800742214
+        0.003745017280074222
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt650toinf": [
         7.544695243956994, 
-        0.6225464585492552
+        0.6225464585492547
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt400toinf": [
         0.09287986128401826, 
-        0.04402582012546187
+        0.04402582012546186
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt550to650": [
         0.4679830071208926, 
-        0.11542690580021393
+        0.11542690580021395
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt450to550": [
         0.7189549598188023, 
-        0.14393500048116684
+        0.14393500048116686
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt650toinf": [
         0.4020994317779696, 
-        0.14032363827273592
+        0.14032363827273595
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt650toinf": [
         0.13630731350622227, 
@@ -9208,43 +9208,43 @@
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt650toinf": [
         0.7005016643761337, 
-        0.16094536321562916
+        0.1609453632156291
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt450to550": [
         1.2234136506867799, 
-        0.19650311821523303
+        0.19650311821523309
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt550to650": [
         8.451922935316361, 
-        0.7272195741039543
+        0.727219574103954
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt250to350": [
         1.0320934941300948, 
-        0.2047216418805189
+        0.20472164188051883
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt400toinf": [
         0.9672172657137708, 
-        0.36078984878506043
+        0.36078984878506054
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt300to400": [
         34.20506997463417, 
-        2.5493802527748604
+        2.5493802527748612
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt450to550": [
         8.14736693265968, 
-        0.5231768598476695
+        0.5231768598476697
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt450to550": [
         0.4678250776414643, 
-        0.17081397683497923
+        0.1708139768349792
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt250to350": [
         5.659138233419981, 
-        0.4802492134751239
+        0.4802492134751231
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550toinf": [
         0.09721273596733226, 
-        0.049741338709832536
+        0.04974133870983255
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt350to450": [
         9.862610726699131, 
@@ -9256,19 +9256,19 @@
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_lowptb12_MET_pt450toinf": [
         1.559848745342606, 
-        0.41726932847802756
+        0.4172693284780276
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         0.872944564235695, 
-        0.18198326497108683
+        0.18198326497108688
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt550to650": [
         267.43774484744426, 
-        3.442643884924494
+        3.4426438849244883
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt550to650": [
         0.26779377869570453, 
-        0.08632024448290976
+        0.08632024448290974
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt550to650": [
         0.4489412443499532, 
@@ -9276,15 +9276,15 @@
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt550to650": [
         1.0289872068833574, 
-        0.2089903411171233
+        0.20899034111712314
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt650toinf": [
         2.303680005093156, 
-        0.3460797008274848
+        0.34607970082748474
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt450to550": [
         4.300813817856579, 
-        0.7772524970493414
+        0.7772524970493407
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": [
         0.08839656141208252, 
@@ -9292,7 +9292,7 @@
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt650toinf": [
         0.2707293958419541, 
-        0.10349242021485526
+        0.10349242021485525
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt450to550": [
         0.08223315820578136, 
@@ -9300,79 +9300,79 @@
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt550to650": [
         9.565397566327192, 
-        0.6984769371909707
+        0.698476937190971
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         0.9351390662595804, 
-        0.31127544986263467
+        0.3112754498626347
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt350to450": [
         26.49654825113157, 
-        1.1512888869990419
+        1.151288886999038
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt550to650": [
         3.11600518715386, 
-        0.34972448849349924
+        0.349724488493499
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         0.14652490384924022, 
-        0.07189979044707398
+        0.071899790447074
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt650to750": [
         118.13388184711766, 
-        2.2044129257107756
+        2.2044129257107583
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt250to350": [
         9.703432409967718, 
-        0.6370310805181093
+        0.6370310805181095
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_highptisr_medptb12_MET_pt450toinf": [
         2.186848501253735, 
-        0.2844394912905297
+        0.28443949129053
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt250to350": [
         13.233141410287317, 
-        1.1788457828807777
+        1.1788457828807783
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt450to550": [
         6.7580796155361895, 
-        0.8128286410624194
+        0.8128286410624193
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt250to350": [
         20.036054275319657, 
-        0.848450840965271
+        0.8484508409652696
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htlt1000_MET_pt350to450": [
         4.097497800718884, 
-        0.49753069406995754
+        0.49753069406995726
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt350to450": [
         0.008417948038186296, 
-        0.002499212221891739
+        0.0024992122218917374
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt450to550": [
         0.41037697631691117, 
-        0.11494086742120133
+        0.11494086742120138
       ], 
       "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400toinf": [
         1.990240392272426, 
-        0.318695321194581
+        0.31869532119458094
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt650to750": [
         3.799255770635682, 
-        0.40486701481791354
+        0.4048670148179137
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt550toinf": [
         0.08815308188968629, 
-        0.059588726270752596
+        0.05958872627075259
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt650toinf": [
         2.256851121186628, 
-        0.3387299457268563
+        0.33872994572685616
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt350to450": [
         0.644014047775272, 
-        0.14969041700008398
+        0.14969041700008395
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1300to1500_MET_pt650toinf": [
         1.5641879734284885, 
@@ -9380,11 +9380,11 @@
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj2to5_MET_pt750toinf": [
         106.96975953894525, 
-        2.209355970178617
+        2.2093559701786316
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt300toinf": [
         5.6560728980048225, 
-        0.941475099387785
+        0.9414750993877853
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt550to650": [
         0.33630652471219946, 
@@ -9392,11 +9392,11 @@
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt350to450": [
         5.475757288211753, 
-        0.475973041283188
+        0.4759730412831887
       ], 
       "bin_qcdcr_lm_nb0_nivf0_highptisr_nj6_MET_pt750toinf": [
         4.444130344905716, 
-        0.46449730624181695
+        0.46449730624181723
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt650toinf": [
         1.9408959289603445, 
@@ -9404,23 +9404,23 @@
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt350to550": [
         0.6751322838754277, 
-        0.15838205504446398
+        0.15838205504446407
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt250to350": [
         98.71449006716648, 
-        3.2942874588775606
+        3.294287458877569
       ], 
       "bin_qcdcr_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         0.619126379012414, 
-        0.1421830467104354
+        0.14218304671043544
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt550to650": [
         1.9303416696093336, 
-        0.2675334404540398
+        0.26753344045403965
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_lowptisr_lowptb_MET_pt300to400": [
         56.35493565830802, 
-        3.5492298984809727
+        3.5492298984809785
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt550to650": [
         2.103540366018933, 
@@ -9432,11 +9432,11 @@
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt650toinf": [
         3.883195006985261, 
-        0.40217037730852584
+        0.40217037730852573
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt450to550": [
         3.6107739524786666, 
-        0.38310697716223774
+        0.3831069771622381
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt550toinf": [
         0.021318217263797123, 
@@ -9444,23 +9444,23 @@
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt250to350": [
         2.3927478889982012, 
-        0.28387086434576614
+        0.28387086434576597
       ], 
       "bin_qcdcr_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": [
         4.472028378520008, 
-        0.8799789559434342
+        0.8799789559434344
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1300to1500_MET_pt350to450": [
         0.26306674842271605, 
-        0.1257825350059503
+        0.12578253500595027
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_htgt1500_MET_pt250to350": [
         0.6587921957270737, 
-        0.1555314322273119
+        0.15553143222731192
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj2to5_MET_pt450to550": [
         17.40271112325172, 
-        1.028284941643736
+        1.0282849416437376
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt350to450": [
         0.4440158127445102, 
@@ -9468,7 +9468,7 @@
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htlt1000_MET_pt650toinf": [
         0.6598454653458248, 
-        0.13887624610222293
+        0.138876246102223
       ], 
       "bin_qcdcr_hm_nb3_highmtb_ht1000to1500_MET_pt550toinf": [
         0.1007433480972395, 
@@ -9476,7 +9476,7 @@
       ], 
       "bin_qcdcr_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt300to400": [
         5.809814325417392, 
-        0.9371684418659236
+        0.9371684418659237
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htlt1000_MET_pt250to350": [
         1.3027366220730983, 
@@ -9484,7 +9484,7 @@
       ], 
       "bin_qcdcr_lm_nb0_nivf1_highptisr_nj6_MET_pt450toinf": [
         1.0921152249939041, 
-        0.23785345923630422
+        0.23785345923630408
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         0.7402844649450344, 
@@ -9492,2145 +9492,2145 @@
       ], 
       "bin_qcdcr_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt450to550": [
         8.435823963433904, 
-        0.7215109466022884
+        0.7215109466022877
       ], 
       "bin_qcdcr_hm_nb1_highmtb_htgt1500_MET_pt550to650": [
         2.0160096845866065, 
-        0.29765278511948623
+        0.297652785119486
       ], 
       "bin_qcdcr_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         0.13079422187365708, 
-        0.059702118680852
+        0.059702118680852026
       ], 
       "bin_qcdcr_hm_nb1_highmtb_ht1000to1300_MET_pt550to650": [
         2.868180542335722, 
-        0.34291220635370095
+        0.3429122063537011
       ], 
       "bin_qcdcr_hm_nb3_highmtb_htgt1500_MET_pt250to350": [
         0.11048020073394582, 
-        0.050957074887143385
+        0.05095707488714337
       ], 
       "bin_qcdcr_hm_nbeq2_highmtb_ht1000to1300_MET_pt350to450": [
         1.5280422784026086, 
-        0.3347152806785843
+        0.33471528067858436
       ]
     }, 
     "qcd": {
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htlt1000_MET_pt250to350": [
         0.925619896682203, 
-        0.7642086382493037
+        0.7690571746046583
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htgt1500_MET_pt450to550": [
         0.06191414462997705, 
-        0.04298207323139293
+        0.04263174546492562
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htlt1000_MET_pt350to450": [
         16.091761375651597, 
-        4.01578282229852
+        3.9709963144467277
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1000to1300_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htlt1000_MET_pt250to350": [
         0.11200289109916255, 
-        0.07031152939157326
+        0.07451310637386832
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_ht1000to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt550to650": [
         0.4049038043837302, 
-        0.1517111855237251
+        0.1555045302634929
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt350to450": [
         4.687303328512819, 
-        0.9111988756777907
+        0.891717803292033
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1300to1500_MET_pt350to450": [
         0.12567724820882298, 
-        0.0937834699163061
+        0.09304872380184881
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_ht1000to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1300to1500_MET_pt250to350": [
         0.006038837959947288, 
-        0.00590726585824876
+        0.0060785220478589575
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1000to1300_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htgt1500_MET_pt550to650": [
         0.004468268009009522, 
-        0.0035571294455120756
+        0.003505795151074625
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1000to1300_MET_pt250to350": [
         1.405183872211666, 
-        0.9458063169133973
+        0.941931943294975
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_lowptb_MET_pt300to400": [
         130.31502940628377, 
-        14.649516280737268
+        14.477395748586064
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt550to650": [
         0.8612599856478134, 
-        0.1993068453641144
+        0.19953396543650842
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1300to1500_MET_pt250to350": [
         0.7133475111585001, 
-        0.2147353932694895
+        0.22641039825974982
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt450to550": [
         2.0201958798390858, 
-        0.6836448101027298
+        0.6632148200790678
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_ht1000to1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt400to500": [
         0.14249155575379982, 
-        0.12627477282232655
+        0.1229720813562815
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htgt1500_MET_pt350to450": [
         0.4085558452269814, 
-        0.16431266648292867
+        0.16760096282309178
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt250to350": [
         0.03294558446057416, 
-        0.03112354392685479
+        0.03298822925123657
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htlt1000_MET_pt450to550": [
         0.9353264181010857, 
-        0.37205752999485314
+        0.3709714082423451
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_htlt1000_MET_pt250to350": [
         0.014485520611861678, 
-        0.014546812186336893
+        0.01461301909697726
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1000to1300_MET_pt550to650": [
         0.07448679819019727, 
-        0.05078256547404175
+        0.049787743317472107
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt550to650": [
         0.024711093609993948, 
-        0.023844149020649557
+        0.02435552173920592
       ], 
       "bin_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt650to750": [
         0.36015336972595446, 
-        0.13181032331919276
+        0.13477569642895684
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1000to1300_MET_pt550to650": [
         0.0002626642858718186, 
-        0.00025331687510250317
+        0.00025900598648389395
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt350to450": [
         0.18066957213933027, 
-        0.10192423651624832
+        0.10026593827909545
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1000to1300_MET_pt250to350": [
         0.3257850585462449, 
-        0.3022527720781994
+        0.302665725693029
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_htgt1500_MET_pt250to350": [
-        -0.026105908732755742, 
-        0.02527896306449828
+        1e-06, 
+        0.052228338263440435
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htlt1000_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt250to350": [
         10.351433711637645, 
-        5.52675190514492
+        5.586673798609867
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1000to1300_MET_pt350to450": [
         0.24320363267648226, 
-        0.1725016968806784
+        0.16997374115445849
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt650toinf": [
         0.3678865294845637, 
-        0.10251906214468715
+        0.09954161414495395
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htgt1500_MET_pt450to550": [
         0.006183542777173595, 
-        0.0059930909858495205
+        0.006272647170300299
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1300to1500_MET_pt650toinf": [
         0.00023640375167608565, 
-        0.00022596924181521327
+        0.00023530060148388914
       ], 
       "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         11.134066603289764, 
-        3.488441500457951
+        3.5462246992795174
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_highptisr_medptb12_MET_pt550to650": [
         0.13090974806897446, 
-        0.055533089718942864
+        0.05346649763117867
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1000to1300_MET_pt450to550": [
         0.05865280141609418, 
-        0.031085478518631242
+        0.030836448531589462
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1000to1300_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt650toinf": [
         0.17650435322422076, 
-        0.07662156049495887
+        0.07752585958579607
       ], 
       "bin_lm_nb0_nivf0_highptisr_nj2to5_MET_pt450to550": [
         389.7551396832125, 
-        14.767745006858823
+        15.760055968026975
       ], 
       "bin_lm_nb0_nivf1_highptisr_nj2to5_MET_pt650to750": [
         1.90730886617428, 
-        1.467411115587113
+        1.4407728737528138
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1300to1500_MET_pt550to650": [
         0.008740036534851333, 
-        0.008907498903327035
+        0.008638465587570279
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt650toinf": [
         0.025031023260444596, 
-        0.018288898073513752
+        0.018020502439119398
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt250to350": [
         0.17958117345832933, 
-        0.1882429932698434
+        0.18522622900479108
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt300to400": [
         11.726393252811423, 
-        5.274795265741892
+        5.169554452059283
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_ht1000to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_highptisr_lowptb12_MET_pt550to650": [
         0.3927535035184331, 
-        0.24277499683097967
+        0.24303365535442958
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htlt1000_MET_pt450to550": [
         0.39760695727227363, 
-        0.39840967704637725
+        0.38891047249429883
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htgt1500_MET_pt350to450": [
         0.28686195442804124, 
-        0.10836512391927322
+        0.1152242664849755
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1000to1300_MET_pt250to350": [
         0.12900691902074207, 
-        0.07888667994795041
+        0.07860886511686162
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt250to350": [
         49.848868339311686, 
-        3.455642507544729
+        3.368852081000643
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htgt1500_MET_pt650toinf": [
         0.0031662616435554174, 
-        0.0032748907394300284
+        0.003176625948948496
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htgt1500_MET_pt650toinf": [
         0.017406474618564153, 
-        0.016879974340721315
+        0.016878462324034737
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt550to650": [
         0.016297993395291713, 
-        0.01578043704312268
+        0.01614176501009794
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htlt1000_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt350to450": [
         0.00020726258211739015, 
-        0.00019551169691428636
+        0.00020688651755049593
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_htgt1500_MET_pt450to550": [
         0.0011465701204236062, 
-        0.00118562588364736
+        0.001135851027762499
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt550to650": [
         0.3050656216807549, 
-        0.14581504375497925
+        0.14575651658655733
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htlt1000_MET_pt650toinf": [
         0.022178035233125972, 
-        0.020769849910311652
+        0.021163880070481485
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htgt1500_MET_pt250to350": [
         0.01553032692238874, 
-        0.014175164764706932
+        0.01386517313473791
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1000to1300_MET_pt350to450": [
         0.0007291822842844314, 
-        0.0007518132389566613
+        0.0007391688011561384
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htlt1000_MET_pt250to350": [
         2.127159222026233, 
-        1.2292657587438724
+        1.22672751562732
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt550toinf": [
         0.03771211805697862, 
-        0.03675934865360215
+        0.03768718095167162
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt650toinf": [
         0.15771627988756068, 
-        0.11592229212987552
+        0.116846857982928
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb0_nivf1_highptisr_nj6_MET_pt450to550": [
         1.1073866737269988, 
-        0.3160400522420783
+        0.30321400830941425
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htgt1500_MET_pt550to650": [
         0.07227563786964754, 
-        0.035262982575870995
+        0.03339127602796772
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htgt1500_MET_pt550to650": [
         0.048010423766615046, 
-        0.04399439685769825
+        0.044118878097618525
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htgt1500_MET_pt650toinf": [
         0.053830033303050744, 
-        0.03393370868739496
+        0.03438943384727064
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_ht1000to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_lowptb_MET_pt600toinf": [
         0.12630243766928512, 
-        0.13178628291742006
+        0.12769781993143575
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htgt1500_MET_pt350to450": [
         0.03709904723989317, 
-        0.02813166282412822
+        0.02909186408113873
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_ht1000to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_htgt1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_highptisr_medptb12_MET_pt650toinf": [
         0.1051093716040805, 
-        0.038719289975300504
+        0.03735424900535706
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt450to550": [
         0.06505990965488391, 
-        0.05422685434587364
+        0.05331848282879985
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_htlt1000_MET_pt550toinf": [
         0.0021325398386799785, 
-        0.002222278185479977
+        0.0020999152988632618
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt350to450": [
         0.6576026312060061, 
-        0.4660102978526522
+        0.44327057310452717
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt250to350": [
         0.022387147845389962, 
-        0.01472487287594916
+        0.014902040695693885
       ], 
       "bin_lm_nb0_nivf0_highptisr_nj6_MET_pt750toinf": [
         4.177694555471952, 
-        0.5362864060487773
+        0.556326762771875
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htgt1500_MET_pt450to550": [
         0.14776735096412977, 
-        0.1311392189062402
+        0.12370257072273376
       ], 
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt500to600": [
         0.2801537690309985, 
-        0.15071839813562463
+        0.14955888856042293
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1000to1300_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htlt1000_MET_pt550to650": [
         0.035950581989584604, 
-        0.03614389461805752
+        0.03582804461489141
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htgt1500_MET_pt250to350": [
         0.25792154628330316, 
-        0.12714273718636435
+        0.12938075469328084
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_ht1000to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1000to1300_MET_pt550to650": [
         0.11647723648222588, 
-        0.06411742256646108
+        0.06287116705578287
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt450to550": [
         0.27494736371632117, 
-        0.08810353977577069
+        0.0865793348153824
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1300to1500_MET_pt650toinf": [
         0.0005458884767287886, 
-        0.0005243106936063135
+        0.0005406029909967604
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt350to450": [
         0.9393847892300613, 
-        0.21822510819446495
+        0.21804220281378525
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt350to450": [
         7.472626592695904, 
-        1.4424071259512403
+        1.4530922998935414
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_ht1000to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htgt1500_MET_pt250to350": [
         1.9196708068833663, 
-        0.9465872342217757
+        0.9535866574344217
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_ht1000to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1000to1300_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htgt1500_MET_pt350to450": [
         0.34017275017297, 
-        0.29687307658417766
+        0.30257746896587995
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt500toinf": [
         0.028367202817410328, 
-        0.021909655656953835
+        0.022134616391986044
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt300to400": [
         6.086963156628661, 
-        1.9241534798028106
+        1.9436453056988545
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_htlt1000_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt750toinf": [
         0.219667433223881, 
-        0.09599395448057257
+        0.0943349417039651
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_htlt1000_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt500toinf": [
         0.3663427911696884, 
-        0.2545268783197026
+        0.25173787482837884
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_ht1000to1500_MET_pt350to450": [
         0.01048308483456056, 
-        0.010752839982385054
+        0.010376594378568024
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_htgt1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb0_nivf1_highptisr_nj2to5_MET_pt550to650": [
         4.819272127085484, 
-        1.266869748667657
+        1.292836729551993
       ], 
       "bin_lm_nb0_nivf0_highptisr_nj2to5_MET_pt650to750": [
         43.60929847695992, 
-        3.0160836080651956
+        2.897392986212624
       ], 
       "bin_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt450to550": [
         3.5572935654934232, 
-        0.9008111800706214
+        0.9063498466445596
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt550to650": [
         0.27774860218875635, 
-        0.14327583240523792
+        0.14718674361703174
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_ht1000to1500_MET_pt250to350": [
         0.23342210381234782, 
-        0.2344097665027906
+        0.23547663574295705
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt550toinf": [
         0.0004983289988793196, 
-        0.00048396772680940484
+        0.0004958700777370953
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1000to1300_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         0.143756042462595, 
-        0.05071704370197971
+        0.051717023867813766
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt400to500": [
         4.258035646238349, 
-        1.1949939788047919
+        1.1672423177445455
       ], 
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt600toinf": [
         0.04832635493136578, 
-        0.027150080098512743
+        0.026799730731476887
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1000to1300_MET_pt450to550": [
         0.14622759791105905, 
-        0.07242712015452418
+        0.07138444682939471
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_htlt1000_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         3.0814817972893453, 
-        2.026813525029182
+        1.993267363638808
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htgt1500_MET_pt550to650": [
         0.022811370999485346, 
-        0.024185673306176762
+        0.023172145647809807
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_htgt1500_MET_pt350to450": [
         0.012443291849192198, 
-        0.01225799231046646
+        0.011931888933513518
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt250to350": [
         2.1376773494726056, 
-        1.3873205018232218
+        1.388356926473205
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_ht1000to1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb2_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         5.535738439240611, 
-        1.5047682794254413
+        1.5744211603839369
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htlt1000_MET_pt350to450": [
         2.713379619002871, 
-        1.2405590360634946
+        1.2407649403608003
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htgt1500_MET_pt550to650": [
         0.037331079860334, 
-        0.03616504442448978
+        0.037850152114592604
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb0_nivf1_highptisr_nj2to5_MET_pt450to550": [
         8.9490693055447, 
-        1.8739004352832889
+        1.7932190815194937
       ], 
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_lowptb_MET_pt500to600": [
         3.062165320474686, 
-        1.4065019210267549
+        1.4221108396886377
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_htgt1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_htlt1000_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt500toinf": [
         0.6805414762954429, 
-        0.6528363082021371
+        0.6270953992960083
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_highptisr_highptb12_nj7_MET_pt450to550": [
         1.6448630229909127, 
-        0.4728929223282495
+        0.4732791604149999
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htlt1000_MET_pt550to650": [
         0.41094807964958213, 
-        0.40317266076811
+        0.40676330911638253
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_ht1000to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt400to500": [
         1.0556017819028625, 
-        0.5907226642735119
+        0.5857287624138732
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_ht1000to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1000to1300_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt550to650": [
         1.0249796816043477, 
-        0.3503458038543395
+        0.35358954949836235
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htlt1000_MET_pt350to450": [
         0.9499256692424107, 
-        0.44651862277000837
+        0.4417494294775359
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htlt1000_MET_pt250to350": [
         65.53764000709259, 
-        11.307486901864356
+        11.3032957532767
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_ht1000to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt550to650": [
         2.5070360289184888, 
-        0.566234170501813
+        0.5739125886288889
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htlt1000_MET_pt650toinf": [
         0.2653072699208598, 
-        0.14633113804358266
+        0.15208709781870075
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_htlt1000_MET_pt250to350": [
         1.3906573329050096, 
-        1.2557688179422601
+        1.2218566726939308
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htlt1000_MET_pt450to550": [
         0.9118212983955528, 
-        0.5174790321294044
+        0.5361557140461143
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb0_nivf0_highptisr_nj2to5_MET_pt750toinf": [
         23.50420457688842, 
-        1.179495858070524
+        1.282964374592619
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1300to1500_MET_pt350to450": [
         0.9067606327273752, 
-        0.5950087157342019
+        0.6041096614950064
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt350to450": [
         0.031276711024144706, 
-        0.030947669463826544
+        0.03152948955193122
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1300to1500_MET_pt350to450": [
         0.0012198749928243762, 
-        0.00125773512226442
+        0.00123658179228971
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1300to1500_MET_pt650toinf": [
         0.13105440737932955, 
-        0.0469226010800749
+        0.044235057321103735
       ], 
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_medptb_MET_pt300to400": [
         76.10679464432529, 
-        19.483874073571943
+        19.176028603661912
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_htlt1000_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htgt1500_MET_pt650toinf": [
         0.004987317417806589, 
-        0.005133581540199279
+        0.005005896175663497
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1300to1500_MET_pt250to350": [
         0.003869416391915955, 
-        0.003662371704152065
+        0.00386842595643877
       ], 
       "bin_lm_nb0_nivf1_highptisr_nj6_MET_pt550to650": [
         0.5418615070469245, 
-        0.21177648487161446
+        0.2034253227091084
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_htgt1500_MET_pt250to350": [
         0.06519292119758494, 
-        0.04183814200324565
+        0.042564148790604
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_highptisr_medptb12_MET_pt450to550": [
         0.3903299543381557, 
-        0.16394255932463705
+        0.16370614350665588
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt350to450": [
         0.10550788797486868, 
-        0.08289204164128489
+        0.08261591573832958
       ], 
       "bin_lm_nb0_nivf0_highptisr_nj6_MET_pt650to750": [
         5.114929132699956, 
-        0.5658045841007797
+        0.5440389088504834
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1000to1300_MET_pt450to550": [
         0.2389507929957691, 
-        0.1019299582669436
+        0.1075605266368956
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_ht1000to1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htgt1500_MET_pt250to350": [
         0.37220256225941334, 
-        0.11679101171241162
+        0.1131310707174728
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1000to1300_MET_pt650toinf": [
         0.0922605266601908, 
-        0.07324384718712232
+        0.07751658959824942
       ], 
       "bin_lm_nb0_nivf1_highptisr_nj2to5_MET_pt750toinf": [
         0.5462750467741246, 
-        0.16822220749830474
+        0.17406261225278558
       ], 
       "bin_lm_nb0_nivf1_highptisr_nj6_MET_pt650to750": [
         0.06871151380500314, 
-        0.032130425265969535
+        0.03213842857681424
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1300to1500_MET_pt250to350": [
         1.6022665799559204, 
-        1.2181413512467947
+        1.173879354602137
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt650toinf": [
         0.41914091858279556, 
-        0.22858469154315897
+        0.2125599061975646
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1300to1500_MET_pt550to650": [
         0.05576635270663638, 
-        0.052659833093464066
+        0.05423959167337601
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt250to350": [
         0.15711525228946743, 
-        0.14842513464636195
+        0.1573170564847579
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt350to450": [
         0.7627695864449058, 
-        0.27743796329231524
+        0.2737365025225355
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1000to1300_MET_pt650toinf": [
         0.032383989038378115, 
-        0.02325041214046025
+        0.023153121553734436
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htlt1000_MET_pt450to550": [
         5.0374545093129495, 
-        1.2799862357309129
+        1.335335570085476
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt450to550": [
         0.04276330079662872, 
-        0.028319356087205746
+        0.027834450863912164
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_ht1000to1500_MET_pt550toinf": [
         0.059453087744094885, 
-        0.036370354521392215
+        0.035836883304081975
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt250to350": [
         47.644318307502004, 
-        13.786084883973919
+        13.424089720033642
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1000to1300_MET_pt650toinf": [
         0.0023098345060384336, 
-        0.0014933428560820893
+        0.0014837562481535658
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_lowptisr_lowptb12_MET_pt500toinf": [
         0.10042899203170022, 
-        0.07230568420724343
+        0.07525990934046492
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt650toinf": [
         0.0026902558964104696, 
-        0.0027825540380669663
+        0.002699062064957115
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1300to1500_MET_pt450to550": [
         0.040131178323188584, 
-        0.028492490851067958
+        0.02790495089704178
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_ht1000to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_ht1000to1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htlt1000_MET_pt650toinf": [
         0.0003903795778382305, 
-        0.00037535643562319504
+        0.0003831174846096217
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1000to1300_MET_pt550to650": [
         0.10378066182379556, 
-        0.03170126684157281
+        0.03207380610515275
       ], 
       "bin_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt400to500": [
         3.7894490539754146, 
-        1.4959595599839182
+        1.445367956135684
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_ht1000to1500_MET_pt250to350": [
         0.018649718942868997, 
-        0.01571250756388698
+        0.015140927289690378
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htlt1000_MET_pt650toinf": [
         0.010410021502432533, 
-        0.010477027435601903
+        0.010385961077655093
       ], 
       "bin_lm_nb0_nivf0_highptisr_nj2to5_MET_pt550to650": [
         111.31380735766898, 
-        6.472898924404018
+        6.528166548245293
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb0_nivf1_highptisr_nj6_MET_pt750toinf": [
         0.1555296042778283, 
-        0.06185500549096955
+        0.0639637871368342
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_htlt1000_MET_pt250to350": [
         0.047681242044560944, 
-        0.04928306809130401
+        0.04776068544338497
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htlt1000_MET_pt550to650": [
         0.6117774777627943, 
-        0.4190352827306295
+        0.4373020247584826
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1000to1300_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htlt1000_MET_pt650toinf": [
         0.04733718245817167, 
-        0.03991828580654474
+        0.04057405666674203
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt550to650": [
         0.0654815069216743, 
-        0.04758440106573717
+        0.04669337276560193
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt550toinf": [
         0.0006343036716380473, 
-        0.0006719678256697027
+        0.0006313683187299635
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt250to350": [
         1.4490551566758583, 
-        0.4920748982213344
+        0.5057767159140795
       ], 
       "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt500toinf": [
         0.24151566968637234, 
-        0.14395066161808628
+        0.1458160200055733
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1000to1300_MET_pt250to350": [
         0.9657637888684703, 
-        0.5124203075711893
+        0.5035496352642652
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt250to350": [
         0.24002582569339376, 
-        0.22940163496505778
+        0.22721776730379223
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf0_lowmtb_lowptisr_lowptb_MET_pt400to500": [
         13.93954464432771, 
-        2.666260485119125
+        2.672023153593896
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw1_ht1000to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1300to1500_MET_pt250to350": [
         0.3096736439887069, 
-        0.1563642705573744
+        0.14847689402896067
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt250to350": [
         8.363657041173369, 
-        2.8905791214742305
+        2.9873369695111793
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_htgt1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1300to1500_MET_pt650toinf": [
         0.0053311092528570405, 
-        0.0051430603329141065
+        0.005054034668918479
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htgt1500_MET_pt450to550": [
         0.028579139602795293, 
-        0.01654063629906361
+        0.01602077121130452
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt400to500": [
         1.6033464842200824, 
-        0.9070544450095847
+        0.8436948384607129
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt350to450": [
         3.125304768472301, 
-        1.301956704886738
+        1.3666210464836812
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_htlt1000_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htlt1000_MET_pt550to650": [
         0.0021766550113037995, 
-        0.002109826883468147
+        0.0021640896758779136
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf1_lowmtb_medptisr_lowptb_MET_pt400to500": [
         3.675813850664458, 
-        1.592207767483358
+        1.5333036748205597
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt450to550": [
         0.00712801118100701, 
-        0.006746128351814186
+        0.0064780127536712955
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_ht1000to1500_MET_pt450to550": [
         0.0001360500747720642, 
-        0.00014227726667602353
+        0.00013549941809074686
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt250to350": [
         0.1820761701550417, 
-        0.158838465566852
+        0.1624012062721367
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1300to1500_MET_pt550to650": [
         0.0009349612912555054, 
-        0.0009834956209949094
+        0.0009468539549172757
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt350to450": [
         0.09876587633055176, 
-        0.09661737001492728
+        0.09554415613684264
       ], 
       "bin_lm_nb0_nivf0_highptisr_nj6_MET_pt450to550": [
         42.87862271641687, 
-        3.1753064181005994
+        3.180486116395335
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_htgt1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_highptisr_lowptb12_MET_pt650toinf": [
         0.034637972224080216, 
-        0.02789461928638748
+        0.027428701067596466
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt250to350": [
         8.38878087483733, 
-        1.349927025009195
+        1.3572919161814367
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1000to1300_MET_pt350to450": [
         0.1936755213846685, 
-        0.1210559112496382
+        0.1220524923197159
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htgt1500_MET_pt250to350": [
         2.6249152974668, 
-        0.6056600227772739
+        0.6140534157894539
       ], 
       "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt300to400": [
         3.305346566055168, 
-        0.9639835107244558
+        0.9867605256050179
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_ht1000to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_htgt1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_lowmtb_nj7_nrtgeq1_MET_pt250to300": [
         9.387182607077023, 
-        4.520675377806859
+        4.3808001985387675
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt450to550": [
         0.9634802211869895, 
-        0.3065528190390359
+        0.31271453117831494
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_ht1000to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htlt1000_MET_pt450to550": [
         0.20825204509101342, 
-        0.15731662255482645
+        0.15708185917520442
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htlt1000_MET_pt550to650": [
         0.767859501547915, 
-        0.5154260643344251
+        0.49893260569802833
       ], 
       "bin_lm_nb2_lowmtb_lowptisr_medptb12_MET_pt300to400": [
         19.678322719007625, 
-        6.881754603422831
+        7.050426762916529
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htlt1000_MET_pt250to350": [
         5.428294284547901, 
-        2.0987961448560797
+        2.123202268548075
       ], 
       "bin_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt650to750": [
         1.037791530465126, 
-        0.5952581554244429
+        0.5830556204468081
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt650toinf": [
         0.1419892788535563, 
-        0.0665624042536035
+        0.06606832932226643
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_htgt1500_MET_pt550toinf": [
         0.010055306520365407, 
-        0.00702825335556983
+        0.00703288169247496
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_ht1000to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1000to1300_MET_pt450to550": [
         0.03416214286102263, 
-        0.034306066737649736
+        0.03212986557957189
       ], 
       "bin_lm_nb1_nivf0_lowmtb_highptisr_medptb_MET_pt550to650": [
         1.1632363404779427, 
-        0.33197426898003346
+        0.33062171075220514
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1000to1300_MET_pt350to450": [
         0.00023671102150156978, 
-        0.00022574640080865678
+        0.00023116511825860167
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt750toinf": [
         0.39291502146713314, 
-        0.09409928200820276
+        0.0930696984645106
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_ht1000to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_ht1000to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1300to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_highptisr_lowptb12_MET_pt450to550": [
         0.558069313410479, 
-        0.20049142865497527
+        0.20529173718208144
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nw0_htlt1000_MET_pt550to650": [
         0.0759808857960208, 
-        0.06198411696290861
+        0.06468261619099702
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htgt1500_MET_pt650toinf": [
         0.008588935180046239, 
-        0.007358371870584439
+        0.007047074134517917
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_htgt1500_MET_pt350to450": [
         0.05727137178022775, 
-        0.05712445780316374
+        0.05412128466362211
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw0_ht1300to1500_MET_pt350to450": [
         3.373966875175868, 
-        3.290585181724889
+        3.182917937836122
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1000to1300_MET_pt650toinf": [
         0.1898972204902432, 
-        0.0779347600819912
+        0.07259812378943326
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_htlt1000_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1300to1500_MET_pt450to550": [
         0.017981816335674115, 
-        0.012441128082567686
+        0.012823264615406645
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_ht1000to1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1000to1300_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt2_nrt0_nw0_htlt1000_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt450to550": [
         1.9572622464652083, 
-        0.43788562381203
+        0.42464259422122125
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt450to550": [
         0.4903049122639172, 
-        0.24123631145319
+        0.22863498277781008
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_ht1000to1300_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nrtntnwgeq3_ht1000to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_ht1000to1300_MET_pt650toinf": [
         0.007380184908831119, 
-        0.006885861217383559
+        0.007426958739508556
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw1_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_htlt1000_MET_pt350to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1000to1300_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htlt1000_MET_pt550to650": [
         0.5578785539111019, 
-        0.6092985969380958
+        0.5721523180393581
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_htgt1500_MET_pt450to550": [
         0.06488657318906672, 
-        0.028639387904537694
+        0.029696056777094974
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw0_ht1000to1500_MET_pt550toinf": [
         0.016842866388164898, 
-        0.009996306364025511
+        0.009676015420889864
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_ht1000to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1000to1300_MET_pt250to350": [
         1.843720688666805, 
-        1.1067534792605218
+        1.1194555869675271
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htgt1500_MET_pt250to350": [
         0.8397336670432565, 
-        0.5153010642995349
+        0.5100334630622892
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_ht1000to1300_MET_pt350to450": [
         0.08918746196561135, 
-        0.06158100541009686
+        0.06107611726170422
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw1_ht1000to1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_ht1000to1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt650toinf": [
         0.0027686165776323337, 
-        0.002588971731574215
+        0.002767005378614478
       ], 
       "bin_hm_nb3_highmtb_nt2_nrt0_nw0_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_ht1300to1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrtgeq1_nw0_htlt1000_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1300to1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb1_nivf0_lowmtb_highptisr_lowptb_MET_pt450to550": [
         9.006193829132954, 
-        1.8647266193633418
+        1.9062618261202808
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htgt1500_MET_pt450to550": [
         0.046456079894945795, 
-        0.044980828392300866
+        0.04601076382637278
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nw0_ht1000to1300_MET_pt350to450": [
         0.8095204424966651, 
-        0.3385576384776415
+        0.34411647406316176
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htlt1000_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt2_nw0_htgt1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1300to1500_MET_pt250to350": [
         11.359111262050316, 
-        2.001005293881321
+        1.9736378614905046
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htlt1000_MET_pt250to350": [
         0.0012552102658800078, 
-        0.0011620741529417347
+        0.0012140441744925706
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nw0_ht1000to1300_MET_pt650toinf": [
         0.7253298116325811, 
-        0.1400416807643049
+        0.1424783211209107
       ], 
       "bin_hm_nb1_highmtb_nt0_nrt0_nwgeq1_htlt1000_MET_pt350to450": [
         1.9104157392657404, 
-        1.9411136509078954
+        1.8312697661709898
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt1_nw0_htgt1500_MET_pt250to350": [
         0.02584463612214239, 
-        0.014392536827355385
+        0.014062813599733055
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw2_htgt1500_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_htgt1500_MET_pt450to550": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htlt1000_MET_pt550to650": [
         0.06584718485448708, 
-        0.0719163643464876
+        0.06753193716936531
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt1_nw1_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb2_lowmtb_lowptisr_highptb12_nj7_MET_pt300to400": [
         2.9675010778872823, 
-        1.7390550573349022
+        1.7867195258874082
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htlt1000_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw1_htlt1000_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt0_nw0_htgt1500_MET_pt550to650": [
         0.13258422019921365, 
-        0.06230731993759639
+        0.062393078594894805
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_ht1300to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_lm_nb0_nivf0_highptisr_nj6_MET_pt550to650": [
         18.67407517304814, 
-        2.225874444622078
+        2.2591324910306954
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_htgt1500_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw2_htgt1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt0_nw0_ht1000to1500_MET_pt550toinf": [
         0.007422015259339932, 
-        0.007456643375664374
+        0.007436977629975753
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb3_highmtb_nt1_nrt1_nw0_htlt1000_MET_pt550toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_ntgeq1_nrt0_nwgeq1_htlt1000_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt0_nrt2_nw0_ht1300to1500_MET_pt250to350": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt0_nw0_htlt1000_MET_pt350to450": [
         0.028422924105067294, 
-        0.026574098459943844
+        0.026266213571585467
       ], 
       "bin_hm_nb3_highmtb_nt0_nrt0_nw1_ht1000to1500_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nrtntnwgeq3_ht1000to1300_MET_pt650toinf": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nbeq2_highmtb_nt1_nrt1_nw0_htlt1000_MET_pt350to450": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ], 
       "bin_hm_nb1_highmtb_nt0_nrtgeq1_nwgeq1_htgt1500_MET_pt550to650": [
-        0.0, 
-        0.0
+        1e-06, 
+        1e-06
       ]
     }, 
     "qcdcr_data": {

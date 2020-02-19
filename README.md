@@ -45,10 +45,8 @@ Should run everything in CMSSW_10_2_9
 ```
 cd CMSSW_10_2_9/src
 cmsenv
-git clone https://github.com/mkilpatr/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
+git clone --single-branch --branch SUSYNano19 https://github.com/mkilpatr/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
 cd HiggsAnalysis/CombinedLimit
-git fetch origin
-git checkout SUSYNano19
 scramv1 b clean
 scramv1 b
 ```
