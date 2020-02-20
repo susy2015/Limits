@@ -390,18 +390,20 @@ def BkgPlotter(json, outputBase, signal):
     gROOT.SetBatch(1)
     with open(json) as jf:
         j = json_load_byteified(jf)
+    nbins = 183
     bkgstack = THStack("bkg", "Sum of Background in Search Region")
     c = TCanvas('c1', 'Sum of Background in Search Region', 200, 10, 700, 500)
-    httbar = TH1F('httbar', 'ttbar yields', 183, 0, 182)
-    hznunu = TH1F('hznunu', 'znunu yields', 183, 0, 182)
-    hqcd = TH1F('hqcd', 'qcd yields', 183, 0, 182)
-    httz = TH1F('httz', 'ttz yields', 183, 0, 182)
-    hdiboson = TH1F('hdiboson', 'diboson yields', 183, 0, 182)
-    hpred = TH1F('hpred', 'pred yields', 183, 0, 182)
-    hsignal = TH1F(signal, 'signal yields', 183, 0, 182)
+    httbar = TH1F('httbar', 'ttbar yields', nbins, 0, nbins)
+    hznunu = TH1F('hznunu', 'znunu yields', nbins, 0, nbins)
+    hqcd = TH1F('hqcd', 'qcd yields', nbins, 0, nbins)
+    httz = TH1F('httz', 'ttz yields', nbins, 0, nbins)
+    hdiboson = TH1F('hdiboson', 'diboson yields', nbins, 0, nbins)
+    hpred = TH1F('hpred', 'pred yields', nbins, 0, nbins)
+    hsignal = TH1F(signal, 'signal yields', nbins, 0, nbins)
 
     for bin in binlist:
         sr = int(binnum[bin])+1
+	print(bin +": "+str(binnum[bin]) + ", " +str(sr))
         httbar.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]))
         hznunu.SetBinContent(sr, float(j[bin]['znunu'][0]))
         hqcd.SetBinContent(sr, float(j[bin]['qcd'][0]))
