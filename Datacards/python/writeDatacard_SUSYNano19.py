@@ -172,7 +172,9 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
             crunit = yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
             crother=yields[crproc+'_back'][cr][0]
         #print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
-        total += (crdata-crother)*srunit/crunit
+        if 'znunu' in process: total += (srunit*crunit)
+        elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
+        else:                  total += (crdata-crother)*srunit/crunit
         #print("total: %f" %(total))
     return total, np.sqrt(srstat)
     
