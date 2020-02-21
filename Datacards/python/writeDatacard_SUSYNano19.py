@@ -137,7 +137,7 @@ def parseBinMap(process, cr_description, yields_dict):
     results['rateParam'] = ('(%s)'%('+'.join(parts)), ','.join(params))
     return results
 
-def sumBkgYields(process, signal, cr_description, yields_dict):
+def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     values = []
     params = []
     sumE2 = 0
@@ -149,7 +149,10 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
         crunit = 0.
         srunit = 0.
         crother = 0
-        sr, cr = entry.split('*')
+        if '*' in entry: sr, cr = entry.split('*')
+        else:
+            sr = bin
+            cr = entry
         if '<' in cr: sr, cr = cr, sr
         sr = sr.strip('<>')
         cr = cr.strip('()')
@@ -162,12 +165,12 @@ def sumBkgYields(process, signal, cr_description, yields_dict):
             crother =sigYields[crproc+'_'+signal][cr][0]
         if 'qcd' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
-            crother +=yields[crproc+'_ttbarplusw'][cr][0]
+            crother =yields[crproc+'_ttbarplusw'][cr][0]
             crother+=yields[crproc+'_znunu'][cr][0]
             crother+=yields[crproc+'_Rare'][cr][0]
         if 'znunu' in process: 
-            crunit = yields_dict[crproc+'_gjets'][cr][0]
-            crother+=yields[crproc+'_back'][cr][0]
+            crunit = yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
+            crother=yields[crproc+'_back'][cr][0]
         #print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
         total += (crdata-crother)*srunit/crunit
         #print("total: %f" %(total))
@@ -502,13 +505,13 @@ def writeSR(signal):
             expected += yields[proc][bin][0]
             sepBins[proc] = (yields[proc][bin][0], yields[proc][bin][1])
         for proc in ['ttbarplusw', 'znunu', 'qcd']:
-            if bin not in mergedbins:
-                expected += yields[proc][bin][0]
-                sepBins[proc] = (yields[proc][bin][0], yields[proc][bin][1])
-            else:
-                sepExpected, sepStat = sumBkgYields(proc, signal, binMaps[processMap[proc]][bin], yields)
-                expected += sepExpected
-                sepBins[proc] = (sepExpected, sepStat)
+            #if bin not in mergedbins:
+            #    expected += yields[proc][bin][0]
+            #    sepBins[proc] = (yields[proc][bin][0], yields[proc][bin][1])
+            #else:
+            sepExpected, sepStat = sumBkgYields(proc, signal, bin, binMaps[processMap[proc]][bin], yields)
+            expected += sepExpected
+            sepBins[proc] = (sepExpected, sepStat)
         sepBins[signal] = (sigYields[signal][bin][0], sigYields[signal][bin][1])
         sepYields[bin] = sepBins
         if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
