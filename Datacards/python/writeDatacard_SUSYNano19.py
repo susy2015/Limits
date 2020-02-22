@@ -171,8 +171,10 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         if 'znunu' in process: 
             crunit = yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
             crother=yields[crproc+'_back'][cr][0]
-        #print("crdata: %f, srunit: %f, crunit: %f" %(crdata, srunit, crunit))
-        if 'znunu' in process: total += (srunit*crunit)
+	    #print(bin)
+            #print("crdata: %f, srunit: %f, crunit: %f, crother: %f" %(crdata, srunit, crunit, crother))
+            #print("Sy: %f, Znunu*Rz: %f" %((crdata/(crunit + crother)), srunit))
+        if 'znunu' in process: total += (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += (crdata-crother)*srunit/crunit
         #print("total: %f" %(total))
@@ -408,7 +410,6 @@ def BkgPlotter(json, outputBase, signal):
 
     for bin in binlist:
         sr = int(binnum[bin])+1
-	print(bin +": "+str(binnum[bin]) + ", " +str(sr))
         httbar.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]))
         hznunu.SetBinContent(sr, float(j[bin]['znunu'][0]))
         hqcd.SetBinContent(sr, float(j[bin]['qcd'][0]))
@@ -507,10 +508,6 @@ def writeSR(signal):
             expected += yields[proc][bin][0]
             sepBins[proc] = (yields[proc][bin][0], yields[proc][bin][1])
         for proc in ['ttbarplusw', 'znunu', 'qcd']:
-            #if bin not in mergedbins:
-            #    expected += yields[proc][bin][0]
-            #    sepBins[proc] = (yields[proc][bin][0], yields[proc][bin][1])
-            #else:
             sepExpected, sepStat = sumBkgYields(proc, signal, bin, binMaps[processMap[proc]][bin], yields)
             expected += sepExpected
             sepBins[proc] = (sepExpected, sepStat)
