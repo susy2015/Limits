@@ -176,7 +176,7 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
             #print("Sy: %f, Znunu*Rz: %f" %((crdata/(crunit + crother)), srunit))
         if 'znunu' in process: total += (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
-        else:                  total += (crdata-crother)*srunit/crunit
+        else:                  total += crdata*srunit/crunit
         #print("total: %f" %(total))
     return total, np.sqrt(srstat)
     
