@@ -407,6 +407,7 @@ def BkgPlotter(json, outputBase, signal):
     hdiboson = TH1F('hdiboson', 'diboson yields', nbins, 0, nbins)
     hpred = TH1F('hpred', 'pred yields', nbins, 0, nbins)
     hsignal = TH1F(signal, 'signal yields', nbins, 0, nbins)
+    if not blind: hdata = TH1F('hdata', 'data yields', nbins, 0, nbins)
 
     for bin in binlist:
         sr = int(binnum[bin])+1
@@ -417,6 +418,10 @@ def BkgPlotter(json, outputBase, signal):
         hdiboson.SetBinContent(sr, float(j[bin]['diboson'][0]))
         hpred.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]) + float(j[bin]['znunu'][0]) + float(j[bin]['qcd'][0]) + float(j[bin]['ttZ'][0]) + float(j[bin]['diboson'][0]))
 	hsignal.SetBinContent(sr, float(j[bin][signal][0]))
+
+        if not blind:
+            hdata.SetBinContent(sr, float(j[bin]['data'][0]))
+            hdata.SetBinError(sr, float(j[bin]['data'][1]))
 
         httbar.SetBinError(sr, float(j[bin]['ttbarplusw'][1]))
         hznunu.SetBinError(sr, float(j[bin]['znunu'][1]))
@@ -434,54 +439,6 @@ def BkgPlotter(json, outputBase, signal):
     hpred.SetFillColor(2)
     hsignal.SetFillColor(2)
 
-    for h in [httbar, hznunu, hqcd, httz, hdiboson, hpred, hsignal]:
-        h.SetXTitle("Search Region")
-        h.SetYTitle("Events")
-        h.SetTitleSize  (0.055,"Y")
-        h.SetTitleOffset(1.600,"Y")
-        h.SetLabelOffset(0.014,"Y")
-        h.SetLabelSize  (0.040,"Y")
-        h.SetLabelFont  (62   ,"Y")
-        h.SetTitleSize  (0.055,"X")
-        h.SetTitleOffset(1.300,"X")
-        h.SetLabelOffset(0.014,"X")
-        h.SetLabelSize  (0.040,"X")
-        h.SetLabelFont  (62   ,"X")
-        h.GetYaxis().SetTitleFont(62)
-        h.GetXaxis().SetTitleFont(62)
-        h.SetTitle("")
-	
-
-    bkgstack.Add(hdiboson)	
-    bkgstack.Add(httz)	
-    bkgstack.Add(hqcd)	
-    bkgstack.Add(hznunu)	
-    bkgstack.Add(httbar)	
-
-    c.cd()
-    c.SetLogy()
-    bkgstack.Draw()
-    bkgstack.GetYaxis().SetTitle("Events")
-    bkgstack.GetXaxis().SetTitle("Search Region")
-    leg = TLegend(.73,.65,.97,.90)
-    leg.SetBorderSize(0)
-    leg.SetFillColor(0)
-    leg.SetFillStyle(0)
-    leg.SetTextFont(42)
-    leg.SetTextSize(0.035)
-    leg.AddEntry(httbar,"ttbarplusw","F")
-    leg.AddEntry(hznunu,"Znunu","F")
-    leg.AddEntry(hqcd,"QCD","F")
-    leg.AddEntry(httz,"ttZ","F")
-    leg.AddEntry(hdiboson,"Rare","F")
-    leg.Draw()
-    c.SetTitle("Sum of Background in Search Regions")
-    c.SetCanvasSize(800, 600)
-    c.Print(outputBase + ".pdf")
-    c.Print(outputBase + ".C")
-    c.Print(outputBase + "_canvas.root")
-    c.SaveAs(outputBase + ".pdf")
-    
     output = TFile(outputBase +".root", "RECREATE")
     httbar.Write()
     hznunu.Write()
@@ -489,6 +446,7 @@ def BkgPlotter(json, outputBase, signal):
     httz.Write()
     hdiboson.Write()
     hpred.Write()
+    if not blind: hdata.Write()
     hsignal.Write()
     output.Close()
 
@@ -512,9 +470,12 @@ def writeSR(signal):
             expected += sepExpected
             sepBins[proc] = (sepExpected, sepStat)
         sepBins[signal] = (sigYields[signal][bin][0], sigYields[signal][bin][1])
+        if not blind: 
+            cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
+            sepBins["data"] = (yields['data'][bin][0], yields['data'][bin][1])
+        else:         
+            cb.ForEachObs(lambda obs : obs.set_rate(expected))
         sepYields[bin] = sepBins
-        if not blind: cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
-        else:         cb.ForEachObs(lambda obs : obs.set_rate(expected))
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
         cb.cp().process(['ttZ','diboson']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
         cb.cp().process(['signal','ttZ','diboson']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
