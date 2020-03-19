@@ -61,7 +61,7 @@ CRprocMap  = {
 
 }
 
-blind = True
+blind = False
 
 if os.path.exists(outputdir + '/' + args.signalPoint):
     t = time.localtime()
@@ -438,6 +438,54 @@ def BkgPlotter(json, outputBase, signal):
     hdiboson.SetFillColor(391)
     hpred.SetFillColor(2)
     hsignal.SetFillColor(2)
+
+    for h in [httbar, hznunu, hqcd, httz, hdiboson, hpred, hsignal]:
+        h.SetXTitle("Search Region")
+        h.SetYTitle("Events")
+        h.SetTitleSize  (0.055,"Y")
+        h.SetTitleOffset(1.600,"Y")
+        h.SetLabelOffset(0.014,"Y")
+        h.SetLabelSize  (0.040,"Y")
+        h.SetLabelFont  (62   ,"Y")
+        h.SetTitleSize  (0.055,"X")
+        h.SetTitleOffset(1.300,"X")
+        h.SetLabelOffset(0.014,"X")
+        h.SetLabelSize  (0.040,"X")
+        h.SetLabelFont  (62   ,"X")
+        h.GetYaxis().SetTitleFont(62)
+        h.GetXaxis().SetTitleFont(62)
+        h.SetTitle("")
+	
+
+    bkgstack.Add(hdiboson)	
+    bkgstack.Add(httz)	
+    bkgstack.Add(hqcd)	
+    bkgstack.Add(hznunu)	
+    bkgstack.Add(httbar)	
+
+    c.cd()
+    c.SetLogy()
+    bkgstack.Draw()
+    bkgstack.GetYaxis().SetTitle("Events")
+    bkgstack.GetXaxis().SetTitle("Search Region")
+    leg = TLegend(.73,.65,.97,.90)
+    leg.SetBorderSize(0)
+    leg.SetFillColor(0)
+    leg.SetFillStyle(0)
+    leg.SetTextFont(42)
+    leg.SetTextSize(0.035)
+    leg.AddEntry(httbar,"ttbarplusw","F")
+    leg.AddEntry(hznunu,"Znunu","F")
+    leg.AddEntry(hqcd,"QCD","F")
+    leg.AddEntry(httz,"ttZ","F")
+    leg.AddEntry(hdiboson,"Rare","F")
+    leg.Draw()
+    c.SetTitle("Sum of Background in Search Regions")
+    c.SetCanvasSize(800, 600)
+    c.Print(outputBase + ".pdf")
+    c.Print(outputBase + ".C")
+    c.Print(outputBase + "_canvas.root")
+    c.SaveAs(outputBase + ".pdf")
 
     output = TFile(outputBase +".root", "RECREATE")
     httbar.Write()
