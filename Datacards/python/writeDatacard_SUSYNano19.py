@@ -61,7 +61,7 @@ CRprocMap  = {
 
 }
 
-blind = False
+blind = True
 
 if os.path.exists(outputdir + '/' + args.signalPoint):
     t = time.localtime()
