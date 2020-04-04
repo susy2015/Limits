@@ -25,7 +25,7 @@ json_bkgPred = 'Datacards/setup/SUSYNano19/combine_bkgPred.json'
 if args.signalPoint == "": json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
 else:		           json_sigYields = 'Datacards/setup/SUSYNano19/' +  args.signalLocation + '/' + args.signalPoint + '.json'
 # datacard output directory
-outputdir = 'Datacards/results/SUSYNano19-20191010'
+outputdir = 'Datacards/results/SUSYNano19-20200403'
 # directory with uncertainties files
 setuplocation = 'Datacards/setup/SUSYNano19'
 # file with names and types of uncertainties to apply
