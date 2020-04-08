@@ -61,7 +61,7 @@ CRprocMap  = {
 
 }
 
-blind = False
+blind = True
 
 if os.path.exists(outputdir + '/' + args.signalPoint):
     t = time.localtime()
@@ -143,12 +143,12 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     sumE2 = 0
     total = 0.
     crproc = 'lepcr' if 'ttbar' in process else ('qcdcr' if 'qcd' in process else 'phocr')
-    srstat = 0.
+    stat = 0.
+    crdata = 0
+    crunit = 0.
+    srunit = 0.
+    crother = 0
     for entry in cr_description.replace(' ','').split('+'):
-        crdata = 0
-        crunit = 0.
-        srunit = 0.
-        crother = 0
         if '*' in entry: sr, cr = entry.split('*')
         else:
             sr = bin
@@ -157,28 +157,37 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         sr = sr.strip('<>')
         cr = cr.strip('()')
         #print(cr)
-        crdata = yields[crproc + '_data'][cr][0]
-        srunit = yields_dict[process][sr][0]
-        srstat += (yields_dict[process][sr][1])**2
+        if 'znunu' in process:
+          crdata += yields[crproc + '_data'][cr][0]
+          srunit += yields_dict[process][sr][0]
+        else:
+          crdata = yields[crproc + '_data'][cr][0]
+          srunit = yields_dict[process][sr][0]
+        stat += (yields_dict[process][sr][1])**2
+        stat += (yields[crproc + '_data'][cr][1])**2
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
-            crother =sigYields[crproc+'_'+signal][cr][0]
+            crother= sigYields[crproc+'_'+signal][cr][0]
+            stat += (yields_dict[crproc+'_'+process][cr][1])**2
         if 'qcd' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother =yields[crproc+'_ttbarplusw'][cr][0]
             crother+=yields[crproc+'_znunu'][cr][0]
             crother+=yields[crproc+'_Rare'][cr][0]
+            stat += (yields_dict[crproc+'_'+process][cr][1])**2
+            stat += (yields_dict[crproc+'_ttbarplusw'][cr][1])**2
+            stat += (yields_dict[crproc+'_znunu'][cr][1])**2
+            stat += (yields_dict[crproc+'_Rare'][cr][1])**2
         if 'znunu' in process: 
-            crunit = yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
-            crother=yields[crproc+'_back'][cr][0]
-	    #print(bin)
-            #print("crdata: %f, srunit: %f, crunit: %f, crother: %f" %(crdata, srunit, crunit, crother))
-            #print("Sy: %f, Znunu*Rz: %f" %((crdata/(crunit + crother)), srunit))
-        if 'znunu' in process: total += (crdata/(crunit + crother))*srunit
+            crunit += yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
+            crother+=yields[crproc+'_back'][cr][0]
+            stat += (yields_dict[crproc+'_gjets'][cr][1])**2
+            stat += (yields_dict[crproc+'_back'][cr][1])**2
+
+        if 'znunu' in process: total = (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += crdata*srunit/crunit
-        #print("total: %f" %(total))
-    return total, np.sqrt(srstat)
+    return total, np.sqrt(stat)
     
 # ------ helper functions ------
 
@@ -309,6 +318,7 @@ def writeLepcr(signal):
                     if 'rateParam' in line:
                         line = line.replace('\n', '  [0.01,5]\n') # set range of rateParam by hand
                     dc.write(line)
+                #dc.write('* autoMCStats 0 include-signal = 1\n')
         os.remove(tmpdc)
                 
 
@@ -349,6 +359,7 @@ def writePhocr(signal):
                     if 'rateParam' in line:
                         line = line.replace('\n', '  [0.01,5]\n') # set range of rateParam by hand
                     dc.write(line)
+                #dc.write('* autoMCStats 0 include-signal = 1\n')
         os.remove(tmpdc)
 
 def writeQCDcr(signal):
@@ -391,6 +402,7 @@ def writeQCDcr(signal):
                     if 'rateParam' in line:
                         line = line.replace('\n', '  [0.01,5]\n') # set range of rateParam by hand
                     dc.write(line)
+                #dc.write('* autoMCStats 0 include-signal = 1\n')
         os.remove(tmpdc)
 
 def BkgPlotter(json, outputBase, signal):
@@ -423,12 +435,13 @@ def BkgPlotter(json, outputBase, signal):
             hdata.SetBinContent(sr, float(j[bin]['data'][0]))
             hdata.SetBinError(sr, float(j[bin]['data'][1]))
 
+        total_error = np.sqrt(float(j[bin]['ttbarplusw'][1])**2 + float(j[bin]['znunu'][1])**2 + float(j[bin]['qcd'][1])**2 + float(j[bin]['ttZ'][1])**2 + float(j[bin]['diboson'][1])**2)
         httbar.SetBinError(sr, float(j[bin]['ttbarplusw'][1]))
         hznunu.SetBinError(sr, float(j[bin]['znunu'][1]))
         hqcd.SetBinError(sr, float(j[bin]['qcd'][1]))
         httz.SetBinError(sr, float(j[bin]['ttZ'][1]))
         hdiboson.SetBinError(sr, float(j[bin]['diboson'][1]))
-        hpred.SetBinError(sr, float(j[bin]['ttbarplusw'][1]) + float(j[bin]['znunu'][1]) + float(j[bin]['qcd'][1]) + float(j[bin]['ttZ'][1]) + float(j[bin]['diboson'][1]))
+        hpred.SetBinError(sr, total_error)
 	hsignal.SetBinError(sr, float(j[bin][signal][1]))
 
     httbar.SetFillColor(866)
@@ -504,6 +517,7 @@ def writeSR(signal):
     sepYields = {}
     for bin in binlist:
         rateParamFixes = {}
+        autoMCFixes = {}
         cb = ch.CombineHarvester()
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, bin)])
         cb.AddProcesses(procs = ['signal'],     bin = [(0, bin)], signal=True)
@@ -531,6 +545,7 @@ def writeSR(signal):
                    (['ttZ'],            toUnc(yields['ttZ'][bin]))
                    (['diboson'],        toUnc(yields['diboson'][bin]))
                    )
+        
         if bin not in mergedbins:
             # one to one CR
             cb.cp().process(['ttbarplusw','znunu','qcd']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
@@ -562,6 +577,7 @@ def writeSR(signal):
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
                         else:
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
+
         # fix rateParams
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%bin)
         cb.WriteDatacard(tmpdc)
@@ -575,6 +591,7 @@ def writeSR(signal):
                         line = line.replace('999999', ' '.join(rateParamFixes[rName]))
                         break # fixed this rName
                     dc.write(line)
+                #dc.write('* autoMCStats 0 include-signal = 1\n')
         os.remove(tmpdc)
     with open('BkgExpected.json', 'w') as outfile:
         json.dump(sepYields, outfile)
