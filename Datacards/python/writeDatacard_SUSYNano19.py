@@ -159,10 +159,9 @@ def parseBinMap(process, cr_description, yields_dict):
 def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     values = []
     params = []
-    sumE2 = 0
     total = 0.
     crproc = 'lepcr' if 'ttbar' in process else ('qcdcr' if 'qcd' in process else 'phocr')
-    stat = 0.
+    sumE2 = 0.
     crdata = 0
     crunit = 0.
     srunit = 0.
@@ -182,32 +181,35 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         else:
           crdata = yields[crproc + '_data'][cr][0]
           srunit = yields_dict[process][sr][0]
-        stat += yields_dict[process][sr][1]
-        stat += yields[crproc + '_data'][cr][1]
+        sumE2 += yields_dict[process][sr][1]**2
+        sumE2 += yields[crproc + '_data'][cr][1]**2
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother= sigYields[crproc+'_'+signal][cr][0]
-            stat += yields_dict[crproc+'_'+process][cr][1]
-            stat += sigYields[crproc+'_'+signal][cr][1]
+            sumE2 += yields_dict[crproc+'_'+process][cr][1]**2
+            sumE2 += sigYields[crproc+'_'+signal][cr][1]**2
         if 'qcd' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother =yields[crproc+'_ttbarplusw'][cr][0]
             crother+=yields[crproc+'_znunu'][cr][0]
             crother+=yields[crproc+'_Rare'][cr][0]
-            stat += yields_dict[crproc+'_'+process][cr][1]
-            stat += yields[crproc+'_ttbarplusw'][cr][1]
-            stat += yields[crproc+'_znunu'][cr][1]
-            stat += yields[crproc+'_Rare'][cr][1]
+            sumE2 += yields_dict[crproc+'_'+process][cr][1]**2
+            sumE2 += yields[crproc+'_ttbarplusw'][cr][1]**2
+            sumE2 += yields[crproc+'_znunu'][cr][1]**2
+            sumE2 += yields[crproc+'_Rare'][cr][1]**2
         if 'znunu' in process: 
             crunit += yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
             crother+=yields[crproc+'_back'][cr][0]
-            stat += yields_dict[crproc+'_gjets'][cr][1]
-            stat += yields[crproc+'_back'][cr][1]
+            sumE2 += yields_dict[crproc+'_gjets'][cr][1]**2
+            sumE2 += yields[crproc+'_back'][cr][1]**2
 
         if 'znunu' in process: total = (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += crdata*srunit/crunit
-    return total, np.sqrt(total) #stat
+
+    stat = toUnc((total, math.sqrt(sumE2)))
+
+    return total, stat*total
 
 # ------ helper functions ------
 
