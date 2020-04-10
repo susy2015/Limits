@@ -61,7 +61,7 @@ CRprocMap  = {
 
 }
 
-blind = True
+blind = False
 
 if os.path.exists(outputdir + '/' + args.signalPoint):
     t = time.localtime()
@@ -163,31 +163,32 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         else:
           crdata = yields[crproc + '_data'][cr][0]
           srunit = yields_dict[process][sr][0]
-        stat += (yields_dict[process][sr][1])**2
-        stat += (yields[crproc + '_data'][cr][1])**2
+        stat += yields_dict[process][sr][1]
+        stat += yields[crproc + '_data'][cr][1]
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother= sigYields[crproc+'_'+signal][cr][0]
-            stat += (yields_dict[crproc+'_'+process][cr][1])**2
+            stat += yields_dict[crproc+'_'+process][cr][1]
+            stat += sigYields[crproc+'_'+signal][cr][1]
         if 'qcd' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother =yields[crproc+'_ttbarplusw'][cr][0]
             crother+=yields[crproc+'_znunu'][cr][0]
             crother+=yields[crproc+'_Rare'][cr][0]
-            stat += (yields_dict[crproc+'_'+process][cr][1])**2
-            stat += (yields_dict[crproc+'_ttbarplusw'][cr][1])**2
-            stat += (yields_dict[crproc+'_znunu'][cr][1])**2
-            stat += (yields_dict[crproc+'_Rare'][cr][1])**2
+            stat += yields_dict[crproc+'_'+process][cr][1]
+            stat += yields[crproc+'_ttbarplusw'][cr][1]
+            stat += yields[crproc+'_znunu'][cr][1]
+            stat += yields[crproc+'_Rare'][cr][1]
         if 'znunu' in process: 
             crunit += yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
             crother+=yields[crproc+'_back'][cr][0]
-            stat += (yields_dict[crproc+'_gjets'][cr][1])**2
-            stat += (yields_dict[crproc+'_back'][cr][1])**2
+            stat += yields_dict[crproc+'_gjets'][cr][1]
+            stat += yields[crproc+'_back'][cr][1]
 
         if 'znunu' in process: total = (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += crdata*srunit/crunit
-    return total, np.sqrt(stat)
+    return total, np.sqrt(total) #stat
     
 # ------ helper functions ------
 
