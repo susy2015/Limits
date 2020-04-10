@@ -6,6 +6,14 @@ import argparse
 import json
 import numpy as np
 
+# import ROOT with a fix to get batch mode (http://root.cern.ch/phpBB3/viewtopic.php?t=3198)
+from sys import argv
+argv.append( '-b-' )
+import ROOT
+ROOT.gROOT.SetBatch(True)
+ROOT.PyConfig.IgnoreCommandLineOptions = True
+argv.remove( '-b-' )
+
 from ROOT import TCanvas, TFile, TProfile, TNtuple, TH1F, TH2F, THStack, TLegend, TFile, TColor
 from ROOT import gROOT, gBenchmark, gRandom, gSystem, Double
 
@@ -19,17 +27,17 @@ parser.add_argument("-m", "--manySignals", dest="manySignals", default=False,
                          help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
 args = parser.parse_args()
 
-# json file with bkg predictions and signal yields
-json_bkgPred = 'Datacards/setup/SUSYNano19/combine_bkgPred.json'
-#json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
-if args.signalPoint == "": json_sigYields = 'Datacards/setup/SUSYNano19/dc_SigYields_single.json'
-else:		           json_sigYields = 'Datacards/setup/SUSYNano19/' +  args.signalLocation + '/' + args.signalPoint + '.json'
 # datacard output directory
 outputdir = 'Datacards/results/SUSYNano19-20191010'
 # directory with uncertainties files
 setuplocation = 'Datacards/setup/SUSYNano19'
+
+# json file with bkg predictions and signal yields
+json_bkgPred = '%s/combine_bkgPred.json' % setuplocation
+if args.signalPoint == "": json_sigYields = '%s/dc_SigYields_single.json' % setuplocation
+else:		           json_sigYields = setuplocation +"/" +  args.signalLocation + '/' + args.signalPoint + '.json' 
 # file with names and types of uncertainties to apply
-uncertainty_definitions = 'Datacards/setup/SUSYNano19/define_uncs.conf'
+uncertainty_definitions = '%s/define_uncs.conf' % setuplocation
 # files specifying uncertainty values by bin start with this string
 uncertainty_fileprefix = 'values_unc'
 uncertainty_filepostfix = '_syst.conf'
@@ -95,6 +103,17 @@ def _byteify(data, ignore_dicts = False):
         }
     # if it's anything else, return it in its original form
     return data
+
+def MakeStatHist(proc, yields, forceContent=None):
+    llh = TH1F(proc, proc, 1, 0, 1)
+    llh.SetBinContent(1, yields[0] if forceContent is None else forceContent)
+    llh.SetBinError(1, (toUnc(yields) -1 ) * yields[0])
+    llh.Write()
+
+def MakeObsHist(obsRate):
+    datah = TH1F("data_obs", "data_obs", 1, 0, 1)
+    datah.SetBinContent(1, obsRate )
+    datah.Write()
 
 with open(json_bkgPred) as jf:
     j_bkg = json_load_byteified(jf)
@@ -287,10 +306,6 @@ def writeLepcr(signal):
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields['lepcr_'+signal][crbin][0]))
         # stat uncs
         cb.cp().process(['ttbarplusw']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
-        cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                   (['ttbarplusw'], toUnc(yields['lepcr_ttbarplusw'][crbin]))
-                   (['signal'],     toUnc(sigYields['lepcr_'+signal][crbin]))
-                   )
         # syst unc
         if crbin in unc_dict:
             for proc in ['signal', signal, 'ttbarplusw']:
@@ -303,12 +318,23 @@ def writeLepcr(signal):
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%crbin)
         cb.WriteDatacard(tmpdc)
+        trootout = os.path.join(outputdir, signal, '%s.root'%crbin)
+        tmproot = TFile(trootout, "Recreate")
+        tmproot.cd()
+        MakeStatHist("ttbarplusw", yields['lepcr_ttbarplusw'][crbin])
+        MakeStatHist("signal", sigYields['lepcr_'+signal][crbin])
+        MakeObsHist(cb.GetObservedRate())
+        tmproot.Close()
+
         with open(tmpdc) as tmpfile:
             with open(tmpdc.replace('.tmp', '.txt'), 'w') as dc:
                 for line in tmpfile:
                     if 'rateParam' in line:
                         line = line.replace('\n', '  [0.01,5]\n') # set range of rateParam by hand
+                    if 'shapes' in line:
+                        line = line.replace('FAKE', '%s  $PROCESS' % ('%s.root'%crbin)) # set range of rateParam by hand
                     dc.write(line)
+                dc.write("* autoMCStats 0")
         os.remove(tmpdc)
                 
 
@@ -323,15 +349,11 @@ def writePhocr(signal):
             cb.cp().process([proc]).ForEachProc(lambda p : 
                                                  p.set_rate(
                                                      yields[CRprocMap['phocr'][proc]][crbin][0]
-                                                     if yields[CRprocMap['phocr'][proc]][crbin][0] > 0 else 0.000001
+                                                     # if yields[CRprocMap['phocr'][proc]][crbin][0] > 0 else 0.000001
                                                  )
                                                 )
         # stat uncs
         cb.cp().process(['gjets']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
-        cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                   (['gjets'],        toUnc(yields[CRprocMap['phocr']['gjets']][crbin]))
-                   (['otherbkgs'],    toUnc(yields[CRprocMap['phocr']['otherbkgs']][crbin]))
-                   )
         # syst uncs
         if crbin in unc_dict:
             for proc in ['gjets', 'otherbkgs']:
@@ -341,6 +363,14 @@ def writePhocr(signal):
                             cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
                         else:
                             cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
+        trootout = os.path.join(outputdir, signal, '%s.root'%crbin)
+        tmproot = TFile(trootout, "Recreate")
+        tmproot.cd()
+        MakeStatHist("gjets", yields[CRprocMap['phocr']['gjets']][crbin])
+        MakeStatHist("otherbkgs", yields[CRprocMap['phocr']['otherbkgs']][crbin])
+        MakeObsHist(cb.GetObservedRate())
+        tmproot.Close()
+
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%crbin)
         cb.WriteDatacard(tmpdc)
         with open(tmpdc) as tmpfile:
@@ -348,7 +378,10 @@ def writePhocr(signal):
                 for line in tmpfile:
                     if 'rateParam' in line:
                         line = line.replace('\n', '  [0.01,5]\n') # set range of rateParam by hand
+                    if 'shapes' in line:
+                        line = line.replace('FAKE', '%s  $PROCESS' % ('%s.root'%crbin)) # set range of rateParam by hand
                     dc.write(line)
+                dc.write("* autoMCStats 0")
         os.remove(tmpdc)
 
 def writeQCDcr(signal):
@@ -362,17 +395,11 @@ def writeQCDcr(signal):
             cb.cp().process([proc]).ForEachProc(lambda p : 
                                                  p.set_rate(
                                                      yields[CRprocMap['qcdcr'][proc]][crbin][0]
-                                                     if yields[CRprocMap['qcdcr'][proc]][crbin][0] >= 0 else 0.000001
+                                                     # if yields[CRprocMap['qcdcr'][proc]][crbin][0] >= 0 else 0.000001
                                                  )
                                                 )
         # stat uncs
         cb.cp().process(['qcd']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
-        cb.AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                   (['qcd'],        toUnc(yields[CRprocMap['qcdcr']['qcd']][crbin]))
-                   (['ttbarplusw'], toUnc(yields[CRprocMap['qcdcr']['ttbarplusw']][crbin]))
-                   (['znunu'],      toUnc(yields[CRprocMap['qcdcr']['znunu']][crbin]))
-                   (['diboson'],    toUnc(yields[CRprocMap['qcdcr']['diboson']][crbin]))
-                   )
         # syst uncs
         if crbin in unc_dict:
             #for proc in ['qcd', 'otherbkgs']:
@@ -383,6 +410,17 @@ def writeQCDcr(signal):
                             cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()((unc.value,unc.value2)))
                         else:
                             cb.cp().process([proc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
+
+        trootout = os.path.join(outputdir, signal, '%s.root'%crbin)
+        tmproot = TFile(trootout, "Recreate")
+        tmproot.cd()
+        MakeStatHist('qcd',        yields[CRprocMap['qcdcr']['qcd']][crbin])
+        MakeStatHist('ttbarplusw', yields[CRprocMap['qcdcr']['ttbarplusw']][crbin])
+        MakeStatHist('znunu',      yields[CRprocMap['qcdcr']['znunu']][crbin])
+        MakeStatHist('diboson',    yields[CRprocMap['qcdcr']['diboson']][crbin])
+        MakeObsHist(cb.GetObservedRate())
+        tmproot.Close()
+
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%crbin)
         cb.WriteDatacard(tmpdc)
         with open(tmpdc) as tmpfile:
@@ -390,7 +428,10 @@ def writeQCDcr(signal):
                 for line in tmpfile:
                     if 'rateParam' in line:
                         line = line.replace('\n', '  [0.01,5]\n') # set range of rateParam by hand
+                    if 'shapes' in line:
+                        line = line.replace('FAKE', '%s  $PROCESS' % ('%s.root'%crbin)) # set range of rateParam by hand
                     dc.write(line)
+                dc.write("* autoMCStats 0")
         os.remove(tmpdc)
 
 def BkgPlotter(json, outputBase, signal):
@@ -526,22 +567,23 @@ def writeSR(signal):
         sepYields[bin] = sepBins
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
         cb.cp().process(['ttZ','diboson']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
-        cb.cp().process(['signal','ttZ','diboson']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                   (['signal'],         toUnc(sigYields[signal][bin]))
-                   (['ttZ'],            toUnc(yields['ttZ'][bin]))
-                   (['diboson'],        toUnc(yields['diboson'][bin]))
-                   )
+
+        trootout = os.path.join(outputdir, signal, '%s.root'%bin)
+        tmproot = TFile(trootout, "Recreate")
+        tmproot.cd()
+        MakeStatHist("signal", sigYields[signal][bin])
+        MakeStatHist("ttZ", yields['ttZ'][bin])
+        MakeStatHist("diboson", yields['diboson'][bin])
+        MakeObsHist(cb.GetObservedRate())
         if bin not in mergedbins:
             # one to one CR
             cb.cp().process(['ttbarplusw','znunu','qcd']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
             cb.cp().process(['ttbarplusw']).AddSyst(cb, "R_%s"%binMaps['lepcr'][bin], "rateParam", ch.SystMap()(1.0))
             cb.cp().process(['znunu'     ]).AddSyst(cb, "R_%s"%binMaps['phocr'][bin], "rateParam", ch.SystMap()(1.0))
             cb.cp().process(['qcd'       ]).AddSyst(cb, "R_%s"%binMaps['qcdcr'][bin], "rateParam", ch.SystMap()(1.0))
-            cb.cp().process(['ttbarplusw','znunu','qcd']).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                       (['ttbarplusw'],     toUnc(yields['ttbarplusw'][bin]))
-                       (['znunu'],          toUnc(yields['znunu'][bin]))
-                       (['qcd'],            toUnc(yields['qcd'][bin]))
-                       )
+            MakeStatHist("ttbarplusw", yields['ttbarplusw'][bin])
+            MakeStatHist("znunu", yields['znunu'][bin])
+            MakeStatHist("qcd", yields['qcd'][bin])
         else:
             cb.cp().process(['ttbarplusw','znunu','qcd']).ForEachProc(lambda p : p.set_rate(1))
             for proc in ['ttbarplusw','znunu','qcd']:
@@ -549,9 +591,7 @@ def writeSR(signal):
                 rName = "R_%s_%s"%(proc, bin)
                 cb.cp().process([proc]).AddSyst(cb, rName, "rateParam", ch.SystMap()(999999.0)) # error if put formula here: need a workaround
                 rateParamFixes[rName] = rlt['rateParam']
-                cb.cp().process([proc]).AddSyst(cb, "mcstats_$PROCESS_$BIN", "lnN", ch.SystMap('process')
-                        ([proc],            toUnc(rlt['yield']))
-                        )
+                MakeStatHist(proc, rlt['yield'], forceContent=1)
         # syst unc
         if bin in unc_dict:
             for proc in ['signal', signal]+bkgprocesses:
@@ -563,6 +603,7 @@ def writeSR(signal):
                         else:
                             cb.cp().process([procname_in_dc]).AddSyst(cb, unc.name, unc.type, ch.SystMap()(unc.value))
         # fix rateParams
+        tmproot.Close()
         tmpdc = os.path.join(outputdir, signal, '%s.tmp'%bin)
         cb.WriteDatacard(tmpdc)
         with open(tmpdc) as tmpfile:
@@ -570,11 +611,14 @@ def writeSR(signal):
                 for line in tmpfile:
                     if 'rateParam' in line and '999999' not in line:
                         line = line.replace('\n', '  [0.01,5]\n') # set range of rateParam by hand
+                    if 'shapes' in line:
+                        line = line.replace('FAKE', '%s  $PROCESS' % ('%s.root'%bin)) # set range of rateParam by hand
                     for rName in rateParamFixes:
                         if rName not in line: continue
                         line = line.replace('999999', ' '.join(rateParamFixes[rName]))
                         break # fixed this rName
                     dc.write(line)
+                dc.write("* autoMCStats 0")
         os.remove(tmpdc)
     with open('BkgExpected.json', 'w') as outfile:
         json.dump(sepYields, outfile)
