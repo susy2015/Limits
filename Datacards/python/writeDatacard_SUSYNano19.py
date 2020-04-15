@@ -140,10 +140,9 @@ def parseBinMap(process, cr_description, yields_dict):
 def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     values = []
     params = []
-    sumE2 = 0
     total = 0.
     crproc = 'lepcr' if 'ttbar' in process else ('qcdcr' if 'qcd' in process else 'phocr')
-    stat = 0.
+    sumE2 = 0.
     crdata = 0
     crunit = 0.
     srunit = 0.
@@ -163,33 +162,28 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         else:
           crdata = yields[crproc + '_data'][cr][0]
           srunit = yields_dict[process][sr][0]
-        stat += yields_dict[process][sr][1]
-        stat += yields[crproc + '_data'][cr][1]
-        if 'ttbar' in process: 
+        sumE2 += yields_dict[process][sr][1]*yields_dict[process][sr][1]
+        if 'ttbar' in process:
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother= sigYields[crproc+'_'+signal][cr][0]
-            stat += yields_dict[crproc+'_'+process][cr][1]
-            stat += sigYields[crproc+'_'+signal][cr][1]
-        if 'qcd' in process: 
+        if 'qcd' in process:
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother =yields[crproc+'_ttbarplusw'][cr][0]
             crother+=yields[crproc+'_znunu'][cr][0]
             crother+=yields[crproc+'_Rare'][cr][0]
-            stat += yields_dict[crproc+'_'+process][cr][1]
-            stat += yields[crproc+'_ttbarplusw'][cr][1]
-            stat += yields[crproc+'_znunu'][cr][1]
-            stat += yields[crproc+'_Rare'][cr][1]
-        if 'znunu' in process: 
+        if 'znunu' in process:
             crunit += yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
             crother+=yields[crproc+'_back'][cr][0]
-            stat += yields_dict[crproc+'_gjets'][cr][1]
-            stat += yields[crproc+'_back'][cr][1]
 
         if 'znunu' in process: total = (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += crdata*srunit/crunit
-    return total, np.sqrt(total) #stat
-    
+
+    stat = toUnc((total, math.sqrt(sumE2)))
+    #print("process: {0}, bin: {1}, stat: {2}".format(process, bin, stat))
+
+    return total, math.sqrt(sumE2) #stat*total
+
 # ------ helper functions ------
 
 # ------ process uncertainties ------ 
@@ -210,10 +204,12 @@ class Uncertainty:
         #    raise ValueError('Invalid unc value %f for %s!'%(self.value, self.name))
 
 def averageUnc(up, down):
-    sign = 1 if up >= 1 else -1
-    val = 0.5 * (abs(up - 1) + abs(1 - down))
-    if abs(val) >= 1: val = 0.999
-    return (sign * val)
+    #sign = 1 if up >= 1 else -1
+    up_ = math.exp(math.log(up/math.sqrt(up*down)))
+    down_ = math.exp(math.log(down/math.sqrt(up*down)))
+    #val = 0.5 * (abs(up - 1) + abs(1 - down))
+    #if abs(val) >= 1: val = 0.999
+    return (down_, up_)
 
 unc_def = {}
 unc_dict = Vividict() # bin -> { proc -> { uncname -> Uncertainty } } , proc can be 'signal'
@@ -262,7 +258,7 @@ def readUncs():
                             uncval = 0.001
                         if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
                             uncavg = averageUnc(unc_up.value, float(uncval))			
-                            unc = Uncertainty(uncname.strip("_Down"), unctype, (1 - uncavg), (1 + uncavg))
+                            unc = Uncertainty(uncname.strip("_Down"), unctype, uncavg[0], uncavg[1])
                         else:	
                             unc = Uncertainty(uncname.strip("_Down"), unctype, uncval, unc_up.value)	
                     else: 
