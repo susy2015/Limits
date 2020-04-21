@@ -419,7 +419,7 @@ def calcLimit(config, signal):
     # get all datacards for combining
     currentDir = os.getcwd()
     datacardSaveLocation = os.path.join(currentDir, config.datacarddir, signal)
-    datacards = os.listdir(datacardSaveLocation)
+    datacards = [ i for i in os.listdir(datacardSaveLocation) if i.endswith(".txt")]
 
     # create and move into a dummy directory (using the timestamp in the name for uniqueness). At the end of
     # each signal loop, all remaining files will be either deleted or moved to
@@ -453,11 +453,11 @@ def calcLimit(config, signal):
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])
         sigtype = signal.split('_')[0]
-        runLimitsCommand = 'combine -M AsymptoticLimits -t -1 ' + combinedDatacard + ' -n ' + signal
+        runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' -n ' + signal
         if (mstop<450 and 'fbd' not in sigtype) or (mstop >= 350 and mlsp < 350 and 'T2tt' in sigtype) :
-            runLimitsCommand = 'combine -M AsymptoticLimits -t -1 ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
         if ('fbd' in sigtype or '4bd' in sigtype) and (mstop<=250):
-            runLimitsCommand = 'combine -M AsymptoticLimits -t -1 ' + combinedDatacard + ' --rMin 0 --rMax 1 -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' --rMin 0 --rMax 1 -n ' + signal
         if config.expectedonly :
             runLimitsCommand += ' --run expected'
         output = commands.getoutput(runLimitsCommand)
@@ -579,7 +579,7 @@ def runLimits(config):
     # run limits in parallel
     print 'Running limits for %d signal points. Please wait...'%len(config.signals)
     signals = config.signals[:]
-    pool = Pool(multiprocessing.cpu_count()-2)
+    pool = Pool(min(len(signals), multiprocessing.cpu_count() - 2))
     results = pool.map(functools.partial(calcLimit, config), signals)
 
     # print the significances

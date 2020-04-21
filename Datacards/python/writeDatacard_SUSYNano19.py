@@ -106,8 +106,9 @@ def _byteify(data, ignore_dicts = False):
 
 def MakeStatHist(proc, yields, forceContent=None):
     llh = TH1F(proc, proc, 1, 0, 1)
-    llh.SetBinContent(1, yields[0] if forceContent is None else forceContent)
-    llh.SetBinError(1, (toUnc(yields) -1 ) * yields[0])
+    content = yields[0] if forceContent is None else forceContent
+    llh.SetBinContent(1, content)
+    llh.SetBinError(1, (toUnc(yields) -1 ) * content)
     llh.Write()
 
 def MakeObsHist(obsRate):
