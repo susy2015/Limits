@@ -16,6 +16,7 @@ parser.add_argument("-q", "--queue", dest="queue", default="1nh", help="LSF subm
 parser.add_argument("--jobdir", dest="jobdir", default="jobs", help="Job dir. [Default: %(default)s]")
 parser.add_argument("-l", "--signals", dest="signals", default="T2tt_signals.conf", help="List of signal files. [Default: T2tt_signals.conf]")
 parser.add_argument("-d", "--signalDir", dest="signalDir", default="SMS_T2tt_fastsim", help="Director of signal files. [Default: SMS_T2tt_fastsim]")
+parser.add_argument("-e", "--eosDir", dest="eosDir", default="12May2020_2016Unblind_dev_v6", help="Director of signal files on eos. [Default: 12May2020_2016Unblind_dev_v6]")
 #parser.print_help()
 args = parser.parse_args()
 
@@ -75,7 +76,7 @@ for s in xrange(len(samples)):
 cat > submit.cmd << EOF
 universe                = vanilla
 Executable              = {runscript}{stype}.sh
-Arguments               = {macro} {config} {pathtomacro} . {workdir} {outdir} {scram} {samp} {sampDir}
+Arguments               = {macro} {config} {pathtomacro} . {workdir} {outdir} {scram} {samp} {sampDir} {eosDir}
 Output                  = logs/{sysname}_{samp}.out
 Error                   = logs/{sysname}_{samp}.err
 Log                     = logs/{sysname}_{samp}.log
@@ -91,7 +92,7 @@ EOF
 
   condor_submit submit.cmd;
   rm submit.cmd""".format(
-        runscript=args.script, stype=args.submittype, macro=args.macro, config=args.conf, pathtomacro=args.path, sysname=args.sysname, workdir="${CMSSW_BASE}", outdir=args.outdir, outname=outputname, scram="${SCRAM_ARCH}", samp=samples[s], sampDir=args.signalDir,
+        runscript=args.script, stype=args.submittype, macro=args.macro, config=args.conf, pathtomacro=args.path, sysname=args.sysname, workdir="${CMSSW_BASE}", outdir=args.outdir, outname=outputname, scram="${SCRAM_ARCH}", samp=samples[s], sampDir=args.signalDir, eosDir=args.eosDir,
         ))
         jobscript.close()
         script.write("./{jobdir}/submit_{name}_{samps}.sh\n".format(jobdir=args.jobdir, name=args.sysname, samps=samples[s]))
