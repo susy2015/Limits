@@ -166,6 +166,8 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     crunit = 0.
     srunit = 0.
     crother = 0
+    stat_crunit = 0.
+    stat_crdata = 0.
     for entry in cr_description.replace(' ','').split('+'):
         if '*' in entry: sr, cr = entry.split('*')
         else:
@@ -176,12 +178,15 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         cr = cr.strip('()')
         #print(cr)
         if 'znunu' in process:
-          crdata += yields[crproc + '_data'][cr][0]
-          srunit += yields_dict[process][sr][0]
+            crdata += yields[crproc + '_data'][cr][0]
+            srunit += yields_dict[process][sr][0]
         else:
-          crdata = yields[crproc + '_data'][cr][0]
-          srunit = yields_dict[process][sr][0]
+            crdata = yields[crproc + '_data'][cr][0]
+            srunit = yields_dict[process][sr][0]
+
         sumE2 += yields_dict[process][sr][1]**2
+        stat_crunit += yields_dict[crproc+'_'+process][cr][1] if not "znunu" in process else yields_dict[crproc+'_gjets'][cr][1]
+        stat_crdata += yields[crproc + '_data'][cr][1] if crdata != 0 else 1.84105
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother= sigYields[crproc+'_'+signal][cr][0]
@@ -198,9 +203,7 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += crdata*srunit/crunit
 
-    stat = toUnc((total, math.sqrt(sumE2)))
-
-    return total, math.sqrt(sumE2)
+    return total, math.sqrt(sumE2)*stat_crdata/stat_crunit
 
 # ------ helper functions ------
 
