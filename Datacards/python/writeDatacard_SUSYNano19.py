@@ -135,10 +135,10 @@ with open(json_sigYields) as jf:
 
 # ------ helper functions ------
 def toUnc(q):
-    return 2.0 if q[0]<=0 else min([1+q[1]/q[0], 2.0])
+    return 2.0 if q[0]<=0 else 1+q[1]/q[0]
 
 def toUncSep(y, dy):
-    return 2.0 if y<=0 else min([1+dy/y, 2.0])
+    return 2.0 if y<=0 else 1+dy/y
 
 def parseBinMap(process, cr_description, yields_dict):
     values = []
@@ -186,9 +186,9 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         nunit += 1
         crdata += yields[crproc + '_data'][cr][0]
         srunit += yields_dict[process][sr][0]
-
         stat_srunit += yields_dict[process][sr][1]**2
         stat_crdata += yields[crproc + '_data'][cr][1]**2
+
         if 'ttbar' in process: 
             crunit += yields_dict[crproc+'_'+process][cr][0]
             stat_crunit += yields_dict[crproc+'_'+process][cr][1]**2
@@ -209,7 +209,7 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
 
         if 'znunu' in process: total = (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total = np.clip(crdata - crother, 1, None)*srunit/crunit
-        else:                  total += crdata*srunit/crunit
+        else:                  total = crdata*srunit/crunit
 
     if 'znunu' in process:
         sumE2 += (1 - toUncSep(srunit, math.sqrt(stat_srunit)))**2
