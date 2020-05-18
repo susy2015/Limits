@@ -171,7 +171,9 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     crother = 0
     stat_crdata = 0
     stat_crunit = 0.
+    stat_crother = 0.
     stat_srunit = 0.
+    nunit=0
     for entry in cr_description.replace(' ','').split('+'):
         if '*' in entry: sr, cr = entry.split('*')
         else:
@@ -181,6 +183,7 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         sr = sr.strip('<>')
         cr = cr.strip('()')
         #print(cr)
+        nunit += 1
         if 'znunu' in process or 'qcd' in process:
             crdata += yields[crproc + '_data'][cr][0]
             srunit += yields_dict[process][sr][0]
@@ -192,35 +195,58 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         stat_crdata += yields[crproc + '_data'][cr][1]**2
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
-            crother= sigYields[crproc+'_'+signal][cr][0]
+            #KH crother= sigYields[crproc+'_'+signal][cr][0]
             stat_crunit += yields_dict[crproc+'_'+process][cr][1]**2
-            stat_crunit += sigYields[crproc+'_'+signal][cr][1]**2
+            #KH stat_crunit += sigYields[crproc+'_'+signal][cr][1]**2
         if 'qcd' in process: 
             crunit += yields_dict[crproc+'_'+process][cr][0]
             crother+=yields[crproc+'_ttbarplusw'][cr][0]
             crother+=yields[crproc+'_znunu'][cr][0]
             crother+=yields[crproc+'_Rare'][cr][0]
             stat_crunit += yields_dict[crproc+'_'+process][cr][1]**2
-            stat_crunit += yields_dict[crproc+'_ttbarplusw'][cr][1]**2
-            stat_crunit += yields_dict[crproc+'_znunu'][cr][1]**2
-            stat_crunit += yields_dict[crproc+'_Rare'][cr][1]**2
+            stat_crother += yields_dict[crproc+'_ttbarplusw'][cr][1]**2
+            stat_crother += yields_dict[crproc+'_znunu'][cr][1]**2
+            stat_crother += yields_dict[crproc+'_Rare'][cr][1]**2
         if 'znunu' in process: 
             crunit += yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
             crother+=yields[crproc+'_back'][cr][0]
             stat_crunit += yields_dict[crproc+'_gjets'][cr][1]**2
-            stat_crunit += yields_dict[crproc+'_back'][cr][1]**2
+            stat_crother += yields_dict[crproc+'_back'][cr][1]**2
 
         if 'znunu' in process: total = (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total = np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += crdata*srunit/crunit
 
-    sumE2 += (1 - toUncSep(srunit, stat_srunit))**2
-    sumE2 += (1 - toUncSep(crunit, stat_crunit))**2
-    sumE2 += (1 - toUncSep(crdata, stat_crdata))**2
+    if 'znunu' in process:
+        sumE2 += (1 - toUncSep(srunit, math.sqrt(stat_srunit)))**2
+        sumE2 += (1 - toUncSep(crdata, math.sqrt(stat_crdata)))**2
+        sumE2 += (1 - toUncSep(crunit+crother, math.sqrt(stat_crunit)))**2
+        sumE2 += (1 - toUncSep(crunit+crother, math.sqrt(stat_crother)))**2
+    elif 'qcd' in process:
+        sumE2 += (1 - toUncSep(srunit, math.sqrt(stat_srunit)))**2
+        sumE2 += (1 - toUncSep(crunit, math.sqrt(stat_crunit)))**2
+        sumE2 += (1 - toUncSep(np.clip(crdata - crother, 1, None), math.sqrt(stat_crdata)))**2
+        sumE2 += (1 - toUncSep(np.clip(crdata - crother, 1, None), math.sqrt(stat_crother)))**2
+    else:
+        sumE2 += (1 - toUncSep(srunit, math.sqrt(stat_srunit)))**2
+        sumE2 += (1 - toUncSep(crunit, math.sqrt(stat_crunit)))**2
+        sumE2 += (1 - toUncSep(crdata, math.sqrt(stat_crdata)))**2
 
     stat = math.sqrt(sumE2)*total
 
     #print "%11s %30s %10.4f stat: %8.4f" % (process, bin, total, stat)
+
+    #KH Debugging starts
+    debug = True
+    if debug:
+        if 'qcd' in process:
+            print("KH: %8s %60s (nunit) %3d (pred) %12.8e (crdatstat) %12.8e (mcstat) %12.8e"% (process,bin,nunit,total, \
+                                                                                                abs(1 - toUncSep(np.clip(crdata - crother, 1, None), math.sqrt(stat_crdata)) ) * total, \
+                                                                                                math.sqrt( (1 - toUncSep(srunit, math.sqrt(stat_srunit)))**2 + (1 - toUncSep(crunit, math.sqrt(stat_crunit)))**2 + (1 - toUncSep(np.clip(crdata - crother, 1, None), math.sqrt(stat_crother)))**2 )*total ) )
+        else:
+            print "KH: %8s %60s pred: %12.8e stat: %12.8e" % (process, bin, total, stat)
+    #KH Debugging ends
+
     return total, stat
 
 # ------ helper functions ------
