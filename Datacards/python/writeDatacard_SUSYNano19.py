@@ -137,6 +137,9 @@ with open(json_sigYields) as jf:
 def toUnc(q):
     return 2.0 if q[0]<=0 else min([1+q[1]/q[0], 2.0])
 
+def toUncSep(y, dy):
+    return 2.0 if y<=0 else min([1+dy/y, 2.0])
+
 def parseBinMap(process, cr_description, yields_dict):
     values = []
     params = []
@@ -166,8 +169,9 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     crunit = 0.
     srunit = 0.
     crother = 0
+    stat_crdata = 0
     stat_crunit = 0.
-    stat_crdata = 0.
+    stat_srunit = 0.
     for entry in cr_description.replace(' ','').split('+'):
         if '*' in entry: sr, cr = entry.split('*')
         else:
@@ -180,39 +184,43 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         if 'znunu' in process:
             crdata += yields[crproc + '_data'][cr][0]
             srunit += yields_dict[process][sr][0]
+            stat_srunit += yields_dict[process][sr][1]
         else:
             crdata = yields[crproc + '_data'][cr][0]
             srunit = yields_dict[process][sr][0]
+            stat_srunit = yields_dict[process][sr][1]
 
-        sumE2 += yields_dict[process][sr][1]**2
-        stat_crunit += yields_dict[crproc+'_'+process][cr][0] if not "znunu" in process else yields_dict[crproc+'_gjets'][cr][0]
-        stat_crdata += yields[crproc + '_data'][cr][0] if crdata != 0 else 1.84105
+        stat_crunit += yields_dict[crproc+'_'+process][cr][1] if not "znunu" in process else yields_dict[crproc+'_gjets'][cr][1]
+        stat_crdata += yields[crproc + '_data'][cr][1] if crdata != 0 else 1.84105
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother= sigYields[crproc+'_'+signal][cr][0]
-            sumE2 += yields_dict[crproc+'_'+process][cr][1]**2
-            sumE2 += sigYields[crproc+'_'+signal][cr][1]**2
+            stat_crunit += yields_dict[crproc+'_'+process][cr][1]
+            stat_crunit += sigYields[crproc+'_'+signal][cr][1]
         if 'qcd' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother =yields[crproc+'_ttbarplusw'][cr][0]
             crother+=yields[crproc+'_znunu'][cr][0]
             crother+=yields[crproc+'_Rare'][cr][0]
-            sumE2 += yields_dict[crproc+'_'+process][cr][1]**2
-            sumE2 += yields_dict[crproc+'_ttbarplusw'][cr][1]**2
-            sumE2 += yields_dict[crproc+'_znunu'][cr][1]**2
-            sumE2 += yields_dict[crproc+'_Rare'][cr][1]**2
+            stat_crunit += yields_dict[crproc+'_'+process][cr][1]
+            stat_crunit += yields_dict[crproc+'_ttbarplusw'][cr][1]
+            stat_crunit += yields_dict[crproc+'_znunu'][cr][1]
+            stat_crunit += yields_dict[crproc+'_Rare'][cr][1]
         if 'znunu' in process: 
             crunit += yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
             crother+=yields[crproc+'_back'][cr][0]
-            sumE2 += yields_dict[crproc+'_gjets'][cr][1]**2
-            sumE2 += yields_dict[crproc+'_back'][cr][1]**2
+            stat_crunit += yields_dict[crproc+'_gjets'][cr][1]
+            stat_crunit += yields_dict[crproc+'_back'][cr][1]
 
         if 'znunu' in process: total = (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += crdata*srunit/crunit
 
-    #scale = stat_crdata/stat_crunit if stat_crunit != 0 else 1
-    stat = math.sqrt(sumE2)
+    sumE2 += (1 - toUncSep(srunit, stat_srunit))**2
+    sumE2 += (1 - toUncSep(crunit, stat_crunit))**2
+    sumE2 += (1 - toUncSep(crdata, stat_crdata))**2
+
+    stat = math.sqrt(sumE2)*total
 
     #print "%11s %30s %10.4f stat: %8.4f" % (process, bin, total, stat)
     return total, stat
@@ -561,7 +569,6 @@ def BkgPlotter(json, outputBase, signal):
 
 def writeSR(signal):
     mergedbins = [bin for bin in binlist if '*' in binMaps['lepcr'][bin]]
-    #mergedbins = [bin for bin in binlist if '+' in binMaps['lepcr'][bin]]
     sepYields = {}
     for bin in binlist:
         rateParamFixes = {}
