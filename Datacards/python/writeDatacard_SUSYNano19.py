@@ -184,20 +184,14 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         cr = cr.strip('()')
         #print(cr)
         nunit += 1
-        if 'znunu' in process or 'qcd' in process:
-            crdata += yields[crproc + '_data'][cr][0]
-            srunit += yields_dict[process][sr][0]
-        else:
-            crdata = yields[crproc + '_data'][cr][0]
-            srunit = yields_dict[process][sr][0]
+        crdata += yields[crproc + '_data'][cr][0]
+        srunit += yields_dict[process][sr][0]
 
         stat_srunit += yields_dict[process][sr][1]**2
         stat_crdata += yields[crproc + '_data'][cr][1]**2
         if 'ttbar' in process: 
-            crunit = yields_dict[crproc+'_'+process][cr][0]
-            #KH crother= sigYields[crproc+'_'+signal][cr][0]
+            crunit += yields_dict[crproc+'_'+process][cr][0]
             stat_crunit += yields_dict[crproc+'_'+process][cr][1]**2
-            #KH stat_crunit += sigYields[crproc+'_'+signal][cr][1]**2
         if 'qcd' in process: 
             crunit += yields_dict[crproc+'_'+process][cr][0]
             crother+=yields[crproc+'_ttbarplusw'][cr][0]
@@ -237,7 +231,7 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     #print "%11s %30s %10.4f stat: %8.4f" % (process, bin, total, stat)
 
     #KH Debugging starts
-    debug = True
+    debug = False
     if debug:
         if 'qcd' in process:
             print("KH: %8s %60s (nunit) %3d (pred) %12.8e (crdatstat) %12.8e (mcstat) %12.8e"% (process,bin,nunit,total, \
