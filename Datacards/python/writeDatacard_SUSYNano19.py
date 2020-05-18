@@ -237,12 +237,12 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     #print "%11s %30s %10.4f stat: %8.4f" % (process, bin, total, stat)
 
     #KH Debugging starts
-    debug = False
+    debug = True
     if debug:
         if 'qcd' in process:
             print("KH: %8s %60s (nunit) %3d (pred) %12.8e (crdatstat) %12.8e (mcstat) %12.8e"% (process,bin,nunit,total, \
-                                                                                       abs(1 - toUncSep(np.clip(crdata - crother, 1, None), math.sqrt(stat_crdata)) ) * total, \
-                                                                                       math.sqrt((1 - toUncSep(srunit, math.sqrt(stat_srunit)))**2)*total ))
+                                                                                                abs(1 - toUncSep(np.clip(crdata - crother, 1, None), math.sqrt(stat_crdata)) ) * total, \
+                                                                                                math.sqrt( (1 - toUncSep(srunit, math.sqrt(stat_srunit)))**2 + (1 - toUncSep(crunit, math.sqrt(stat_crunit)))**2 + (1 - toUncSep(np.clip(crdata - crother, 1, None), math.sqrt(stat_crother)))**2 )*total ) )
         else:
             print "KH: %8s %60s pred: %12.8e stat: %12.8e" % (process, bin, total, stat)
     #KH Debugging ends
