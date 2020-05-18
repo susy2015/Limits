@@ -237,7 +237,7 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     #print "%11s %30s %10.4f stat: %8.4f" % (process, bin, total, stat)
 
     #KH Debugging starts
-    debug = True
+    debug = False
     if debug:
         if 'qcd' in process:
             print("KH: %8s %60s (nunit) %3d (pred) %12.8e (crdatstat) %12.8e (mcstat) %12.8e"% (process,bin,nunit,total, \
