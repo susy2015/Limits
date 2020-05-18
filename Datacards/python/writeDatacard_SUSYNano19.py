@@ -181,39 +181,37 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         sr = sr.strip('<>')
         cr = cr.strip('()')
         #print(cr)
-        if 'znunu' in process:
+        if 'znunu' in process or 'qcd' in process:
             crdata += yields[crproc + '_data'][cr][0]
             srunit += yields_dict[process][sr][0]
-            stat_srunit += yields_dict[process][sr][1]
         else:
             crdata = yields[crproc + '_data'][cr][0]
             srunit = yields_dict[process][sr][0]
-            stat_srunit = yields_dict[process][sr][1]
 
-        stat_crunit += yields_dict[crproc+'_'+process][cr][1] if not "znunu" in process else yields_dict[crproc+'_gjets'][cr][1]
-        stat_crdata += yields[crproc + '_data'][cr][1] if crdata != 0 else 1.84105
+        stat_srunit += yields_dict[process][sr][1]**2
+        stat_crdata += yields[crproc + '_data'][cr][1]**2
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother= sigYields[crproc+'_'+signal][cr][0]
-            stat_crunit += yields_dict[crproc+'_'+process][cr][1]
-            stat_crunit += sigYields[crproc+'_'+signal][cr][1]
+            stat_crunit += yields_dict[crproc+'_'+process][cr][1]**2
+            stat_crunit += sigYields[crproc+'_'+signal][cr][1]**2
         if 'qcd' in process: 
-            crunit = yields_dict[crproc+'_'+process][cr][0]
-            crother =yields[crproc+'_ttbarplusw'][cr][0]
+            crunit += yields_dict[crproc+'_'+process][cr][0]
+            crother+=yields[crproc+'_ttbarplusw'][cr][0]
             crother+=yields[crproc+'_znunu'][cr][0]
             crother+=yields[crproc+'_Rare'][cr][0]
-            stat_crunit += yields_dict[crproc+'_'+process][cr][1]
-            stat_crunit += yields_dict[crproc+'_ttbarplusw'][cr][1]
-            stat_crunit += yields_dict[crproc+'_znunu'][cr][1]
-            stat_crunit += yields_dict[crproc+'_Rare'][cr][1]
+            stat_crunit += yields_dict[crproc+'_'+process][cr][1]**2
+            stat_crunit += yields_dict[crproc+'_ttbarplusw'][cr][1]**2
+            stat_crunit += yields_dict[crproc+'_znunu'][cr][1]**2
+            stat_crunit += yields_dict[crproc+'_Rare'][cr][1]**2
         if 'znunu' in process: 
             crunit += yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
             crother+=yields[crproc+'_back'][cr][0]
-            stat_crunit += yields_dict[crproc+'_gjets'][cr][1]
-            stat_crunit += yields_dict[crproc+'_back'][cr][1]
+            stat_crunit += yields_dict[crproc+'_gjets'][cr][1]**2
+            stat_crunit += yields_dict[crproc+'_back'][cr][1]**2
 
         if 'znunu' in process: total = (crdata/(crunit + crother))*srunit
-        elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
+        elif 'qcd' in process: total = np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += crdata*srunit/crunit
 
     sumE2 += (1 - toUncSep(srunit, stat_srunit))**2
