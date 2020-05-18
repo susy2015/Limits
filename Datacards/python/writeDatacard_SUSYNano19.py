@@ -185,25 +185,37 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
             srunit = yields_dict[process][sr][0]
 
         sumE2 += yields_dict[process][sr][1]**2
-        stat_crunit += yields_dict[crproc+'_'+process][cr][1] if not "znunu" in process else yields_dict[crproc+'_gjets'][cr][1]
-        stat_crdata += yields[crproc + '_data'][cr][1] if crdata != 0 else 1.84105
+        stat_crunit += yields_dict[crproc+'_'+process][cr][0] if not "znunu" in process else yields_dict[crproc+'_gjets'][cr][0]
+        stat_crdata += yields[crproc + '_data'][cr][0] if crdata != 0 else 1.84105
         if 'ttbar' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother= sigYields[crproc+'_'+signal][cr][0]
+            sumE2 += yields_dict[crproc+'_'+process][cr][1]**2
+            sumE2 += sigYields[crproc+'_'+signal][cr][1]**2
         if 'qcd' in process: 
             crunit = yields_dict[crproc+'_'+process][cr][0]
             crother =yields[crproc+'_ttbarplusw'][cr][0]
             crother+=yields[crproc+'_znunu'][cr][0]
             crother+=yields[crproc+'_Rare'][cr][0]
+            sumE2 += yields_dict[crproc+'_'+process][cr][1]**2
+            sumE2 += yields_dict[crproc+'_ttbarplusw'][cr][1]**2
+            sumE2 += yields_dict[crproc+'_znunu'][cr][1]**2
+            sumE2 += yields_dict[crproc+'_Rare'][cr][1]**2
         if 'znunu' in process: 
             crunit += yields_dict[crproc+'_gjets'][cr][0] if yields_dict[crproc+'_gjets'][cr][0] > 0 else 0.000001
             crother+=yields[crproc+'_back'][cr][0]
+            sumE2 += yields_dict[crproc+'_gjets'][cr][1]**2
+            sumE2 += yields_dict[crproc+'_back'][cr][1]**2
 
         if 'znunu' in process: total = (crdata/(crunit + crother))*srunit
         elif 'qcd' in process: total += np.clip(crdata - crother, 1, None)*srunit/crunit
         else:                  total += crdata*srunit/crunit
 
-    return total, math.sqrt(sumE2)*stat_crdata/stat_crunit
+    #scale = stat_crdata/stat_crunit if stat_crunit != 0 else 1
+    stat = math.sqrt(sumE2)
+
+    #print "%11s %30s %10.4f stat: %8.4f" % (process, bin, total, stat)
+    return total, stat
 
 # ------ helper functions ------
 
@@ -477,7 +489,7 @@ def BkgPlotter(json, outputBase, signal):
         hqcd.SetBinError(sr, float(j[bin]['qcd'][1]))
         httz.SetBinError(sr, float(j[bin]['ttZ'][1]))
         hdiboson.SetBinError(sr, float(j[bin]['diboson'][1]))
-        hpred.SetBinError(sr, float(j[bin]['ttbarplusw'][1]) + float(j[bin]['znunu'][1]) + float(j[bin]['qcd'][1]) + float(j[bin]['ttZ'][1]) + float(j[bin]['diboson'][1]))
+        hpred.SetBinError(sr, np.sqrt(float(j[bin]['ttbarplusw'][1])**2 + float(j[bin]['znunu'][1])**2 + float(j[bin]['qcd'][1])**2 + float(j[bin]['ttZ'][1])**2 + float(j[bin]['diboson'][1])**2))
 	hsignal.SetBinError(sr, float(j[bin][signal][1]))
 
     httbar.SetFillColor(866)
