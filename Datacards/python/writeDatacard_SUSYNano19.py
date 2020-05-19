@@ -219,6 +219,7 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     elif 'qcd' in process:
         sumE2 += (1 - toUncSep(srunit, math.sqrt(stat_srunit)))**2
         sumE2 += (1 - toUncSep(crunit, math.sqrt(stat_crunit)))**2
+        if crdata == 0: stat_crdata =1 # incorporate the effect of clipping
         sumE2 += (1 - toUncSep(np.clip(crdata - crother, 1, None), math.sqrt(stat_crdata)))**2
         sumE2 += (1 - toUncSep(np.clip(crdata - crother, 1, None), math.sqrt(stat_crother)))**2
     else:
@@ -227,6 +228,15 @@ def sumBkgYields(process, signal, bin, cr_description, yields_dict):
         sumE2 += (1 - toUncSep(crdata, math.sqrt(stat_crdata)))**2
 
     stat = math.sqrt(sumE2)*total
+
+    #KH add garwood interval
+    if crdata == 0:
+        if 'znunu' in process:
+            stat = 1.83 / (crunit + crother)*srunit
+            print 'KH:', process, bin, total, stat
+        if 'ttbarplusw' in process:
+            stat = 1.83 / (crunit)*srunit
+            print 'KH:', process, bin, total, stat
 
     #print "%11s %30s %10.4f stat: %8.4f" % (process, bin, total, stat)
 
