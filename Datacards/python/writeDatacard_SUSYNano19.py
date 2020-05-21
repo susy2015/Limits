@@ -42,7 +42,7 @@ uncertainty_definitions = '%s/define_uncs.conf' % setuplocation
 uncertainty_fileprefix = 'values_unc'
 uncertainty_filepostfix = '_syst.conf'
 # backgroud processes
-bkgprocesses = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson']
+bkgprocesses = ['ttbarplusw', 'znunu', 'qcd', 'TTZ', 'Rare']
 # background process name -> control region name
 processMap = {'ttbarplusw':'lepcr', 'znunu':'phocr', 'qcd':'qcdcr'}
 #blind data
@@ -51,13 +51,13 @@ CRprocMap  = {
         'qcd'        : 'qcdcr_qcd',
         'ttbarplusw' : 'qcdcr_ttbarplusw',
         'znunu'      : 'qcdcr_znunu',
-        'diboson'    : 'qcdcr_Rare',
+        'Rare'    : 'qcdcr_Rare',
     },
     "qcdcr2" : {
         'qcd'        : 'qcd',
         'ttbarplusw' : 'ttbarplusw',
         'znunu'      : 'znunu',
-        'diboson'    : 'Rare',
+        'Rare'    : 'Rare',
     },
     "lepcr": {
         
@@ -445,9 +445,9 @@ def writeQCDcr(signal):
         cb = ch.CombineHarvester()
         #print crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
-        cb.AddProcesses(procs = ['qcd', 'ttbarplusw', 'znunu', 'diboson'], bin = [(0, crbin)], signal=False)
+        cb.AddProcesses(procs = ['qcd', 'ttbarplusw', 'znunu', 'Rare'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['qcdcr_data'][crbin][0]))
-        for proc in ['qcd', 'ttbarplusw', 'znunu', 'diboson']:
+        for proc in ['qcd', 'ttbarplusw', 'znunu', 'Rare']:
             cb.cp().process([proc]).ForEachProc(lambda p : 
                                                  p.set_rate(
                                                      yields[CRprocMap['qcdcr'][proc]][crbin][0]
@@ -459,7 +459,7 @@ def writeQCDcr(signal):
         # syst uncs
         if crbin in unc_dict:
             #for proc in ['qcd', 'otherbkgs']:
-            for proc in ['qcd', 'ttbarplusw', 'znunu', 'diboson']:
+            for proc in ['qcd', 'ttbarplusw', 'znunu', 'Rare']:
                 if CRprocMap['qcdcr2'][proc] in unc_dict[crbin]:
                     for unc in unc_dict[crbin][CRprocMap['qcdcr2'][proc]].values():
                         if unc.value2 > -100.:
@@ -473,7 +473,7 @@ def writeQCDcr(signal):
         MakeStatHist('qcd',        yields[CRprocMap['qcdcr']['qcd']][crbin])
         MakeStatHist('ttbarplusw', yields[CRprocMap['qcdcr']['ttbarplusw']][crbin])
         MakeStatHist('znunu',      yields[CRprocMap['qcdcr']['znunu']][crbin])
-        MakeStatHist('diboson',    yields[CRprocMap['qcdcr']['diboson']][crbin])
+        MakeStatHist('Rare',    yields[CRprocMap['qcdcr']['Rare']][crbin])
         MakeObsHist(cb.GetObservedRate())
         tmproot.Close()
 
@@ -501,7 +501,7 @@ def BkgPlotter(json, outputBase, signal):
     hznunu = TH1F('hznunu', 'znunu yields', nbins, 0, nbins)
     hqcd = TH1F('hqcd', 'qcd yields', nbins, 0, nbins)
     httz = TH1F('httz', 'ttz yields', nbins, 0, nbins)
-    hdiboson = TH1F('hdiboson', 'diboson yields', nbins, 0, nbins)
+    hRare = TH1F('hRare', 'Rare yields', nbins, 0, nbins)
     hpred = TH1F('hpred', 'pred yields', nbins, 0, nbins)
     hsignal = TH1F(signal, 'signal yields', nbins, 0, nbins)
     if not blind: hdata = TH1F('hdata', 'data yields', nbins, 0, nbins)
@@ -511,9 +511,9 @@ def BkgPlotter(json, outputBase, signal):
         httbar.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]))
         hznunu.SetBinContent(sr, float(j[bin]['znunu'][0]))
         hqcd.SetBinContent(sr, float(j[bin]['qcd'][0]))
-        httz.SetBinContent(sr, float(j[bin]['ttZ'][0]))
-        hdiboson.SetBinContent(sr, float(j[bin]['diboson'][0]))
-        hpred.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]) + float(j[bin]['znunu'][0]) + float(j[bin]['qcd'][0]) + float(j[bin]['ttZ'][0]) + float(j[bin]['diboson'][0]))
+        httz.SetBinContent(sr, float(j[bin]['TTZ'][0]))
+        hRare.SetBinContent(sr, float(j[bin]['Rare'][0]))
+        hpred.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]) + float(j[bin]['znunu'][0]) + float(j[bin]['qcd'][0]) + float(j[bin]['TTZ'][0]) + float(j[bin]['Rare'][0]))
 	hsignal.SetBinContent(sr, float(j[bin][signal][0]))
 
         if not blind:
@@ -523,20 +523,20 @@ def BkgPlotter(json, outputBase, signal):
         httbar.SetBinError(sr, float(j[bin]['ttbarplusw'][1]))
         hznunu.SetBinError(sr, float(j[bin]['znunu'][1]))
         hqcd.SetBinError(sr, float(j[bin]['qcd'][1]))
-        httz.SetBinError(sr, float(j[bin]['ttZ'][1]))
-        hdiboson.SetBinError(sr, float(j[bin]['diboson'][1]))
-        hpred.SetBinError(sr, np.sqrt(float(j[bin]['ttbarplusw'][1])**2 + float(j[bin]['znunu'][1])**2 + float(j[bin]['qcd'][1])**2 + float(j[bin]['ttZ'][1])**2 + float(j[bin]['diboson'][1])**2))
+        httz.SetBinError(sr, float(j[bin]['TTZ'][1]))
+        hRare.SetBinError(sr, float(j[bin]['Rare'][1]))
+        hpred.SetBinError(sr, np.sqrt(float(j[bin]['ttbarplusw'][1])**2 + float(j[bin]['znunu'][1])**2 + float(j[bin]['qcd'][1])**2 + float(j[bin]['TTZ'][1])**2 + float(j[bin]['Rare'][1])**2))
 	hsignal.SetBinError(sr, float(j[bin][signal][1]))
 
     httbar.SetFillColor(866)
     hznunu.SetFillColor(623)
     hqcd.SetFillColor(811)
     httz.SetFillColor(797)
-    hdiboson.SetFillColor(391)
+    hRare.SetFillColor(391)
     hpred.SetFillColor(2)
     hsignal.SetFillColor(2)
 
-    for h in [httbar, hznunu, hqcd, httz, hdiboson, hpred, hsignal]:
+    for h in [httbar, hznunu, hqcd, httz, hRare, hpred, hsignal]:
         h.SetXTitle("Search Region")
         h.SetYTitle("Events")
         h.SetTitleSize  (0.055,"Y")
@@ -554,7 +554,7 @@ def BkgPlotter(json, outputBase, signal):
         h.SetTitle("")
 	
 
-    bkgstack.Add(hdiboson)	
+    bkgstack.Add(hRare)	
     bkgstack.Add(httz)	
     bkgstack.Add(hqcd)	
     bkgstack.Add(hznunu)	
@@ -574,8 +574,8 @@ def BkgPlotter(json, outputBase, signal):
     leg.AddEntry(httbar,"ttbarplusw","F")
     leg.AddEntry(hznunu,"Znunu","F")
     leg.AddEntry(hqcd,"QCD","F")
-    leg.AddEntry(httz,"ttZ","F")
-    leg.AddEntry(hdiboson,"Rare","F")
+    leg.AddEntry(httz,"TTZ","F")
+    leg.AddEntry(hRare,"Rare","F")
     leg.Draw()
     c.SetTitle("Sum of Background in Search Regions")
     c.SetCanvasSize(800, 600)
@@ -589,7 +589,7 @@ def BkgPlotter(json, outputBase, signal):
     hznunu.Write()
     hqcd.Write()
     httz.Write()
-    hdiboson.Write()
+    hRare.Write()
     hpred.Write()
     if not blind: hdata.Write()
     hsignal.Write()
@@ -603,10 +603,10 @@ def writeSR(signal):
         cb = ch.CombineHarvester()
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, bin)])
         cb.AddProcesses(procs = ['signal'],     bin = [(0, bin)], signal=True)
-        cb.AddProcesses(procs = ['ttbarplusw', 'znunu', 'qcd', 'ttZ', 'diboson'], bin = [(0, bin)], signal=False)
+        cb.AddProcesses(procs = ['ttbarplusw', 'znunu', 'qcd', 'TTZ', 'Rare'], bin = [(0, bin)], signal=False)
         expected = 0.
         sepBins = {}
-        for proc in ['ttZ', 'diboson']:
+        for proc in ['TTZ', 'Rare']:
             expected += yields[proc][bin][0]
             sepBins[proc] = (yields[proc][bin][0], yields[proc][bin][1])
         for proc in ['ttbarplusw', 'znunu', 'qcd']:
@@ -621,14 +621,14 @@ def writeSR(signal):
             cb.ForEachObs(lambda obs : obs.set_rate(expected))
         sepYields[bin] = sepBins
         cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
-        cb.cp().process(['ttZ','diboson']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
+        cb.cp().process(['TTZ','Rare']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
 
         trootout = os.path.join(outputdir, signal, '%s.root'%bin)
         tmproot = TFile(trootout, "Recreate")
         tmproot.cd()
         MakeStatHist("signal", sigYields[signal][bin])
-        MakeStatHist("ttZ", yields['ttZ'][bin])
-        MakeStatHist("diboson", yields['diboson'][bin])
+        MakeStatHist("TTZ", yields['TTZ'][bin])
+        MakeStatHist("Rare", yields['Rare'][bin])
         MakeObsHist(cb.GetObservedRate())
         if bin not in mergedbins:
             # one to one CR

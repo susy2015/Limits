@@ -22,8 +22,10 @@ with open(json_TTZPred, "r") as ttz, open(json_RarePred, "r") as diboson, open(j
     znunu_insert = json.load(znunu)
     qcd_insert = json.load(qcd)
     lep_insert = json.load(lepcr)
-    newData['yieldsMap'].update(ttz_insert)
-    newData['yieldsMap'].update(diboson_insert)
+    newData['yieldsMap']['TTZ'] = {}
+    newData['yieldsMap']['Rare'] = {}
+    newData['yieldsMap']['TTZ'].update(ttz_insert['yieldsMap'])
+    newData['yieldsMap']['Rare'].update(diboson_insert['yieldsMap'])
     newData['yieldsMap'].update(znunu_insert['yieldsMap'])
     newData['yieldsMap'].update(qcd_insert['yieldsMap'])
     newData['yieldsMap'].update(lep_insert['yieldsMap'])
