@@ -275,7 +275,7 @@ class Uncertainty:
 def averageUnc(up, down):
     #sign = 1 if up >= 1 else -1
     up_ = math.exp(math.log(up/math.sqrt(up*down)))
-    down_ = math.exp(math.log(down/math.sqrt(up*down)))
+    down_ = math.exp(-1 * math.log(down/math.sqrt(up*down)))
     #val = 0.5 * (abs(up - 1) + abs(1 - down))
     #if abs(val) >= 1: val = 0.999
     return (down_, up_)
