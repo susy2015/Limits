@@ -62,7 +62,7 @@ cp {pathtomacro}$runmacro $workdir
     
 source tarCMSSW.sh $outputdir
 
-eosmkdir -p /eos/uscms/store/user/$(whoami)/13TeV/$outputdir
+eos root://cmseos.fnal.gov mkdir -p /eos/uscms/store/user/$(whoami)/13TeV/$outputdir
 
 echo "$runscript $runmacro $workdir $outputdir $config"    
 """)
@@ -80,11 +80,8 @@ Arguments               = {macro} {config} {pathtomacro} . {workdir} {outdir} {s
 Output                  = logs/{sysname}_{samp}.out
 Error                   = logs/{sysname}_{samp}.err
 Log                     = logs/{sysname}_{samp}.log
-x509userproxy           = 
-request_memory 		= 8000
 initialdir              = {outdir}
 Should_Transfer_Files   = YES
-transfer_input_files    = 
 transfer_output_files   = {outname}
 WhenToTransferOutput    = ON_EXIT
 Queue
