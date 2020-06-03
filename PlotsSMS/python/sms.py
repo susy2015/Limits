@@ -117,7 +117,7 @@ class sms():
 #         self.Ymin = 300.
 #         self.Ymax = 1000.
         self.Ymin = 10.
-        self.Ymax = 110.
+        self.Ymax = 107.
         self.Zmin = 0.1
         self.Zmax = 2.
         # produce sparticle

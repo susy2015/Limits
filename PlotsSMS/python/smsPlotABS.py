@@ -112,7 +112,7 @@ class smsPlotABS(object):
         textModelLabel.SetNDC()
         textModelLabel.SetTextAlign(13)
         textModelLabel.SetTextFont(42)
-        textModelLabel.SetTextSize(0.038)
+        textModelLabel.SetTextSize(0.035)
         #textModelLabel.SetTextSize(0.03)
         textModelLabel.Draw()
         self.c.textModelLabel = textModelLabel

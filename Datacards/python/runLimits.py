@@ -263,14 +263,20 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     maxmlsp = 0.0
     minmlsp = 0.0
     mstop_step = 1
-    mlsp_step = 10 if 'fbd' in limfilename else 1
+    mlsp_step = 2 if 'fbd' in limfilename else 1
     for signal in config.signals:
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])
-        if mstop > maxmstop: maxmstop = mstop
-        if mlsp > maxmlsp: maxmlsp = mlsp
-        if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
-        if mlsp < minmlsp: minmlsp = mlsp
+        if "fbd" in limfilename:
+            if mstop > maxmstop: maxmstop = mstop
+            if (mstop - mlsp) > maxmlsp: maxmlsp = (mstop - mlsp)
+            if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
+            if (mstop - mlsp) < minmlsp: minmlsp = (mstop - mlsp)
+        else:
+            if mstop > maxmstop: maxmstop = mstop
+            if mlsp > maxmlsp: maxmlsp = mlsp
+            if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
+            if mlsp < minmlsp: minmlsp = mlsp
     nbinsx = int((maxmstop - minmstop) / mstop_step)
     nbinsy = int((maxmlsp - minmlsp) / mlsp_step)
     minmstop -= 0.5*mstop_step
@@ -288,7 +294,7 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
 
     xsecfile = TFile(xsecfilename)
     xsechist = TH1D()
-    if "T2tt" in limfilename or "T2bb" in limfilename or "T2tb" in limfilename or "T6tt" in limfilename:
+    if "T2tt" in limfilename or "T2bb" in limfilename or "T2tb" in limfilename or "T6tt" in limfilename or "T2fbd" in limfilename:
         xsechist = xsecfile.Get("stop_xsection")
     elif "T1tt" in limfilename or "T5tt" in limfilename:
         xsechist = xsecfile.Get("gluino_xsection")
@@ -321,7 +327,9 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
                     tempLimit += line.replace('Expected\t', signal + ' expected')
             limits.append(tempLimit)
             mstop = int(signal.split('_')[1])
-            mlsp = int(signal.split('_')[2])
+            mlsp = int(signal.split('_')[2]) if "fbd" not in limfilename else (int(signal.split('_')[1]) - int(signal.split('_')[2]))
+            if mlsp >79:
+                print("mStop: {0}, mLSP: {1}, diff: {2}".format(mstop, int(signal.split('_')[2]), mlsp))
             limit = output[1]
 	    binIdx = xsechist.FindBin(float(mstop))
             xsec = xsechist.GetBinContent(binIdx)
