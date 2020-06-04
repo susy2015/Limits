@@ -9,6 +9,7 @@ outdir=${6}
 scram=${7}
 signal=${8}
 signalDir=${9}
+eosDir=${10}
 
 workdir=`pwd`
 cmssw=${scramdir##*/}
@@ -57,6 +58,11 @@ cd ${CMSSW}/src/Limits/
 echo $outdir
 
 ulimit -s unlimited
+
+#Copy signal json/conf to setup dir
+mkdir Datacards/setup/SUSYNano19/${signalDir}/
+xrdcp root://cmseos.fnal.gov//eos/uscms/store/user/lpcsusyhad/Stop_production/LimitInputs/${eosDir}/${signalDir}/${signal}.json Datacards/setup/SUSYNano19/${signalDir}/.
+xrdcp root://cmseos.fnal.gov//eos/uscms/store/user/lpcsusyhad/Stop_production/LimitInputs/${eosDir}/${signalDir}/${signal}_syst.conf Datacards/setup/SUSYNano19/${signalDir}/.
 
 #Make new config with sample replaced
 sed -i -e "s/T2tt_1000_0/$signal/g" ${config}

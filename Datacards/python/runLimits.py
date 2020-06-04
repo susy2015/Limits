@@ -34,6 +34,8 @@ import time
 import array
 import argparse
 import getpass
+import re
+import subprocess
 from ConfigParser import SafeConfigParser
 from ROOT import gROOT, TFile, TTree, TH1D, TH2D, TChain, TGraph2D
 gROOT.SetBatch(True)
@@ -76,6 +78,8 @@ def main():
                         help="Config file to be run with. [Default: dc_0l_setup.conf]")
     parser.add_argument("-e", "--isEOS", dest="isEOS", default='',
                         help="Location of limit root files is in EOS. [Default: ]")
+    parser.add_argument("-d", "--CardPattern", dest="CardPattern", default='',
+                        help="Location of limit root files is in EOS. [Default: ]")
     args = parser.parse_args()
 
     # to get the config file
@@ -89,6 +93,7 @@ def main():
     configparser.optionxform = str
 
     limconfig = LimitConfig(args.configFile, configparser, args.isEOS)
+    limconfig.CardPattern = args.CardPattern
 
     if args.printLimits:
         printLimits(limconfig)
@@ -119,6 +124,7 @@ class LimitConfig:
     self.signals = config_parser.get('signals', 'samples').replace(' ', '').split(',')
     self.scalesigtoacc = config_parser.getboolean('config', 'scalesigtoacc')
     self.expectedonly = config_parser.getboolean('config', 'expectedonly')
+    self.CardPattern = ""
 
 
 def getLimit(rootFile, getMean=False, limit={}):
@@ -257,14 +263,20 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     maxmlsp = 0.0
     minmlsp = 0.0
     mstop_step = 1
-    mlsp_step = 10 if 'fbd' in limfilename else 1
+    mlsp_step = 2 if 'fbd' in limfilename else 1
     for signal in config.signals:
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])
-        if mstop > maxmstop: maxmstop = mstop
-        if mlsp > maxmlsp: maxmlsp = mlsp
-        if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
-        if mlsp < minmlsp: minmlsp = mlsp
+        if "fbd" in limfilename:
+            if mstop > maxmstop: maxmstop = mstop
+            if (mstop - mlsp) > maxmlsp: maxmlsp = (mstop - mlsp)
+            if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
+            if (mstop - mlsp) < minmlsp: minmlsp = (mstop - mlsp)
+        else:
+            if mstop > maxmstop: maxmstop = mstop
+            if mlsp > maxmlsp: maxmlsp = mlsp
+            if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
+            if mlsp < minmlsp: minmlsp = mlsp
     nbinsx = int((maxmstop - minmstop) / mstop_step)
     nbinsy = int((maxmlsp - minmlsp) / mlsp_step)
     minmstop -= 0.5*mstop_step
@@ -282,7 +294,7 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
 
     xsecfile = TFile(xsecfilename)
     xsechist = TH1D()
-    if "T2tt" in limfilename or "T2bb" in limfilename or "T2tb" in limfilename or "T6tt" in limfilename:
+    if "T2tt" in limfilename or "T2bb" in limfilename or "T2tb" in limfilename or "T6tt" in limfilename or "T2fbd" in limfilename:
         xsechist = xsecfile.Get("stop_xsection")
     elif "T1tt" in limfilename or "T5tt" in limfilename:
         xsechist = xsecfile.Get("gluino_xsection")
@@ -290,10 +302,18 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     for signal in config.signals:
         outputLocation = os.path.join(currentDir, config.limitdir, signal)
         rootFile = ''
-        dummyFiles = os.listdir(outputLocation)
+        if "eos" in outputLocation:
+            p = subprocess.Popen("eos root://cmseos.fnal.gov ls %s" % outputLocation,
+                                          stdout=subprocess.PIPE, shell=True)
+            (dummyFiles_, _) = p.communicate()
+            dummyFiles = dummyFiles_.split("\n")[:2]
+        else:
+            dummyFiles = os.listdir(outputLocation)
         for df in dummyFiles:
-            if 'higgsCombine' in df: rootFile = os.path.join(
-                currentDir, config.limitdir, signal, df)
+            if 'higgsCombine' in df: 
+                rootFile = os.path.join(currentDir, config.limitdir, signal, df)
+                if "eos" in rootFile:
+                    rootFile = "root://cmseos.fnal.gov/" + rootFile
         if rootFile == '':
             limits.append(signal + ': no limit found..')
         else:
@@ -307,7 +327,9 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
                     tempLimit += line.replace('Expected\t', signal + ' expected')
             limits.append(tempLimit)
             mstop = int(signal.split('_')[1])
-            mlsp = int(signal.split('_')[2])
+            mlsp = int(signal.split('_')[2]) if "fbd" not in limfilename else (int(signal.split('_')[1]) - int(signal.split('_')[2]))
+            if mlsp >79:
+                print("mStop: {0}, mLSP: {1}, diff: {2}".format(mstop, int(signal.split('_')[2]), mlsp))
             limit = output[1]
 	    binIdx = xsechist.FindBin(float(mstop))
             xsec = xsechist.GetBinContent(binIdx)
@@ -419,7 +441,17 @@ def calcLimit(config, signal):
     # get all datacards for combining
     currentDir = os.getcwd()
     datacardSaveLocation = os.path.join(currentDir, config.datacarddir, signal)
-    datacards = os.listdir(datacardSaveLocation)
+    datacards = [ i for i in os.listdir(datacardSaveLocation) if i.endswith(".txt")]
+    if config.CardPattern != "":
+        restr = config.CardPattern.replace("_", ".*")
+        prog = re.compile(".*%s.*" % restr)
+        tempdatacards = []
+        for dcs in datacards:
+            mat = prog.match(dcs)
+            if mat is not None:
+                tempdatacards.append(dcs)
+        datacards = tempdatacards
+
 
     # create and move into a dummy directory (using the timestamp in the name for uniqueness). At the end of
     # each signal loop, all remaining files will be either deleted or moved to
@@ -453,11 +485,11 @@ def calcLimit(config, signal):
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])
         sigtype = signal.split('_')[0]
-        runLimitsCommand = 'combine -M AsymptoticLimits -t -1 ' + combinedDatacard + ' -n ' + signal
+        runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' -n ' + signal
         if (mstop<450 and 'fbd' not in sigtype) or (mstop >= 350 and mlsp < 350 and 'T2tt' in sigtype) :
-            runLimitsCommand = 'combine -M AsymptoticLimits -t -1 ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
         if ('fbd' in sigtype or '4bd' in sigtype) and (mstop<=250):
-            runLimitsCommand = 'combine -M AsymptoticLimits -t -1 ' + combinedDatacard + ' --rMin 0 --rMax 1 -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' --rMin 0 --rMax 1 -n ' + signal
         if config.expectedonly :
             runLimitsCommand += ' --run expected'
         output = commands.getoutput(runLimitsCommand)
@@ -579,7 +611,7 @@ def runLimits(config):
     # run limits in parallel
     print 'Running limits for %d signal points. Please wait...'%len(config.signals)
     signals = config.signals[:]
-    pool = Pool(multiprocessing.cpu_count()-2)
+    pool = Pool(min(len(signals), multiprocessing.cpu_count() - 2))
     results = pool.map(functools.partial(calcLimit, config), signals)
 
     # print the significances
