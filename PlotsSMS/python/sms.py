@@ -65,9 +65,9 @@ class sms():
         self.label = "pp #rightarrow #tilde{t}_{1} #bar{#tilde{t}}_{1}, #tilde{t}_{1} #rightarrow b #tilde{#chi}^{#pm}_{1}, #tilde{#chi}^{#pm}_{1} #rightarrow W^{#pm} #tilde{#chi}_{1}^{0}";
         # scan range to plot
         self.Xmin = 200.
-        self.Xmax = 1200.
+        self.Xmax = 1400.
         self.Ymin = 0.
-        self.Ymax = 800.
+        self.Ymax = 850.
         self.Zmin = 0.001
         self.Zmax = 100.
         # produce sparticle

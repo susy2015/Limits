@@ -294,7 +294,7 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
 
     xsecfile = TFile(xsecfilename)
     xsechist = TH1D()
-    if "T2tt" in limfilename or "T2bb" in limfilename or "T2tb" in limfilename or "T6tt" in limfilename or "T2fbd" in limfilename:
+    if "T2tt" in limfilename or "T2bb" in limfilename or "T2tb" in limfilename or "T6tt" in limfilename or "T2fbd" in limfilename or "T2bW" in limfilename:
         xsechist = xsecfile.Get("stop_xsection")
     elif "T1tt" in limfilename or "T5tt" in limfilename:
         xsechist = xsecfile.Get("gluino_xsection")
@@ -328,8 +328,6 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
             limits.append(tempLimit)
             mstop = int(signal.split('_')[1])
             mlsp = int(signal.split('_')[2]) if "fbd" not in limfilename else (int(signal.split('_')[1]) - int(signal.split('_')[2]))
-            if mlsp >79:
-                print("mStop: {0}, mLSP: {1}, diff: {2}".format(mstop, int(signal.split('_')[2]), mlsp))
             limit = output[1]
 	    binIdx = xsechist.FindBin(float(mstop))
             xsec = xsechist.GetBinContent(binIdx)
