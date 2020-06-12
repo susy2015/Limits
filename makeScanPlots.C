@@ -141,7 +141,11 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
   double ymax = *max_element(mlsps.cbegin(), mlsps.cend());
   double xbin_size = 12.5, ybin_size = 12.5;
 
-  if (inputFileName.Contains("T2fbd") || inputFileName.Contains("T2bWL") || inputFileName.Contains("T2cc")){
+  if (inputFileName.Contains("T2fbd") || inputFileName.Contains("T2bWC") || inputFileName.Contains("T2cc")){
+    ybin_size = 5;
+  }
+  if (inputFileName.Contains("T2bW")){
+    xbin_size = 5;
     ybin_size = 5;
   }
 
@@ -205,9 +209,14 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
     cobsdown.at(ilim)->Write(gname + "_ObsM" + add);
   }
   for(unsigned int ilim = 0; ilim < cexp.size(); ++ilim) {
+    double x, y;
     TString add = ilim > 0 ? "_" + TString(to_string(ilim)) : "";
     cexp.at(ilim)->SetName(gname + "_Exp" + add);
     cexp.at(ilim)->Write(gname + "_Exp" + add);
+    cexp.at(ilim)->GetPoint(1, x, y);
+    cout << "zero point: " << x << ", " << y << endl;
+    cexp.at(ilim)->GetPoint(cexp.at(ilim)->GetN() - 1, x, y);
+    cout << "zero point: " << x << ", " << y << endl;
   }
   for(unsigned int ilim = 0; ilim < cexpup.size(); ++ilim) {
     TString add = ilim > 0 ? "_" + TString(to_string(ilim)) : "";

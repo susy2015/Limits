@@ -55,6 +55,8 @@ class smsPlotABS(object):
         self.emptyHisto.GetXaxis().SetTitle(self.model.sParticle)
         if self.model.modelname in ('T2tb', 'T2bW'):
             self.emptyHisto.GetXaxis().SetNdivisions(505)
+        if self.model.modelname in ('T1tttt', 'T1ttbb', 'T5tttt', 'T5ttcc'):
+            self.emptyHisto.GetXaxis().SetNdivisions(505)
         #self.emptyHisto.GetXaxis().CenterTitle(True)
 
         # set y axis
