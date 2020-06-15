@@ -519,8 +519,6 @@ def BkgPlotter(json, outputBase, signal):
         hpred.SetBinContent(sr, float(j[bin]['ttbarplusw'][0]) + float(j[bin]['znunu'][0]) + float(j[bin]['qcd'][0]) + float(j[bin]['TTZ'][0]) + float(j[bin]['Rare'][0]))
 	hsignal.SetBinContent(sr, float(j[bin][signal][0]))
 
-        print("{0}".format(float(j[bin][signal][0])))
-
         if hsignal.GetBinContent(sr)/math.sqrt(hpred.GetBinContent(sr)) >= diff:
             whichBin = bin
 
@@ -535,10 +533,6 @@ def BkgPlotter(json, outputBase, signal):
         hRare.SetBinError(sr, float(j[bin]['Rare'][1]))
         hpred.SetBinError(sr, np.sqrt(float(j[bin]['ttbarplusw'][1])**2 + float(j[bin]['znunu'][1])**2 + float(j[bin]['qcd'][1])**2 + float(j[bin]['TTZ'][1])**2 + float(j[bin]['Rare'][1])**2))
 	hsignal.SetBinError(sr, float(j[bin][signal][1]))
-
-    if whichBin != "":
-        sr = int(binnum[whichBin])+1
-        print("bin: {0}, {1}: {2}, pred: {3}".format(whichBin, signal, hsignal.GetBinContent(sr), hpred.GetBinContent(sr)))
 
     httbar.SetFillColor(866)
     hznunu.SetFillColor(623)

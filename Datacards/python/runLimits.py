@@ -292,6 +292,9 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     hexp = TH2D('hexp', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hexpup = TH2D('hexpup', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hexpdown = TH2D('hexpdown', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
+    hrvalue = TH2D('hrvalue', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
+    hrvalueup = TH2D('hrvalueup', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
+    hrvaluedown = TH2D('hrvaluedown', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hxsecexp = TH2D('hxsecexp', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hxsecobs = TH2D('hxsecobs', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hobs = TH2D('hobs', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
@@ -346,6 +349,9 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
                 hexp.Fill(mstop, mlsp, limit['0'] / xsec)
                 hexpdown.Fill(mstop, mlsp, limit['-1'] / xsec)
                 hexpup.Fill(mstop, mlsp, limit['+1'] / xsec)
+                hrvalue.Fill(mstop, mlsp, limit['0'])
+                hrvaluedown.Fill(mstop, mlsp, limit['-1'])
+                hrvalueup.Fill(mstop, mlsp, limit['+1'])
                 if limit.has_key('obs'):
                     xsecobslimit = limit['obs']
                     hobs.Fill(mstop, mlsp, limit['obs'] / xsec)
@@ -360,6 +366,9 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
                 hexp.Fill(mstop, mlsp, limit['0'])
                 hexpdown.Fill(mstop, mlsp, limit['-1'])
                 hexpup.Fill(mstop, mlsp, limit['+1'])
+                hrvalue.Fill(mstop, mlsp, limit['0'])
+                hrvaluedown.Fill(mstop, mlsp, limit['-1'])
+                hrvalueup.Fill(mstop, mlsp, limit['+1'])
                 if limit.has_key('obs'):
                     xsecobslimit = limit['obs'] * xsec
                     hobs.Fill(mstop, mlsp, limit['obs'])
@@ -377,6 +386,9 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     hexp.Write()
     hexpdown.Write()
     hexpup.Write()
+    hrvalue.Write()
+    hrvaluedown.Write()
+    hrvalueup.Write()
     hobs.Write()
     hobsdown.Write()
     hobsup.Write()
@@ -492,7 +504,7 @@ def calcLimit(config, signal):
         sigtype = signal.split('_')[0]
         runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' -n ' + signal
         if (mstop<450 and 'fbd' not in sigtype) or (mstop >= 350 and mlsp < 350 and 'T2tt' in sigtype) :
-            runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' --rMin 0 --rMax 10 -n ' + signal
+            runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' --rMin -1 --rMax 1 -n ' + signal
         if ('fbd' in sigtype or '4bd' in sigtype) and (mstop<=250):
             runLimitsCommand = 'combine -M AsymptoticLimits --X-rtd MINIMIZER_analytic ' + combinedDatacard + ' --rMin 0 --rMax 1 -n ' + signal
         if config.expectedonly :
