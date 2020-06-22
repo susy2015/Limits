@@ -94,7 +94,7 @@ class sms():
 #         self.Ymin = 300.
 #         self.Ymax = 1000.
         self.Ymin = 10.
-        self.Ymax = 110.
+        self.Ymax = 107.
         self.Zmin = 0.02
         self.Zmax = 1.
         # produce sparticle
@@ -144,9 +144,9 @@ class sms():
 #         self.Ymin = 200.
 #         self.Ymax = 800.
         self.Ymin = 10.
-        self.Ymax = 110.
-        self.Zmin = 0.001
-        self.Zmax = 1000.
+        self.Ymax = 107.
+        self.Zmin = 0.05
+        self.Zmax = 2.
         # produce sparticle
         self.sParticle = "m_{#tilde{t}} [GeV]"
         # LSP
@@ -184,11 +184,11 @@ class sms():
         self.label= "pp #rightarrow #tilde{g} #tilde{g}, #tilde{g} #rightarrow t #bar{b} #tilde{#chi}^{#pm}_{1}, #tilde{#chi}^{#pm}_{1} #rightarrow W^{+} #tilde{#chi}^{0}_{1}";
         # scan range to plot
         self.Xmin = 800.
-        self.Xmax = 2700.
+        self.Xmax = 2500.
         self.Ymin = 0.
         self.Ymax = 2100.
         self.Zmin = 0.0001
-        self.Zmax = 2.
+        self.Zmax = 0.1
         # produce sparticle
         self.sParticle = "m_{#tilde{g}} [GeV]"
         # LSP
@@ -209,8 +209,8 @@ class sms():
         self.Xmax = 2400.
         self.Ymin = 0.
         self.Ymax = 2100.
-        self.Zmin = 0.0001
-        self.Zmax = 2.
+        self.Zmin = 0.0004
+        self.Zmax = 0.5
         # produce sparticle
         self.sParticle = "m_{#tilde{g}} [GeV]"
         # LSP

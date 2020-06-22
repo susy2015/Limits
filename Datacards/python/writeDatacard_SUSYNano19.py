@@ -25,6 +25,8 @@ parser.add_argument("-l", "--location", dest="signalLocation", default='',
                          help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
 parser.add_argument("-m", "--manySignals", dest="manySignals", default=False,
                          help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
+parser.add_argument("-b", "--bins", dest="binSelect", default="all",
+                         help="which bins to use for the datacard. [Default: all]")
 args = parser.parse_args()
 
 # datacard output directory
@@ -353,6 +355,7 @@ def readUncs():
 
 def writeLepcr(signal):
     for crbin in crbinlist['lepcr']:
+        if args.binSelect != "all" and args.binSelect not in crbin: continue
         cb = ch.CombineHarvester()
 #         print 'Writing datacard for', crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
@@ -397,6 +400,7 @@ def writeLepcr(signal):
 
 def writePhocr(signal):
     for crbin in crbinlist['phocr']:
+        if args.binSelect != "all" and args.binSelect not in crbin: continue
         cb = ch.CombineHarvester()
 #         print crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
@@ -443,6 +447,7 @@ def writePhocr(signal):
 
 def writeQCDcr(signal):
     for crbin in crbinlist['qcdcr']:
+        if args.binSelect != "all" and args.binSelect not in crbin: continue
         cb = ch.CombineHarvester()
         #print crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
@@ -605,6 +610,7 @@ def writeSR(signal):
     mergedbins = [bin for bin in binlist if '*' in binMaps['lepcr'][bin]]
     sepYields = {}
     for bin in binlist:
+        if args.binSelect != "all" and args.binSelect not in bin: continue
         rateParamFixes = {}
         cb = ch.CombineHarvester()
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, bin)])
@@ -693,4 +699,4 @@ for sig in signals:
     writePhocr(sig)
     writeQCDcr(sig)
     writeSR(sig)
-    if not args.manySignals: BkgPlotter('BkgExpected.json', 'SumOfBkg', sig)
+    if not args.manySignals and args.binSelect == "all": BkgPlotter('BkgExpected.json', 'SumOfBkg', sig)

@@ -265,8 +265,8 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     mstop_step = 10 if "T2cc" in limfilename else 1
     mlsp_step = 1
     if "fbd" in limfilename: mlsp_step = 2
-    elif "T2cc" in limfilename: mlsp_step = 5
-    elif "T2bWC" in limfilename: mlsp_step = 5
+    elif "T2cc" in limfilename: mlsp_step = 2
+    elif "T2bWC" in limfilename: mlsp_step = 2
     elif "T2bW" in limfilename: 
         mlsp_step = 10
         mstop_step = 10
