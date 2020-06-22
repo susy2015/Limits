@@ -91,9 +91,9 @@ python PlotsSMS/python/makeSMSplots.py PlotsSMS/config/T2tt_SUS16005.cfg T2tt_te
 Stored signal files as T2tt_signals.conf and T1tttt_signals.conf
 This will create a submit bash script to submitt all of the jobs in the conf file to Condor. It will store the log files in $CMSSW_BASE/src/Limits/{outputdir in eos area}. All of the output files will be stored in your eos area at /store/user/{USER}/13TeV/{outputdir in eos area}/.
 An Example command: 
-./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o limits_multi_dry_T2tt -d SMS_T2tt_fastsim -l T2tt_signals.conf -e 12May2020_2016Unblind_dev_v6
+./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o limits_multi_dry_T2tt -d SMS_T2tt_fastsim -l T2tt_signals.conf -e 15Jun2020_Run2_dev_v6 -b all
 ```
-./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o {outputdir in eos area} -d {Location of signal files} -l {Signal conf file} -e {eos directory name where signal dir is located}
+./process.py -p Datacards/python/ -c dc_SUSY19Nano_setup.conf -m runLimits.py -o {outputdir in eos area} -d {Location of signal files} -l {Signal conf file} -e {eos directory name where signal dir is located} -b {string match to subset of bins to use}
 . ./submitall.sh
 ```
 ## Plotting
