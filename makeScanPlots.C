@@ -7,6 +7,58 @@
 
 using namespace std;
 
+void Smooth(TGraph * g, int N = 3, int flag = 0) {
+  TGraph * old = (TGraph*) g->Clone();
+  //int N = (n%2==0?n+1:n);
+  if (N > 2 * g->GetN())
+    N = 2 * g->GetN() - 1;
+  
+  double gauss[N];
+  double sigma = (double) N / 4.;
+  double sum = 0;
+  double lim = (double) N / 2.;
+  TF1 *fb = new TF1("fb", "gaus(0)", -lim, lim);
+  fb->SetParameter(0, 1. / (sqrt(2 * 3.1415) * sigma));
+  fb->SetParameter(1, 0);
+  fb->SetParameter(2, sigma);
+  for (int i = 0; i < N; ++i) {
+    gauss[i] = fb->Integral(-lim + i, -lim + i + 1);
+    sum += gauss[i];
+  }
+  for (int i = 0; i < N; ++i)
+    gauss[i] /= sum;
+  
+  for (int i = 0; i < g->GetN(); ++i) {
+    double avy = 0., avx = 0., x, x0, y, y0;
+    int points = 0;
+    for (int j = i - N / 2; j <= i + N / 2; ++j) {
+      if (j < 0) {
+        old->GetPoint(0, x, y);
+      }		
+      else if (j >= g->GetN()) {
+        old->GetPoint(old->GetN() - 1, x, y);
+      }	
+      else 
+        old->GetPoint(j, x, y);
+      avy += y * gauss[points];
+      avx += x * gauss[points];
+      
+      if (i == j) {
+        x0 = x;
+        y0 = y;
+      }	
+      ++points;
+    }
+    if      ((flag==1 && i - N / 2 < 0 ) || (flag==2 && i + N / 2 >= g->GetN()))
+      g->SetPoint(i, x0, avy);
+    else if ((flag==1 && i + N / 2 >= g->GetN()) || (flag==2 && i - N / 2 < 0 ))
+      g->SetPoint(i, avx, y0);
+    else
+      g->SetPoint(i, avx, avy);
+  }
+  delete old;
+}
+
 vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
                     TLegend *leg = 0, const string &name = ""){
   vector<TGraph*> out;
@@ -23,6 +75,7 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
       continue;
     }
     //int n_points = g->GetN();
+    Smooth(g, 6);
     out.push_back(g);
     g->SetLineColor(color);
     g->SetLineStyle(style);
@@ -180,6 +233,8 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
   vector<TGraph*> cexpup = DrawContours(gexpup, 2, 2, &l, "ExpUp");
   vector<TGraph*> cexpdown = DrawContours(gexpdown, 2, 2, &l, "ExpDown");
   vector<TGraph*> cexp = DrawContours(gexp, 2, 1, &l, "Expected");
+
+  
 
   l.Draw("same");
   dots.Draw("p same");
