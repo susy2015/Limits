@@ -53,8 +53,8 @@ class smsPlotABS(object):
         self.emptyHisto.GetXaxis().SetTitleSize(0.05)
         self.emptyHisto.GetXaxis().SetTitleOffset(1.2)
         self.emptyHisto.GetXaxis().SetTitle(self.model.sParticle)
-        if self.model.modelname in ('T2tb', 'T2bW'):
-            self.emptyHisto.GetXaxis().SetNdivisions(505)
+        #if self.model.modelname in ('T2tb', 'T2bW'):
+        #    self.emptyHisto.GetXaxis().SetNdivisions(505)
         if self.model.modelname in ('T1tttt', 'T1ttbb', 'T5tttt', 'T5ttcc'):
             self.emptyHisto.GetXaxis().SetNdivisions(505)
         #self.emptyHisto.GetXaxis().CenterTitle(True)
@@ -82,10 +82,12 @@ class smsPlotABS(object):
         graphWhite.SetLineWidth(3)
         graphWhite.SetPoint(0,self.model.Xmin, self.model.Ymax)
         graphWhite.SetPoint(1,self.model.Xmax, self.model.Ymax)
-        graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.73)
-        graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.73)
-        #graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.8)
-        #graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.8)
+        if self.model.modelname in ['T2fbd', 'T2cc', 'T2bWC']:
+            graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.75)
+            graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.75)
+        else:
+            graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.73)
+            graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.73)
         graphWhite.SetPoint(4,self.model.Xmin, self.model.Ymax)
         graphWhite.Draw("FSAME")
         graphWhite.Draw("LSAME")
@@ -107,10 +109,10 @@ class smsPlotABS(object):
         #textCMS.Draw()
         self.c.textCMS = textCMS
         # MODEL LABEL
-        if self.model.extraText :
+        if self.model.modelname in ['T1ttbb', 'T1tttt', 'T5ttcc']:
+            textModelLabel= rt.TLatex(0.16,0.91,"%s" %self.model.label)
+        else:
             textModelLabel= rt.TLatex(0.16,0.92,"%s" %self.model.label)
-        else :
-            textModelLabel = rt.TLatex(0.15, 0.90, "%s NNLO+NNLL exclusion" % self.model.label)
         textModelLabel.SetNDC()
         textModelLabel.SetTextAlign(13)
         textModelLabel.SetTextFont(42)
@@ -119,7 +121,7 @@ class smsPlotABS(object):
         textModelLabel.Draw()
         self.c.textModelLabel = textModelLabel
         # NLO NLL XSEC
-        textNLONLL = rt.TLatex(0.16, 0.855, "NNLO+NNLL exclusion")
+        textNLONLL = rt.TLatex(0.16, 0.855, "Approx. NNLO+NNLL exclusion")
         textNLONLL.SetNDC()
         textNLONLL.SetTextAlign(13)
         textNLONLL.SetTextFont(42)
@@ -189,9 +191,14 @@ class smsPlotABS(object):
         self.c.textObs = textObs
 
         if self.model.extraText :
-            textExtra1 = rt.TLatex(self.model.Xmin+65*xRange/100, self.model.Ymax-1.65*yRange/100*10, self.model.extratext1)
+            if self.model.modelname in ['T1ttbb']:
+                #textExtra1 = rt.TLatex(self.model.Xmin+61.5*xRange/100, self.model.Ymax-1.2*yRange/100*10, self.model.extratext1)
+                textExtra1 = rt.TLatex(self.model.Xmin+61.5*xRange/100, self.model.Ymax-1.65*yRange/100*10, self.model.extratext1)
+                textExtra1.SetTextSize(0.035)
+            else:
+                textExtra1 = rt.TLatex(self.model.Xmin+65*xRange/100, self.model.Ymax-1.65*yRange/100*10, self.model.extratext1)
+                textExtra1.SetTextSize(0.030)
             textExtra1.SetTextFont(42)
-            textExtra1.SetTextSize(0.030)
             textExtra1.Draw()
             self.c.textExtra1 = textExtra1
 
