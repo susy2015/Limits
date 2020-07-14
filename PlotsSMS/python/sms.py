@@ -30,12 +30,14 @@ class sms():
         self.Zmin = 0.0001
         self.Zmax = 100.
         # produce sparticle
-        self.sParticle = "m_{#tilde{t}} [GeV]"
+        self.sParticle = "m_{ #tilde{t}} [GeV]"
         # LSP
         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = True
-        self.extraText = False
+        self.extraText = True
+        self.extratext1 = ""
+        self.extratext2 = ""
 
     def T2tb(self):
         # model name
@@ -47,10 +49,10 @@ class sms():
         self.Xmax = 1500.
         self.Ymin = 0.
         self.Ymax = 850.
-        self.Zmin = 0.001
+        self.Zmin = 0.0001
         self.Zmax = 100.
         # produce sparticle
-        self.sParticle = "m_{#tilde{t}} [GeV]"
+        self.sParticle = "m_{ #tilde{t}} [GeV]"
         # LSP
         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
@@ -59,7 +61,7 @@ class sms():
         self.mTopDiagOn = True
         self.extraText = True
         self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}}-m_{#tilde{#chi}_{1}^{0}} = 5 GeV"
-        self.extratext2 = "BR(#tilde{t} #rightarrow t #tilde{#chi}^{0}_{1}) = 50%"
+        self.extratext2 = "#bf{#it{#Beta}}(#tilde{t} #rightarrow t #tilde{#chi}^{0}_{1}) = 50%"
 
     def T2bW(self):
         # model name
@@ -71,16 +73,16 @@ class sms():
         self.Xmax = 1400.
         self.Ymin = 0.
         self.Ymax = 850.
-        self.Zmin = 0.001
+        self.Zmin = 0.0001
         self.Zmax = 100.
         # produce sparticle
-        self.sParticle = "m_{#tilde{t}} [GeV]"
+        self.sParticle = "m_{ #tilde{t}} [GeV]"
         # LSP
         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = True
         self.extraText = True
-        self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} = (m_{#tilde{t}} + m_{#tilde{#chi}_{1}^{0}})/2"
+        self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} = (m_{ #tilde{t}} + m_{#tilde{#chi}_{1}^{0}})/2"
         self.extratext2 = ""
 
     def T2bWC(self):
@@ -89,23 +91,23 @@ class sms():
         # decay chain
         self.label = "pp #rightarrow #tilde{t} #bar{#tilde{t}}, #tilde{t} #rightarrow b #tilde{#chi}^{#pm}_{1}, #tilde{#chi}^{#pm}_{1} #rightarrow W^{#pm(*)} #tilde{#chi}_{1}^{0}"
         # scan range to plot
-        self.Xmin = 300.
+        self.Xmin = 320.
         self.Xmax = 1000.
 #         self.Ymin = 300.
 #         self.Ymax = 1000.
         self.Ymin = 10.
-        self.Ymax = 107.
+        self.Ymax = 110.
         self.Zmin = 0.02
         self.Zmax = 1.
         # produce sparticle
-        self.sParticle = "m_{#tilde{t}} [GeV]"
+        self.sParticle = "m_{ #tilde{t}} [GeV]"
         # LSP
 #         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         self.LSP = "#Deltam( #tilde{t}, #tilde{#chi}_{1}^{0} ) [GeV]"
         # turn off diagonal lines
         self.diagOn = False
         self.extraText = True
-        self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} = (m_{#tilde{t}} + m_{#tilde{#chi}_{1}^{0}})/2"
+        self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} = (m_{ #tilde{t}} + m_{#tilde{#chi}_{1}^{0}})/2"
         self.extratext2 = ""
         self.preliminary = "Preliminary"
 
@@ -115,22 +117,24 @@ class sms():
         # decay chain
         self.label = "pp #rightarrow #tilde{t} #bar{#tilde{t}}, #tilde{t} #rightarrow b f #bar{f}' #tilde{#chi}^{0}_{1}"
         # scan range to plot
-        self.Xmin = 300.
+        self.Xmin = 320.
         self.Xmax = 750.
 #         self.Ymin = 300.
 #         self.Ymax = 1000.
         self.Ymin = 10.
-        self.Ymax = 107.
+        self.Ymax = 110.
         self.Zmin = 0.1
         self.Zmax = 2.
         # produce sparticle
-        self.sParticle = "m_{#tilde{t}} [GeV]"
+        self.sParticle = "m_{ #tilde{t}} [GeV]"
         # LSP
 #         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         self.LSP = "#Deltam( #tilde{t}, #tilde{#chi}_{1}^{0} ) [GeV]"
         # turn off diagonal lines
         self.diagOn = False
-        self.extraText = False
+        self.extraText = True
+        self.extratext1 = ""
+        self.extratext2 = ""
         self.preliminary = "Preliminary"
 
     def T2cc(self):
@@ -139,22 +143,24 @@ class sms():
         # decay chain
         self.label = "pp #rightarrow #tilde{t} #bar{#tilde{t}}, #tilde{t} #rightarrow c #tilde{#chi}^{0}_{1}"
         # scan range to plot
-        self.Xmin = 300.
+        self.Xmin = 320.
         self.Xmax = 850.
 #         self.Ymin = 200.
 #         self.Ymax = 800.
         self.Ymin = 10.
-        self.Ymax = 107.
+        self.Ymax = 110.
         self.Zmin = 0.05
         self.Zmax = 2.
         # produce sparticle
-        self.sParticle = "m_{#tilde{t}} [GeV]"
+        self.sParticle = "m_{ #tilde{t}} [GeV]"
         # LSP
 #         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         self.LSP = "#Deltam( #tilde{t}, #tilde{#chi}_{1}^{0} ) [GeV]"
         # turn off diagonal lines
         self.diagOn = False
-        self.extraText = False
+        self.extraText = True
+        self.extratext1 = ""
+        self.extratext2 = ""
         self.preliminary = "Preliminary"
 
     def T1tttt(self):
@@ -175,13 +181,15 @@ class sms():
         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = False
-	self.extraText = False
+	self.extraText = True
+        self.extratext1 = ""
+        self.extratext2 = ""
         
     def T1ttbb(self):
         # model name
         self.modelname = "T1ttbb"
         # decay chain
-        self.label= "pp #rightarrow #tilde{g} #tilde{g}, #tilde{g} #rightarrow t #bar{b} #tilde{#chi}^{#pm}_{1}, #tilde{#chi}^{#pm}_{1} #rightarrow W^{+} #tilde{#chi}^{0}_{1}";
+        self.label= "pp #rightarrow #tilde{g} #tilde{g}, #tilde{g} #rightarrow t #bar{b} #tilde{#chi}^{#pm}_{1}(50%), #tilde{g} #rightarrow t #bar{t} #tilde{#chi}^{#pm}_{1}(25%)";
         # scan range to plot
         self.Xmin = 800.
         self.Xmax = 2500.
@@ -196,8 +204,8 @@ class sms():
         # turn off diagonal lines
         self.diagOn = False
 	self.extraText = True
-        self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} = (m_{#tilde{g}} + m_{#tilde{#chi}_{1}^{0}})/2"
-        self.extratext2 = ""
+        self.extratext1 = "#tilde{g} #rightarrow b #bar{b} #tilde{#chi}^{#pm}_{1}(25%)"
+        self.extratext2 = "m_{#tilde{#chi}_{1}^{#pm}} -  m_{#tilde{#chi}_{1}^{0}} = 5 GeV"
         
     def T5ttcc(self):
         # model name
@@ -218,7 +226,7 @@ class sms():
         # turn off diagonal lines
         self.diagOn = False
 	self.extraText = True
-        self.extratext1 = "m_{#tilde{t}} - m_{#tilde{#chi}_{1}^{0}} = 20 GeV"
+        self.extratext1 = "m_{ #tilde{t}} - m_{#tilde{#chi}_{1}^{0}} = 20 GeV"
         self.extratext2 = ""
         
     def T5tttt(self):
@@ -240,7 +248,7 @@ class sms():
         # turn off diagonal lines
         self.diagOn = False
 	self.extraText = True
-        self.extratext1 = "m_{#tilde{t}} - m_{#tilde{#chi}_{1}^{0}} = 175 GeV"
+        self.extratext1 = "m_{ #tilde{t}} - m_{#tilde{#chi}_{1}^{0}} = 175 GeV"
         self.extratext2 = ""
         
     def T1bbbb(self):

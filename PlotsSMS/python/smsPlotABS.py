@@ -82,8 +82,8 @@ class smsPlotABS(object):
         graphWhite.SetLineWidth(3)
         graphWhite.SetPoint(0,self.model.Xmin, self.model.Ymax)
         graphWhite.SetPoint(1,self.model.Xmax, self.model.Ymax)
-        graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.75)
-        graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.75)
+        graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.73)
+        graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.73)
         #graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.8)
         #graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.8)
         graphWhite.SetPoint(4,self.model.Xmin, self.model.Ymax)
@@ -108,7 +108,7 @@ class smsPlotABS(object):
         self.c.textCMS = textCMS
         # MODEL LABEL
         if self.model.extraText :
-            textModelLabel= rt.TLatex(0.15,0.915,"%s" %self.model.label)
+            textModelLabel= rt.TLatex(0.16,0.92,"%s" %self.model.label)
         else :
             textModelLabel = rt.TLatex(0.15, 0.90, "%s NNLO+NNLL exclusion" % self.model.label)
         textModelLabel.SetNDC()
@@ -119,7 +119,7 @@ class smsPlotABS(object):
         textModelLabel.Draw()
         self.c.textModelLabel = textModelLabel
         # NLO NLL XSEC
-        textNLONLL = rt.TLatex(0.15, 0.855, "NNLO+NNLL exclusion")
+        textNLONLL = rt.TLatex(0.16, 0.855, "NNLO+NNLL exclusion")
         textNLONLL.SetNDC()
         textNLONLL.SetTextAlign(13)
         textNLONLL.SetTextFont(42)

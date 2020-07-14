@@ -27,19 +27,25 @@ void Smooth(TGraph * g, int N = 3, int flag = 0) {
   }
   for (int i = 0; i < N; ++i)
     gauss[i] /= sum;
-  
+ 
+  double xi, yi, xf, yf; 
   for (int i = 0; i < g->GetN(); ++i) {
     double avy = 0., avx = 0., x, x0, y, y0;
     int points = 0;
     for (int j = i - N / 2; j <= i + N / 2; ++j) {
       if (j < 0) {
         old->GetPoint(0, x, y);
+        xi = x;
+        yi = y;
       }		
       else if (j >= g->GetN()) {
         old->GetPoint(old->GetN() - 1, x, y);
+        xf = x;
+        yf = y;
       }	
       else 
         old->GetPoint(j, x, y);
+
       avy += y * gauss[points];
       avx += x * gauss[points];
       
@@ -52,6 +58,8 @@ void Smooth(TGraph * g, int N = 3, int flag = 0) {
     if      ((flag==1 && i - N / 2 < 0 ) || (flag==2 && i + N / 2 >= g->GetN()))
       g->SetPoint(i, x0, avy);
     else if ((flag==1 && i + N / 2 >= g->GetN()) || (flag==2 && i - N / 2 < 0 ))
+      g->SetPoint(i, avx, y0);
+    else if ((flag==3 && (xf != xi && yf != yi) && i + N / 2 >= g->GetN()) || (flag==2 && i - N / 2 < 0 ))
       g->SetPoint(i, avx, y0);
     else
       g->SetPoint(i, avx, avy);
@@ -75,7 +83,7 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
       continue;
     }
     //int n_points = g->GetN();
-    Smooth(g, 6);
+    Smooth(g, 6, 3);
     out.push_back(g);
     g->SetLineColor(color);
     g->SetLineStyle(style);
