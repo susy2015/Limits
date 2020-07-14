@@ -29,6 +29,7 @@ parser.add_argument("-b", "--bins", dest="binSelect", default="all",
                          help="which bins to use for the datacard. [Default: all]")
 args = parser.parse_args()
 
+syscap = 2   ## Cap at 200% systematics uncertainties
 # datacard output directory
 outputdir = 'Datacards/results/SUSYNano19-20200403'
 # directory with uncertainties files
@@ -109,8 +110,12 @@ def _byteify(data, ignore_dicts = False):
 def MakeStatHist(proc, yields, forceContent=None):
     llh = TH1F(proc, proc, 1, 0, 1)
     content = yields[0] if forceContent is None else forceContent
+    statunc = (toUnc(yields) -1 ) 
+    ## Cap on stat. uncertainty to 100%, in order to preserve the Poisson uncertainty
+    if statunc > 1:
+        statunc = 1
     llh.SetBinContent(1, content)
-    llh.SetBinError(1, (toUnc(yields) -1 ) * content)
+    llh.SetBinError(1, statunc * content)
     llh.Write()
 
 def MakeObsHist(obsRate):
@@ -301,6 +306,8 @@ def readUncs():
 #     filelist = [os.path.join(setuplocation, f) for f in os.listdir(setuplocation) if f.startswith(uncertainty_fileprefix)]
     filelist = [os.path.join(dp, f) for dp, dn, filenames in os.walk(setuplocation) for f in filenames if f.startswith(uncertainty_fileprefix)]
     if args.signalPoint != "": filelist.append(str(setuplocation + '/' + args.signalLocation + '/' + args.signalPoint + uncertainty_filepostfix))
+    maxsyscap = 1+ syscap
+    minsyscap = 1.0/(syscap*100)
     for uncfile in filelist:
         with open(uncfile) as f:
             print 'Reading unc from', uncfile
@@ -320,14 +327,16 @@ def readUncs():
                     raise ValueError('Uncertainty "%s" is not defined!'%uncname)
                 try:
                     if "Up" in uncname: 
-                        if "nan" in uncval or float(uncval) > 10000000:
-                            uncval = 2
-                        elif float(uncval) <= 0:
-                            uncval = 0.001
+                        if "nan" in uncval or float(uncval) > maxsyscap:
+                            uncval = maxsyscap
+                        elif float(uncval) <= minsyscap:
+                            uncval = minsyscap
                         unc_up = Uncertainty(uncname.strip("_Up"), unctype, uncval)
                     elif "Down" in uncname: 
-                        if "nan" in uncval or float(uncval) <= 0 or float(uncval) > 10000000:
-                            uncval = 0.001
+                        if "nan" in uncval or float(uncval) <= minsyscap:
+                            uncval = minsyscap
+                        elif float(uncval) > maxsyscap:
+                            uncval = maxsyscap
                         if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
                             uncavg = averageUnc(unc_up.value, float(uncval))			
                             unc = Uncertainty(uncname.strip("_Down"), unctype, uncavg[0], uncavg[1])
@@ -394,7 +403,7 @@ def writeLepcr(signal):
                     if 'shapes' in line:
                         line = line.replace('FAKE', '%s  $PROCESS' % ('%s.root'%crbin)) # set range of rateParam by hand
                     dc.write(line)
-                dc.write("* autoMCStats 0")
+                dc.write("* autoMCStats 10 1 1") # background + signal 
         os.remove(tmpdc)
                 
 
@@ -442,7 +451,7 @@ def writePhocr(signal):
                     if 'shapes' in line:
                         line = line.replace('FAKE', '%s  $PROCESS' % ('%s.root'%crbin)) # set range of rateParam by hand
                     dc.write(line)
-                dc.write("* autoMCStats 0")
+                dc.write("* autoMCStats 10 1 1") # background + signal 
         os.remove(tmpdc)
 
 def writeQCDcr(signal):
@@ -493,7 +502,7 @@ def writeQCDcr(signal):
                     if 'shapes' in line:
                         line = line.replace('FAKE', '%s  $PROCESS' % ('%s.root'%crbin)) # set range of rateParam by hand
                     dc.write(line)
-                dc.write("* autoMCStats 0")
+                dc.write("* autoMCStats 10 1 1") # background + signal 
         os.remove(tmpdc)
 
 def BkgPlotter(json, outputBase, signal):
@@ -685,7 +694,7 @@ def writeSR(signal):
                         line = line.replace('999999', ' '.join(rateParamFixes[rName]))
                         break # fixed this rName
                     dc.write(line)
-                dc.write("* autoMCStats 0\n")
+                dc.write("* autoMCStats 10 1 1") # background + signal
         os.remove(tmpdc)
     with open('BkgExpected.json', 'w') as outfile:
         json.dump(sepYields, outfile)
