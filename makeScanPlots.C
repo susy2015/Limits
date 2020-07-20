@@ -55,6 +55,7 @@ void Smooth(TGraph * g, int N = 3, int flag = 0) {
       }	
       ++points;
     }
+    cout << "x/y = " << x0 << "/" << y0 << endl;
     if      ((flag==1 && i - N / 2 < 0 ) || (flag==2 && i + N / 2 >= g->GetN()))
       g->SetPoint(i, x0, avy);
     else if ((flag==1 && i + N / 2 >= g->GetN()) || (flag==2 && i - N / 2 < 0 ))
