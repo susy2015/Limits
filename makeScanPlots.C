@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void Smooth(TGraph * g, int N = 3, int flag = 0) {
+void Smooth(TGraph * g, int N = 3, int flag = 0, TString signal = "T2tt") {
   TGraph * old = (TGraph*) g->Clone();
   //int N = (n%2==0?n+1:n);
   if (N > 2 * g->GetN())
@@ -55,11 +55,19 @@ void Smooth(TGraph * g, int N = 3, int flag = 0) {
       }	
       ++points;
     }
-    cout << "x/y = " << x0 << "/" << y0 << endl;
+    //if(i - N / 2 < 0 || i + N / 2 >= g->GetN() || i < 5*N || i > g->GetN() - 5*N){
+    //  cout << "i: " << i << endl;
+    //  cout << "xi/yi = " << xi << "/" << yi << endl;
+    //  cout << "xf/yf = " << xf << "/" << yf << endl;
+    //  cout << "x/y = " << x0 << "/" << y0 << endl;
+    //  cout << "avx/y = " << avx << "/" << y0 << endl;
+    //}
     if      ((flag==1 && i - N / 2 < 0 ) || (flag==2 && i + N / 2 >= g->GetN()))
       g->SetPoint(i, x0, avy);
     else if ((flag==1 && i + N / 2 >= g->GetN()) || (flag==2 && i - N / 2 < 0 ))
       g->SetPoint(i, avx, y0);
+    else if ((signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && (y0 <= 10 || y0 >= 80))
+      g->SetPoint(i, x0, y0);
     else if ((flag==3 && (xf != xi && yf != yi) && i + N / 2 >= g->GetN()) || (flag==2 && i - N / 2 < 0 ))
       g->SetPoint(i, avx, y0);
     else
@@ -69,7 +77,7 @@ void Smooth(TGraph * g, int N = 3, int flag = 0) {
 }
 
 vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
-                    TLegend *leg = 0, const string &name = ""){
+                    TLegend *leg = 0, const string &name = "", TString signal = "T2tt"){
   vector<TGraph*> out;
   TH2D* hist = g2.GetHistogram();
   TVirtualHistPainter* histptr = hist->GetPainter();
@@ -84,7 +92,7 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
       continue;
     }
     //int n_points = g->GetN();
-    Smooth(g, 6, 3);
+    Smooth(g, 6, 3, signal);
     out.push_back(g);
     g->SetLineColor(color);
     g->SetLineStyle(style);
@@ -236,12 +244,15 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
             1.-gStyle->GetPadRightMargin(), 1.);
   l.SetNColumns(2);
   l.SetBorderSize(0);
-  vector<TGraph*> cobsup = DrawContours(gobsup, 1, 2, &l, "ObsUp");
-  vector<TGraph*> cobsdown = DrawContours(gobsdown, 1, 2, &l, "ObsDown");
-  vector<TGraph*> cobs = DrawContours(gobs, 1, 1, &l, "Observed");
-  vector<TGraph*> cexpup = DrawContours(gexpup, 2, 2, &l, "ExpUp");
-  vector<TGraph*> cexpdown = DrawContours(gexpdown, 2, 2, &l, "ExpDown");
-  vector<TGraph*> cexp = DrawContours(gexp, 2, 1, &l, "Expected");
+  TString signal = inputFileName;
+  signal.ReplaceAll("results_", "");
+  signal.ReplaceAll(".root", "");
+  vector<TGraph*> cobsup = DrawContours(gobsup, 1, 2, &l, "ObsUp", signal);
+  vector<TGraph*> cobsdown = DrawContours(gobsdown, 1, 2, &l, "ObsDown", signal);
+  vector<TGraph*> cobs = DrawContours(gobs, 1, 1, &l, "Observed", signal);
+  vector<TGraph*> cexpup = DrawContours(gexpup, 2, 2, &l, "ExpUp", signal);
+  vector<TGraph*> cexpdown = DrawContours(gexpdown, 2, 2, &l, "ExpDown", signal);
+  vector<TGraph*> cexp = DrawContours(gexp, 2, 1, &l, "Expected", signal);
 
   
 
@@ -277,9 +288,9 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
     TString add = ilim > 0 ? "_" + TString(to_string(ilim)) : "";
     cexp.at(ilim)->SetName(gname + "_Exp" + add);
     cexp.at(ilim)->Write(gname + "_Exp" + add);
-    cexp.at(ilim)->GetPoint(1, x, y);
+    cexp.at(ilim)->GetPoint(2, x, y);
     cout << "zero point: " << x << ", " << y << endl;
-    cexp.at(ilim)->GetPoint(cexp.at(ilim)->GetN() - 1, x, y);
+    cexp.at(ilim)->GetPoint(cexp.at(ilim)->GetN() - 2, x, y);
     cout << "zero point: " << x << ", " << y << endl;
   }
   for(unsigned int ilim = 0; ilim < cexpup.size(); ++ilim) {
