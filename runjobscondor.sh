@@ -58,8 +58,10 @@ pwd
 cd ${CMSSW}/src/Limits/
 echo $outdir
 
+## remove broken symlink
+rm -f Datacards/setup/SUSYNano19/${signalDir}
 #Copy signal json/conf to setup dir
-mkdir Datacards/setup/SUSYNano19/${signalDir}/
+mkdir -p Datacards/setup/SUSYNano19/${signalDir}/
 xrdcp -f root://cmseos.fnal.gov//eos/uscms/store/user/lpcsusyhad/Stop_production/LimitInputs/${eosDir}/${signalDir}/${signal}.json Datacards/setup/SUSYNano19/${signalDir}/.
 xrdcp -f root://cmseos.fnal.gov//eos/uscms/store/user/lpcsusyhad/Stop_production/LimitInputs/${eosDir}/${signalDir}/${signal}_syst.conf Datacards/setup/SUSYNano19/${signalDir}/.
 
@@ -70,6 +72,11 @@ python $pathtomacro/writeDatacard_SUSYNano19.py -l $signalDir -s $signal -b $bin
 python $pathtomacro$runmacro -c $config
 python $pathtomacro$runmacro -c $config -p
 xrdcp -r -np Datacards/limits/SUSYNano19-20200403_AsymptoticLimits root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
+sed -i -e "s/AsymptoticLimits/Significance/g" ${config}
+python $pathtomacro$runmacro -c $config
+xrdcp -r -np Datacards/limits/SUSYNano19-20200403_Significance root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
+## Copy the datacard input for combination 
+xrdcp -r -np Datacards/results/SUSYNano19-20200403/ root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
 ls -a
 
 status=`echo $?`

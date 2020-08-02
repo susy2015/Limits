@@ -126,6 +126,18 @@ class LimitConfig:
     self.expectedonly = config_parser.getboolean('config', 'expectedonly')
     self.CardPattern = ""
 
+def eosls(outlocation):
+    if "eos" in outputLocation:
+        p = subprocess.Popen("eos root://cmseos.fnal.gov ls %s" % outputLocation,
+                                      stdout=subprocess.PIPE, shell=True)
+        (dummyFiles_, _) = p.communicate()
+        dummyFiles = dummyFiles_.split("\n")[:2]
+    else:
+        dummyFiles = os.listdir(outputLocation)
+
+    return dummyFiles
+
+
 
 def getLimit(rootFile, getMean=False, limit={}):
     file = TFile(rootFile)
@@ -150,12 +162,17 @@ def getLimit(rootFile, getMean=False, limit={}):
                     (100.0 * entry.quantileExpected), entry.limit)
             if entry.quantileExpected < 0:
                 limit['obs'] = entry.limit
-            if 0.1 < entry.quantileExpected < 0.2:
+            quantileExpected = round(entry.quantileExpected, 3)
+            if quantileExpected == 0.025:
+                limit['-2'] = entry.limit
+            elif quantileExpected  == 0.16:
                 limit['-1'] = entry.limit
-            elif 0.4 < entry.quantileExpected < 0.6:
+            elif quantileExpected  == 0.5:
                 limit['0'] = entry.limit
-            elif 0.8 < entry.quantileExpected < 0.9:
+            elif quantileExpected  == 0.84:
                 limit['+1'] = entry.limit
+            elif quantileExpected  == 0.975:
+                limit['+2'] = entry.limit
     return (output, limit)
 
 def printLimits(config):
@@ -165,15 +182,17 @@ def printLimits(config):
     for signal in config.signals:
         outputLocation = os.path.join(currentDir, config.limitdir, signal)
         rootFile = ''
-        dummyFiles = os.listdir(outputLocation)
+        dummyFiles = eosls(outputLocation)
+
         for df in dummyFiles:
-            if 'higgsCombine' in df: rootFile = os.path.join(
-                currentDir, config.limitdir, signal, df)
+            if 'higgsCombine' in df and config.limitmethod in df:  
+                rootFile = os.path.join( currentDir, config.limitdir, signal, df)
+                if "eos" in rootFile:
+                    rootFile = "root://cmseos.fnal.gov/" + rootFile
         if rootFile == '':
             limits.append(signal + ': no limit found..')
         else:
-            output = getLimit(
-                rootFile, False) if config.limitmethod == 'AsymptoticLimits' else getLimit(rootFile, True)
+            output = getLimit(rootFile, False) if config.limitmethod == 'AsymptoticLimits' else getLimit(rootFile, True)
             # print signal, ':\n', output
             tempLimit = ''
             if config.limitmethod == 'AsymptoticLimits':
@@ -293,6 +312,8 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     hexp = TH2D('hexp', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hexpup = TH2D('hexpup', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hexpdown = TH2D('hexpdown', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
+    hexpup2 = TH2D('hexpup2', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
+    hexpdown2 = TH2D('hexpdown2', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hrvalue = TH2D('hrvalue', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hrvalueup = TH2D('hrvalueup', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     hrvaluedown = TH2D('hrvaluedown', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
@@ -320,7 +341,7 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
         else:
             dummyFiles = os.listdir(outputLocation)
         for df in dummyFiles:
-            if 'higgsCombine' in df: 
+            if 'higgsCombine' in df and config.limitmethod in df:  
                 rootFile = os.path.join(currentDir, config.limitdir, signal, df)
                 if "eos" in rootFile:
                     rootFile = "root://cmseos.fnal.gov/" + rootFile
@@ -349,7 +370,9 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
                 xsecobslimit = 0.0
                 hexp.Fill(mstop, mlsp, limit['0'] / xsec)
                 hexpdown.Fill(mstop, mlsp, limit['-1'] / xsec)
+                hexpdown2.Fill(mstop, mlsp, limit['-2'] / xsec)
                 hexpup.Fill(mstop, mlsp, limit['+1'] / xsec)
+                hexpup2.Fill(mstop, mlsp, limit['+2'] / xsec)
                 hrvalue.Fill(mstop, mlsp, limit['0'])
                 hrvaluedown.Fill(mstop, mlsp, limit['-1'])
                 hrvalueup.Fill(mstop, mlsp, limit['+1'])
@@ -366,7 +389,9 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
                 xsecobslimit = 0.0
                 hexp.Fill(mstop, mlsp, limit['0'])
                 hexpdown.Fill(mstop, mlsp, limit['-1'])
+                hexpdown2.Fill(mstop, mlsp, limit['-2'])
                 hexpup.Fill(mstop, mlsp, limit['+1'])
+                hexpup2.Fill(mstop, mlsp, limit['+2'])
                 hrvalue.Fill(mstop, mlsp, limit['0'])
                 hrvaluedown.Fill(mstop, mlsp, limit['-1'])
                 hrvalueup.Fill(mstop, mlsp, limit['+1'])
@@ -387,6 +412,8 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     hexp.Write()
     hexpdown.Write()
     hexpup.Write()
+    hexpdown2.Write()
+    hexpup2.Write()
     hrvalue.Write()
     hrvaluedown.Write()
     hrvalueup.Write()
@@ -522,6 +549,21 @@ def calcLimit(config, signal):
             elif 'Observed' in line:
                 tempObsLimit = line.replace('Observed', signal + ' obs')
         result = (tempLimit, tempObsLimit, '')
+
+    elif config.limitmethod == 'Significance':
+        runLimitsCommand = 'combine -M Significance ' + combinedDatacard + '  --uncapped 1 -n ' + signal
+        # runLimitsCommand =  'combine -M ProfileLikelihood '+combinedDatacard+' --significance -t -1 --expectSignal=1 -n '+signal
+        # runLimitsCommand =  'combine -M ProfileLikelihood --significance '+combinedDatacard+' -n '+signal
+        # run the limit command and figure out what the output root file is
+        output = commands.getoutput(runLimitsCommand)
+        lprint(runLimitsCommand, output)
+
+        # pull the Significance out and store
+        tempSig = ''
+        for line in output.split('\n'):
+            if 'Significance' in line:
+                tempSig = line.replace('Significance', signal)
+        result = ('', '', tempSig)
 
     elif config.limitmethod == 'Asymptotic':
         runLimitsCommand = 'combine -M ProfileLikelihood ' + combinedDatacard + ' --significance -t -1 --toysFreq --expectSignal=1 -n ' + signal
