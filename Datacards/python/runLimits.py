@@ -68,6 +68,8 @@ def main():
                         help="Fill root files with results of asymptotic limit calculations for all signal points. [Default: False]")
     parser.add_argument("-n", "--name", dest="name", default='T2tt',
                         help="Name of the signal, used as suffix of the file names. [Default: T2tt]")
+    parser.add_argument("-a", "--samples", dest="sample", default='',
+                        help="List of sample points in conf file")
 #     parser.add_argument("-l", "--limfile", dest="limitFile", default='results_T2tt.root',
 #                         help="Name of output file with upper limit histograms. [Default: results_T2tt.root]")
 #     parser.add_argument("-e", "--excfile", dest="exclusionFile", default='limit_scan_T2tt.root',
@@ -94,6 +96,8 @@ def main():
 
     limconfig = LimitConfig(args.configFile, configparser, args.isEOS)
     limconfig.CardPattern = args.CardPattern
+    if args.sample != "":
+        limconfig.signals = open(args.sample).read().splitlines()
 
     if args.printLimits:
         printLimits(limconfig)
