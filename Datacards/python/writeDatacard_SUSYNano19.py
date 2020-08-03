@@ -30,6 +30,11 @@ parser.add_argument("-b", "--bins", dest="binSelect", default="all",
 args = parser.parse_args()
 
 syscap = 2   ## Cap at 200% systematics uncertainties
+## Whether to apply reduced efficiency method or fitting method for signal contamination
+## Fitting method: fit signal in both search region and LL control region
+## reduced efficiency method: N_sig^SR(corrected) = N_sig^SR - LL_TF * N_sig_LLCR 
+reduceEff = True ## SUSY-19-010 moving to reduced eff by default for now
+
 # datacard output directory
 outputdir = 'Datacards/results/SUSYNano19-20200403'
 # directory with uncertainties files
@@ -166,6 +171,35 @@ def parseBinMap(process, cr_description, yields_dict):
     parts = ['@%d*%f'%(i, values[i]) for i in range(len(values))]
     results['rateParam'] = ('(%s)'%('+'.join(parts)), ','.join(params))
     return results
+
+def parseSigBinMap(process, srbin, cr_description, sigyields_dict, lepyields_dict):
+    '''reduced efficiency method '''
+
+    lepcr_process = "lepcr_" + process
+    results = sigyields_dict[process][srbin][0]
+    print("descritipn: ", cr_description, results)
+    srs = []
+    crs = []
+    for entry in cr_description.replace(' ','').split('+'):
+        print(entry)
+        if "*" not in entry:
+            srs.append(srbin)
+            crs.append(entry)
+            break
+        sr, cr = entry.split('*')
+        if '<' in cr: sr, cr = cr, sr
+        cr = cr.strip('()')
+        sr = sr.strip('<>')
+        srs.append(sr)
+        crs.append(cr)
+
+    for cr, sr in  zip(crs, srs):
+        llcr = lepyields_dict["lepcr_ttbarplusw"][cr][0] if cr in lepyields_dict["lepcr_ttbarplusw"] else 0
+        llsr = lepyields_dict["ttbarplusw"][sr][0] if sr in lepyields_dict["ttbarplusw"] else 0
+        sigcr = sigyields_dict[lepcr_process][cr][0] if cr in sigyields_dict[lepcr_process] else 0
+        if llcr != 0:
+            results -= sigcr * llsr/ llcr
+    return results if results > 0 else 0
 
 def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     values = []
@@ -368,16 +402,19 @@ def writeLepcr(signal):
         cb = ch.CombineHarvester()
 #         print 'Writing datacard for', crbin
         cb.AddObservations(['*'], ['stop'], ['13TeV'], ['0l'], [(0, crbin)])
-        cb.AddProcesses(procs = ['signal'],     bin = [(0, crbin)], signal=True)
+        if not reduceEff:
+            cb.AddProcesses(procs = ['signal'],     bin = [(0, crbin)], signal=True)
         cb.AddProcesses(procs = ['ttbarplusw'], bin = [(0, crbin)], signal=False)
         cb.ForEachObs(lambda obs : obs.set_rate(yields['lepcr_data'][crbin][0]))
         cb.cp().process(['ttbarplusw']).ForEachProc(lambda p : p.set_rate(yields['lepcr_ttbarplusw'][crbin][0]))
-        cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields['lepcr_'+signal][crbin][0]))
+        if not reduceEff:
+            cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields['lepcr_'+signal][crbin][0]))
         # stat uncs
         cb.cp().process(['ttbarplusw']).AddSyst(cb, "R_$BIN", "rateParam", ch.SystMap()(1.0))
+        proclist = [ 'ttbarplusw'] if reduceEff else ['signal', signal, 'ttbarplusw']
         # syst unc
         if crbin in unc_dict:
-            for proc in ['signal', signal, 'ttbarplusw']:
+            for proc in proclist:
                 if proc in unc_dict[crbin]:
                     for unc in unc_dict[crbin][proc].values():
                         procname_in_dc = 'ttbarplusw' if proc=='ttbarplusw' else 'signal'
@@ -391,7 +428,8 @@ def writeLepcr(signal):
         tmproot = TFile(trootout, "Recreate")
         tmproot.cd()
         MakeStatHist("ttbarplusw", yields['lepcr_ttbarplusw'][crbin])
-        MakeStatHist("signal", sigYields['lepcr_'+signal][crbin])
+        if not reduceEff:
+            MakeStatHist("signal", sigYields['lepcr_'+signal][crbin])
         MakeObsHist(cb.GetObservedRate())
         tmproot.Close()
 
@@ -634,20 +672,25 @@ def writeSR(signal):
             sepExpected, sepStat = sumBkgYields(proc, signal, bin, binMaps[processMap[proc]][bin], yields)
             expected += sepExpected
             sepBins[proc] = (sepExpected, sepStat)
-        sepBins[signal] = (sigYields[signal][bin][0], sigYields[signal][bin][1])
+
+        if reduceEff:
+            sigyield = parseSigBinMap(signal, bin, binMaps[processMap["ttbarplusw"]][bin], sigYields, yields)
+        else:
+            sigyield = sigYields[signal][bin][0]
+        sepBins[signal] = (sigyield, sigYields[signal][bin][1])
         if not blind: 
             cb.ForEachObs(lambda obs : obs.set_rate(yields['data'][bin][0]))
             sepBins["data"] = (yields['data'][bin][0], yields['data'][bin][1])
         else:         
             cb.ForEachObs(lambda obs : obs.set_rate(expected))
         sepYields[bin] = sepBins
-        cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigYields[signal][bin][0]))
+        cb.cp().process(['signal']).ForEachProc(lambda p : p.set_rate(sigyield))
         cb.cp().process(['TTZ','Rare']).ForEachProc(lambda p : p.set_rate(yields[p.process()][bin][0]))
 
         trootout = os.path.join(outputdir, signal, '%s.root'%bin)
         tmproot = TFile(trootout, "Recreate")
         tmproot.cd()
-        MakeStatHist("signal", sigYields[signal][bin])
+        MakeStatHist("signal", sigYields[signal][bin], forceContent=sigyield )
         MakeStatHist("TTZ", yields['TTZ'][bin])
         MakeStatHist("Rare", yields['Rare'][bin])
         MakeObsHist(cb.GetObservedRate())
