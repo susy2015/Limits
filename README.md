@@ -97,8 +97,8 @@ An Example command:
 . ./submitall.sh
 ```
 ## Plotting
-To make a root file with all of the limits you need to change the limit dir in dc_SUSY19Nano_setup_Local.conf to the limit dir from the previous command. You also need to add a list of all signals that you ran over to the samples category of the conf, an example is there for T2tt. 
+To make a root file with all of the limits you need to change the limit dir in dc_SUSY19Nano_setup_Local.conf to the limit dir from the previous command.
 ```
-python Datacards/python/runLimits.py -c dc_SUSY19Nano_setup_Local.conf -f -e {outputdir in eos area}
+python Datacards/python/runLimits.py -c dc_SUSY19Nano_setup_Local.conf -f -e {outputdir in eos area} -a T2tt_signals.conf
 python PlotsSMS/python/makeSMSplots.py PlotsSMS/config/T2tt_SUS16005.cfg T2tt_{extension for plot name}
 ```
