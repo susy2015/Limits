@@ -40,7 +40,6 @@ class inputFile():
             if tmpLINE[0] != "EXPECTED": continue
             fileIN.close()
             rootFileIn = rt.TFile.Open(tmpLINE[1])
-            print(r'(%s_[0-9]+|%s)$' % (tmpLINE[2],tmpLINE[2]))
             return {'nominal': [rootFileIn.Get(key.GetName()) for key in rt.gDirectory.GetListOfKeys() if re.match(r'(%s_[0-9]+|%s)$' % (tmpLINE[2],tmpLINE[2]), key.GetName())],
                     'plus': [rootFileIn.Get(key.GetName()) for key in rt.gDirectory.GetListOfKeys() if re.match(r'(%s_[0-9]+|%s)$' % (tmpLINE[3],tmpLINE[3]), key.GetName())],
                     'minus': [rootFileIn.Get(key.GetName()) for key in rt.gDirectory.GetListOfKeys() if re.match(r'(%s_[0-9]+|%s)$' % (tmpLINE[4],tmpLINE[4]), key.GetName())],

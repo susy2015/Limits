@@ -36,8 +36,7 @@ syscap = 2   ## Cap at 200% systematics uncertainties
 reduceEff = True ## SUSY-19-010 moving to reduced eff by default for now
 
 # datacard output directory
-outputdir = 'Datacards/results/SUSYNano19-SubSigCon/'
-#outputdir = 'Datacards/results/SUSYNano19-20200403'
+outputdir = 'Datacards/results/SUSYNano19-20200403'
 # directory with uncertainties files
 setuplocation = 'Datacards/setup/SUSYNano19'
 
