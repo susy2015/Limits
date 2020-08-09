@@ -177,7 +177,7 @@ def parseSigBinMap(process, srbin, cr_description, sigyields_dict, lepyields_dic
 
     lepcr_process = "lepcr_" + process
     results = sigyields_dict[process][srbin][0]
-    print("descritipn: ", cr_description, results)
+    #print("descritipn: ", cr_description, results)
     srs = []
     crs = []
     for entry in cr_description.replace(' ','').split('+'):
