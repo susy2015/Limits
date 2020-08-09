@@ -76,7 +76,7 @@ sed -i -e "s/AsymptoticLimits/Significance/g" ${config}
 python $pathtomacro$runmacro -c $config
 xrdcp -r -np Datacards/limits/SUSYNano19-20200403_Significance root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
 ## Copy the datacard input for combination 
-xrdcp -r -np Datacards/results/SUSYNano19-20200403/ root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/.
+#xrdcp -r -np Datacards/results/SUSYNano19-20200403/ root://cmseos.fnal.gov//store/user/$(whoami)/13TeV/${outdir}/${signal}.
 ls -a
 
 status=`echo $?`

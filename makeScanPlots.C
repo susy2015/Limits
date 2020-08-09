@@ -140,30 +140,38 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
   TH2D* hexp = (TH2D*)inputFile->Get("hexp");
   TH2D* hexpdown = (TH2D*)inputFile->Get("hexpdown");
   TH2D* hexpup = (TH2D*)inputFile->Get("hexpup");
+  TH2D* hexpdown2 = (TH2D*)inputFile->Get("hexpdown2");
+  TH2D* hexpup2 = (TH2D*)inputFile->Get("hexpup2");
 
   if(additionalInterpolation) {
+    if(hobs) hobs = rebin(hobsdown, "NE");
+    if(hobsup) hobsup = rebin(hobsup, "NE");
+    hexp = rebin(hexp, "NE");
+    hexpdown = rebin(hexpdown, "NE");
+    hexpup = rebin(hexpup, "NE");
+    hexpdown2 = rebin(hexpdown2, "NE");
+    hexpup2 = rebin(hexpup2, "NE");
     if(hobs) hobs = rebin(hobs, "NE");
     if(hobsdown) hobsdown = rebin(hobsdown, "NE");
     if(hobsup) hobsup = rebin(hobsup, "NE");
     hexp = rebin(hexp, "NE");
     hexpdown = rebin(hexpdown, "NE");
     hexpup = rebin(hexpup, "NE");
-    if(hobs) hobs = rebin(hobs, "NE");
-    if(hobsdown) hobsdown = rebin(hobsdown, "NE");
-    if(hobsup) hobsup = rebin(hobsup, "NE");
-    hexp = rebin(hexp, "NE");
-    hexpdown = rebin(hexpdown, "NE");
-    hexpup = rebin(hexpup, "NE");
+    hexpdown2 = rebin(hexpdown2, "NE");
+    hexpup2 = rebin(hexpup2, "NE");
     hobs = interpolate(hobs, "NE");
     hobsdown = interpolate(hobsdown, "NE");
     hobsup = interpolate(hobsup, "NE");
     hexp = interpolate(hexp, "NE");
     hexpdown = interpolate(hexpdown, "NE");
     hexpup = interpolate(hexpup, "NE");
+    hexpdown2 = interpolate(hexpdown2, "NE");
+    hexpup2 = interpolate(hexpup2, "NE");
   }
 
   vector<double> mstops, mlsps, mstopsxsec, mlspsxsec;
   vector<double> exp, expdown, expup, expxsec;
+  vector<double> expdown2, expup2;
   vector<double> obs, obsdown, obsup, obsxsec;
 
   TH2D* hxsecexp = (TH2D*)inputFile->Get("hxsecexp");
@@ -190,6 +198,8 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
         exp.push_back(hexp->GetBinContent(ibinx, ibiny));
         expdown.push_back(hexpdown->GetBinContent(ibinx, ibiny));
         expup.push_back(hexpup->GetBinContent(ibinx, ibiny));
+        expdown2.push_back(hexpdown2->GetBinContent(ibinx, ibiny));
+        expup2.push_back(hexpup2->GetBinContent(ibinx, ibiny));
         printf("MStop: %4.2f, MLSP: %4.2f, Limit: %4.2f, (+1: %4.2f, -1: %4.2f), Obs Limit: %4.2f (+1 theory: %4.2f, -1 theory: %4.2f)\n", mstops.back(), mlsps.back(), exp.back(), expup.back(), expdown.back(), obs.back(), obsup.back(), obsdown.back());
       }
     }
@@ -200,6 +210,8 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
   TGraph2D gexp("gexp", "Expected Limit", exp.size(), &mstops.at(0), &mlsps.at(0), &exp.at(0));
   TGraph2D gexpdown("gexpdown", "Expected  -1#sigma Limit", expdown.size(), &mstops.at(0), &mlsps.at(0), &expdown.at(0));
   TGraph2D gexpup("gexpup", "Expected  -1#sigma Limit", expup.size(), &mstops.at(0), &mlsps.at(0), &expup.at(0));
+  TGraph2D gexpdown2("gexpdown2", "Expected  -2#sigma Limit", expdown2.size(), &mstops.at(0), &mlsps.at(0), &expdown2.at(0));
+  TGraph2D gexpup2("gexpup2", "Expected  +2#sigma Limit", expup2.size(), &mstops.at(0), &mlsps.at(0), &expup2.at(0));
   TGraph2D gobs("gobs", "Observed Limit", obs.size(), &mstops.at(0), &mlsps.at(0), &obs.at(0));
   TGraph2D gobsdown("gobsdown", "Observed  -1#sigma (theory) Limit", obsdown.size(), &mstops.at(0), &mlsps.at(0), &obsdown.at(0));
   TGraph2D gobsup("gobsup", "Observed  -1#sigma (theory) Limit", obsup.size(), &mstops.at(0), &mlsps.at(0), &obsup.at(0));
@@ -253,6 +265,8 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
   vector<TGraph*> cexpup = DrawContours(gexpup, 2, 2, &l, "ExpUp", signal);
   vector<TGraph*> cexpdown = DrawContours(gexpdown, 2, 2, &l, "ExpDown", signal);
   vector<TGraph*> cexp = DrawContours(gexp, 2, 1, &l, "Expected", signal);
+  vector<TGraph*> cexpup2 = DrawContours(gexpup2, 2, 2, &l, "ExpUp2");
+  vector<TGraph*> cexpdown2 = DrawContours(gexpdown2, 2, 2, &l, "ExpDown2");
 
   
 
@@ -302,6 +316,16 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
     TString add = ilim > 0 ? "_" + TString(to_string(ilim)) : "";
     cexpdown.at(ilim)->SetName(gname + "_ExpM" + add);
     cexpdown.at(ilim)->Write(gname + "_ExpM" + add);
+  }
+  for(unsigned int ilim = 0; ilim < cexpup2.size(); ++ilim) {
+    TString add = ilim > 0 ? "_" + TString(to_string(ilim)) : "";
+    cexpup2.at(ilim)->SetName(gname + "_ExpP2" + add);
+    cexpup2.at(ilim)->Write(gname + "_ExpP2" + add);
+  }
+  for(unsigned int ilim = 0; ilim < cexpdown2.size(); ++ilim) {
+    TString add = ilim > 0 ? "_" + TString(to_string(ilim)) : "";
+    cexpdown2.at(ilim)->SetName(gname + "_ExpM2" + add);
+    cexpdown2.at(ilim)->Write(gname + "_ExpM2" + add);
   }
 
   file.Close();

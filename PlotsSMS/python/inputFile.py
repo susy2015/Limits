@@ -43,6 +43,8 @@ class inputFile():
             return {'nominal': [rootFileIn.Get(key.GetName()) for key in rt.gDirectory.GetListOfKeys() if re.match(r'(%s_[0-9]+|%s)$' % (tmpLINE[2],tmpLINE[2]), key.GetName())],
                     'plus': [rootFileIn.Get(key.GetName()) for key in rt.gDirectory.GetListOfKeys() if re.match(r'(%s_[0-9]+|%s)$' % (tmpLINE[3],tmpLINE[3]), key.GetName())],
                     'minus': [rootFileIn.Get(key.GetName()) for key in rt.gDirectory.GetListOfKeys() if re.match(r'(%s_[0-9]+|%s)$' % (tmpLINE[4],tmpLINE[4]), key.GetName())],
+                    'plus2': [rootFileIn.Get(key.GetName()) for key in rt.gDirectory.GetListOfKeys() if re.match(r'(%s2_[0-9]+|%s2)$' % (tmpLINE[3],tmpLINE[3]), key.GetName())],
+                    'minus2': [rootFileIn.Get(key.GetName()) for key in rt.gDirectory.GetListOfKeys() if re.match(r'(%s2_[0-9]+|%s2)$' % (tmpLINE[4],tmpLINE[4]), key.GetName())],
                     'colorLine': tmpLINE[5],
                     'colorArea': tmpLINE[6]}
 
