@@ -130,7 +130,7 @@ class LimitConfig:
     self.expectedonly = config_parser.getboolean('config', 'expectedonly')
     self.CardPattern = ""
 
-def eosls(outlocation):
+def eosls(outputLocation):
     if "eos" in outputLocation:
         p = subprocess.Popen("eos root://cmseos.fnal.gov ls %s" % outputLocation,
                                       stdout=subprocess.PIPE, shell=True)
