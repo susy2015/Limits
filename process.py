@@ -16,7 +16,7 @@ parser.add_argument("-q", "--queue", dest="queue", default="1nh", help="LSF subm
 parser.add_argument("--jobdir", dest="jobdir", default="jobs", help="Job dir. [Default: %(default)s]")
 parser.add_argument("-l", "--signals", dest="signals", default="T2tt_signals.conf", help="List of signal files. [Default: T2tt_signals.conf]")
 parser.add_argument("-d", "--signalDir", dest="signalDir", default="SMS_T2tt_fastsim", help="Director of signal files. [Default: SMS_T2tt_fastsim]")
-parser.add_argument("-e", "--eosDir", dest="eosDir", default="12May2020_2016Unblind_dev_v6", help="Director of signal files on eos. [Default: 12May2020_2016Unblind_dev_v6]")
+parser.add_argument("-e", "--eosDir", dest="eosDir", default="31Jul2020_Run2_dev_v7", help="Director of signal files on eos. [Default: 31Jul2020_Run2_dev_v7]")
 parser.add_argument("-b", "--binSel", dest="binSel", default="all", help="Preselect a subset of all bins. [Default: all]")
 #parser.print_help()
 args = parser.parse_args()
