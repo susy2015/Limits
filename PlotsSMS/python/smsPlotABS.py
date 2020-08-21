@@ -330,8 +330,9 @@ class smsPlotABS(object):
         self.c.LExp = LExp
         self.c.LExpM = LExpM
         self.c.LExpP = LExpP
-        self.c.LExpM2 = LExpM2
-        self.c.LExpP2 = LExpP2
+        if self.model.sigma2band:
+            self.c.LExpM2 = LExpM2
+            self.c.LExpP2 = LExpP2
 
     def DrawDiagonal(self):
         if self.model.modelname == 'T2tt':
