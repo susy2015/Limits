@@ -133,8 +133,7 @@ class smsPlotABS(object):
     def Save(self,label):
         # save the output
         self.c.SaveAs("%s.pdf" %label)
-        self.c.SaveAs("%s.root" %label)
-        self.c.SaveAs("%s.C" %label)
+        self.c.SaveAs("%s.png" %label)
         
     def DrawLegend(self):
         xRange = self.model.Xmax-self.model.Xmin
@@ -219,20 +218,19 @@ class smsPlotABS(object):
             LExpP.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.85*yRange/100*10)
             LExpP.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.85*yRange/100*10)
 
-        LExpP2 = rt.TGraph(2)
-        LExpP2.SetName("LExpP2")
-        LExpP2.SetTitle("LExpP2")
-        LExpP2.SetLineColor(color(self.EXP['colorLine']))
-        LExpP2.SetLineStyle(2)
-        LExpP2.SetLineWidth(2)  
-        #LExpP.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.20*yRange/100*10)
-        #LExpP.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.20*yRange/100*10)
-        if self.model.extraText :
-            LExpP2.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.90*yRange/100*10)
-            LExpP2.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.90*yRange/100*10)
-        else :
-            LExpP2.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.75*yRange/100*10)
-            LExpP2.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.75*yRange/100*10)
+        if self.model.sigma2band:
+            LExpP2 = rt.TGraph(2)
+            LExpP2.SetName("LExpP2")
+            LExpP2.SetTitle("LExpP2")
+            LExpP2.SetLineColor(color(self.EXP['colorLine']))
+            LExpP2.SetLineStyle(2)
+            LExpP2.SetLineWidth(2)  
+            if self.model.extraText :
+                LExpP2.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.90*yRange/100*10)
+                LExpP2.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.90*yRange/100*10)
+            else :
+                LExpP2.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.75*yRange/100*10)
+                LExpP2.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.75*yRange/100*10)
 
         LExp = rt.TGraph(2)
         LExp.SetName("LExp")
@@ -242,12 +240,20 @@ class smsPlotABS(object):
         LExp.SetLineWidth(4)
         #LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.35*yRange/100*10)
         #LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.35*yRange/100*10)
-        if self.model.extraText :
-            LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.1*yRange/100*10)
-            LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.1*yRange/100*10)
-        else :
-            LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.95*yRange/100*10)
-            LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.95*yRange/100*10)
+        if self.model.sigma2band:
+            if self.model.extraText :
+                LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.1*yRange/100*10)
+                LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.1*yRange/100*10)
+            else :
+                LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.95*yRange/100*10)
+                LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.95*yRange/100*10)
+        else:
+            if self.model.extraText :
+                LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.15*yRange/100*10)
+                LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.15*yRange/100*10)
+            else :
+                LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.00*yRange/100*10)
+                LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.00*yRange/100*10)
         
         LExpM = rt.TGraph(2)
         LExpM.SetName("LExpM")
@@ -257,32 +263,45 @@ class smsPlotABS(object):
         LExpM.SetLineWidth(2)  
         #LExpM.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.50*yRange/100*10)
         #LExpM.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.50*yRange/100*10)
-        if self.model.extraText :
-            LExpM.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.25*yRange/100*10)
-            LExpM.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.25*yRange/100*10)
-        else :
-            LExpM.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.10*yRange/100*10)
-            LExpM.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.10*yRange/100*10)
+        if self.model.sigma2band:
+            if self.model.extraText :
+                LExpM.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.25*yRange/100*10)
+                LExpM.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.25*yRange/100*10)
+            else :
+                LExpM.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.10*yRange/100*10)
+                LExpM.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.10*yRange/100*10)
+        else:
+            if self.model.extraText :
+                LExpM.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.30*yRange/100*10)
+                LExpM.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.30*yRange/100*10)
+            else :
+                LExpM.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.15*yRange/100*10)
+                LExpM.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.15*yRange/100*10)
 
-        LExpM2 = rt.TGraph(2)
-        LExpM2.SetName("LExpM2")
-        LExpM2.SetTitle("LExpM2")
-        LExpM2.SetLineColor(color(self.EXP['colorLine']))
-        LExpM2.SetLineStyle(2)
-        LExpM2.SetLineWidth(2)  
-        if self.model.extraText :
-            LExpM2.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.35*yRange/100*10)
-            LExpM2.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.35*yRange/100*10)
-        else :
-            LExpM2.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.20*yRange/100*10)
-            LExpM2.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.20*yRange/100*10)
+        if self.model.sigma2band:
+            LExpM2 = rt.TGraph(2)
+            LExpM2.SetName("LExpM2")
+            LExpM2.SetTitle("LExpM2")
+            LExpM2.SetLineColor(color(self.EXP['colorLine']))
+            LExpM2.SetLineStyle(2)
+            LExpM2.SetLineWidth(2)  
+            if self.model.extraText :
+                LExpM2.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.35*yRange/100*10)
+                LExpM2.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.35*yRange/100*10)
+            else :
+                LExpM2.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.20*yRange/100*10)
+                LExpM2.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.20*yRange/100*10)
 
-        if self.model.extraText :
-            textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-2.30*yRange/100*10, "Expected #pm 1, 2 #sigma_{experiment}")
-            # textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-2.30*yRange/100*10, "Expected #pm 1 #sigma_{experiment}")
-        else :
-            textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-2.15*yRange/100*10, "Expected #pm 1, 2 #sigma_{experiment}")
-        #textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-1.50*yRange/100*10, "Expected #pm 1 #sigma_{experiment}")
+        if self.model.sigma2band:
+            if self.model.extraText :
+                textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-2.30*yRange/100*10, "Expected #pm 1, 2 #sigma_{experiment}")
+            else :
+                textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-2.15*yRange/100*10, "Expected #pm 1, 2 #sigma_{experiment}")
+        else:
+            if self.model.extraText :
+                textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-2.30*yRange/100*10, "Expected #pm 1 #sigma_{experiment}")
+            else :
+                textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-1.50*yRange/100*10, "Expected #pm 1 #sigma_{experiment}")
         textExp.SetTextFont(42)
         textExp.SetTextSize(0.040)
         textExp.Draw()
@@ -301,8 +320,9 @@ class smsPlotABS(object):
         LExp.Draw("LSAME")
         LExpM.Draw("LSAME")
         LExpP.Draw("LSAME")
-        LExpM2.Draw("LSAME")
-        LExpP2.Draw("LSAME")
+        if self.model.sigma2band:
+            LExpM2.Draw("LSAME")
+            LExpP2.Draw("LSAME")
         
         self.c.LObs = LObs
         self.c.LObsM = LObsM
@@ -310,8 +330,6 @@ class smsPlotABS(object):
         self.c.LExp = LExp
         self.c.LExpM = LExpM
         self.c.LExpP = LExpP
-        self.c.LExpM2 = LExpM2
-        self.c.LExpP2 = LExpP2
 
     def DrawDiagonal(self):
         if self.model.modelname == 'T2tt':
@@ -432,10 +450,11 @@ class smsPlotABS(object):
             exp.Draw("LSAME")
         for exp in self.EXP['minus'] :
             exp.Draw("LSAME")
-        for exp in self.EXP['plus2'] :
-            exp.Draw("LSAME")
-        for exp in self.EXP['minus2'] :
-            exp.Draw("LSAME")
+        if self.model.sigma2band:
+            for exp in self.EXP['plus2'] :
+                exp.Draw("LSAME")
+            for exp in self.EXP['minus2'] :
+                exp.Draw("LSAME")
         for obs in self.OBS['nominal'] :
             obs.Draw("LSAME")
         for obs in self.OBS['plus'] :

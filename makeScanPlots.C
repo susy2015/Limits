@@ -66,7 +66,7 @@ void Smooth(TGraph * g, int N = 3, int flag = 0, TString signal = "T2tt") {
       g->SetPoint(i, x0, avy);
     else if ((flag==1 && i + N / 2 >= g->GetN()) || (flag==2 && i - N / 2 < 0 ))
       g->SetPoint(i, avx, y0);
-    else if ((signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && (y0 <= 10 || y0 >= 80))
+    else if ((signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && (y0 <= 5 || y0 >= 80))
       g->SetPoint(i, x0, y0);
     else if ((signal.Contains("T2tb") || signal.Contains("T2bW") )  && y0 <= 10)
       g->SetPoint(i, x0, y0);
@@ -97,6 +97,8 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
     std::string name = g2.GetName();
     if (((signal == "T2bW") || (signal == "T2tb") ) && (name.find("obs") != std::string::npos))
         Smooth(g, 16, 3, signal);
+    else if (((signal == "T2cc") || (signal == "T2fbd")  ) && (name.find("obs") != std::string::npos))
+        Smooth(g, 10, 3, signal);
     else
         Smooth(g, 6, 3, signal);
     out.push_back(g);

@@ -36,6 +36,7 @@ class sms():
         # turn off diagonal lines
         self.diagOn = True
         self.extraText = True
+        self.sigma2band = True
         self.extratext1 = ""
         self.extratext2 = ""
 
@@ -60,6 +61,7 @@ class sms():
         self.mT, self.dM = 175, 25
         self.mTopDiagOn = True
         self.extraText = True
+        self.sigma2band = True
         self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} - m_{#tilde{#chi}_{1}^{0}} = 5 GeV"
         self.extratext2 = "#bf{#it{#Beta}}(#tilde{t} #rightarrow t #tilde{#chi}^{0}_{1}) = 50%"
 
@@ -82,6 +84,7 @@ class sms():
         # turn off diagonal lines
         self.diagOn = True
         self.extraText = True
+        self.sigma2band = True
         self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} = (m_{ #tilde{t}} + m_{#tilde{#chi}_{1}^{0}})/2"
         self.extratext2 = ""
 
@@ -107,6 +110,7 @@ class sms():
         # turn off diagonal lines
         self.diagOn = False
         self.extraText = True
+        self.sigma2band = False
         self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} = (m_{ #tilde{t}} + m_{#tilde{#chi}_{1}^{0}})/2"
         self.extratext2 = ""
 
@@ -132,6 +136,7 @@ class sms():
         # turn off diagonal lines
         self.diagOn = False
         self.extraText = True
+        self.sigma2band = False
         self.extratext1 = ""
         self.extratext2 = ""
 
@@ -157,6 +162,7 @@ class sms():
         # turn off diagonal lines
         self.diagOn = False
         self.extraText = True
+        self.sigma2band = False
         self.extratext1 = ""
         self.extratext2 = ""
 
@@ -178,7 +184,8 @@ class sms():
         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = False
-	self.extraText = True
+        self.extraText = True
+        self.sigma2band = True
         self.extratext1 = ""
         self.extratext2 = ""
         
@@ -200,7 +207,8 @@ class sms():
         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = False
-	self.extraText = True
+        self.extraText = True
+        self.sigma2band = True
         self.extratext1 = "#tilde{g} #rightarrow b #bar{b} #tilde{#chi}^{0}_{1}(25%)"
         self.extratext2 = "m_{#tilde{#chi}_{1}^{#pm}} -  m_{#tilde{#chi}_{1}^{0}} = 5 GeV"
         
@@ -222,7 +230,8 @@ class sms():
         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = False
-	self.extraText = True
+        self.extraText = True
+        self.sigma2band = True
         self.extratext1 = "m_{ #tilde{t}} - m_{#tilde{#chi}_{1}^{0}} = 20 GeV"
         self.extratext2 = ""
         
@@ -244,7 +253,8 @@ class sms():
         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = False
-	self.extraText = True
+        self.extraText = True
+        self.sigma2band = True
         self.extratext1 = "m_{ #tilde{t}} - m_{#tilde{#chi}_{1}^{0}} = 175 GeV"
         self.extratext2 = ""
         
