@@ -193,7 +193,7 @@ class sms():
         # model name
         self.modelname = "T1ttbb"
         # decay chain
-        self.label= "pp #rightarrow #tilde{g} #tilde{g}, #tilde{g} #rightarrow t #bar{b} #tilde{#chi}^{-}_{1}(50%), #tilde{g} #rightarrow t #bar{t} #tilde{#chi}^{0}_{1}(25%)";
+        self.label= "pp #rightarrow #tilde{g} #tilde{g}, #tilde{g} #rightarrow t_{ }#bar{b} #tilde{#chi}^{-}_{1}, b_{ }#bar{t} #tilde{#chi}^{+}_{1}, t_{ }#bar{t} #tilde{#chi}^{0}_{1}, b_{ }#bar{b} #tilde{#chi}^{0}_{1}(25%)";
         # scan range to plot
         self.Xmin = 800.
         self.Xmax = 2500.
@@ -209,8 +209,9 @@ class sms():
         self.diagOn = False
         self.extraText = True
         self.sigma2band = True
-        self.extratext1 = "#tilde{g} #rightarrow b #bar{b} #tilde{#chi}^{0}_{1}(25%)"
-        self.extratext2 = "m_{#tilde{#chi}_{1}^{#pm}} -  m_{#tilde{#chi}_{1}^{0}} = 5 GeV"
+        self.extratext2 = ""
+        #self.extratext1 = "#tilde{g} #rightarrow b #bar{b} #tilde{#chi}^{0}_{1}(25%)"
+        self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} -  m_{#tilde{#chi}_{1}^{0}} = 5 GeV"
         
     def T5ttcc(self):
         # model name
