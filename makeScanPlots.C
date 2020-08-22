@@ -5,7 +5,19 @@
 #include "interpolate.h"
 #endif
 
+#include <map>
+#include <utility>
 using namespace std;
+
+// Signal : [Obs smooth, Exp smooth]
+std::map<std::string, std::pair<int, int> > smoothmap {
+    {"T2tt", std::make_pair(6, 6)},
+    {"T2bW", std::make_pair(16, 6)},
+    {"T2tb", std::make_pair(4, 6)},
+    {"T2cc", std::make_pair(10, 6)},
+    {"T2fbd", std::make_pair(10, 6)},
+};
+
 
 void Smooth(TGraph * g, int N = 3, int flag = 0, TString signal = "T2tt") {
   TGraph * old = (TGraph*) g->Clone();
@@ -94,13 +106,20 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
       continue;
     }
 
+    // modification of smoothing
     std::string name = g2.GetName();
-    if (((signal == "T2bW") || (signal == "T2tb") ) && (name.find("obs") != std::string::npos))
-        Smooth(g, 16, 3, signal);
-    else if (((signal == "T2cc") || (signal == "T2fbd")  ) && (name.find("obs") != std::string::npos))
-        Smooth(g, 10, 3, signal);
+    int smoothN = 0;
+    // Default as 6
+    std::pair<int, int > temp = std::make_pair(6, 6);
+    if (smoothmap.find(signal.Data()) != smoothmap.end())
+        temp = smoothmap.at(signal.Data());
+
+    if (name.find("obs") != std::string::npos)
+        smoothN = temp.first;
     else
-        Smooth(g, 6, 3, signal);
+        smoothN = temp.second;
+    Smooth(g, smoothN, 3, signal);
+
     out.push_back(g);
     g->SetLineColor(color);
     g->SetLineStyle(style);
