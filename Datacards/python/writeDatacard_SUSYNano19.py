@@ -25,6 +25,8 @@ parser.add_argument("-l", "--location", dest="signalLocation", default='',
                          help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
 parser.add_argument("-m", "--manySignals", dest="manySignals", default=False,
                          help="Signal point to use when running the maximum likelihood fit. [Default: T2tt_850_100]")
+parser.add_argument("-o", "--output", dest="output", default='Datacards/results/SUSYNano19-20200403',
+                         help="Output folder")
 parser.add_argument("-b", "--bins", dest="binSelect", default="all",
                          help="which bins to use for the datacard. [Default: all]")
 args = parser.parse_args()
@@ -36,7 +38,7 @@ syscap = 2   ## Cap at 200% systematics uncertainties
 reduceEff = True ## SUSY-19-010 moving to reduced eff by default for now
 
 # datacard output directory
-outputdir = 'Datacards/results/SUSYNano19-20200403'
+outputdir = args.output
 # directory with uncertainties files
 setuplocation = 'Datacards/setup/SUSYNano19'
 
@@ -739,8 +741,8 @@ def writeSR(signal):
                     dc.write(line)
                 dc.write("* autoMCStats 10 1 1") # background + signal
         os.remove(tmpdc)
-    with open('BkgExpected.json', 'w') as outfile:
-        json.dump(sepYields, outfile)
+    # with open('BkgExpected.json', 'w') as outfile:
+        # json.dump(sepYields, outfile)
 
 readUncs()
 for sig in signals:
@@ -751,4 +753,4 @@ for sig in signals:
     writePhocr(sig)
     writeQCDcr(sig)
     writeSR(sig)
-    if not args.manySignals and args.binSelect == "all": BkgPlotter('BkgExpected.json', 'SumOfBkg', sig)
+    # if not args.manySignals and args.binSelect == "all": BkgPlotter('BkgExpected.json', 'SumOfBkg', sig)

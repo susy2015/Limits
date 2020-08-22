@@ -44,7 +44,8 @@ class sms():
         # model name
         self.modelname = "T2tb"
         # decay chain
-        self.label = "pp #rightarrow #tilde{t} #bar{#tilde{t}}, #tilde{t} #rightarrow b #tilde{#chi}^{#pm}_{1} #rightarrow b W^{#pm} #tilde{#chi}^{0}_{1} or #tilde{t} #rightarrow t #tilde{#chi}^{0}_{1}"
+        self.label = "pp #rightarrow #tilde{t} #bar{#tilde{t}}, #tilde{t} #rightarrow b_{ }#tilde{#chi}^{#pm}_{1} #rightarrow b_{ }W^{#pm} #tilde{#chi}^{0}_{1} or #tilde{t} #rightarrow t_{ }#tilde{#chi}^{0}_{1}(50%)"
+        # self.label = "pp #rightarrow #tilde{t} #bar{#tilde{t}}, #tilde{t} #rightarrow b #tilde{#chi}^{#pm}_{1} #rightarrow b W^{#pm} #tilde{#chi}^{0}_{1} or #tilde{t} #rightarrow t #tilde{#chi}^{0}_{1}"
         # scan range to plot
         self.Xmin = 200.
         self.Xmax = 1400.
@@ -63,7 +64,8 @@ class sms():
         self.extraText = True
         self.sigma2band = True
         self.extratext1 = "m_{#tilde{#chi}_{1}^{#pm}} - m_{#tilde{#chi}_{1}^{0}} = 5 GeV"
-        self.extratext2 = "#bf{#it{#Beta}}(#tilde{t} #rightarrow t #tilde{#chi}^{0}_{1}) = 50%"
+        self.extratext2 = ""
+        # self.extratext2 = "#bf{#it{#Beta}}(#tilde{t} #rightarrow t #tilde{#chi}^{0}_{1}) = 50%"
 
     def T2bW(self):
         # model name
