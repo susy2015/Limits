@@ -11,11 +11,16 @@ using namespace std;
 
 // Signal : [Obs smooth, Exp smooth]
 std::map<std::string, std::pair<int, int> > smoothmap {
-    {"T2tt", std::make_pair(6, 6)},
-    {"T2bW", std::make_pair(16, 6)},
-    {"T2tb", std::make_pair(4, 6)},
-    {"T2cc", std::make_pair(10, 6)},
-    {"T2fbd", std::make_pair(10, 6)},
+    {"T2tt", std::make_pair(12, 6)},
+    {"T2tb", std::make_pair(12, 6)},
+    {"T2fbd", std::make_pair(0, 0)}, // Smoothing changed the results
+    {"T1tttt", std::make_pair(10, 6)},
+    {"T1ttbb", std::make_pair(6, 6)},
+    {"T5ttcc", std::make_pair(6, 6)},
+    {"T2bW", std::make_pair(12, 6)}, // Remove the problematic point, otherwise 16 for obs
+    {"T2cc", std::make_pair(0, 0)}, //Can't reproduce, waiting for Matt's setting
+    {"T2bWC", std::make_pair(6, 6)}, 
+
 };
 
 
@@ -118,7 +123,9 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
         smoothN = temp.first;
     else
         smoothN = temp.second;
-    Smooth(g, smoothN, 3, signal);
+
+    if (smoothN != 0)
+        Smooth(g, smoothN, 3, signal);
 
     out.push_back(g);
     g->SetLineColor(color);
