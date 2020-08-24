@@ -242,11 +242,11 @@ class smsPlotABS(object):
         #LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.35*yRange/100*10)
         if self.model.sigma2band:
             if self.model.extraText :
-                LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.1*yRange/100*10)
-                LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.1*yRange/100*10)
+                LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.12*yRange/100*10)
+                LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.12*yRange/100*10)
             else :
-                LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.95*yRange/100*10)
-                LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.95*yRange/100*10)
+                LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.97*yRange/100*10)
+                LExp.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.97*yRange/100*10)
         else:
             if self.model.extraText :
                 LExp.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.15*yRange/100*10)
@@ -330,6 +330,9 @@ class smsPlotABS(object):
         self.c.LExp = LExp
         self.c.LExpM = LExpM
         self.c.LExpP = LExpP
+        if self.model.sigma2band:
+            self.c.LExpM2 = LExpM2
+            self.c.LExpP2 = LExpP2
 
     def DrawDiagonal(self):
         if self.model.modelname == 'T2tt':
