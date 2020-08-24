@@ -102,7 +102,7 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
     else if ((signal == "T2fbd"  ) && (name.find("obs") != std::string::npos))
         Smooth(g, 10, 3, signal);
     else if ((signal == "T2cc") && (name.find("obs") != std::string::npos))
-        Smooth(g, 6, 3, signal);
+        Smooth(g, 3, 3, signal);
     else
         Smooth(g, 6, 3, signal);
     out.push_back(g);
