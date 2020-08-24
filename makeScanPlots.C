@@ -338,7 +338,10 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
     TString add = ilim > 0 ? "_" + TString(to_string(ilim)) : "";
     cexp.at(ilim)->SetName(gname + "_Exp" + add);
     cexp.at(ilim)->Write(gname + "_Exp" + add);
-    cexp.at(ilim)->GetPoint(2, x, y);
+    for(int i = 0; i != cexp.at(ilim)->GetN(); i++){
+      cexp.at(ilim)->GetPoint(i, x, y);
+      if (y > 0.01) break;
+    }
     cout << "zero point: " << x << ", " << y << endl;
     cexp.at(ilim)->GetPoint(cexp.at(ilim)->GetN() - 2, x, y);
     cout << "zero point: " << x << ", " << y << endl;
