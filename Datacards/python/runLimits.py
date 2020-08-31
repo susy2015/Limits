@@ -217,7 +217,9 @@ def printLimits(config):
 
 def fillSignificances(config, sigfile, name):
     limits = []
-    currentDir = os.getcwd()
+    if not config.isEOS == '': currentDir = "/eos/uscms/store/user/"+getpass.getuser()+"/13TeV/"
+    #if not config.isEOS == '': currentDir = "/eos/uscms/store/user/benwu/13TeV/"
+    else: currentDir = os.getcwd()
     outfile = TFile(sigfile, 'RECREATE')
     maxmstop = 0.0
     minmstop = 0.0
