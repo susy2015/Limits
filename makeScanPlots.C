@@ -18,7 +18,7 @@ std::map<std::string, std::pair<int, int> > smoothmap {
     {"T1ttbb", std::make_pair(6, 6)},
     {"T5ttcc", std::make_pair(6, 6)},
     {"T2bW", std::make_pair(12, 6)}, // Remove the problematic point, otherwise 16 for obs
-    {"T2cc", std::make_pair(3, 6)}, //Can't reproduce, waiting for Matt's setting
+    {"T2cc", std::make_pair(3, 6)}, 
     {"T2bWC", std::make_pair(6, 6)}, 
 
 };
@@ -113,21 +113,21 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
       continue;
     }
 
-    //// modification of smoothing
-    //std::string name = g2.GetName();
-    //int smoothN = 0;
-    //// Default as 6
-    //std::pair<int, int > temp = std::make_pair(6, 6);
-    //if (smoothmap.find(signal.Data()) != smoothmap.end())
-    //    temp = smoothmap.at(signal.Data());
+    // modification of smoothing
+    std::string name = g2.GetName();
+    int smoothN = 0;
+    // Default as 6
+    std::pair<int, int > temp = std::make_pair(6, 6);
+    if (smoothmap.find(signal.Data()) != smoothmap.end())
+        temp = smoothmap.at(signal.Data());
 
-    //if (name.find("obs") != std::string::npos)
-    //    smoothN = temp.first;
-    //else
-    //    smoothN = temp.second;
+    if (name.find("obs") != std::string::npos)
+        smoothN = temp.first;
+    else
+        smoothN = temp.second;
 
-    //if (smoothN != 0)
-    //    Smooth(g, smoothN, 3, signal);
+    if (smoothN != 0)
+        Smooth(g, smoothN, 3, signal);
 
     out.push_back(g);
     g->SetLineColor(color);
