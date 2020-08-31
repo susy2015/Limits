@@ -70,11 +70,13 @@ CRprocMap  = {
         'Rare'    : 'Rare',
     },
     "lepcr": {
-        
+        'ttbarplusw' : 'ttbarplusw',
     },
     "phocr" :{
         'gjets'   : 'phocr_gjets',
         'otherbkgs' : 'phocr_back',
+        'phocr_gjets' : 'phocr_gjets',
+        'phocr_back' : 'phocr_back',
     }
 
 }
@@ -203,6 +205,27 @@ def parseSigBinMap(process, srbin, cr_description, sigyields_dict, lepyields_dic
             results -= sigcr * llsr/ llcr
     return results if results > 0 else 0
 
+def parseUncUnitBinMap(process, srbin, cr_description):
+    '''reduced efficiency method '''
+
+    srs = []
+    crs = []
+    srYield = 0.
+    srStat = 0.
+    for entry in cr_description.replace(' ','').split('+'):
+        if "*" not in entry:
+            srs.append(srbin)
+            crs.append(entry)
+            break
+        sr, cr = entry.split('*')
+        if '<' in cr: sr, cr = cr, sr
+        cr = cr.strip('()')
+        sr = sr.strip('<>')
+        srYield += yields[process][sr][0]
+        srStat += yields[process][sr][1]*yields[process][sr][1]
+
+    return srYield, math.sqrt(srStat)
+
 def sumBkgYields(process, signal, bin, cr_description, yields_dict):
     values = []
     params = []
@@ -316,13 +339,35 @@ class Uncertainty:
         #if self.value > 2:
         #    raise ValueError('Invalid unc value %f for %s!'%(self.value, self.name))
 
-def averageUnc(up, down):
-    #sign = 1 if up >= 1 else -1
-    up_ = math.exp(math.log(up/math.sqrt(up*down)))
-    down_ = math.exp(math.log(down/math.sqrt(up*down)))
-    #val = 0.5 * (abs(up - 1) + abs(1 - down))
-    #if abs(val) >= 1: val = 0.999
-    return (down_, up_)
+def badSystematic(UpRatio, DownRatio):
+    log_ratio_difference = abs(math.log(UpRatio)) - abs(math.log(DownRatio))
+    bad_systematic = abs(log_ratio_difference) > 0.35
+    if bad_systematic:
+        if log_ratio_difference > 0:
+            # UpRatio is larger, so use DownRatio
+            UpRatio = 1/DownRatio
+        else:
+            # DownRatio is larger, so use UpRatio
+            DownRatio = 1/UpRatio
+    return (DownRatio, UpRatio)
+
+
+def oneSidedSystematic(UpRatio, DownRatio):
+    one_sided_systematic = ((UpRatio > 1) and (DownRatio > 1)) or ((UpRatio < 1) and (DownRatio < 1))
+    if one_sided_systematic:
+        geomean = math.sqrt(UpRatio * DownRatio)
+        UpRatio /= geomean
+        DownRatio /= geomean
+
+    return (DownRatio, UpRatio)
+
+def killSystematic(central_value, stat_uncertainty, UpRatio, DownRatio):
+    kill_systematic = central_value < stat_uncertainty
+    if kill_systematic:
+        UpRatio = 1.0
+        DownRatio = 1.0
+
+    return (DownRatio, UpRatio)
 
 unc_def = {}
 unc_dict = Vividict() # bin -> { proc -> { uncname -> Uncertainty } } , proc can be 'signal'
@@ -373,11 +418,32 @@ def readUncs():
                             uncval = minsyscap
                         elif float(uncval) > maxsyscap:
                             uncval = maxsyscap
-                        if (unc_up.value > 1 and float(uncval) > 1) or (unc_up.value < 1 and float(uncval) < 1):
-                            uncavg = averageUnc(unc_up.value, float(uncval))			
-                            unc = Uncertainty(uncname.strip("_Down"), unctype, uncavg[0], uncavg[1])
-                        else:	
-                            unc = Uncertainty(uncname.strip("_Down"), unctype, uncval, unc_up.value)	
+
+                        #uncavg = oneSidedSystematic(unc_up.value, float(uncval))
+                        uncavg = badSystematic(unc_up.value, float(uncval))
+                        uncavg = oneSidedSystematic(uncavg[1], uncavg[0])
+
+                        crproc = 'lepcr_' if 'lepcr' in bin_str else ('qcdcr_' if 'qcdcr' in bin_str else '')
+                        
+                        if 'lepcr' in bin_str and ('T2' in proc_str or 'T1' in proc_str or 'T5' in proc_str): 
+                            proc_str = 'lepcr_' + proc_str
+                        elif 'qcdcr' in bin_str and ('T2' in proc_str or 'T1' in proc_str or 'T5' in proc_str): 
+                            proc_str = 'qcdcr_' + proc_str
+                        elif proc_str not in ['TTZ', 'Rare'] and 'cr' not in bin_str and ('T2' not in proc_str and 'T1' not in proc_str and 'T5' not in proc_str):
+                            srYield, srStat = parseUncUnitBinMap(proc_str, bin_str, binMaps[processMap[proc_str]][bin_str])
+
+                        if 'cr' in bin_str: print("{0} {1}".format(proc_str, bin_str))
+
+                        if 'T2' in proc_str or 'T1' in proc_str or 'T5' in proc_str:
+                            uncavg = killSystematic(sigYields[proc_str][bin_str][0], sigYields[proc_str][bin_str][1], uncavg[1], uncavg[0])
+                        elif 'lepcr' in bin_str or 'qcdcr' in bin_str or 'phocr' in bin_str:
+                            uncavg = killSystematic(yields[crproc + proc_str][bin_str][0], yields[crproc + proc_str][bin_str][1], uncavg[1], uncavg[0])
+                        elif proc_str == 'TTZ' or proc_str == 'Rare':
+                            uncavg = killSystematic(yields[proc_str][bin_str][0], yields[proc_str][bin_str][1], uncavg[1], uncavg[0])
+                        else:
+                            uncavg = killSystematic(srYield, srStat, uncavg[1], uncavg[0])
+
+                        unc = Uncertainty(uncname.strip("_Down"), unctype, uncavg[0], uncavg[1])
                     else: 
                         unc = Uncertainty(uncname, unctype, uncval)
                 except ValueError as e:

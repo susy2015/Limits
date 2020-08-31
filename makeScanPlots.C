@@ -113,21 +113,21 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
       continue;
     }
 
-    // modification of smoothing
-    std::string name = g2.GetName();
-    int smoothN = 0;
-    // Default as 6
-    std::pair<int, int > temp = std::make_pair(6, 6);
-    if (smoothmap.find(signal.Data()) != smoothmap.end())
-        temp = smoothmap.at(signal.Data());
+    //// modification of smoothing
+    //std::string name = g2.GetName();
+    //int smoothN = 0;
+    //// Default as 6
+    //std::pair<int, int > temp = std::make_pair(6, 6);
+    //if (smoothmap.find(signal.Data()) != smoothmap.end())
+    //    temp = smoothmap.at(signal.Data());
 
-    if (name.find("obs") != std::string::npos)
-        smoothN = temp.first;
-    else
-        smoothN = temp.second;
+    //if (name.find("obs") != std::string::npos)
+    //    smoothN = temp.first;
+    //else
+    //    smoothN = temp.second;
 
-    if (smoothN != 0)
-        Smooth(g, smoothN, 3, signal);
+    //if (smoothN != 0)
+    //    Smooth(g, smoothN, 3, signal);
 
     out.push_back(g);
     g->SetLineColor(color);
@@ -338,7 +338,10 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
     TString add = ilim > 0 ? "_" + TString(to_string(ilim)) : "";
     cexp.at(ilim)->SetName(gname + "_Exp" + add);
     cexp.at(ilim)->Write(gname + "_Exp" + add);
-    cexp.at(ilim)->GetPoint(2, x, y);
+    for(int i = 0; i != cexp.at(ilim)->GetN(); i++){
+      cexp.at(ilim)->GetPoint(i, x, y);
+      if (y > 0.01) break;
+    }
     cout << "zero point: " << x << ", " << y << endl;
     cexp.at(ilim)->GetPoint(cexp.at(ilim)->GetN() - 2, x, y);
     cout << "zero point: " << x << ", " << y << endl;
