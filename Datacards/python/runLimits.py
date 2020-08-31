@@ -102,7 +102,7 @@ def main():
     if args.printLimits:
         printLimits(limconfig)
     elif args.fillAsymptoticLimits:
-        if limconfig.limitmethod == 'Asymptotic' or limconfig.limitmethod == 'AsymptoticObs':
+        if limconfig.limitmethod == 'Asymptotic' or limconfig.limitmethod == 'AsymptoticObs' or limconfig.limitmethod == 'Significance':
             sigfile = 'significances_%s.root'%args.name
             fillSignificances(limconfig, sigfile, args.name)
         else:
@@ -135,7 +135,7 @@ def eosls(outputLocation):
         p = subprocess.Popen("eos root://cmseos.fnal.gov ls %s" % outputLocation,
                                       stdout=subprocess.PIPE, shell=True)
         (dummyFiles_, _) = p.communicate()
-        dummyFiles = dummyFiles_.split("\n")[:2]
+        dummyFiles = dummyFiles_.split("\n")
     else:
         dummyFiles = os.listdir(outputLocation)
 
@@ -148,13 +148,10 @@ def getLimit(rootFile, getMean=False, limit={}):
     output = ''
     if getMean:
         tree = file.Get('limit')
-        htmp = TH1D('htmp', 'htmp', 1, 0, 10000)
-        tree.Project('htmp', 'limit')
-        mean = htmp.GetMean()
-        # error = htmp.GetError()
-        # output = 'mean=' + str(mean) + '\terror=' + str(error) + '\n'
-        output = 'mean=' + str(mean) + '\n'
-        limit = mean
+        for entry in tree:
+            if entry.quantileExpected < 0:
+                limit = entry.limit
+        output = 'mean=' + str(limit) + '\n'
     else:
         tree = TChain('limit')
         tree.Add(rootFile)
@@ -182,7 +179,6 @@ def getLimit(rootFile, getMean=False, limit={}):
 def printLimits(config):
     limits = []
     if not config.isEOS == '': currentDir = "/eos/uscms/store/user/"+getpass.getuser()+"/13TeV/"
-    #if not config.isEOS == '': currentDir = "/eos/uscms/store/user/benwu/13TeV/"
     else: currentDir = os.getcwd()
     for signal in config.signals:
         outputLocation = os.path.join(currentDir, config.limitdir, signal)
@@ -218,38 +214,47 @@ def printLimits(config):
 def fillSignificances(config, sigfile, name):
     limits = []
     if not config.isEOS == '': currentDir = "/eos/uscms/store/user/"+getpass.getuser()+"/13TeV/"
-    #if not config.isEOS == '': currentDir = "/eos/uscms/store/user/benwu/13TeV/"
     else: currentDir = os.getcwd()
     outfile = TFile(sigfile, 'RECREATE')
     maxmstop = 0.0
     minmstop = 0.0
     maxmlsp = 0.0
     minmlsp = 0.0
+    limfilename = sigfile
     mstop_step = 1
-    mlsp_step = 10 if 'fbd' in sigfile else 1
+    mlsp_step = 1
+    if "fbd" in limfilename: mlsp_step = 2
+    elif "T2cc" in limfilename: mlsp_step = 2
+    elif "T2bWC" in limfilename: mlsp_step = 2
     for signal in config.signals:
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])
-        if mstop > maxmstop: maxmstop = mstop
-        if mlsp > maxmlsp: maxmlsp = mlsp
-        if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
-        if minmlsp == 0.0 or mlsp < minmlsp: minmlsp = mlsp
+        if (("fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)):
+            if mstop > maxmstop: maxmstop = mstop
+            if (mstop - mlsp) > maxmlsp: maxmlsp = (mstop - mlsp)
+            if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
+            if (mstop - mlsp) < minmlsp: minmlsp = (mstop - mlsp)
+        else:
+            if mstop > maxmstop: maxmstop = mstop
+            if mlsp > maxmlsp: maxmlsp = mlsp
+            if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
+            if mlsp < minmlsp: minmlsp = mlsp
     nbinsx = int((maxmstop - minmstop) / mstop_step)
     nbinsy = int((maxmlsp - minmlsp) / mlsp_step)
-#     minmstop -= 0.5*mstop_step
-#     maxmstop -= 0.5*mstop_step
-#     minmlsp  -= 0.5*mlsp_step
-#     maxmlsp  -= 0.5*mlsp_step
+    minmstop -= 0.5*mstop_step
+    maxmstop -= 0.5*mstop_step
     print 'XMin: %4.2f, XMax: %4.2f, YMin: %4.2f, YMax: %4.2f, NXBins: %d, NYBins: %d' % (minmstop, maxmstop, minmlsp, maxmlsp, nbinsx, nbinsy)
 
     hsig = TH2D('hsig', '', nbinsx, minmstop, maxmstop, nbinsy, minmlsp, maxmlsp)
     for signal in config.signals:
         outputLocation = os.path.join(currentDir, config.limitdir, signal)
         rootFile = ''
-        dummyFiles = os.listdir(outputLocation)
+        dummyFiles = eosls(outputLocation)
         for df in dummyFiles:
-            if 'higgsCombine' in df: rootFile = os.path.join(
-                currentDir, config.limitdir, signal, df)
+            if 'higgsCombine' in df and config.limitmethod in df:  
+                rootFile = os.path.join( currentDir, config.limitdir, signal, df)
+                if "eos" in rootFile:
+                    rootFile = "root://cmseos.fnal.gov/" + rootFile
         if rootFile == '':
             limits.append(signal + ': no limit found..')
         else:
@@ -261,7 +266,7 @@ def fillSignificances(config, sigfile, name):
                     tempLimit = line.replace('mean=', signal + ': ')
             limits.append(tempLimit)
             mstop = int(signal.split('_')[1])
-            mlsp = int(signal.split('_')[2])
+            mlsp = (int(signal.split('_')[1]) - int(signal.split('_')[2])) if (("fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) else int(signal.split('_')[2])
             limit = output[1]
             bin = hsig.FindBin(mstop, mlsp)
             hsig.SetBinContent(bin, limit)
@@ -280,7 +285,6 @@ def fillSignificances(config, sigfile, name):
 def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     limits = []
     if not config.isEOS == '': currentDir = "/eos/uscms/store/user/"+getpass.getuser()+"/13TeV/"
-    #if not config.isEOS == '': currentDir = "/eos/uscms/store/user/benwu/13TeV/"
     else: currentDir = os.getcwd()
     xsecfilename = ('Datacards/setup/xsecs/xSec.root')
     outfile = TFile(limfilename, 'RECREATE')
@@ -559,9 +563,6 @@ def calcLimit(config, signal):
 
     elif config.limitmethod == 'Significance':
         runLimitsCommand = 'combine -M Significance ' + combinedDatacard + '  --uncapped 1 -n ' + signal
-        # runLimitsCommand =  'combine -M ProfileLikelihood '+combinedDatacard+' --significance -t -1 --expectSignal=1 -n '+signal
-        # runLimitsCommand =  'combine -M ProfileLikelihood --significance '+combinedDatacard+' -n '+signal
-        # run the limit command and figure out what the output root file is
         output = commands.getoutput(runLimitsCommand)
         lprint(runLimitsCommand, output)
 
