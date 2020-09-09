@@ -3,6 +3,7 @@ from array import *
 class sms():
 
     def __init__(self, modelname):
+        if modelname.find("T2All") != -1: self.T2All()
         if modelname.find("T2tt") != -1: self.T2tt()
         if modelname.find("T2tb") != -1: self.T2tb()
         if modelname.find("T2bW") != -1: self.T2bW()
@@ -16,6 +17,35 @@ class sms():
         if modelname.find("T5tttt") != -1: self.T5tttt()
         if modelname.find("T2bWC") != -1: self.T2bWC()
 
+
+    def T2All(self):
+        # model name
+        self.modelname = "T2All"
+        # decay chain
+        self.label = "pp #rightarrow #tilde{t} #bar{#tilde{t}}"
+        self.label_T2tt = "#tilde{t} #rightarrow t #tilde{#chi}^{0}_{1}"
+        self.label_T2bW = "#tilde{t} #rightarrow b #tilde{#chi}^{+}_{1}, #tilde{#chi}^{+}_{1} #rightarrow W^{+} #tilde{#chi}_{1}^{0} [m_{#tilde{#chi}_{1}^{+}} = (m_{ #tilde{t}} + m_{#tilde{#chi}_{1}^{0}})/2]"
+        self.label_T2tb = "#tilde{t} #rightarrow t_{ }#tilde{#chi}^{0}_{1}/#tilde{t} #rightarrow b_{ }#tilde{#chi}^{+}_{1} [m_{#tilde{#chi}_{1}^{+}} - m_{#tilde{#chi}_{1}^{0}} = 5 GeV, BR(#tilde{t} #rightarrow t_{ }#tilde{#chi}^{0}_{1}) = 50%]"
+        self.label_T2fbd = "#tilde{t} #rightarrow b f #bar{f}' #tilde{#chi}^{0}_{1}"
+        self.label_T2bWC = "#tilde{t} #rightarrow b #tilde{#chi}^{+}_{1}, #tilde{#chi}^{+}_{1} #rightarrow W^{+(*)} #tilde{#chi}_{1}^{0} [m_{#tilde{#chi}_{1}^{#pm}} = (m_{ #tilde{t}} + m_{#tilde{#chi}_{1}^{0}})/2]"
+        self.label_T2cc = "#tilde{t} #rightarrow c #tilde{#chi}^{0}_{1}"
+        # scan range to plot
+        self.Xmin = 150.
+        self.Xmax = 1500.
+        self.Ymin = 0.
+        self.Ymax = 1400.
+        self.Zmin = 0.0001
+        self.Zmax = 100.
+        # produce sparticle
+        self.sParticle = "m_{ #tilde{t}} [GeV]"
+        # LSP
+        self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
+        # turn off diagonal lines
+        self.diagOn = True
+        self.extraText = True
+        self.sigma2band = True
+        self.extratext1 = ""
+        self.extratext2 = ""
 
     def T2tt(self):
         # model name
@@ -71,7 +101,7 @@ class sms():
         # model name
         self.modelname = "T2bW"
         # decay chain
-        self.label = "pp #rightarrow #tilde{t} #bar{#tilde{t}}, #tilde{t} #rightarrow b #tilde{#chi}^{#pm}_{1}, #tilde{#chi}^{#pm}_{1} #rightarrow W^{#pm} #tilde{#chi}_{1}^{0}";
+        self.label = "pp #rightarrow #tilde{t} #bar{#tilde{t}}, #tilde{t} #rightarrow b #tilde{#chi}^{#pm}_{1}, #tilde{#chi}^{#pm}_{1} #rightarrow W^{#pm} #tilde{#chi}_{1}^{0}"
         # scan range to plot
         self.Xmin = 200.
         self.Xmax = 1400.

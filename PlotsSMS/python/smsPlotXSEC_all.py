@@ -1,20 +1,22 @@
 import ROOT as rt
 from array import *
 from sms import *
-from smsPlotABS import *
+from smsPlotABS_all import *
 
 # class producing the 2D plot with xsec colors
-class smsPlotXSEC(smsPlotABS):
+class smsPlotXSEC_all(smsPlotABS_all):
 
-    def __init__(self, modelname, histo, obsLimits, expLimits, energy, lumi, preliminary, label):
+    def __init__(self, modelname, histo, obsLimits, expLimits, energy, lumi, preliminary, label, signal):
         self.standardDef(modelname, histo, obsLimits, expLimits, energy, lumi, preliminary)
         self.LABEL = label
+        self.SIGNAL = signal
         # canvas for the plot
         self.c = rt.TCanvas("cCONT_%s" %label,"cCONT_%s" %label,600,600)
-        self.histo = histo['histogram']
+        self.histo = []
+        self.histo.append(histo[i]['histogram'] for i in histo)
         # canvas style
         self.setStyle()
-        self.setStyleCOLZ()
+        #self.setStyleCOLZ()
 
     # define the plot canvas
     def setStyleCOLZ(self):        
@@ -63,10 +65,10 @@ class smsPlotXSEC(smsPlotABS):
         self.emptyHisto.GetYaxis().SetRangeUser(self.model.Ymin, self.model.Ymax)
         self.emptyHisto.GetZaxis().SetRangeUser(self.model.Zmin, self.model.Zmax)
         self.emptyHisto.Draw()
-        self.histo.Draw("COLZSAME")
+        #for h in self.histo:
+        #    h.Draw("COLZSAME")
         self.DrawLines()
-        if self.model.diagOn:
-            self.DrawDiagonal()
+        self.DrawDiagonal()
         self.DrawText()
         self.DrawLegend()
         #self.DrawPaletteLabel()
