@@ -24,6 +24,21 @@ std::map<std::string, std::pair<int, int> > smoothmap {
 };
 
 
+// contour edge : [low, high]
+std::map<std::string, std::pair<float, float> > edgemap {
+    {"T2tt", std::make_pair(0., 87.)},
+    //{"T2tb", std::make_pair(0., 87)},
+    {"T2fbd", std::make_pair(10, 80)}, // Smoothing changed the results
+    //{"T1tttt", std::make_pair(10, 6)},
+    //{"T1ttbb", std::make_pair(6, 6)},
+    //{"T5ttcc", std::make_pair(6, 6)},
+    //{"T2bW", std::make_pair(0., 87)}, // Remove the problematic point, otherwise 16 for obs
+    {"T2cc", std::make_pair(10, 80)}, 
+    {"T2bWC", std::make_pair(10, 80)}, 
+
+};
+
+
 void Smooth(TGraph * g, int N = 3, int flag = 0, TString signal = "T2tt") {
   TGraph * old = (TGraph*) g->Clone();
   //int N = (n%2==0?n+1:n);
@@ -45,7 +60,7 @@ void Smooth(TGraph * g, int N = 3, int flag = 0, TString signal = "T2tt") {
   for (int i = 0; i < N; ++i)
     gauss[i] /= sum;
 
-  double xi, yi, xf, yf; 
+  double xi, yi, xf, yf;
   for (int i = 0; i < g->GetN(); ++i) {
     double avy = 0., avx = 0., x, x0, y, y0;
     int points = 0;
@@ -97,6 +112,35 @@ void Smooth(TGraph * g, int N = 3, int flag = 0, TString signal = "T2tt") {
   delete old;
 }
 
+void removeEdge(TGraph * g, TString signal = "T2tt", float edge_low = 0., float edge_high = 0.) {
+  double xh, yh, xl, yl; 
+  for (int i = 0; i < g->GetN(); ++i) {
+    double x0, y0;
+    g->GetPoint(i, x0, y0);
+    if (edge_high != 0. && (signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && ((x0 - y0) >= edge_high)){
+      xh = x0;
+      yh = y0;
+      continue;
+    } else if (edge_low != 0. && ((x0 - y0) <= edge_low)){
+      xl = x0;
+      yl = y0;
+      continue;
+    } else if (edge_high != 0. && !(signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && ((x0 - y0) <= edge_high)){
+      xh = x0;
+      yh = y0;
+      continue;
+    } 
+    cout << signal << "(x0, y0) = dy" << "(" << x0 << ", " << y0 << ") = " << x0 - y0 << endl;
+  }
+  for (int i = 0; i < g->GetN(); ++i) {
+    double x, y;
+    g->GetPoint(i, x, y);
+         if((signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && i < g->GetN()/2 && x == 0. && y == 0.) g->SetPoint(i, xl, yl);
+    else if((signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && i > g->GetN()/2 && x == 0. && y == 0.) g->SetPoint(i, xh, yh);
+    else if(x == 0. && y == 0.) g->SetPoint(i, xh, yh);
+  }
+}
+
 vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
                     TLegend *leg = 0, const string &name = "", TString signal = "T2tt"){
   vector<TGraph*> out;
@@ -116,6 +160,7 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
     // modification of smoothing
     std::string name = g2.GetName();
     int smoothN = 0;
+    float edge_high = 0., edge_low = 0.;
     // Default as 6
     std::pair<int, int > temp = std::make_pair(6, 6);
     if (smoothmap.find(signal.Data()) != smoothmap.end())
@@ -126,8 +171,16 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
     else
         smoothN = temp.second;
 
+    std::pair<int, int > edgetemp = std::make_pair(0., 0.);
+    if (edgemap.find(signal.Data()) != edgemap.end())
+        edgetemp = edgemap.at(signal.Data());
+    edge_low  = edgetemp.first;
+    edge_high = edgetemp.second;
+
     if (smoothN != 0)
         Smooth(g, smoothN, 3, signal);
+    if (edge_low != 0. || edge_high != 0.)
+        removeEdge(g, signal, edge_low, edge_high);
 
     out.push_back(g);
     g->SetLineColor(color);
