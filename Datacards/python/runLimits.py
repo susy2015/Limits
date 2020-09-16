@@ -226,13 +226,13 @@ def fillSignificances(config, sigfile, name):
     limfilename = sigfile
     mstop_step = 1
     mlsp_step = 1
-    if "fbd" in limfilename: mlsp_step = 2
+    if "T2fbd" in limfilename: mlsp_step = 2
     elif "T2cc" in limfilename: mlsp_step = 2
     elif "T2bWC" in limfilename: mlsp_step = 2
     for signal in config.signals:
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])
-        if (("fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)):
+        if (("T2fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)):
             if mstop > maxmstop: maxmstop = mstop
             if (mstop - mlsp) > maxmlsp: maxmlsp = (mstop - mlsp)
             if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
@@ -269,7 +269,7 @@ def fillSignificances(config, sigfile, name):
                     tempLimit = line.replace('mean=', signal + ': ')
             limits.append(tempLimit)
             mstop = int(signal.split('_')[1])
-            mlsp = (int(signal.split('_')[1]) - int(signal.split('_')[2])) if (("fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) else int(signal.split('_')[2])
+            mlsp = (int(signal.split('_')[1]) - int(signal.split('_')[2])) if (("T2fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) else int(signal.split('_')[2])
             limit = output[1]
             bin = hsig.FindBin(mstop, mlsp)
             hsig.SetBinContent(bin, limit)
@@ -299,7 +299,7 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     minmlsp = 0.0
     mstop_step = 10 if "T2cc" in limfilename else 1
     mlsp_step = 1
-    if "fbd" in limfilename and not config.allPlots: mlsp_step = 2
+    if "T2fbd" in limfilename and not config.allPlots: mlsp_step = 2
     elif "T2cc" in limfilename and not config.allPlots: mlsp_step = 2
     elif "T2bWC" in limfilename and not config.allPlots: mlsp_step = 2
     elif "T2bW" in limfilename: 
@@ -308,7 +308,7 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     for signal in config.signals:
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])
-        if (("fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) and not config.allPlots:
+        if (("T2fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) and not config.allPlots:
             if mstop > maxmstop: maxmstop = mstop
             if (mstop - mlsp) > maxmlsp: maxmlsp = (mstop - mlsp)
             if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
@@ -340,7 +340,7 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
 
     xsecfile = TFile(xsecfilename)
     xsechist = TH1D()
-    if "T2tt" in limfilename or "T2bb" in limfilename or "T2tb" in limfilename or "T6tt" in limfilename or "T2fbd" in limfilename or "T2bW" in limfilename or "T2cc" in limfilename:
+    if "T2" in limfilename or "t2" in limfilename or "T6tt" in limfilename:
         xsechist = xsecfile.Get("stop_xsection")
     elif "T1tt" in limfilename or "T5tt" in limfilename:
         xsechist = xsecfile.Get("gluino_xsection")
@@ -373,10 +373,9 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
                     tempLimit += line.replace('Expected\t', signal + ' expected')
             limits.append(tempLimit)
             mstop = int(signal.split('_')[1])
-            mlsp = (int(signal.split('_')[1]) - int(signal.split('_')[2])) if (("fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) and not config.allPlots else int(signal.split('_')[2])
-            #mlsp = int(signal.split('_')[2]) if (("fbd" not in limfilename) or ("T2cc" not in limfilename) or ("T2bWC" not in limfilename)) else (int(signal.split('_')[1]) - int(signal.split('_')[2]))
+            mlsp = (int(signal.split('_')[1]) - int(signal.split('_')[2])) if (("T2fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) and not config.allPlots else int(signal.split('_')[2])
             limit = output[1]
-	    binIdx = xsechist.FindBin(float(mstop))
+            binIdx = xsechist.FindBin(float(mstop))
             xsec = xsechist.GetBinContent(binIdx)
             xsecup = xsec + xsechist.GetBinError(binIdx)
             xsecdown = xsec - xsechist.GetBinError(binIdx)
