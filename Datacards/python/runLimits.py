@@ -82,8 +82,6 @@ def main():
                         help="Location of limit root files is in EOS. [Default: ]")
     parser.add_argument("-d", "--CardPattern", dest="CardPattern", default='',
                         help="Location of limit root files is in EOS. [Default: ]")
-    parser.add_argument("-ap", "--allplots", dest="allPlots", default=False,
-                        help="Replot the T2cc, T2fbd, and T2bWC in the standard way")
     args = parser.parse_args()
 
     # to get the config file
@@ -96,7 +94,7 @@ def main():
     configparser = SafeConfigParser()
     configparser.optionxform = str
 
-    limconfig = LimitConfig(args.configFile, configparser, args.isEOS, args.allPlots)
+    limconfig = LimitConfig(args.configFile, configparser, args.isEOS)
     limconfig.CardPattern = args.CardPattern
     if args.sample != "":
         limconfig.signals = open(args.sample).read().splitlines()
@@ -119,14 +117,13 @@ def main():
 
 class LimitConfig:
   # setup
-  def __init__(self, conf_file, config_parser, isEOS, allPlots):
+  def __init__(self, conf_file, config_parser, isEOS):
     self.conf_file = conf_file
     config_parser.read(self.conf_file)
     self.limitmethod = config_parser.get('config', 'limitmethod')
     self.subdir = config_parser.get('config', 'subdir')
     self.datacarddir = os.path.join(config_parser.get('config', 'datacarddir'), self.subdir)
     self.isEOS = isEOS
-    self.allPlots = allPlots
     self.limitdir =  isEOS if not isEOS == '' else os.path.join(config_parser.get('config', 'limitdir'), self.subdir + '_' + self.limitmethod)
     self.signals = config_parser.get('signals', 'samples').replace(' ', '').split(',')
     self.scalesigtoacc = config_parser.getboolean('config', 'scalesigtoacc')
@@ -299,16 +296,16 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     minmlsp = 0.0
     mstop_step = 10 if "T2cc" in limfilename else 1
     mlsp_step = 1
-    if "T2fbd" in limfilename and not config.allPlots: mlsp_step = 2
-    elif "T2cc" in limfilename and not config.allPlots: mlsp_step = 2
-    elif "T2bWC" in limfilename and not config.allPlots: mlsp_step = 2
+    if "T2fbd" in limfilename: mlsp_step = 2
+    elif "T2cc" in limfilename: mlsp_step = 2
+    elif "T2bWC" in limfilename: mlsp_step = 2
     elif "T2bW" in limfilename: 
         mlsp_step = 10
         mstop_step = 10
     for signal in config.signals:
         mstop = int(signal.split('_')[1])
         mlsp = int(signal.split('_')[2])
-        if (("T2fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) and not config.allPlots:
+        if (("T2fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)):
             if mstop > maxmstop: maxmstop = mstop
             if (mstop - mlsp) > maxmlsp: maxmlsp = (mstop - mlsp)
             if minmstop == 0.0 or mstop < minmstop: minmstop = mstop
@@ -373,7 +370,7 @@ def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
                     tempLimit += line.replace('Expected\t', signal + ' expected')
             limits.append(tempLimit)
             mstop = int(signal.split('_')[1])
-            mlsp = (int(signal.split('_')[1]) - int(signal.split('_')[2])) if (("T2fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) and not config.allPlots else int(signal.split('_')[2])
+            mlsp = (int(signal.split('_')[1]) - int(signal.split('_')[2])) if (("T2fbd" in limfilename) or ("T2cc" in limfilename) or ("T2bWC" in limfilename)) else int(signal.split('_')[2])
             limit = output[1]
             binIdx = xsechist.FindBin(float(mstop))
             xsec = xsechist.GetBinContent(binIdx)
