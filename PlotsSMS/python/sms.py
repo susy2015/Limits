@@ -36,7 +36,7 @@ class sms():
         self.sParticle = "m_{ #tilde{t}} [GeV]"
         # LSP
 #         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
-        self.LSP = "#Deltam( #tilde{t}, #tilde{#chi}_{1}^{0} ) [GeV]"
+        self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = False
         self.extraText = True
@@ -60,7 +60,7 @@ class sms():
         self.sParticle = "m_{ #tilde{t}} [GeV]"
         # LSP
 #         self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
-        self.LSP = "#Deltam( #tilde{t}, #tilde{#chi}_{1}^{0} ) [GeV]"
+        self.LSP = "m_{#tilde{#chi}_{1}^{0}} [GeV]"
         # turn off diagonal lines
         self.diagOn = False
         self.extraText = True

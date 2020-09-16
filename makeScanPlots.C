@@ -14,12 +14,15 @@ std::map<std::string, std::pair<int, int> > smoothmap {
     {"T2tt", std::make_pair(12, 6)},
     {"T2tb", std::make_pair(12, 6)},
     {"T2fbd", std::make_pair(0, 0)}, // Smoothing changed the results
+    {"t2fbd", std::make_pair(0, 0)}, // Smoothing changed the results
     {"T1tttt", std::make_pair(10, 6)},
     {"T1ttbb", std::make_pair(6, 6)},
     {"T5ttcc", std::make_pair(6, 6)},
     {"T2bW", std::make_pair(12, 6)}, // Remove the problematic point, otherwise 16 for obs
     {"T2cc", std::make_pair(3, 6)}, 
     {"T2bWC", std::make_pair(6, 6)}, 
+    {"t2cc", std::make_pair(3, 6)}, 
+    {"t2bWC", std::make_pair(6, 6)}, 
 
 };
 
@@ -28,13 +31,13 @@ std::map<std::string, std::pair<int, int> > smoothmap {
 std::map<std::string, std::pair<float, float> > edgemap {
     {"T2tt", std::make_pair(0., 90.)},
     //{"T2tb", std::make_pair(0., 87)},
-    {"T2fbd", std::make_pair(13, 80)}, // Smoothing changed the results
+    {"t2fbd", std::make_pair(80, 13)}, // Smoothing changed the results
     //{"T1tttt", std::make_pair(10, 6)},
     //{"T1ttbb", std::make_pair(6, 6)},
     //{"T5ttcc", std::make_pair(6, 6)},
     //{"T2bW", std::make_pair(0., 87)}, // Remove the problematic point, otherwise 16 for obs
-    {"T2cc", std::make_pair(10, 80)}, 
-    {"T2bWC", std::make_pair(19, 79)}, 
+    {"t2cc", std::make_pair(80, 10)}, 
+    {"t2bWC", std::make_pair(70, 19)}, 
 
 };
 
@@ -114,33 +117,29 @@ void Smooth(TGraph * g, int N = 3, int flag = 0, TString signal = "T2tt") {
 
 void removeEdge(TGraph * g, TString signal = "T2tt", float edge_low = 0., float edge_high = 0.) {
   double xh, yh, xl, yl; 
+  int ih, il;
+  bool getfirst = false;
   for (int i = 0; i < g->GetN(); ++i) {
     double x0, y0;
     g->GetPoint(i, x0, y0);
-    if (edge_high != 0. && (signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && ((x0 - y0) >= edge_high)){
+    if (edge_high != 0. && ((x0 - y0) <= edge_high)){
       xh = x0;
       yh = y0;
-      g->SetPoint(i, 0., 0.);
-      continue;
-    } else if (edge_low != 0. && ((x0 - y0) <= edge_low)){
+      ih = i;
+    } else if (!getfirst && edge_low != 0. && ((x0 - y0) >= edge_low)){
       xl = x0;
       yl = y0;
-      g->SetPoint(i, 0., 0.);
-      continue;
-    } else if (edge_high != 0. && !(signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && ((x0 - y0) <= edge_high)){
-      xh = x0;
-      yh = y0;
-      g->SetPoint(i, 0., 0.);
-      continue;
+      il = i;
+      getfirst = true;
     } 
     //cout << signal << "(x0, y0) = dy" << "(" << x0 << ", " << y0 << ") = " << x0 - y0 << endl;
   }
   for (int i = 0; i < g->GetN(); ++i) {
     double x, y;
     g->GetPoint(i, x, y);
-         if((signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && i < g->GetN()/2 && x == 0. && y == 0.) g->SetPoint(i, xl, yl);
-    else if((signal.Contains("T2fbd") || signal.Contains("T2bWC") || signal.Contains("T2cc")) && i > g->GetN()/2 && x == 0. && y == 0.) g->SetPoint(i, xh, yh);
-    else if(x == 0. && y == 0.) g->SetPoint(i, xh, yh);
+    //cout << signal << "index i: " << i << ", ih: " << ih << ", il: " << il << " (x, y) = dy " << "(" << x << ", " << y << ") = " << x - y << endl;
+         if(i < ih) g->SetPoint(i, xh, yh);
+    else if(i >= il) g->SetPoint(i, xl, yl);
   }
 }
 
@@ -176,6 +175,7 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
     if (smoothN != 0)
         Smooth(g, smoothN, 3, signal);
 
+    cout << name << endl;
     std::pair<int, int > edgetemp = std::make_pair(0., 0.);
     if (edgemap.find(signal.Data()) != edgemap.end()){
         edgetemp = edgemap.at(signal.Data());
@@ -354,8 +354,8 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
   vector<TGraph*> cexpup = DrawContours(gexpup, 2, 2, &l, "ExpUp", signal);
   vector<TGraph*> cexpdown = DrawContours(gexpdown, 2, 2, &l, "ExpDown", signal);
   vector<TGraph*> cexp = DrawContours(gexp, 2, 1, &l, "Expected", signal);
-  vector<TGraph*> cexpup2 = DrawContours(gexpup2, 2, 2, &l, "ExpUp2");
-  vector<TGraph*> cexpdown2 = DrawContours(gexpdown2, 2, 2, &l, "ExpDown2");
+  vector<TGraph*> cexpup2 = DrawContours(gexpup2, 2, 2, &l, "ExpUp2", signal);
+  vector<TGraph*> cexpdown2 = DrawContours(gexpdown2, 2, 2, &l, "ExpDown2", signal);
 
   
 

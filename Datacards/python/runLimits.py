@@ -285,7 +285,6 @@ def fillSignificances(config, sigfile, name):
 def fillAsymptoticLimits(config, limfilename, excfilename, interpolate):
     limits = []
     if not config.isEOS == '': currentDir = "/eos/uscms/store/user/"+getpass.getuser()+"/13TeV/"
-    #if not config.isEOS == '': currentDir = "/eos/uscms/store/user/benwu/13TeV/"
     else: currentDir = os.getcwd()
     xsecfilename = ('Datacards/setup/xsecs/xSec.root')
     outfile = TFile(limfilename, 'RECREATE')
