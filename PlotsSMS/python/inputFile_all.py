@@ -27,7 +27,7 @@ class inputFile_all():
         self.LUMI = self.findATTRIBUTE(fileName, "LUMI")
         self.ENERGY = self.findATTRIBUTE(fileName, "ENERGY")
         print self.ENERGY
-        self.PRELIMINARY = self.findATTRIBUTE(fileName, "Supplementary")
+        self.PRELIMINARY = self.findATTRIBUTE(fileName, "PRELIMINARY")
 
     def findATTRIBUTE(self, fileName, attribute):
         fileIN = open(fileName)        

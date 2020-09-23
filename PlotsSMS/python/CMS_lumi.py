@@ -23,6 +23,8 @@ relPosX    = 0.045
 relPosY    = 0.035
 relExtraDY = 1.2
 
+relPosXOutOfFrame = 0.7
+
 extraOverCmsTextSize  = 0.76
 
 lumi_13TeV = "20.1 fb^{-1}"
@@ -154,6 +156,6 @@ def CMS_lumi(pad,  iPeriod,  iPosX ):
         latex.SetTextFont(extraTextFont)
         latex.SetTextSize(extraTextSize*t)
         latex.SetTextAlign(align_)
-        latex.DrawLatex(posX_+0.7*l, posY_, extraText)      
+        latex.DrawLatex(posX_+relPosXOutOfFrame*l, posY_, extraText)      
 
     pad.Update()

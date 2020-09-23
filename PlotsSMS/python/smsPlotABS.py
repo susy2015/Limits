@@ -93,7 +93,12 @@ class smsPlotABS(object):
         graphWhite.Draw("LSAME")
         self.c.graphWhite = graphWhite
        	CMS_lumi.writeExtraText = 1
-	CMS_lumi.extraText = "Preliminary"
+        if self.model.modelname in ['T2fbd', 'T2cc', 'T2bWC']:
+            CMS_lumi.extraText = "Supplementary"
+            CMS_lumi.cmsTextSize = 0.70
+            CMS_lumi.relPosXOutOfFrame = 0.6
+        else:
+	    CMS_lumi.extraText = "Preliminary"
 	#CMS_lumi.lumi_13TeV="2.3 fb^{-1}"
 	CMS_lumi.lumi_13TeV="137.0 fb^{-1}"
 

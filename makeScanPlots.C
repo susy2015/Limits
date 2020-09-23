@@ -35,7 +35,7 @@ std::map<std::string, std::pair<float, float> > edgemap {
     //{"T1tttt", std::make_pair(10, 6)},
     //{"T1ttbb", std::make_pair(6, 6)},
     //{"T5ttcc", std::make_pair(6, 6)},
-    //{"T2bW", std::make_pair(0., 87)}, // Remove the problematic point, otherwise 16 for obs
+    {"T2bW", std::make_pair(750, 475)}, // manually remove observed line
     {"t2cc", std::make_pair(80, 10)}, 
     {"t2bWC", std::make_pair(70, 19)}, 
 
@@ -117,9 +117,9 @@ void Smooth(TGraph * g, int N = 3, int flag = 0, TString signal = "T2tt") {
 
 void removeEdge(TGraph * g, TString signal = "T2tt", float edge_low = 0., float edge_high = 0.) {
   double xh, yh, xl, yl; 
-  int ih, il;
+  int ih = -1, il = -1;
   bool getfirst = false;
-  for (int i = 0; i < g->GetN(); ++i) {
+  for (int i = 0; i < g->GetN() && !signal.Contains("T2bW"); ++i) {
     double x0, y0;
     g->GetPoint(i, x0, y0);
     if (edge_high != 0. && ((x0 - y0) <= edge_high)){
@@ -137,9 +137,10 @@ void removeEdge(TGraph * g, TString signal = "T2tt", float edge_low = 0., float 
   for (int i = 0; i < g->GetN(); ++i) {
     double x, y;
     g->GetPoint(i, x, y);
-    //cout << signal << "index i: " << i << ", ih: " << ih << ", il: " << il << " (x, y) = dy " << "(" << x << ", " << y << ") = " << x - y << endl;
-         if(i < ih) g->SetPoint(i, xh, yh);
-    else if(i >= il) g->SetPoint(i, xl, yl);
+    //cout << signal << " index i: " << i << ", ih: " << ih << ", il: " << il << " (x, y) = dy " << "(" << x << ", " << y << ") = " << x - y << ", r: " << TMath::Sqrt((x - edge_low)*(x - edge_low) + (y - edge_high)*(y - edge_high)) << endl;
+    if((signal == "T2bW") && (TMath::Sqrt((x - edge_low)*(x - edge_low) + (y - edge_high)*(y - edge_high)) < 10.)) g->SetPoint(i, 0., 0.);
+         if(i < ih  && ih >= 0) g->SetPoint(i, xh, yh);
+    else if(i >= il && il >= 0) g->SetPoint(i, xl, yl);
   }
 }
 
@@ -175,7 +176,6 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
     if (smoothN != 0)
         Smooth(g, smoothN, 3, signal);
 
-    cout << name << endl;
     std::pair<int, int > edgetemp = std::make_pair(0., 0.);
     if (edgemap.find(signal.Data()) != edgemap.end()){
         edgetemp = edgemap.at(signal.Data());
