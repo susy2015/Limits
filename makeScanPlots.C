@@ -14,7 +14,7 @@ std::map<std::string, std::pair<int, int> > smoothmap {
     {"T2tt", std::make_pair(12, 6)},
     {"T2tb", std::make_pair(12, 6)},
     {"T2fbd", std::make_pair(0, 0)}, // Smoothing changed the results
-    {"t2fbd", std::make_pair(0, 0)}, // Smoothing changed the results
+    {"t2fbd", std::make_pair(6, 6)}, // Smoothing changed the results
     {"T1tttt", std::make_pair(10, 6)},
     {"T1ttbb", std::make_pair(6, 6)},
     {"T5ttcc", std::make_pair(6, 6)},
@@ -31,8 +31,8 @@ std::map<std::string, std::pair<int, int> > smoothmap {
 std::map<std::string, std::pair<float, float> > edgemap {
     {"T2tt", std::make_pair(0., 90.)},
     //{"T2tb", std::make_pair(0., 87)},
-    {"t2fbd", std::make_pair(80, 13)}, // Smoothing changed the results
-    //{"T1tttt", std::make_pair(10, 6)},
+    {"t2fbd", std::make_pair(75, 13)}, // Smoothing changed the results
+    {"T1tttt", std::make_pair(0., 200.)},
     //{"T1ttbb", std::make_pair(6, 6)},
     //{"T5ttcc", std::make_pair(6, 6)},
     {"T2bW", std::make_pair(750, 475)}, // manually remove observed line
@@ -132,13 +132,13 @@ void removeEdge(TGraph * g, TString signal = "T2tt", float edge_low = 0., float 
       il = i;
       getfirst = true;
     } 
-    //cout << signal << "(x0, y0) = dy" << "(" << x0 << ", " << y0 << ") = " << x0 - y0 << endl;
+    cout << signal << "(x0, y0) = dy" << "(" << x0 << ", " << y0 << ") = " << x0 - y0 << endl;
   }
   for (int i = 0; i < g->GetN(); ++i) {
     double x, y;
     g->GetPoint(i, x, y);
-    //cout << signal << " index i: " << i << ", ih: " << ih << ", il: " << il << " (x, y) = dy " << "(" << x << ", " << y << ") = " << x - y << ", r: " << TMath::Sqrt((x - edge_low)*(x - edge_low) + (y - edge_high)*(y - edge_high)) << endl;
-    if((signal == "T2bW") && (TMath::Sqrt((x - edge_low)*(x - edge_low) + (y - edge_high)*(y - edge_high)) < 10.)) g->SetPoint(i, 0., 0.);
+    cout << signal << " index i: " << i << ", ih: " << ih << ", il: " << il << " (x, y) = dy " << "(" << x << ", " << y << ") = " << x - y << ", r: " << TMath::Sqrt((x - edge_low)*(x - edge_low) + (y - edge_high)*(y - edge_high)) << endl;
+    if((signal == "T2bW") && (TMath::Sqrt((x - edge_low)*(x - edge_low) + (y - edge_high)*(y - edge_high)) < 21.)) g->SetPoint(i, 0., 0.);
          if(i < ih  && ih >= 0) g->SetPoint(i, xh, yh);
     else if(i >= il && il >= 0) g->SetPoint(i, xl, yl);
   }

@@ -69,5 +69,5 @@ class smsPlotXSEC(smsPlotABS):
             self.DrawDiagonal()
         self.DrawText()
         self.DrawLegend()
-        #self.DrawPaletteLabel()
+        self.DrawPaletteLabel()
         

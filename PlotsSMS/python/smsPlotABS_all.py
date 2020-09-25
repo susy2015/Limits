@@ -127,7 +127,6 @@ class smsPlotABS_all(object):
     def Save(self,label):
         # save the output
         self.c.SaveAs("%s.pdf" %label)
-        self.c.SaveAs("%s.png" %label)
         
     def DrawLegend(self):
         xRange = self.model.Xmax-self.model.Xmin
