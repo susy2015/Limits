@@ -150,6 +150,7 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
   TH2D* hist = g2.GetHistogram();
   TVirtualHistPainter* histptr = hist->GetPainter();
   TList *l = histptr->GetContourList(1.);
+  hist->Write(name.c_str());
   if(!l)
     return out;
   bool added = false;
@@ -159,6 +160,47 @@ vector<TGraph*> DrawContours(TGraph2D &g2, int color, int style,
     if(g == 0) {
       continue;
     }
+    if (i >= 2 && signal == "T2bW" )
+    {
+        continue;
+    }
+
+    TString newname(name);
+    newname += "_";
+    newname += i;
+    g->Write(newname);
+    // Removing the edge of contour
+    // Set the difference within 0.1 for now
+    for (int i = 0; i < g->GetN(); ++i) {
+      double  x,y;
+      g->GetPoint(i, x, y);
+      Int_t binx = hist->GetXaxis()->FindBin(x);
+      Int_t biny = hist->GetYaxis()->FindBin(y);
+      double val = hist->GetBinContent(binx, biny);
+      //std::cout <<  i <<" "<< x <<" : " << y <<" : " << val << std::endl;
+      //std::cout << name <<" ----------- "<< i <<" "<< x <<" : " << y <<" : " << val << std::endl;
+      if ((1-val) > 0.08 )
+      {
+        if ( 
+             ((signal == "T2tt" ) && ((x-y) < 88) && name != "ObsDown") || 
+             ((signal == "T2tt" ) && ((x-y) < 88) && y < 400 && name == "ObsDown") || 
+             ((signal == "T2bW" ) && ((x-y) < 200) && y > 100 && name == "ExpUp2") || 
+             ((signal == "T2tb" ) && ((x-y) <= 210 && y > 200) && name != "Observed") || 
+             ((signal == "T2tb" ) && ((x-y) <= 210 && y > 200 && x < 700) && name == "Observed") || 
+             (signal == "T1tttt" && (x-y) < 225 ) ||
+             (signal == "T1ttbb" && (x-y) < 225 )
+            )
+        {
+          std::cout << name <<"_" << g->GetN()<<" === "<< i <<" "<< x <<" : " << y <<" : " << val << std::endl;
+          g->RemovePoint(i);
+          // RemovePoint will produce a new Graph with N-1 points, 
+          // i will step back by 1
+          i -= 1;
+        }
+      }
+    }
+    newname += "_Removed";
+    g->Write(newname);
 
     // modification of smoothing
     std::string name = g2.GetName();
@@ -233,7 +275,8 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
   TH2D* hexpup2 = (TH2D*)inputFile->Get("hexpup2");
 
   if(additionalInterpolation) {
-    if(hobs) hobs = rebin(hobsdown, "NE");
+    if(hobs) hobs = rebin(hobs, "NE");
+    if(hobsdown) hobsdown = rebin(hobsdown, "NE");
     if(hobsup) hobsup = rebin(hobsup, "NE");
     hexp = rebin(hexp, "NE");
     hexpdown = rebin(hexpdown, "NE");
@@ -348,6 +391,7 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
   TString signal = inputFileName;
   signal.ReplaceAll("results_", "");
   signal.ReplaceAll(".root", "");
+  TFile file(outputFileName,"recreate");
   vector<TGraph*> cobsup = DrawContours(gobsup, 1, 2, &l, "ObsUp", signal);
   vector<TGraph*> cobsdown = DrawContours(gobsdown, 1, 2, &l, "ObsDown", signal);
   vector<TGraph*> cobs = DrawContours(gobs, 1, 1, &l, "Observed", signal);
@@ -363,7 +407,6 @@ void makeScanPlots(const TString inputFileName = "results_T2tt.root", const TStr
   dots.Draw("p same");
   c.Print("limit_scan.pdf");
 
-  TFile file(outputFileName,"recreate");
   hlimexp->Write("hXsec_exp_corr");
   hlimobs->Write("hXsec_obs_corr");
   hxsecexp->Write("hXsec_exp");
